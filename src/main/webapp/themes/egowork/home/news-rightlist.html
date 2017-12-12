@@ -1,0 +1,25 @@
+<p class="text-md font-bold">精彩活动</p><hr class="m-n b-b">
+<div class="news-rightlist row">
+    <!-- {activity:list table=(activity) cid=(128) limit=(4) status=(1) order=(top desc,time desc)} -->
+    <div class="m-t col-md-12 col-sm-6">
+		<div>
+			<a href="${activity.url}">
+				<span class="block pos-rlt">
+					<img src="${url}/${activity.icon!}" class="center-block w-full pos-rlt">
+					 <span class="pos-abt text-xl block text-green text-ellipsis-2 padder-md" style="top:30%;">${activity.title!}</span>
+					 <#if ( activity.activeTime?date gt .now?date ) >
+					 <span class="pos-abt inline padder-xs padder-v-xxs bg-green text-white" style="bottom:0; right:0;">
+								 报名中
+					 </span>
+					 <#else>
+						<span class="pos-abt inline padder-xs padder-v-xxs bg-grey text-white" style="bottom:0; right:0;">
+									已结束
+						</span>
+				     </#if>
+					 <span class="black-box block"></span>
+				</span>
+			</a>
+		</div>
+	</div>
+    <!--{/list}-->
+</div>

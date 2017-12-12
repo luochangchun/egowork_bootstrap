@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+
+<body>
+<!--#include file="home/header.html" -->
+
+<div class="banner">
+	<div class="bg-cover" style="background-image: url(${themeurl!}img/banner_incubator.jpg);">
+	   <p class="text-center text-title text-white padder-v-xxxl">云创空间为您提供更优更好的办公空间</p>
+	</div>
+</div>
+
+<div class="bg-light incubator">
+   <div class="container ">
+       <form class="form-horizontal bg-white padder-v-lg padder-xl" role="form">
+            <div class="form-group">
+                <label for="title" class="col-md-2 col-sm-2 control-label">孵化器名称：</label>
+                <div class="col-md-5 col-sm-10 b padder-v-xxs bg-white h-min">
+                    <p class="m-b-none">${incubator.title!}</p>
+                </div>
+            </div>
+            <div class="form-group bg-light padder-v">
+                <label for="contact" class="col-sm-2 control-label text-center">联系人：</label>
+                <div class="col-md-4 col-sm-10 b padder-v-xxs bg-white h-min">
+                    <p class="m-b-none">${incubator.contact!}</p>
+                </div>
+                <label for="phone" class="col-sm-2 control-label text-center">联系电话：</label>
+                <div class="col-md-4 col-sm-10 b padder-v-xxs bg-white h-min">
+                    <p class="m-b-none">${incubator.phone!}</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="address" class="col-md-2 col-sm-2 control-label">地址：</label>
+                <div class="col-md-5 col-sm-10 b padder-v-xxs bg-white h-min">
+                    <p class="m-b-none">${incubator.address!}</p>
+                </div>
+            </div>
+            <div class="form-group bg-light padder-v">
+                <label for="level" class="col-md-2 col-sm-2 control-label">孵化器级别：</label>
+                <div class="col-md-5 col-sm-10 b padder-v-xxs bg-white h-min">
+                    <p class="m-b-none">
+                    	<!-- {dictionaries:list table=(dictionaries) name=('level') type=('incubator')} -->
+				    	<#if incubator.level == dictionaries.id?c >
+				    		${dictionaries.value}
+				    	</#if>
+				        <!-- {/list} -->
+                    </p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="types" class="col-md-2 col-sm-2 control-label">孵化器类型：</label>
+                <div class="col-md-5 col-sm-10 b padder-v-xxs bg-white h-min">
+                    <p class="m-b-none">${incubator.types!}</p>
+                </div>
+            </div>
+            <div class="form-group bg-light padder-v">
+                <label for="area" class="col-md-2 col-sm-2 control-label">场地面积（平方米）：</label>
+                <div class="col-md-5 col-sm-10 b padder-v-xxs bg-white h-min">
+					<p class="m-b-none">
+						<#if incubator.area?? && incubator.area != 0>
+							 ${incubator.area?c}
+						</#if>
+						</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="enterprises" class="col-md-2 col-sm-2 control-label">在孵企业数：</label>
+                <div class="col-md-5 col-sm-10 b padder-v-xxs bg-white h-min">
+                    <p class="m-b-none">
+                    	<#if incubator.enterprises?? && incubator.enterprises != 0>
+                   			 ${incubator.enterprises!}
+                   		</#if>
+                   	</p>
+                </div>
+            </div>
+            <div class="form-group bg-light padder-v">
+                <label for="area" class="col-md-2 col-sm-2 control-label">开放工位：</label>
+                <div class="col-md-5 col-sm-10 b padder-v-xxs bg-white h-min">
+					<p class="m-b-none">
+						<#if incubator.station?? && incubator.station!= 0>
+							 ${incubator.station?c}
+						</#if>
+						</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="enterprises" class="col-md-2 col-sm-2 control-label">独立办公室：</label>
+                <div class="col-md-5 col-sm-10 b padder-v-xxs bg-white h-min">
+                    <p class="m-b-none">
+                    	<#if incubator.office?? && incubator.office != 0>
+                   			 ${incubator.office?c}
+                   		</#if>
+                   	</p>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <label for="settle" class="col-md-2 col-sm-2 control-label">入驻企业要求：</label>
+                <textarea  class="col-md-5 col-sm-10 b padder-v-xxs h"  readonly="readonly">${incubator.settled!}</textarea>
+            </div>
+            <div class="form-group m-t-xxl">
+                <div class="text-center">
+                    <a class="btn btn-info btn-rounded" href="#" onclick="validationLogin('signin.html?apply_incu.html');">
+                       <span class="padder-xxl text-md">申请入驻</span>
+                    </a>
+                </div>
+            </div>
+        </form>
+   </div>
+</div>
+
+<!--#include file="home/footer.html" -->
+
+</body>
+</html>
+
+
+
+

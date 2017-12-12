@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+
+<body>
+
+<!--#include file="home/header.html" -->
+
+
+
+
+<!-- {article:list table=(article) id=($artid) limit=(1) status=(1) order=(id desc)} -->
+<div class="padder-v-xxl">
+	<div class="container">
+	   <div class="row">
+	      <div class="col-md-8">
+		      <div class="text-center">
+			       <p class="text-xxxl">${article.title}</p>
+				   <p>时间：${article.time?string("yyyy-MM-dd")}</p>
+			  </div>
+			  <div class="wrapper-lg">
+			  		<p>${article.content}</p>
+			      <img src="img/incubator-1.jpg" class="img-responsive"> -->
+			   </div>
+	      </div>
+		   <div class="col-md-4 news-rightlist">
+              <!--#include file="home/news-rightlist.html" -->
+		   </div>
+	   
+	</div>
+ </div>
+ <!--{/list}-->
+ </div>
+ 
+<!--#include file="home/footer.html" -->
+
+</body>
+</html>
+
+
+
+

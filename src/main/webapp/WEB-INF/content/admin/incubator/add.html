@@ -1,0 +1,269 @@
+<div class="content">
+	<div class="tab_bar">
+		<ul>
+			<li class="tab_index" onclick="setTabContent(this);">新建孵化器信息</li>
+		</ul>
+			<button onclick="submit(this)" class="btn_tabbar submit_it" return="incubator/list.do?currentPageNo=1">提交</button>
+			<button onclick="save(this)" class="btn_tabbar submit_it" return="incubator/list.do?currentPageNo=1">保存草稿</button>
+	</div>
+	<form id="myForm" action="incubator/save.do" method="post" onsubmit="return false;">
+	<input id="status" name="status" value="0" type="hidden" />
+	<input name="userId" value="${userid!}" type="hidden" />
+	<input name="author" type="hidden" value="${loginusername!}" />
+	<input name="isFree" type="hidden" value="0"/>
+	<input id="label" name="label" type="hidden" value=""/>
+
+	<div class="tab_content min-w">
+		<div class="tab_item tab_show"> 
+			<table class="table_for_add">
+				<tbody>
+					<tr class="rowBgColor">
+						<th style="width: 200px !important;">孵化器类别：</th>
+						<td>
+							<select class="select_for_add m-l-len" name="cid">
+								<@categoryTree id = 0 node = -1/>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<th>孵化器名称： </th>
+						<td>
+							<i class="fa fa-asterisk text-red"></i>
+							<input id="title" class="input_for_add m-l-xxs" name="title" type="text"  value="" placeholder="请输入孵化器名称" />
+						</td>
+					</tr>
+					<tr class="rowBgColor">
+						<th>孵化器图标： </th>
+						<td>
+							<input class="input_for_add" id="icon" name="icon" type="text" readonly="readonly" value=""  style="display:none;"/>
+							<div class="input_for_img m-l-len">
+								<div class="img-box" data-src=""></div>
+								<button type="button" class="img-btn" onclick="frameDialogShow()">上传</button>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th>联系人：</th>
+						<td>
+						    <i class="fa fa-asterisk text-red"></i> 
+							<input id="contact" type="text" class="input_for_add m-l-xxs"  name="contact" value=""  />
+						</td>
+					</tr>
+					<tr class="rowBgColor">
+				    	<th>联系电话：</th>
+						<td>
+							<i class="fa fa-asterisk text-red"></i> 
+							<input  id="phone" type="text" class="input_for_add m-l-xxs"  name="phone"  value=""  />
+						</td>
+					</tr>
+					<tr>
+						<th>地址：</th>
+						<td>
+							<!-- <i class="fa fa-asterisk text-red"></i> -->
+							<input type="text" class="input_for_add m-l-len" name="address" value="" />
+						</td>
+					</tr>
+					<tr>
+						<th>孵化器级别：</th>
+						<td>
+							<select class="select_for_add m-l-len" name="level">
+								<#list levels as x>
+									<option value="${x.id!}">${x.value!}</option>
+								</#list>
+							</select>
+						</td>
+					</tr>
+					<tr class="rowBgColor">
+						<th>孵化器类型：</th>
+						<td><input class="input_for_add m-l-len" name="types" type="text" value="" /></td>
+					</tr>
+					<tr>
+						<th>标签：</th>
+						<td>
+							<#list labels as x>
+								<input class="input_for_checkbox m-l-len" name="labels" type="checkbox" value="${x.id!}"/>${x.value!}
+							</#list>
+						</td>
+					</tr>
+					<tr class="rowBgColor">
+						<th>孵化器类别：</th>
+						<td>
+							<select class="select_for_add m-l-len" name="patterns">
+								<#list patterns as x>
+									<option value="${x.id!}">${x.value!}</option>
+								</#list>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<th>孵化器区域：</th>
+						<td>
+							<select class="select_for_add m-l-len" name="region">
+								<#list regions as x>
+									<option value="${x.id!}">${x.value!}</option>
+								</#list>
+							</select>
+						</td>
+					</tr>
+					<tr class="rowBgColor">
+						<th>开放工位（元/平方米/月）：</th>
+						<td><input class="input_for_add m-l-len" name="station" type="text" value="" /></td>
+					</tr>
+					<tr>
+						<th>独立办公室（元/平方米/月）：</th>
+						<td><input class="input_for_add m-l-len" name="office" type="text" value="" /></td>
+					</tr>
+					<tr class="rowBgColor">
+						<th>场地面积（平方米）：</th> 
+						<td><input class="input_for_add m-l-len" name="area" type="text" value="" /></td>
+					</tr>
+					<tr>
+						<th>在孵企业数：</th>
+						<td><input class="input_for_add m-l-len" name="enterprises" type="text" value="" /></td>
+					</tr>
+					<tr class="rowBgColor">
+						<th>入驻要求：</th>
+						<td><textarea class="input_for_add m-l-len" name="settled" type="text" ></textarea></td>
+					</tr>
+					<tr>
+						<th>对大学生免费：</th>
+						<td>
+							<input class="input_for_add m-l-len" type="checkbox" value="1" name="isFrees"/>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	</form>
+	<!-- 图片上传 -->
+	<div id="showFrameDialog" class="frame_model fixed" style="display:none;">
+		<div class="clear_zone"></div>
+		<div class="frame_window" style="width:800px;margin-left:-400px; height: 500px; margin-top: -250px;">
+			<div class="frame_bar">
+				<span class="title">上传图片</span>
+				<div class="frame_exit" onClick="frameDialogHide()"></div>
+			</div>
+			<div class="frame_content" style="height:464px;">
+				<div class="frame_margin markdown">
+					<form id="uploadForm" action="img/upload.do" method="post" enctype="multipart/form-data" onsubmit="return false;" style="margin-bottom:15px;">
+						<input type="file" onChange="inputImageChange(this)" name="file" style="position:absolute;width:70px;opacity:0;"/>
+						<button type="buttom" class="submit_it" style="float: inherit;">选择图片</button>					
+						<input id="imgSrc" name="imgSrc" type="text" style="display:none;"/>
+						<button type="submit" onclick="upload(this)" class=" submit_it" style="float: inherit;">上传</button>					
+					</form>
+					<div class="img-container" style="max-width:400px;max-height:300px;float:left;margin-right:15px;">
+			          <img id="image">
+			        </div>
+					<div id="view" style="display:none;border: 1px solid #C8C8C8;width:300px;float:left;"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+    //上传图片
+    function upload(obj)
+    {
+        // window.editor.sync();//手动提交需要手动同步编辑器数据
+        uploadForm(obj);
+    }
+imgChange();
+$("#image").on({
+    ready: function (e) {
+    	getCroppedCanvas();
+    },
+    cropmove: function (e) {
+    	getCroppedCanvas();
+    },
+    crop: function (e) {
+    	getCroppedCanvas();
+    },
+    zoom: function (e) {
+    	getCroppedCanvas();
+    }
+  }).cropper(options);
+
+
+function submit(obj){
+	$("#status").val("1");
+	isFreeChecked();
+	labelChecked();
+	var isDone = true;
+	$("input[aria-required='true']").each(function(){
+		if($(this).val() == ''){
+			alert('请完善表单！');
+			isDone = false;
+			return false;
+		}
+	});
+	if(!isDone) return;
+	submitActionForm(obj);
+}
+
+function save(obj){
+	$("#status").val("0");
+    labelChecked();
+	var isDone = true;
+	$("input[aria-required='true']").each(function(){
+		if($(this).val() == ''){
+			alert('请完善表单！');
+			isDone = false;
+			return false;
+		}
+	});
+	if(!isDone) return;
+	submitActionForm(obj);
+}
+
+$('#myForm').validator({
+	messages: {
+		required: "不能为空",
+	},
+	fields: {
+		'title': 'required',
+		'contact': 'required;',
+		'phone': 'required;'
+	},
+	rules: {
+		phone: [/^((0\d{2,3}-\d{7,8})|(1[3584]\d{9}))$/, '手机号格式错误']
+	}
+}).on("click", ".submit_it", function(){
+	// $('#myForm').trigger("submit");
+
+	window.editor.sync();//手动提交需要手动同步编辑器数据
+	submitActionForm(obj);
+
+});
+/**
+ * 关键字获取接口
+ * */
+function keyword(){
+	var title = $("#title").val();
+    var content = window.editor.getContent();
+	$.ajax({
+		url:"../keywords.do",
+		type:"POST",
+		data: "title="+title+"&content="+content,
+		dataType:"json",
+		success:function(data){
+			$("#keywords").val(data);
+		}
+	});
+
+}
+</script>
+
+<#macro categoryTree id node>
+	<#local temp = node + 1 />
+	<#list categorys as x>
+		<#if id = x.pid && Session.usercategory?index_of(x.id?c) != -1>
+			<option value="${x.id?c}">
+				<#list 0..temp as i> &nbsp; &nbsp; </#list>
+				├ ${x.name!}
+			</option>
+			<@categoryTree id = x.id node=temp/>
+		</#if>
+	</#list>
+</#macro>

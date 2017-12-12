@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+
+<!--#include file="home/header.html" -->
+
+<body>
+<div class="box activity"> 
+	 <div class="bg-info">
+		<div class="container">
+			<div class="row padder-v"> 
+			   <div class="col-md-4 padder-v"> 
+			   	   <img src="img/tra_de.jpg" class="img-responsive m-r">
+			   </div>
+				<div class="col-md-5 padder-v">
+		   	        <p class="text-lg font-bold">${activity.title} </p> <hr class="line-w">
+		   	        <p> 活动时间：${activity.activeTime?string("yyyy-MM-dd")} </p> <hr class="line-w"> 
+		   	        <p> 地点：${activity.address} </p> 
+		   	        <p> 人数限额：${activity.peopleLimit}人 </p>
+				</div>
+				<#if ( activity.activeTime?date gt .now?date ) >
+					<div class="col-md-3 padder-v-md">
+						<a class="btn btn-ghost-white m-b-md m-r r-3x" href="#" onclick="validationLogin('signin.html?apply_activity.html');">
+							<span class="padder">我要报名</span></a>
+					</div>
+				</#if>
+
+			</div>
+         </div> 
+     </div> 
+     <div class="padder-v-xxl"> 
+     	<div class="container">
+     	    <div class="row m-b-lg"> 
+     	    	<div class="">
+					<#if activity.cid == 128>
+						<p class="text-xxxl title_1">活动票种 </p>
+					</#if>
+					<#if activity.cid == 129>
+						<p class="text-xxxl title_1">培训票种 </p>
+					</#if>
+					<div class="m-t pos-rlt">
+     	    	   	   <img src="img/bg_ticket.png" class="img-responsive h-xs">
+     	    	   	   <div class="pos-abt" style="top:30px;left:30px;">
+     	    	   	   	  <p class="text-lg text-white">${activity.ticket}</p>
+     	    	   	   </div>
+     	    	    </div>
+     	    	    <div class="m-t-lg">
+						<#if activity.cid == 128>
+							<p class="text-xxxl title_1">活动内容</p>
+						</#if>
+						<#if activity.cid == 129>
+							<p class="text-xxxl title_1">培训内容</p>
+						</#if>
+     	    	        <div class="b wrapper m-t min-h">
+     	    	        	${activity.content} 
+     	    	        </div>
+     	    	    </div>
+     	    	    <div class="m-t-lg">
+						<#if activity.cid == 128>
+							<p class="text-xxxl title_1">活动基本信息</p>
+						</#if>
+						<#if activity.cid == 129>
+							<p class="text-xxxl title_1">培训基本信息</p>
+						</#if>
+
+     	    	    	<div class="m-t b wrapper w-xxxl"> 
+	     	    	        <p> 联系人：${activity.author} </p> 
+	     	    	        <p> 手机号码: ${activity.phone} </p> 
+	     	    	        <p> 活动时间：${activity.activeTime?string("yyyy-MM-dd")} </p>
+	     	    	        <p> 活动地点：${activity.address}</p> 
+     	    	        </div> 
+     	    	    </div>
+     	    	    <div class="m-t-lg">
+     	    	        <p class="text-xxxl title_1">问题留言 </p>
+							<div class="message">
+								<hr class="hr-dashed">
+								<@page model="guestbook" size="10" aid="${activity.id?c}" status="3" order="time desc">
+								<#list page.data as guestbook>
+								<div>
+									<div class="">
+										<span class="pull-left thumb-sm m-r">
+										   <img src="img/question.png">
+										</span>
+										<div class="clear">
+											<div class="clear" style="line-height:30px;">
+												<span class="pull-left">${guestbook.content!}</span>
+											 </div>
+										</div>
+										<div class="pull-right text-xs">${guestbook.time format=(yyyy-MM-dd hh:mm)}</div>
+										<div class="clearfix"></div>
+									 </div>
+									 <div class="">
+										<span class="pull-left text-right thumb-md m-r">
+											<img class="inline" src="img/reply.png">
+										</span>
+										<div class="clear">
+											<p class="m-b-none">回复内容：</p>
+											<small class="text-muted" style="word-wrap: break-word;">${guestbook.reply!}</small>
+										 </div>
+									 </div>
+									 <hr class="hr-dashed">
+								</div>
+								</#list>
+								</@page>
+							</div>
+							<form id="replyForm" action="/plugin/guestbook/add">
+							   <input name="status" type="hidden" value="1" />
+							   <input name="aid" type="hidden" value="${activity.id?c}" />
+							   <div class="m-t-lg">
+								   <textarea class="h w-full wrapper" id="content" name="content" placeholder="您有什么问题，在这里提问……"></textarea>
+								   <div class="btn btn-info m-t padder-lg r-3x pull-right submit" onclick="add();">提交问题</div>
+							   </div>
+							</form>
+   	    	        </div> 
+   	        	</div> 
+       		</div>
+  		 </div> 
+  	 </div>
+</div>
+
+<!--#include file="home/footer.html" -->
+
+</body>
+<script type="text/javascript" >
+
+	function add()
+	{
+		if($("#content").val() === '')
+		{
+			alert('请提交留言！');
+			return;
+		}
+
+		if(window.confirm("确定要提交留言吗？"))
+		{
+			$.ajax
+			({
+				type : "POST",
+				url: '/plugin/guestbook/add',
+				data: $("#replyForm").serialize(),
+				dataType: 'json',
+				success: function(data)
+				{
+					if(data.status)
+					{
+						alert(data.message);
+						$("#replyForm")[0].reset();
+					}
+				},
+				error: function(){
+					alert("提交留言失败！")
+				}
+			});
+		}
+	}
+</script>
+</html>
+
+
+

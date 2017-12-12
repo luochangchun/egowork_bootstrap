@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+
+<!--#include file="home/header.html" -->
+
+<body>
+
+<div class="bg-light lt padder-v-md">
+   <div class="container pos-rlt">
+	   <div class="row m-t">
+		   <!-- {loan:list table=(loan) cid=(160) limit=(20) status=(1) order=(top desc,time desc)} -->
+		   <div class="col-lg-3 col-md-4 col-sm-6 m-b move">
+			   <div class="m-t-sm">
+				   <a href="${loan.url}">
+				     <span class="block bg-white pos-rlt padder-lg padder-v-xs">
+				         <img src="${loan.icon!}" class="center-block w-full">
+				     </span>
+				   </a>
+				   <p class="m-t-sm text-center font-bold">${loan.title!}</p>
+			   </div>
+		   </div>
+		   <!-- {/list} -->
+
+		   <!-- {investor:list table=(investor) cid=(158) limit=(20) status=(1) order=(top desc,time desc)} -->
+		   <div class="col-lg-3 col-md-4 col-sm-6 m-b move">
+			   <div class="m-t-sm">
+				  <a href="${investor.url}">
+				     <span class="block bg-white pos-rlt padder-lg padder-v-xs">
+				         <img src="${investor.icon!}" class="center-block w-full">
+				     </span>
+				  </a>
+				  <p class="m-t-sm text-center font-bold">${investor.title!}</p>
+			   </div>
+		   </div>
+		   <!-- {/list} -->
+
+		   <!-- {financing:list table=(financing) cid=(159) limit=(20) status=(1) order=(top desc,time desc)} -->
+		   <div class="col-lg-3 col-md-4 col-sm-6 m-b move">
+			   <div class="m-t-sm">
+				   <a href="${financing.url}">
+				     <span class="block bg-white pos-rlt padder-lg padder-v-xs">
+				         <img src="${financing.icon!}" class="center-block w-full">
+				     </span>
+				   </a>
+				   <p class="m-t-sm text-center font-bold">${financing.title!}</p>
+			   </div>
+		   </div>
+		   <!-- {/list} -->
+
+	   </div>
+   </div>
+</div>
+<!--#include file="home/footer.html" -->
+</body>
+</html>
+
+
+
+
