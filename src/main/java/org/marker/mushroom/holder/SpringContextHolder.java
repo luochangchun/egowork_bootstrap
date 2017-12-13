@@ -12,7 +12,6 @@ import org.springframework.context.ApplicationContextAware;
  * @date 2013-8-24 下午3:52:13
  * @blog www.yl-blog.com
  * @weibo http://t.qq.com/wuweiit
- * @noinspection unchecked
  */
 public class SpringContextHolder implements ApplicationContextAware {
 
@@ -28,6 +27,7 @@ public class SpringContextHolder implements ApplicationContextAware {
 
 	/**
 	 * 取得存储在静态变量中的ApplicationContext.
+	 * @noinspection unused
 	 */
 	public static ApplicationContext getApplicationContext() {
 		checkApplicationContext();
@@ -37,6 +37,7 @@ public class SpringContextHolder implements ApplicationContextAware {
 	/**
 	 * 从静态变量ApplicationContext中取得Bean, 自动转型为所赋值对象的类型.
 	 */
+	@SuppressWarnings("unchecked")
 	public static <T> T getBean(String name) {
 		checkApplicationContext();
 		return (T) applicationContext.getBean(name);
@@ -45,6 +46,7 @@ public class SpringContextHolder implements ApplicationContextAware {
 	/**
 	 * 从静态变量ApplicationContext中取得Bean, 自动转型为所赋值对象的类型.
 	 */
+	@SuppressWarnings("unchecked")
 	public static <T> T getBean(Class<T> clazz) {
 		checkApplicationContext();
 		return (T) applicationContext.getBeansOfType(clazz);

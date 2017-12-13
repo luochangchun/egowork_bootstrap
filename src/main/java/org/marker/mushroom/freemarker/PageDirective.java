@@ -1,11 +1,12 @@
 package org.marker.mushroom.freemarker;
 
 import freemarker.core.Environment;
-import freemarker.template.ObjectWrapper;
+import freemarker.template.DefaultObjectWrapperBuilder;
 import freemarker.template.TemplateDirectiveBody;
 import freemarker.template.TemplateDirectiveModel;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateModel;
+import freemarker.template.Version;
 import org.marker.mushroom.alias.Services;
 import org.marker.mushroom.beans.Page;
 import org.marker.mushroom.core.WebParam;
@@ -93,7 +94,7 @@ public class PageDirective implements TemplateDirectiveModel {
 
 		final Page page = cm.doPage(param);
 
-		env.setVariable("page", ObjectWrapper.DEFAULT_WRAPPER.wrap(page));
+		env.setVariable("page", new DefaultObjectWrapperBuilder(new Version("2.3.23")).build().wrap(page));
 		body.render(env.getOut());
 	}
 

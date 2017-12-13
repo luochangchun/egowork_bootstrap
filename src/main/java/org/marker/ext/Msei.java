@@ -1,12 +1,12 @@
 package org.marker.ext;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.marker.ext.exception.GroovyActivatorLoadException;
 import org.marker.ext.exception.PackageJsonNotFoundException;
 import org.marker.ext.exception.StartModuleActivatorException;
 import org.marker.ext.module.Module;
 import org.marker.ext.module.ModuleContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.util.Map;
@@ -17,7 +17,7 @@ import java.util.Map;
  */
 public class Msei {
 
-	private final Log log = LogFactory.getLog(Msei.class);
+	private final static Logger log = LoggerFactory.getLogger(Msei.class);
 
 	// 模块上下文名称
 	public final static String MODULE_CONTEXT = "mrcms_moduleContext";

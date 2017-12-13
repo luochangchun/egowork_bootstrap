@@ -1,6 +1,7 @@
 package org.marker.urlrewrite.freemarker;
 
-import freemarker.template.TemplateMethodModel;
+import freemarker.template.SimpleScalar;
+import freemarker.template.TemplateMethodModelEx;
 import freemarker.template.TemplateModelException;
 import org.marker.mushroom.core.proxy.SingletonProxyFrontURLRewrite;
 import org.marker.urlrewrite.URLRewriteEngine;
@@ -12,7 +13,7 @@ import java.util.List;
  * 
  * @author marker
  * */
-public final class FrontURLRewriteMethodModel implements TemplateMethodModel {
+public final class FrontURLRewriteMethodModel implements TemplateMethodModelEx {
 
 	private final URLRewriteEngine urlrewrite = SingletonProxyFrontURLRewrite.getInstance();
 
@@ -22,7 +23,8 @@ public final class FrontURLRewriteMethodModel implements TemplateMethodModel {
 	public Object exec(List args) throws TemplateModelException {
 		String fakeUrl = "";
 		if (args != null && args.size() > 0) {
-			String realUrl = (String) args.get(0);
+			SimpleScalar s = (SimpleScalar) args.get(0);
+			String realUrl = s.getAsString();
 			fakeUrl = urlrewrite.encoder(urlrewrite.getUrlPattern()+realUrl); 
 		}
 		return fakeUrl;

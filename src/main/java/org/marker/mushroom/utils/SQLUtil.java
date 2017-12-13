@@ -213,9 +213,8 @@ public class SQLUtil {
 			out();
 			this.indent += 1;
 			newline();
-			this.parenCounts.addLast(new Integer(this.parensSinceSelect));
-			this.afterByOrFromOrSelects.addLast(Boolean
-					.valueOf(this.afterByOrSetOrFromOrSelect));
+			this.parenCounts.addLast(this.parensSinceSelect);
+			this.afterByOrFromOrSelects.addLast(this.afterByOrSetOrFromOrSelect);
 			this.parensSinceSelect = 0;
 			this.afterByOrSetOrFromOrSelect = true;
 		}
@@ -271,10 +270,8 @@ public class SQLUtil {
 			this.parensSinceSelect -= 1;
 			if (this.parensSinceSelect < 0) {
 				this.indent -= 1;
-				this.parensSinceSelect = ((Integer) this.parenCounts
-						.removeLast()).intValue();
-				this.afterByOrSetOrFromOrSelect = ((Boolean) this.afterByOrFromOrSelects
-						.removeLast()).booleanValue();
+				this.parensSinceSelect = this.parenCounts.removeLast();
+				this.afterByOrSetOrFromOrSelect = this.afterByOrFromOrSelects.removeLast();
 			}
 			if (this.inFunction > 0) {
 				this.inFunction -= 1;
@@ -318,7 +315,7 @@ public class SQLUtil {
 		}
 
 		private static boolean isWhitespace(String token) {
-			return " \n\r\f\t".indexOf(token) >= 0;
+			return " \n\r\f\t".contains(token);
 		}
 
 		private void newline() {

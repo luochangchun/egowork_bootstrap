@@ -13,9 +13,6 @@
 
 	<context:component-scan base-package="org.marker.mushroom.dao.impl"/>
 
-	<!-- 提供该propertyConfigurer bean支持把properties文件中的信息读取到XML配置文件的表达式中 -->
-	<context:property-placeholder location="classpath:/config/connection.properties"/>
-
 	<!-- 使用C3P0的dataSource -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
 		<property name="driverClass" value="${mushroom.db.driver}"/>
@@ -36,16 +33,12 @@
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
 
-
 	<!-- 事务配置 -->
-	<bean id="transactionManager"
-		  class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
 
-
 	<!-- 使用annotation定义事务 -->
 	<tx:annotation-driven transaction-manager="transactionManager"/>
-
 
 </beans>

@@ -1,5 +1,17 @@
 package org.marker.mushroom.controller;
 
+import org.apache.commons.codec.binary.Base64;
+import org.marker.mushroom.beans.ResultMessage;
+import org.marker.mushroom.core.config.impl.SystemConfig;
+import org.marker.mushroom.support.SupportController;
+import org.marker.mushroom.utils.GenerateUUID;
+import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -7,55 +19,32 @@ import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.commons.codec.binary.Base64;
-import org.marker.mushroom.beans.ResultMessage;
-import org.marker.mushroom.core.config.impl.SystemConfig;
-import org.marker.mushroom.support.SupportController;
-import org.marker.mushroom.utils.GenerateUUID;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Controller;
-import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-
 /**
  * 文章管理
- * 
+ *
  * @author marker
  */
 @Controller
 @RequestMapping("/admin/img")
-public class ImgUploadController extends SupportController
-{
-
-
-	private static final Logger logger = LoggerFactory.getLogger(ImgUploadController.class);
+public class ImgUploadController extends SupportController {
 
 	/** 系统配置信息 */
 	private final SystemConfig syscfg = SystemConfig.getInstance();
 
-
 	/**
 	 * 持久化文章操作
-	 * 
+	 *
 	 * @param imgSrc
 	 * @param request
 	 * @return
 	 */
 	@ResponseBody
 	@RequestMapping("/upload")
-	public Object upload(@RequestParam(value = "imgSrc", required = false) final String imgSrc, final HttpServletRequest request)
-	{
+	public Object upload(@RequestParam(value = "imgSrc", required = false) final String imgSrc,
+						 final HttpServletRequest request) {
 		//上传文件
-		if (!StringUtils.isEmpty(imgSrc))
-		{
-			try
-			{
+		if (!StringUtils.isEmpty(imgSrc)) {
+			try {
 				final SimpleDateFormat dateformat = new SimpleDateFormat("yyyyMMddHH");
 				//构建图片保存的目录
 				String webAppPath = request.getSession().getServletContext().getRealPath("");
@@ -69,13 +58,10 @@ public class ImgUploadController extends SupportController
 				//根据真实路径创建目录
 				final File imgSaveFile = new File(imgRealPathDir);
 				//如果文件夹不存在则创建
-				if (!imgSaveFile.exists() && !imgSaveFile.isDirectory())
-				{
+				if (!imgSaveFile.exists() && !imgSaveFile.isDirectory()) {
 					imgSaveFile.mkdirs();
-				}
-				else
-				{
-					logger.error("//目录已存在");
+				} else {
+					log.error("//目录已存在");
 				}
 
 				//转换成图片的base64不要data:image/jpg;base64,这个头文件
@@ -96,8 +82,7 @@ public class ImgUploadController extends SupportController
 
 				//以写字节的方式写文件
 				int b = 0;
-				while ((b = in.read()) != -1)
-				{
+				while ((b = in.read()) != -1) {
 					os.write(b);
 				}
 				os.flush();
@@ -106,17 +91,13 @@ public class ImgUploadController extends SupportController
 				final String serverRealPath = syscfg.getRelativePath() + dateformat.format(new Date()) + fileName;
 
 				return new ResultMessage(true, "上传成功!", serverRealPath);
-			}
-			catch (final Exception e)
-			{
-				logger.error("ImgUploadController method save error:" + e.getMessage());
+			} catch (final Exception e) {
+				log.error("ImgUploadController method save error:" + e.getMessage());
 				return new ResultMessage(false, "上传失败!");
 			}
 
-		}
-		else
-		{
-			logger.error("ImgUploadController method save error: no file upload!");
+		} else {
+			log.error("ImgUploadController method save error: no file upload!");
 			return new ResultMessage(false, "上传文件不存在!");
 		}
 

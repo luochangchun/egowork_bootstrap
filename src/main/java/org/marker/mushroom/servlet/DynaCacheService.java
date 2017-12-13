@@ -15,7 +15,8 @@
 */
 package org.marker.mushroom.servlet;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Date;
 import java.util.concurrent.ConcurrentHashMap;
@@ -24,7 +25,7 @@ public class DynaCacheService {
 
 	private static ConcurrentHashMap<String, Cache> cacheMap = new ConcurrentHashMap<>();
 
-	private static Logger logger = Logger.getLogger(DynaCacheService.class);
+	private static Logger logger = LoggerFactory.getLogger(DynaCacheService.class);
 
 	/**
 	 * This class is singleton so private constructor is used.

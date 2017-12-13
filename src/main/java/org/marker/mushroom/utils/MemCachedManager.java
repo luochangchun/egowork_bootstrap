@@ -1,30 +1,25 @@
 package org.marker.mushroom.utils;
 
-import java.util.Date;
-import java.util.List;
-
 import com.whalin.MemCached.MemCachedClient;
 import com.whalin.MemCached.SockIOPool;
 
-/*import com.danga.MemCached.MemCachedClient;
- import com.danga.MemCached.SockIOPool;*/
+import java.util.Date;
+import java.util.List;
 
 public class MemCachedManager {
 
 	// 创建全局的唯一实例
-
 	private static MemCachedClient mcc = new MemCachedClient();
 
 	private static MemCachedManager memCached = new MemCachedManager();
 
 	// 设置与缓存服务器的连接池
-
 	static {
 
 		// 服务器列表和其权重
-		String[] servers = { "192.168.11.117:11211", "192.168.11.118:11211" };
+		String[] servers = {"192.168.11.117:11211", "192.168.11.118:11211"};
 		//String[] servers = { "10.11.102.117:11211", "10.11.102.118:11211" };
-		Integer[] weights = { 3 };
+		Integer[] weights = {3};
 
 		// 获取socke连接池的实例对象
 		SockIOPool pool = SockIOPool.getInstance();
@@ -93,22 +88,14 @@ public class MemCachedManager {
 		return mcc.get(key);
 	}
 
-	public void removeByPreKey(String preKey){
-        @SuppressWarnings("unchecked")
-		List<String> keyList = (List<String>) mcc.get(preKey);
-        for(String item : keyList){
-            if(mcc.get(item)!=null){
-            	mcc.delete(item);
-            }
-        }
-        mcc.delete(preKey);
-    }
-	
-	public static void main(String[] args) {
-		MemCachedManager cache = MemCachedManager.getInstance();
-		for (int i = 0; i < 10; i++) {
-			cache.add("test" + i, "中国" + i);
-		}
-		System.out.println(" get value : " + cache.get("test4"));
+	public boolean delete(String key) {
+		return mcc.delete(key);
+	}
+
+	/** @noinspection unused */
+	@SuppressWarnings("unchecked")
+	public void removeByPreKey(String preKey) {
+		((List<String>) mcc.get(preKey)).stream().filter(item -> mcc.get(item) != null).forEach(mcc::delete);
+		mcc.delete(preKey);
 	}
 }

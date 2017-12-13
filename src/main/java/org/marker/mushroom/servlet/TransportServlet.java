@@ -1,6 +1,7 @@
 package org.marker.mushroom.servlet;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.google.gson.internal.LinkedTreeMap;
 import com.google.gson.reflect.TypeToken;
 import com.sun.jersey.api.client.Client;
@@ -8,7 +9,6 @@ import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.WebResource.Builder;
 import com.sun.jersey.core.util.MultivaluedMapImpl;
-import net.sf.json.JSONObject;
 import org.apache.commons.lang.StringUtils;
 import org.marker.mushroom.alias.DAO;
 import org.marker.mushroom.beans.User_regist_log;
@@ -38,6 +38,9 @@ import java.net.URLEncoder;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
+
+//import net.sf.json.JSONObject;
 
 public class TransportServlet extends HttpServlet {
 
@@ -50,8 +53,7 @@ public class TransportServlet extends HttpServlet {
 	private static final PropertyUtil propertyUtil = (PropertyUtil) SpringContextUtil.getBean("propertyUtil");
 
 	@Override
-	public void destroy() {
-	}
+	public void destroy() { }
 
 	@Override
 	public void doPut(final HttpServletRequest request, final HttpServletResponse response) throws ServletException,
@@ -94,24 +96,21 @@ public class TransportServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		final String type = request.getParameter("type");
 		String url = request.getParameter("resource");
-		// String module = request.getParameter("module");
 		String param = request.getParameter("param");
 		param = StringUtils.isBlank(param) ? "" : new String(request.getParameter("param").getBytes("UTF-8"), "UTF-8");
 		sessionid = request.getSession().getId();
-		// ip = request.getLocalAddr();
 		ip = HttpUtils.getRemoteHost(request);
 
+		// 汉搜云接口地址
 		final String REST_BASE_URL = propertyUtil.getValue("sys.rest_url");
 		final String SESSION_TIMEOUT = propertyUtil.getValue("sys.session_timeout");
 
-		JSONObject jsonObject = null;
+		JsonObject jsonObject = null;
 		if (!StringUtils.isBlank(param)) {
-			jsonObject = JSONObject.fromObject(param);
-			if (StringUtil.isBlankStr(url) && jsonObject.containsKey("resource"))
-				url = jsonObject.getString("resource");
+			jsonObject = new Gson().fromJson(param, JsonObject.class);
+			if (StringUtil.isBlankStr(url) && jsonObject.has("resource"))
+				url = jsonObject.get("resource").getAsString();
 		}
-		// String resource = jsonObject.getString("resource");
-		//String module = jsonObject.getString("module");
 
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
@@ -121,19 +120,20 @@ public class TransportServlet extends HttpServlet {
 		 */
 		if (isSendCodeURL(url) || isForgotPwdURL(url)) {
 			//CSRF校验
-			final JSONObject csrf_result = checkCSRF(request, sessionid);
-			if (csrf_result.getInt("code") != 200) {
+			final JsonObject csrf_result = checkCSRF(request, sessionid);
+			if (csrf_result.get("code").getAsInt() != 200) {
 				response.getWriter().write(csrf_result.toString());
 				return;
 			}
 
-			final int count = mcm.get("SEND_CODE_LIMIT_" + ip) == null ? 0 : (Integer) mcm.get("SEND_CODE_LIMIT_" + ip);
+			final int count = (Integer) Optional.ofNullable(mcm.get("SEND_CODE_LIMIT_" + ip)).orElse(0);
+//			final int count = mcm.get("SEND_CODE_LIMIT_" + ip) == null ? 0 : (Integer) mcm.get("SEND_CODE_LIMIT_" + ip);
 			logger.debug("--------resource:" + url + "checkSendCodeLimit: count - " + count + ",ip:" + ip);
 			if (count >= propertyUtil.getIntValue("sys.ip_send_code_limit") && !"27.17.54.74".equals(ip)) {
-				final JSONObject result = new JSONObject();
-				result.put("code", 401);
-				result.put("result", "发送验证码超过次数限制,请联系客服:" + propertyUtil.getValue("sys.cust_manage_tel"));
-				result.put("message", "发送验证码超过次数限制,请联系客服:" + propertyUtil.getValue("sys.cust_manage_tel"));
+				JsonObject result = new JsonObject();
+				result.addProperty("code", 401);
+				result.addProperty("result", "发送验证码超过次数限制,请联系客服:" + propertyUtil.getValue("sys.cust_manage_tel"));
+				result.addProperty("message", "发送验证码超过次数限制,请联系客服:" + propertyUtil.getValue("sys.cust_manage_tel"));
 				response.getWriter().write(result.toString());
 				return;
 			}
@@ -146,12 +146,11 @@ public class TransportServlet extends HttpServlet {
 			/*
 			 * 判断参数不为空
 			 */
-			if (jsonObject != null && !jsonObject.isEmpty() && !jsonObject.isNullObject()) {
-				final JSONObject userObj = jsonObject.getJSONObject("fields");
-				if (!userObj.isEmpty() && !userObj.isNullObject()) {
-					final JSONObject checkResult = checkPhoneCode(userObj);
-					//验证码校验不通过
-					if (checkResult.getInt("code") != 200) {
+			if (jsonObject != null && jsonObject.size() > 0) {
+				final JsonObject userObj = jsonObject.getAsJsonObject("fields");
+				if (userObj != null && userObj.size() > 0) {
+					final JsonObject checkResult = checkPhoneCode(userObj);
+					if (checkResult.get("code").getAsInt() != 200) {
 						response.getWriter().write(checkResult.toString());
 						return;
 					}
@@ -180,24 +179,13 @@ public class TransportServlet extends HttpServlet {
 				"++++++++++++++++++++resource:" + url + "sessionId:" + sessionid + ",ip:" + ip + "++++++++++++++++++++++++");
 		}
 
-		// 控制台请求需要做session 检查
-		//if (isConsoleURL(module) && null == currentUser && !isLoginURL(url)) {
-		if (null == currentUser && !isLoginURL(url) && !isRefreshURL(url)) {
-			logger.debug("++++++++++++++++++++session check fail++++++++++++++++++++");
-			/*
-			 * response.setStatus(419); return ;
-			 */
-		} else if ("checkSession".equals(url) && currentUser != null) {
-			final String entity = gs.toJson(currentUser);
-			response.getWriter().write(entity);
-			response.setStatus(200);
-			return;
-		}
-		// 注销请求处理 清除会话
-		/*
-		 * if (isLogoutURL(url)) { DynaCacheService.invalidate(sessionid + ip); response.getWriter().write("{'code':200");
-		 * response.setStatus(200); } else
-		 */
+		// session 检查
+//		if ("checkSession".equals(url) && currentUser != null) {
+//			final String entity = gs.toJson(currentUser);
+//			response.getWriter().write(entity);
+//			response.setStatus(200);
+//			return;
+//		}
 
 		if (isRefreshURL(url)) {// 从缓存获取session
 			initCSRFInfo(sessionid, response, true);
@@ -223,7 +211,8 @@ public class TransportServlet extends HttpServlet {
 			String entity = myresponse.getEntity(String.class);
 			logger.debug(entity);
 
-			if ((Integer) JSONObject.fromObject(entity).get("code") == 419) {
+			JsonObject entityJson = new Gson().fromJson(entity, JsonObject.class);
+			if (entityJson.get("code").getAsInt() == 419) {
 				logger.debug("++++++++++++++++++++session check fail++++++++++++++++++++");
 				response.setStatus(419);
 				return;
@@ -233,29 +222,23 @@ public class TransportServlet extends HttpServlet {
 			 * 注册url 注册成功清空 缓存 手机验证码
 			 */
 			if ((isRegistURL(url) || isUpdateUserPhoneURL(url) || isFindPwdByPhoneURL(url))
-				&& (Integer) JSONObject.fromObject(entity).get("code") == 200) {
+				&& entityJson.get("code").getAsInt() == 200) {
 				/*
 				 * 判断参数不为空
 				 */
-				if (jsonObject != null && !jsonObject.isEmpty() && !jsonObject.isNullObject()) {
-					final JSONObject userObj = jsonObject.getJSONObject("fields");
-					if (!userObj.isEmpty() && !userObj.isNullObject()) {
-						mcm.remove(userObj.getString("phone"));
+				if (jsonObject != null && jsonObject.size() > 0) {
+					final JsonObject userObj = jsonObject.getAsJsonObject("fields");
+					if (userObj != null && userObj.size() > 0) {
+						mcm.remove(userObj.get("phone").getAsString());
 
 						final ISupportDao dao = SpringContextHolder.getBean(DAO.COMMON);
 						final User_regist_log user_regist_log = new User_regist_log();
-						user_regist_log.setPhone(userObj.getString("phone"));
+						user_regist_log.setPhone(userObj.get("phone").getAsString());
 						user_regist_log.setTime(new Date());
 						dao.save(user_regist_log);
 					}
 				}
-
 			}
-
-			/*
-			 * 发送请求成功以后处理步骤: 对于特殊需求 /download 直接response 对于登录成功以后则需要写入session
-			 */
-//			if (isDownloadURL(url)) { }
 
 			Cache c;
 			if (isRefreshSession(url)) { // 强制刷新缓存
@@ -274,7 +257,6 @@ public class TransportServlet extends HttpServlet {
 				}
 			}
 			if (isLoginURL(url)) {
-				// Pager pager = gs.fromJson(entity, Pager.class);
 				final Pager pager = gs.fromJson(entity, new TypeToken<Pager>() {}.getType());
 				final LinkedTreeMap<String, Object> r = (LinkedTreeMap<String, Object>) pager.getResult();
 				if (r != null) {
@@ -297,7 +279,6 @@ public class TransportServlet extends HttpServlet {
 				}
 				// 单点登录
 				if (isSingleLoginURL(url)) {
-					final String s = request.getRequestURI();
 					request.getRequestDispatcher("/index.html").forward(request, response);
 					return;
 				}
@@ -333,7 +314,6 @@ public class TransportServlet extends HttpServlet {
 				request.getSession().setAttribute("currentUser", entity);
 			}
 			response.getWriter().write(entity);
-
 		}
 	}
 
@@ -345,8 +325,12 @@ public class TransportServlet extends HttpServlet {
 	 * @return
 	 * @throws IOException
 	 */
-	private ClientResponse send(final String urlString, final String method, final String resource, final String param,
-								final String ip, final UserData currentUser) throws IOException {
+	private ClientResponse send(final String urlString,
+								final String method,
+								final String resource,
+								final String param,
+								final String ip,
+								final UserData currentUser) throws IOException {
 
 		final Client c = Client.create();
 		ClientResponse response = null;
@@ -354,15 +338,12 @@ public class TransportServlet extends HttpServlet {
 		try {
 			final WebResource r = c.resource(urlString + URLEncoder.encode(resource, "UTF-8").replace("%2F", "/"));
 			final MultivaluedMap<String, String> queryParams = new MultivaluedMapImpl();
-			if (param != null)
-				queryParams.add("param", URLEncoder.encode(param, "UTF-8").replace("+", "%20"));
 			queryParams.add("ip", ip);
-			final Gson gs = new Gson();
-			if (null != currentUser) {
-				queryParams.add("userData", gs.toJson(currentUser));
-			}
+			if (param != null) queryParams.add("param", URLEncoder.encode(param, "UTF-8").replace("+", "%20"));
+			Optional.ofNullable(currentUser).ifPresent(u -> queryParams.add("userData", new Gson().toJson(u)));
 
-			final Builder _r = r.queryParams(queryParams).header("Content-Type", "application/json;charset=UTF-8")
+			final Builder _r = r.queryParams(queryParams)
+								.header("Content-Type", "application/json;charset=UTF-8")
 								.accept(MediaType.APPLICATION_JSON_TYPE);
 
 			if (method.equalsIgnoreCase("POST")) {
@@ -389,7 +370,6 @@ public class TransportServlet extends HttpServlet {
 		} finally {
 			c.destroy();
 		}
-
 	}
 
 	private void loginCMS(final String username, final HttpServletRequest request, final HttpServletResponse response)
@@ -397,20 +377,10 @@ public class TransportServlet extends HttpServlet {
 		final String host = request.getServerName();
 		final Cookie cookie = new Cookie("SESSION_LOGIN_USERNAME", username); // 保存用户名到Cookie
 		cookie.setDomain(host);
-		// cookie.setPath("/");
 		cookie.setPath("/wisme-cms");
 		cookie.setMaxAge(3000);// 15分钟
 		response.addCookie(cookie);
 	}
-
-	/*
-	private boolean isDownloadURL(final String resource) {
-		return StringUtils.contains(resource, "resource/download/");
-	}
-
-	private boolean isConsoleURL(final String module) {
-		return StringUtils.contains(module, "#/app");
-	}*/
 
 	private boolean isLoginURL(final String resource) {
 
@@ -486,7 +456,6 @@ public class TransportServlet extends HttpServlet {
 	}
 
 	private boolean isUserInit(final String resource) {
-		// TODO Auto-generated method stub
 		return (StringUtils.contains(resource, "/CompanyUser")//初始为企业用户
 			|| StringUtils.contains(resource, "/CompanyPersonnelUser")//初始为个人用户
 			|| StringUtils.contains(resource, "/personalUser")//初始为企业员工
@@ -578,31 +547,32 @@ public class TransportServlet extends HttpServlet {
 	 * @param userObj
 	 * @return
 	 */
-	private JSONObject checkPhoneCode(final JSONObject userObj) {
-		final JSONObject result = new JSONObject();
-		final String phone = userObj.getString("phone");
-		final String phoneCode = userObj.getString("phoneCode");
+	private JsonObject checkPhoneCode(final JsonObject userObj) {
+		final JsonObject result = new JsonObject();
+		final String phone = userObj.get("phone").getAsString();
+		final String phoneCode = userObj.get("phoneCode").getAsString();
 		if (StringUtil.isBlank(phone) || StringUtil.isBlank(phoneCode)) {
-			result.put("code", 401);
-			result.put("result", "手机或验证码参数错误");
-			result.put("message", "手机或验证码参数错误");
+			result.addProperty("code", 401);
+			result.addProperty("result", "手机或验证码参数错误");
+			result.addProperty("message", "手机或验证码参数错误");
 		} else {
 			final Object cachePhoneCode = mcm.get(phone);
-			if ((cachePhoneCode == null)) {
-				result.put("code", 401);
-				result.put("result", "验证码过期或未发送");
-				result.put("message", "验证码过期或未发送");
+			if (cachePhoneCode == null) {
+				result.addProperty("code", 401);
+				result.addProperty("result", "验证码过期或未发送");
+				result.addProperty("message", "验证码过期或未发送");
 			} else {
 				if (cachePhoneCode.equals(phoneCode)) {
-					result.put("code", 200);
+					result.addProperty("code", 200);
 				} else {
-					result.put("code", 401);
-					result.put("result", "验证码错误");
-					result.put("message", "验证码错误");
+					result.addProperty("code", 401);
+					result.addProperty("result", "验证码错误");
+					result.addProperty("message", "验证码错误");
 				}
 			}
 		}
 		return result;
+
 	}
 
 	/**
@@ -624,7 +594,8 @@ public class TransportServlet extends HttpServlet {
 			csrf_token = mcm.get(prefix + sessionid).toString();
 			//重置过期时间
 			/*
-			 * String csrf_token = mcm.get(prefix + ip).toString(); mcm.set(prefix + ip, csrf_token, csrf_token_timeout);
+			 * String csrf_token = mcm.get(prefix + ip).toString();
+			 * mcm.set(prefix + ip, csrf_token, csrf_token_timeout);
 			 */
 		}
 		if (refresh) {
@@ -640,8 +611,8 @@ public class TransportServlet extends HttpServlet {
 	 * @param sessionid
 	 * @return
 	 */
-	private JSONObject checkCSRF(final HttpServletRequest request, final String sessionid) {
-		final JSONObject result = new JSONObject();
+	private JsonObject checkCSRF(final HttpServletRequest request, final String sessionid) {
+		final JsonObject result = new JsonObject();
 		final String prefix = propertyUtil.getValue("sys.csrf_token_prefix");
 		if (mcm.get(prefix + sessionid) != null && request.getCookies() != null) {
 			final String csrf_token = mcm.get(prefix + sessionid).toString();
@@ -655,7 +626,7 @@ public class TransportServlet extends HttpServlet {
 			}
 			if (!StringUtil.isBlank(csrf_token) && !StringUtil.isBlank(csrfmiddlewaretoken)
 				&& csrf_token.equals(csrfmiddlewaretoken)) {
-				result.put("code", 200);
+				result.addProperty("code", 200);
 				return result;
 			}
 		}
@@ -668,9 +639,9 @@ public class TransportServlet extends HttpServlet {
 		 * return result; } }
 		 */
 		// CSRF验证失败 请求终止
-		result.put("code", 403);
-		result.put("result", "CSRF verification failed. Request aborted");
-		result.put("message", "CSRF verification failed. Request aborted");
+		result.addProperty("code", 403);
+		result.addProperty("result", "CSRF verification failed. Request aborted");
+		result.addProperty("message", "CSRF verification failed. Request aborted");
 		return result;
 	}
 

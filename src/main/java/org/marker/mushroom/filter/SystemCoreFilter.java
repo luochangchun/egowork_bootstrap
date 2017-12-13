@@ -73,11 +73,8 @@ public class SystemCoreFilter implements Filter {
 		HttpServletResponse response = (HttpServletResponse) res;
 
 		String uri = request.getRequestURI();
-		
-		
-		
-		
-		/* 
+
+		/*
 		 * ============================================
 		 *              系统内置路径过滤
 		 * ============================================
@@ -108,8 +105,7 @@ public class SystemCoreFilter implements Filter {
 			chain.doFilter(req, response);
 			return;
 		}
-		
-		
+
 		/* ============================================
 		 *              排除过滤格式
 		 * ============================================
@@ -150,11 +146,8 @@ public class SystemCoreFilter implements Filter {
 				return;
 			}
 		}
-		
-		
-		
-		
-		/* 
+
+		/*
 		 * ============================================
 		 *               cookies追中
 		 * ============================================
@@ -165,16 +158,14 @@ public class SystemCoreFilter implements Filter {
 			cookie.setMaxAge(life);// 当天内有效
 			response.addCookie(cookie);
 		}
-		
-	
-		
-		/* 
+
+		/*
 		 * ============================================
 		 *                URI -> URL 解码操作
 		 * ============================================
 		 */
 		String url = rewrite.decoder(uri);
-		logger.info("URL: {} => {}", uri, url);
+		logger.debug("URL: {} => {}", uri, url);
 
 		String ip = HttpUtils.getRemoteHost(request);// IP地址获取
 		req.setAttribute(AppStatic.REAL_IP, ip);// 将用户真实IP写入请求属性

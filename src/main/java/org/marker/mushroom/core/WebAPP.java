@@ -50,8 +50,6 @@ public final class WebAPP {
 
 	/**
 	 * 安装状态（注意：容器初始化赋值）
-	 *
-	 * @see org.marker.mushroom.holder.MushRoomInitBuildHolder
 	 */
 	public static boolean install = false;
 

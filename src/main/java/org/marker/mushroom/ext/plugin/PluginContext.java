@@ -1,7 +1,6 @@
 package org.marker.mushroom.ext.plugin;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.google.gson.Gson;
 import freemarker.template.Template;
 import org.marker.mushroom.context.ActionContext;
 import org.marker.mushroom.ext.plugin.freemarker.EmbedDirectiveInvokeTag;
@@ -97,7 +96,9 @@ public class PluginContext {
 					Writer out = ActionContext.getResp().getWriter();
 					switch (view.getType()) {
 						case JSON:
-							JSON.writeJSONStringTo(view.getResult(), out, SerializerFeature.WriteClassName);
+							String outStr = new Gson().toJson(view.getResult());
+							out.write(outStr);
+//							JSON.writeJSONStringTo(view.getResult(), out, SerializerFeature.WriteClassName);
 							break;
 						case HTML:
 							String path = "views" + File.separator + view.getResult();

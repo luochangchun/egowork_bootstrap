@@ -3,7 +3,8 @@
  */
 package org.marker.mushroom.servlet;
 
-import com.alibaba.fastjson.JSONObject;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import org.marker.mushroom.alias.DAO;
 import org.marker.mushroom.beans.Three_visit_log;
 import org.marker.mushroom.core.config.impl.DataBaseConfig;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -95,11 +97,15 @@ public class FetchServlet extends HttpServlet {
 				final String openUrl = url.split("#")[1];
 				if (openUrl != null && openUrl.contains("http")) {
 					final String currentUser = (String) req.getSession().getAttribute("currentUser");
-					final Map<String, Object> map = JSONObject.parseObject(currentUser);
+
+					Type t = new TypeToken<Map<String, Object>>(){}.getType();
+					final Map<String, Object> map = new Gson().fromJson(currentUser, t);
+//					final Map<String, Object> map = JSONObject.parseObject(currentUser);
 					if (map != null && map.size() > 0) {
 						final UserData userData = new UserData();
 						final Map<String, Object> resultMap = map.get("result") == null ? new HashMap<>()
-							: JSONObject.parseObject(map.get("result").toString());
+							: new Gson().fromJson(map.get("result").toString(), t);
+//							: JSONObject.parseObject(map.get("result").toString());
 
 						userData.setUserName(resultMap.get("userName") == null ? "" : resultMap.get("userName").toString());
 						userData.setUserId(resultMap.get("userId") == null ? -1 : (int) resultMap.get("userId"));

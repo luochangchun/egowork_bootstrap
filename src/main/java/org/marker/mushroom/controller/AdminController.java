@@ -1,13 +1,5 @@
 package org.marker.mushroom.controller;
 
-import java.util.Date;
-import java.util.List;
-
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import org.marker.mushroom.beans.ResultMessage;
 import org.marker.mushroom.beans.User;
 import org.marker.mushroom.beans.UserLoginLog;
@@ -23,8 +15,6 @@ import org.marker.mushroom.utils.GeneratePass;
 import org.marker.mushroom.utils.HttpUtils;
 import org.marker.qqwryip.IPLocation;
 import org.marker.qqwryip.IPTool;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
@@ -34,21 +24,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.util.Date;
+import java.util.List;
 
 /**
  * 后台管理主界面控制器
- * 
+ *
  * @author marker
- * 
  */
 @Controller
 @RequestMapping("/admin")
-public class AdminController extends SupportController
-{
-
-	/** 日志记录器 */
-	private final Logger logger = LoggerFactory.getLogger(AdminController.class);
+public class AdminController extends SupportController {
 
 	@Autowired
 	IUserDao userDao;
@@ -63,32 +53,24 @@ public class AdminController extends SupportController
 	IPermissionDao permissionDao;
 
 	/** 构造方法初始化一些成员变量 */
-	public AdminController()
-	{
+	public AdminController() {
 		this.viewPath = "/admin/";
 	}
 
-
-
 	/** 后台主界面 */
 	@RequestMapping("/index")
-	public String index(final HttpServletRequest request)
-	{
+	public String index(final HttpServletRequest request) {
 		// 如果没有安装系统
 		if (!WebAPP.install)
 			return "redirect:../install/index.jsp";
 
 		request.setAttribute("url", HttpUtils.getRequestURL(request));
 		final HttpSession session = request.getSession(false);
-		if (session != null)
-		{
-			try
-			{
+		if (session != null) {
+			try {
 				final int groupId = (Integer) session.getAttribute(AppStatic.WEB_APP_SESSSION_USER_GROUP_ID);
 				request.setAttribute("topmenus", menuDao.findTopMenuByGroupId(groupId));
-			}
-			catch (final Exception e)
-			{
+			} catch (final Exception e) {
 				log.error("因为没有登录，在主页就不能查询到分组ID");
 				return "redirect:login.do";
 			}
@@ -97,29 +79,23 @@ public class AdminController extends SupportController
 		return this.viewPath + "index";
 	}
 
-
 	/**
 	 * 子菜单接口
-	 * 
+	 *
 	 * @param id
 	 * @return
 	 */
 	@RequestMapping("/childmenus")
 	@ResponseBody
-	public Object menu(final HttpServletRequest request, @RequestParam("id") final int id)
-	{
+	public Object menu(final HttpServletRequest request, @RequestParam("id") final int id) {
 		final ModelAndView view = new ModelAndView(this.viewPath + "childmenus");
 		view.addObject("menu", menuDao.findMenuById(id));
 		final HttpSession session = request.getSession();
-		if (session != null)
-		{
-			try
-			{
+		if (session != null) {
+			try {
 				final int groupId = (Integer) session.getAttribute(AppStatic.WEB_APP_SESSSION_USER_GROUP_ID);
 				view.addObject("childmenus", menuDao.findChildMenuByGroupAndParentId(groupId, id));
-			}
-			catch (final Exception e)
-			{
+			} catch (final Exception e) {
 				log.error("因为没有登录，在主页就不能查询到分组ID");
 				return "<script>window.location.href='login.do?status=timeout';</script>";
 			}
@@ -129,13 +105,12 @@ public class AdminController extends SupportController
 
 	/**
 	 * 登录操作
-	 * 
+	 *
 	 * @param request
 	 * @return
 	 */
 	@RequestMapping("/login")
-	public String login(final HttpServletRequest request)
-	{
+	public String login(final HttpServletRequest request) {
 		// 如果没有安装系统
 		if (!WebAPP.install)
 			return "redirect:../install/index.jsp";
@@ -143,34 +118,26 @@ public class AdminController extends SupportController
 		request.setAttribute("url", HttpUtils.getRequestURL(request));
 
 		final HttpSession session = request.getSession(false);
-		if (session != null)
-		{
-			try
-			{
+		if (session != null) {
+			try {
 				final User user = (User) session.getAttribute(AppStatic.WEB_APP_SESSION_ADMIN);
-				if (null != user)
-				{
+				if (null != user) {
 					return "redirect:index.do";
 				}
-			}
-			catch (final Exception e)
-			{
+			} catch (final Exception e) {
 			}
 		}
 		return this.viewPath + "login";
 	}
 
-
-
 	/**
 	 * 登录系统 验证码不区分大小写
-	 * 
+	 *
 	 * @return json
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/loginSystem", method = RequestMethod.POST)
-	public Object loginSystem(final HttpServletRequest request)
-	{
+	public Object loginSystem(final HttpServletRequest request) {
 		final String randcode = request.getParameter("randcode").toLowerCase();//验证码
 		final String username = request.getParameter("username");
 		final String password = request.getParameter("password");
@@ -180,28 +147,21 @@ public class AdminController extends SupportController
 
 		int errorCode = 0;// 登录日志类型
 		String scode = "";
-		if (authCode != null)
-		{
+		if (authCode != null) {
 			scode = ((String) authCode).toLowerCase();
 		}
 
 		ResultMessage msg = null;
-		if (scode != null && !scode.equals(randcode))
-		{// 验证码不匹配
+		if (scode != null && !scode.equals(randcode)) {// 验证码不匹配
 			msg = new ResultMessage(false, "验证码错误!");
 			errorCode = 1;// 错误
-		}
-		else
-		{
+		} else {
 			String password2 = null;
-			try
-			{
+			try {
 				password2 = GeneratePass.encode(password);
 				final User user = userDao.queryByNameAndPass(username, password2);
-				if (user != null)
-				{
-					if (user.getStatus() == 1)
-					{//启用
+				if (user != null) {
+					if (user.getStatus() == 1) {//启用
 						userDao.updateLoginTime(user.getId());// 更新登录时间
 						session.setAttribute(AppStatic.WEB_APP_SESSION_ADMIN, user);
 						session.setAttribute(AppStatic.WEB_APP_SESSSION_LOGINNAME, user.getName());
@@ -211,22 +171,19 @@ public class AdminController extends SupportController
 						String category = "";
 
 						final List<UserObject> userButtonList = permissionDao.findUserObjectByGroupId(user.getGid(), "button");
-						for (final UserObject object : userButtonList)
-						{
+						for (final UserObject object : userButtonList) {
 							button += object.getOid() + ",";
 						}
-						final List<UserObject> userCategoryList = permissionDao.findUserObjectByGroupId(user.getGid(), "category");
-						for (final UserObject object : userCategoryList)
-						{
+						final List<UserObject> userCategoryList =
+							permissionDao.findUserObjectByGroupId(user.getGid(), "category");
+						for (final UserObject object : userCategoryList) {
 							category += object.getOid() + ",";
 						}
 
-						if (!StringUtils.isEmpty(button) && button.endsWith(","))
-						{
+						if (!StringUtils.isEmpty(button) && button.endsWith(",")) {
 							button = button.substring(0, button.length() - 1);
 						}
-						if (!StringUtils.isEmpty(category) && category.endsWith(","))
-						{
+						if (!StringUtils.isEmpty(category) && category.endsWith(",")) {
 							category = category.substring(0, category.length() - 1);
 						}
 						session.setAttribute(AppStatic.WEB_APP_SESSION_USER_BUTTION, button);
@@ -234,23 +191,16 @@ public class AdminController extends SupportController
 
 						session.removeAttribute(AppStatic.WEB_APP_AUTH_CODE);//移除验证码
 
-
 						msg = new ResultMessage(true, "登录成功!");
-					}
-					else
-					{
+					} else {
 						errorCode = 1;
 						msg = new ResultMessage(false, "用户已禁止登录!");
 					}
-				}
-				else
-				{
+				} else {
 					errorCode = 1;
 					msg = new ResultMessage(false, "用户名或者密码错误!");
 				}
-			}
-			catch (final Exception e)
-			{
+			} catch (final Exception e) {
 				errorCode = 1;
 				msg = new ResultMessage(false, "系统加密算法异常!");
 				log.error("系统加密算法异常!", e);
@@ -263,30 +213,23 @@ public class AdminController extends SupportController
 		// IP归属地获取工具
 		final IPTool ipTool = IPTool.getInstance();
 
-
-
 		// 记录日志信息
-		final UserLoginLog log = new UserLoginLog();
-		log.setUsername(username);
-		log.setTime(new Date());
+		final UserLoginLog loginLog = new UserLoginLog();
+		loginLog.setUsername(username);
+		loginLog.setTime(new Date());
 
-		log.setDevice(device);
-		log.setInfo(msg.getMessage());
-		log.setIp(ip);
-		log.setErrorcode(errorCode);
-		if (ip != null)
-		{
-			try
-			{
+		loginLog.setDevice(device);
+		loginLog.setInfo(msg.getMessage());
+		loginLog.setIp(ip);
+		loginLog.setErrorcode(errorCode);
+		if (ip != null) {
+			try {
 				final IPLocation location = ipTool.getLocation(ip);
-				if (location != null)
-				{// 如果存在
-					log.setArea(location.getCountry());
+				if (location != null) {// 如果存在
+					loginLog.setArea(location.getCountry());
 				}
-			}
-			catch (final Exception e)
-			{
-				logger.error("ip={} ", ip, e);
+			} catch (final Exception e) {
+				log.error("ip={} ", ip, e);
 			}
 		}
 
@@ -299,22 +242,18 @@ public class AdminController extends SupportController
 	 * 注销
 	 */
 	@RequestMapping("/logout")
-	public String logout(final HttpServletRequest request, final HttpServletResponse response)
-	{
+	public String logout(final HttpServletRequest request, final HttpServletResponse response) {
 		final HttpSession session = request.getSession(false);
 		if (session != null)
 			session.invalidate();
 		return "redirect:login.do";
 	}
 
-
-
 	/**
 	 * 系统信息
 	 */
 	@RequestMapping("/systeminfo")
-	public ModelAndView systeminfo()
-	{
+	public ModelAndView systeminfo() {
 		final ModelAndView view = new ModelAndView(this.viewPath + "systeminfo");
 		final String os = System.getProperty("os.name");//操作系统名称
 		final String osVer = System.getProperty("os.version"); //操作系统版本    

@@ -58,8 +58,8 @@ public class MessageContext {
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 * @throws URISyntaxException
-	 * @noinspection unchecked
 	 */
+	@SuppressWarnings("unchecked")
 	public void reday() throws IOException, ClassNotFoundException, URISyntaxException {
 		// 基础路径
 		String basePath =

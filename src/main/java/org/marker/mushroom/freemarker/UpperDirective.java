@@ -4,11 +4,13 @@
 package org.marker.mushroom.freemarker;
 
 import freemarker.core.Environment;
+import freemarker.template.DefaultObjectWrapperBuilder;
 import freemarker.template.SimpleCollection;
 import freemarker.template.TemplateDirectiveBody;
 import freemarker.template.TemplateDirectiveModel;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateModel;
+import freemarker.template.Version;
 import org.marker.mushroom.beans.Channel;
 
 import java.io.IOException;
@@ -36,7 +38,7 @@ public class UpperDirective implements TemplateDirectiveModel {
 		r.setName("dsadsadasd");
 		List<Channel> a = new ArrayList<>();
 		a.add(r); a.add(r); a.add(r); a.add(r); a.add(r);
-		loopVars[0] = new SimpleCollection(a);
+		loopVars[0] = new SimpleCollection(a, new DefaultObjectWrapperBuilder(new Version("2.3.23")).build());
 		body.render(env.getOut());
 
 	}

@@ -4,11 +4,12 @@
 package org.marker.mushroom.freemarker;
 
 import freemarker.core.Environment;
-import freemarker.template.ObjectWrapper;
+import freemarker.template.DefaultObjectWrapperBuilder;
 import freemarker.template.TemplateDirectiveBody;
 import freemarker.template.TemplateDirectiveModel;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateModel;
+import freemarker.template.Version;
 import org.marker.mushroom.beans.Channel;
 
 import java.io.IOException;
@@ -37,7 +38,7 @@ public class LoadDirective implements TemplateDirectiveModel {
 		r.setName("dsadsadasd");
 		List<Channel> a = new ArrayList<>();
 		a.add(r); a.add(r); a.add(r); a.add(r); a.add(r);
-		env.setVariable("userlist", ObjectWrapper.DEFAULT_WRAPPER.wrap(a));
+		env.setVariable("userlist", new DefaultObjectWrapperBuilder(new Version("2.3.23")).build().wrap(a));
 
 		env.getOut().write("3424234234");
 		body.render(env.getOut());

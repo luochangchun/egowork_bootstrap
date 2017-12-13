@@ -14,9 +14,9 @@ import org.springframework.jdbc.support.KeyHolder;
 
 import java.io.Serializable;
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -212,30 +212,21 @@ public abstract class DaoEngine implements ISupportDao {
 		for (Field field : fields) {
 			String fieldName = field.getName();
 			if (fieldName.equals(map.getPrimaryKey()) || "serialVersionUID".equals(fieldName)) continue;
-			String methodName = "get" + fieldName.replaceFirst(
-				fieldName.charAt(0) + "", (char) (fieldName.charAt(0) - 32) + "");
 
-			Method me;
+			Object returnObject;
 			try {
-				me = clzz.getMethod(methodName);
-			} catch (SecurityException | NoSuchMethodException e) {
+				String methodName = "get" + fieldName.replaceFirst(fieldName.charAt(0) + "",
+																   (char) (fieldName.charAt(0) - 32) + "");
+				Method me = clzz.getMethod(methodName);
+				returnObject = me.invoke(entity);
+			} catch (Exception e) {
 				e.printStackTrace();
 				continue;
 			}
 
-			Object returnObject = null;
-			try {
-				returnObject = me.invoke(entity);
-			} catch (IllegalArgumentException | IllegalAccessException | InvocationTargetException e) {
-				e.printStackTrace();
-			}
-			if (returnObject != null) {// 如果返回值为null
-				sql.append("`").append(fieldName).append("`");
-				val.append("?");
-				list.add(returnObject);
-				sql.append(",");
-				val.append(",");
-			}
+			sql.append("`").append(fieldName).append("`,");
+			val.append("?,");
+			list.add(returnObject);
 		}
 
 		final StringBuilder sql2 = new StringBuilder(sql.substring(0, sql.length() - 1));
@@ -245,7 +236,7 @@ public abstract class DaoEngine implements ISupportDao {
 		KeyHolder holder = new GeneratedKeyHolder();
 
 		this.jdbcTemplate.update(con -> {
-			PreparedStatement ps = con.prepareStatement(sql2.toString());
+			PreparedStatement ps = con.prepareStatement(sql2.toString(), Statement.RETURN_GENERATED_KEYS);
 			Object[] params = list.toArray();
 			for (int i = 0; i < params.length; i++) {
 				ps.setObject(i + 1, params[i]);
@@ -262,7 +253,6 @@ public abstract class DaoEngine implements ISupportDao {
 		}
 
 		return true;
-
 	}
 
 	// 更新数据
@@ -336,7 +326,7 @@ public abstract class DaoEngine implements ISupportDao {
 	protected void logger(String info, Object... params) {
 		if (dbConfig.isDebug()) { // debug模式输入SQL语句
 			info = SQLUtil.format(info);
-			logger.info(info, params);
+			logger.debug(info, params);
 		}
 	}
 
