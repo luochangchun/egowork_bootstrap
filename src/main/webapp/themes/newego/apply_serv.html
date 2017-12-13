@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+
+<body>
+<div class="box">
+
+<!--#include file="home/header.html" -->
+
+<div class="bg-light padder-v-xxl">
+    <div class="container">
+	    <div class="bg-white padder-v padder m-b-xxxxl b w-v w-auto-xs center-block">
+		   <div class="padder-v-xs text-lg font-bold b-b line-info">服务申请表</div>
+		   <form id="myForm" class="form-horizontal m-t-xxl m-b-xxl" role="form">
+			   <input type="hidden" id="userId" name="userId" />
+			   <div class="form-group m-b-lg">
+				<label for="company" class="col-sm-3 control-label">公司名称：</label>
+				<div class="col-sm-8">
+				  <input type="text" class="form-control" id="company" name="company" placeholder="">
+				</div>
+			  </div>
+			  <div class="form-group m-b-lg">
+				<label for="business" class="col-sm-3 control-label text-center">主营业务：</label>
+				<div class="col-sm-8">
+				  <input type="text" class="form-control" id="business" name="business" placeholder="">
+				</div>
+			  </div>
+			  <div class="form-group m-b-lg">
+				<label for="contact" class="col-sm-3 control-label text-center">联系人：</label>
+				<div class="col-sm-8">
+				  <input type="text" class="form-control" id="contact" name="contact" placeholder="">
+				</div>
+			  </div>
+			  <div class="form-group m-b-lg">
+				<label for="phone" class="col-sm-3 control-label text-center">联系电话：</label>
+				<div class="col-sm-8">
+				  <input type="text" class="form-control" id="phone" name="phone" placeholder="">
+				</div>
+			  </div>
+			  <div class="form-group m-b-lg">
+				<label for="introduction" class="col-sm-3 control-label text-center">公司介绍：</label>
+				<div class="col-sm-8">
+				  <input type="text" class="form-control min-h" id="introduction" name="introduction" placeholder="">
+				</div>
+			  </div>
+			  <div class="form-group m-b-lg">
+				<label for="preferential" class="col-sm-3 control-label text-center">优惠服务描述：</label>
+				<div class="col-sm-8">
+				  <input type="text" class="form-control" id="preferential" name="preferential" placeholder="">
+				</div>
+			  </div>
+			  <div class="form-group">
+				<div class="text-center">
+				   <a class="btn btn-info btn-rounded"><span class="padder-xxl text-md"onclick="add();">确认申请</span></a>
+				</div>
+			  </div>
+	        </form>
+		</div>
+	</div>
+</div>
+
+<!--#include file="home/footer.html" -->
+</div>
+<script type="text/javascript">
+    $(function(){
+        var currentUser = JSON.parse('${currentUser}');
+        if(currentUser !== undefined)
+        {
+            $("#userId").val(currentUser.result.userId);
+        }
+    });
+
+    function add()
+    {
+        var company = $("input[name='company']").val();
+        var business = $("input[name='business']").val();
+        var contact = $("input[name='contact']").val();
+        var phone = $("input[name='phone']").val();
+        var introduction = $("input[name='introduction']").val();
+        var preferential = $("input[name='preferential']").val();
+
+        if(!company)
+        {
+            alert('请输入公司名称!');
+            return;
+        }
+        if(!business)
+        {
+            alert('请输入主营业务!');
+            return;
+        }
+        if(!contact)
+        {
+            alert('请输入联系人!');
+            return;
+        }
+        var phoneReg = /^((0\d{2,3}-\d{7,8})|(1[3584]\d{9}))$/;
+        if(!phoneReg.test(phone)){
+            alert('请输入联系电话');
+            return;
+        }
+        if(!introduction)
+        {
+            alert("请输入公司介绍！");
+            return;
+        }
+        if(!preferential)
+    	{
+        	alert("请输入优惠服务描述！");
+        	return;
+    	}
+
+        if(window.confirm("确定要申请服务商吗？"))
+        {
+            var template = "service.html";
+            $.ajax
+            ({
+                type : "POST",
+                url: '/front/service/add.do',
+                data: $("#myForm").serialize(),
+                success: function(data)
+                {
+                    if(data.status)
+                    {
+                        alert(data.message);
+                        $("#myForm")[0].reset();
+                        window.location.href = window.location.protocol + "//" + window.location.host + "/" + template;
+                    }
+                },
+                error: function(){
+                    alert("提交申请服务商失败！");
+                }
+            });
+        }
+    }
+</script>
+</body>
+</html>
+
+
+
+

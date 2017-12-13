@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+
+	<body>
+	<!--#include file="home/header.html" -->
+		<div class="padder-v-xxl">
+			<div class="container">
+			   <div class="row">
+				  <div class="col-md-8">
+					  <div class="text-center">
+						  <p class="text-xxxl">${article.title}</p>
+						  <p><span>时间：${article.time?string("yyyy-MM-dd")}</span></p>
+					  </div>
+					  <div class="wrapper-lg">
+							<p>${article.content}</p>
+					   </div>
+				  </div>
+				   <div class="col-md-4 news-rightlist">
+						<!--#include file="home/news-rightlist.html" -->
+				   </div>
+			   </div>
+			</div>
+		</div>
+	<!--#include file="home/footer.html" -->
+	</body>
+</html>
+
+
+
+

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+
+<!--#include file="home/header.html" -->
+
+<body>
+<div class="box">
+<div class="bg-light padder-v-xxl">
+    <div class="container">
+	    <div class="bg-white padder-v padder m-b-xxxxl b w-iv center-block">
+		   <form id="myForm" class="form-horizontal m-t-xxl m-b-xxl" role="form">
+			   <input type="hidden" id="activityId" name="activityId" value="${activity.id?c}"/>
+			   <input type="hidden" id="userId" name="userId" />
+			   <div class="form-group m-b-lg">
+				   <label for="name" class="col-sm-3 control-label text-center">活动名称：</label>
+				   <div class="col-sm-8">
+					   <input type="text" class="form-control" id="title" name="title" value="${activity.title!}" readonly="readonly" placeholder="">
+				   </div>
+			   </div>
+			  <div class="form-group m-b-lg">
+				<label for="name" class="col-sm-3 control-label text-center">姓名：</label>
+				<div class="col-sm-8">
+				  <input type="text" class="form-control" id="name" name="name" placeholder="">
+				</div>
+			  </div>
+			  <div class="form-group m-b-lg">
+				<label for="phone" class="col-sm-3 control-label text-center">联系电话：</label>
+				<div class="col-sm-8">
+				  <input type="text" class="form-control" id="phone" name="phone" placeholder="">
+				</div>
+			  </div>
+			  <div class="form-group m-b-lg">
+				<label for="email" class="col-sm-3 control-label text-center">邮箱：</label>
+				<div class="col-sm-8">
+				  <input type="text" class="form-control" id="email" name="email" placeholder="">
+				</div>
+			  </div>
+			  <div class="form-group m-b-lg">
+				<label for="company" class="col-sm-3 control-label text-center">公司名称：</label>
+				<div class="col-sm-8">
+				  <input type="text" class="form-control" id="company" name="company" placeholder="">
+				</div>
+			  </div>
+			  <div class="form-group">
+				<div class="text-center">
+				   <a class="btn btn-info btn-rounded"><span class="padder-xxl text-md" onclick="add();">提交申请</span></a>
+				</div>
+			  </div>
+	        </form>
+		</div>
+	</div>
+</div>
+
+<!--#include file="home/footer.html" -->
+</div>
+<script type="text/javascript">
+    $(function(){
+        var currentUser = JSON.parse('${currentUser}');
+        if(currentUser !== undefined)
+        {
+            $("#userId").val(currentUser.result.userId);
+        }
+    });
+
+    function add()
+    {
+        var name = $("input[name='name']").val();
+        var phone = $("input[name='phone']").val();
+        var email = $("input[name='email']").val();
+        var company = $("input[name='company']").val();
+
+        if(!name){
+            alert('请输入姓名');
+            return;
+        }
+        var phoneReg = /^((0\d{2,3}-\d{7,8})|(1[3584]\d{9}))$/;
+        if(!phoneReg.test(phone)){
+            alert('请输入联系电话');
+            return;
+        }
+        var emailReg = /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/;
+        if(!emailReg.test(email))
+        {
+            alert("请输入邮箱！");
+            return;
+        }
+        if(!company)
+        {
+            alert("请输入公司名称！");
+            return;
+        }
+
+        if(window.confirm("确定要报名吗？"))
+        {
+            var template = "activitys.html";
+            $.ajax
+            ({
+                type : "POST",
+                url: '/front/activity/add.do',
+                data: $("#myForm").serialize(),
+                success: function(data)
+                {
+                    if(data.status)
+                    {
+                        alert(data.message);
+                        $("#myForm")[0].reset();
+                        window.location.href = window.location.protocol + "//" + window.location.host + "/" + template;
+                    }
+                },
+                error: function(){
+                    alert("提交报名申请失败！")
+                }
+            });
+        }
+    }
+</script>
+</body>
+</html>
+
+
+
+
