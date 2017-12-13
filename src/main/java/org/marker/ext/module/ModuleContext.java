@@ -31,7 +31,7 @@ import com.mongodb.util.JSON;
 public class ModuleContext {
 
 	// 线程安全集合
-	private Map<String,Module> modules = new ConcurrentHashMap<String,Module>();
+	private Map<String,Module> modules = new ConcurrentHashMap<>();
 	
 	
 	public Module install(File moduleFile) throws PackageJsonNotFoundException, GroovyActivatorLoadException{ 
@@ -114,7 +114,7 @@ public class ModuleContext {
 	
 	
 	public List<Map<String, Object>>  getList() {
-		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>(); 
+		List<Map<String, Object>> list = new ArrayList<>();
 		Set<String> sets = modules.keySet(); 
 		for(String uuid : sets){
 			Module m = modules.get(uuid); 

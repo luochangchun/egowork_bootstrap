@@ -38,7 +38,7 @@ public class ContentModelContext implements IContentModelParse {
 	 
 	
 	/** 存放模型的集合(key:类型 value:模型对象) */
-	private final Map<String,ContentModel> contentModels = new ConcurrentHashMap<String,ContentModel>();
+	private final Map<String,ContentModel> contentModels = new ConcurrentHashMap<>();
 	
 	private IChannelDao channelDao ;
 	
@@ -200,7 +200,7 @@ public class ContentModelContext implements IContentModelParse {
 
 	
 	public Object getCurrentList() {
-		List<Object> list = new ArrayList<Object>();
+		List<Object> list = new ArrayList<>();
 		Set<String> sets = contentModels.keySet();
 		Iterator<String> it =sets.iterator(); 
 		while(it.hasNext()){

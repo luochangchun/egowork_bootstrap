@@ -22,7 +22,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class DynaCacheService {
 
-	private static ConcurrentHashMap<String, Cache> cacheMap = new ConcurrentHashMap<String, Cache>();
+	private static ConcurrentHashMap<String, Cache> cacheMap = new ConcurrentHashMap<>();
 
 	private static Logger logger = Logger.getLogger(DynaCacheService.class);
 

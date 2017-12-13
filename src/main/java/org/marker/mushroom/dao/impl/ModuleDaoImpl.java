@@ -36,7 +36,7 @@ public class ModuleDaoImpl extends DaoEngine implements IModuleDao {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-		return new ArrayList<Module>(0);
+		return new ArrayList<>(0);
 	}
 
 	

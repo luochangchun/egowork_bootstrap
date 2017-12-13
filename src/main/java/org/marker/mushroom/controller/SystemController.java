@@ -289,7 +289,7 @@ public class SystemController extends SupportController {
 	 */
 	@RequestMapping("/themes")
 	public @ResponseBody Object themes(HttpServletRequest request){ 
-		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
+		List<Map<String, String>> list = new ArrayList<>();
 		String themesPath = WebRealPathHolder.REAL_PATH + File.separator+"themes"; 
 		File file = new File(themesPath); 
 		String[] filelist = file.list();

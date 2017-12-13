@@ -1,6 +1,5 @@
 /**
- *  
- *  吴伟 版权所有
+ * 吴伟 版权所有
  */
 package org.marker.mushroom.dao.impl;
 
@@ -21,23 +20,12 @@ import org.springframework.stereotype.Repository;
 @Repository(DAO.USER_LOGIN)
 public class UserLoginLogDao extends DaoEngine implements IUserLoginLogDao {
 
-	
-	
-	
-
 	/* (non-Javadoc)
 	 * @see org.marker.mushroom.dao.IUserLoginLogDao#queryByPage()
 	 */
 	@Override
-	public Page queryByPage(int currentPageNo,int pageSize) { 
-		StringBuilder sql = new StringBuilder();
-		sql.append("select * from ").append(getPreFix()).append("user_login_log order by id desc");
-		
-		return this.findByPage(currentPageNo, pageSize, sql.toString());
+	public Page queryByPage(int currentPageNo, int pageSize) {
+		return this.findByPage(currentPageNo, pageSize, "select * from " + getPreFix() + "user_login_log order by id desc");
 	}
-	
-	
-	
-	
 
 }

@@ -168,7 +168,7 @@ public class MyCMSTemplate {
 		// 创建一个StringBuffer
 		String sbc = prefix + tplloader.getContent();
 		 
-		this.temp = new ArrayList<SqlDataSource>();// 创建此模板页面的数据池
+		this.temp = new ArrayList<>();// 创建此模板页面的数据池
 		sbc = replaceTaglib(sbc);// 全部标签解析
 		if(syscfg.isStatistics()){
 			HttpServletRequest request = ActionContext.getReq();
@@ -232,7 +232,7 @@ public class MyCMSTemplate {
 		if(tplCache.containsKey(tpl)){
 			return tplCache.get(tpl).getSqls();
 		}
-		return new ArrayList<SqlDataSource>(0);
+		return new ArrayList<>(0);
 	}
  
  

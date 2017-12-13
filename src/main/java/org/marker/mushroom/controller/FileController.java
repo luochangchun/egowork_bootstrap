@@ -204,7 +204,7 @@ public class FileController extends SupportController {
 	public ModelAndView list(@RequestParam("path") String path){
 		ModelAndView view = new ModelAndView(this.viewPath+"list");
 		String root = WebRealPathHolder.REAL_PATH;
-		List<FileObject> list = new ArrayList<FileObject>(); 
+		List<FileObject> list = new ArrayList<>();
 		File file = new File(root + encoding(path));
 		if(file.isDirectory()){//如果是文件夹
 			File[] files = file.listFiles();

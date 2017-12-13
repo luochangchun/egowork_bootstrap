@@ -1,17 +1,5 @@
 package org.marker.mushroom.dao;
 
-import java.io.Serializable;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.marker.mushroom.alias.LOG;
 import org.marker.mushroom.beans.Page;
 import org.marker.mushroom.core.config.impl.DataBaseConfig;
@@ -21,49 +9,50 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
-
+import java.io.Serializable;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.sql.PreparedStatement;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 数据库操作对象引擎
  * 实现：基于Spring的JDBCTemplate开发的通用对象。
  * 目的：简化数据库代码
  * 最新采用slf4j日志接口
+ *
  * @author marker
+ * @version 1.0
  * @date 2014-08-10
- * @version 1.0 
  * @blog www.yl-blog.com
  * @weibo http://t.qq.com/wuweiit
  */
 public abstract class DaoEngine implements ISupportDao {
-	
-	/** 日志记录器 */ 
-	protected Logger logger =  LoggerFactory.getLogger(LOG.DAOENGINE);
-	
+
+	/** 日志记录器 */
+	protected Logger logger = LoggerFactory.getLogger(LOG.DAOENGINE);
+
 	/** 数据库配置 */
-	protected static final DataBaseConfig dbConfig = DataBaseConfig.getInstance(); 
-	
-	
-	
+	protected static final DataBaseConfig dbConfig = DataBaseConfig.getInstance();
+
 	/** 自动注入jdbc模板操作 */
-	@Autowired protected JdbcTemplate jdbcTemplate;
-	
-	
-	/** 基本信息缓存  */
+	@Autowired
+	protected JdbcTemplate jdbcTemplate;
+
+	/** 基本信息缓存 */
 	private static final EntityInfoCache cache = new EntityInfoCache();
-	
-	
-	
-	
-	
+
 	/**
 	 * 泛型构造方法目的是为了简化实现
-	 * @param t
 	 */
-	public DaoEngine() {  }
+	public DaoEngine() { }
 	
 	
 	/* 
@@ -71,22 +60,21 @@ public abstract class DaoEngine implements ISupportDao {
 	 *                       数据查询接口实现
 	 * ==================================================================
 	 */
-	
+
 	// 查询单个对象实现
 	@Override
-	public Map<String,Object> queryForMap(String sql, Object... args){
+	public Map<String, Object> queryForMap(String sql, Object... args) {
 		logger(sql);
 		return jdbcTemplate.queryForMap(sql, args);
 	}
-	
-	
+
 	// 查询对象集合实现
 	@Override
 	public List<Map<String, Object>> queryForList(String sql, Object... args) {
 		logger(sql);
 		return jdbcTemplate.queryForList(sql, args);
 	}
-	
+
 	// 查询对象 
 	@Override
 	public <T> T queryForObject(String sql, Class<T> clzz, Object... args) {
@@ -103,18 +91,19 @@ public abstract class DaoEngine implements ISupportDao {
 	 *                       数据更新接口实现
 	 * ==================================================================
 	 */
-	
+
 	// 批量更新
 	@Override
-	public int[] batchUpdate(String sql, List<Object[]> batchArgs) { 
+	public int[] batchUpdate(String sql, List<Object[]> batchArgs) {
 		logger(sql);
 		return jdbcTemplate.batchUpdate(sql, batchArgs);
 	}
+
 	// 更新数据
 	@Override
 	public boolean update(String sql, Object... args) {
 		logger(sql);
-		return jdbcTemplate.update(sql, args) > 0? true:false; 
+		return jdbcTemplate.update(sql, args) > 0;
 	}
 	
 	
@@ -126,75 +115,65 @@ public abstract class DaoEngine implements ISupportDao {
 	 *                       数据删除接口实现
 	 * ==================================================================
 	 */
-	
+
 	// 批量删除
 	@Override
 	public boolean deleteByIds(Class<?> clzz, String ids) {
 		String prefix = dbConfig.getPrefix();// 表前缀
-		
-		MapConfig map = null;
+
+		MapConfig map;
 		try {
 			map = cache.getMapConfig(clzz);
 		} catch (Exception e1) {
 			e1.printStackTrace();
+			return false;
 		}
-		
-		
-		
+
 		StringBuilder sql = new StringBuilder();
 		sql.append("delete from ").append(prefix).append(map.getTableName())
-				.append(" where ").append(map.getPrimaryKey()).append(" in(")
-				.append(ids).append(")");
+		   .append(" where ").append(map.getPrimaryKey()).append(" in(")
+		   .append(ids).append(")");
 		logger(sql.toString());
-		return jdbcTemplate.update(sql.toString()) > 0 ? true : false;
+		return jdbcTemplate.update(sql.toString()) > 0;
 	}
-	
 
-	
-	
 	// 批量删除
 	@Override
 	public boolean deleteByIds(String tableName, String key, String ids) {
 		StringBuilder sql = new StringBuilder();
 		sql.append("delete from ").append(tableName).append(" where ")
-				.append(key).append(" in(").append(ids).append(")");
+		   .append(key).append(" in(").append(ids).append(")");
 		logger(sql.toString());
-		return jdbcTemplate.update(sql.toString()) > 0 ? true : false;
+		return jdbcTemplate.update(sql.toString()) > 0;
 	}
-	
-	
-	
-	
 
 	/* =========================================
 	 *                 根据ID查询
 	 * ========================================= */
 	@Override
-	public Map<String, Object> findById(Class<?> clzz, Serializable id ) {
+	public Map<String, Object> findById(Class<?> clzz, Serializable id) {
 		String prefix = dbConfig.getPrefix();// 表前缀 
-		String tableName  = clzz.getAnnotation(Entity.class).value();
+		String tableName = clzz.getAnnotation(Entity.class).value();
 		String primaryKey = clzz.getAnnotation(Entity.class).key();
-		StringBuilder sql = new StringBuilder();
-		sql.append("select * from ").append(prefix).append(tableName)
-				.append(" where ").append(primaryKey).append("=?");
-		return queryForMapNoException(sql.toString(), id);
-	} 
+		String sql = "select * from " + prefix + tableName +
+			" where " + primaryKey + "=?";
+		return queryForMapNoException(sql, id);
+	}
 
 	// 无异常查询
 	private Map<String, Object> queryForMapNoException(String sql,
-			Object... args) {
+													   Object... args) {
 		try {
 			logger(sql);
 			return jdbcTemplate.queryForMap(sql, args);
-		} catch (Exception e) { }
-		return new HashMap<String, Object>();
+		} catch (Exception ignored) { }
+		return new HashMap<>();
 	}
 
-	
 	// 分页查询
 	@Override
 	public Page findByPage(int currentPageNo, int pageSize, String sql,
-			Object... args) {
+						   Object... args) {
 
 		int beginPos = sql.toLowerCase().indexOf("from");
 		String hql4Count = "select count(*) " + sql.substring(beginPos);
@@ -202,10 +181,10 @@ public abstract class DaoEngine implements ISupportDao {
 
 		// 获取总条数
 		int totalRows = jdbcTemplate.queryForObject(hql4Count, Integer.class, args);
-		 
+
 		List<Map<String, Object>> data = queryForList(sql, args);
-	 
-		Page page = new Page(currentPageNo,totalRows, pageSize);
+
+		Page page = new Page(currentPageNo, totalRows, pageSize);
 		page.setData(data);// 获取数据集合 
 		return page;
 	}
@@ -214,101 +193,76 @@ public abstract class DaoEngine implements ISupportDao {
 	public boolean save(Object entity) {
 		String prefix = dbConfig.getPrefix();
 		Class<?> clzz = entity.getClass();
-	
 
-		
-		MapConfig map = null;
+		MapConfig map;
 		try {
 			map = cache.getMapConfig(clzz);
 		} catch (Exception e1) {
 			e1.printStackTrace();
+			return false;
 		}
-		
-		
-		
-		
-		
+
 		// 构造SQL字符串
 		StringBuilder sql = new StringBuilder("insert into ");
 		sql.append(prefix).append(map.getTableName()).append("(");
 		StringBuilder val = new StringBuilder(" values(");
 		Field[] fields = clzz.getDeclaredFields();
 		int length = fields.length;
-		final List<Object> list = new ArrayList<Object>(length);
-		for (int i = 0; i < length; i++) {
-			Field field = fields[i];
+		final List<Object> list = new ArrayList<>(length);
+		for (Field field : fields) {
 			String fieldName = field.getName();
-			if (fieldName.equals(map.getPrimaryKey())) {// 如果是主键
-				continue;
-			}
-			if ("serialVersionUID".equals(fieldName)) {
-				continue;
-			}
-			String methodName = "get"
-					+ fieldName.replaceFirst(fieldName.charAt(0) + "",
-							(char) (fieldName.charAt(0) - 32) + "");
+			if (fieldName.equals(map.getPrimaryKey()) || "serialVersionUID".equals(fieldName)) continue;
+			String methodName = "get" + fieldName.replaceFirst(
+				fieldName.charAt(0) + "", (char) (fieldName.charAt(0) - 32) + "");
 
-			Method me = null;
+			Method me;
 			try {
 				me = clzz.getMethod(methodName);
-			} catch (SecurityException e) {
+			} catch (SecurityException | NoSuchMethodException e) {
 				e.printStackTrace();
-			} catch (NoSuchMethodException e) {
-				e.printStackTrace();
+				continue;
 			}
 
 			Object returnObject = null;
 			try {
 				returnObject = me.invoke(entity);
-			} catch (IllegalArgumentException e) { 
+			} catch (IllegalArgumentException | IllegalAccessException | InvocationTargetException e) {
 				e.printStackTrace();
-			} catch (IllegalAccessException e) { 
-				e.printStackTrace();
-			} catch (InvocationTargetException e) { 
-				e.printStackTrace();
-			}//
+			}
 			if (returnObject != null) {// 如果返回值为null
-				sql.append("`" + fieldName + "`");
+				sql.append("`").append(fieldName).append("`");
 				val.append("?");
-				list.add(returnObject); 
-					sql.append(",");
-					val.append(","); 
+				list.add(returnObject);
+				sql.append(",");
+				val.append(",");
 			}
 		}
-		 
-		final StringBuilder sql2 = new StringBuilder(sql.substring(0, sql.length()-1));
-		StringBuilder val2 = new StringBuilder(val.substring(0, val.length()-1));
-	
-		
-		sql2.append(")").append(val2).append(")"); 
+
+		final StringBuilder sql2 = new StringBuilder(sql.substring(0, sql.length() - 1));
+		StringBuilder val2 = new StringBuilder(val.substring(0, val.length() - 1));
+
+		sql2.append(")").append(val2).append(")");
 		KeyHolder holder = new GeneratedKeyHolder();
-		
-		
-		this.jdbcTemplate.update(new PreparedStatementCreator() {
-			
-			@Override
-			public PreparedStatement createPreparedStatement(Connection con)
-					throws SQLException {
-				PreparedStatement ps = con.prepareStatement(sql2.toString()); 
-				Object[] params = list.toArray();
-				for(int i=0; i<params.length;i++){
-					ps.setObject(i+1, params[i]);
-				} 
-				return ps;
+
+		this.jdbcTemplate.update(con -> {
+			PreparedStatement ps = con.prepareStatement(sql2.toString());
+			Object[] params = list.toArray();
+			for (int i = 0; i < params.length; i++) {
+				ps.setObject(i + 1, params[i]);
 			}
+			return ps;
 		}, holder);
-		
-		
-		
+
 		try {
 			Method me = clzz.getMethod("setId", Integer.class);
 			me.invoke(entity, holder.getKey().intValue());
-		} catch ( Exception e) { 
+		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
-		
+
 		return true;
-		 
+
 	}
 
 	// 更新数据
@@ -321,79 +275,69 @@ public abstract class DaoEngine implements ISupportDao {
 
 		StringBuffer sql = new StringBuffer();
 		sql.append("update `").append(prefix).append(tableName)
-				.append("` set ");
-		List<Object> list = null;
+		   .append("` set ");
+		List<Object> list = new ArrayList<>();
 		int id = 0;
 		try {
 			id = (Integer) clzz.getMethod("getId").invoke(entity);
 			Field[] fields = clzz.getDeclaredFields();
 			int length = fields.length;
-			list = new ArrayList<Object>(length);
-			for (int i = 0; i < length; i++) {
-				Field field = fields[i];
+			list = new ArrayList<>(length);
+			for (Field field : fields) {
 				String fieldName = field.getName();
-				if (fieldName.equals(primaryKey)) {// 如果是主键
-					continue;
-				}
-				if ("serialVersionUID".equals(fieldName)) {
-					continue;
-				}
-				String methodName = "get"
-						+ fieldName.replaceFirst(fieldName.charAt(0) + "",
-								(char) (fieldName.charAt(0) - 32) + "");
+				if (fieldName.equals(primaryKey) || "serialVersionUID".equals(fieldName)) continue;
+
+				String methodName = "get" + fieldName.replaceFirst(
+					fieldName.charAt(0) + "", (char) (fieldName.charAt(0) - 32) + "");
 				Method me = clzz.getMethod(methodName);
 				Object returnObject = me.invoke(entity);
 				if (returnObject != null) {// 如果返回值为null
-					sql.append("`" + fieldName + "`").append("=?");
-					list.add(returnObject); 
-				    sql.append(","); 
+					sql.append("`").append(fieldName).append("`").append("=?");
+					list.add(returnObject);
+					sql.append(",");
 				}
-			} 
-			sql = new StringBuffer(sql.substring(0, sql.length()-1));
+			}
+			sql = new StringBuffer(sql.substring(0, sql.length() - 1));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		list.add(id);
 		sql.append(" where `").append(primaryKey).append("`=?");
-		  
-		 
- 
+
 		return update(sql.toString(), list.toArray());
-		 
 	}
 
 	// 查询某页数据
 	@Override
 	public List<Map<String, Object>> queryFotList(int currentPageNo,
-			int pageSize, String sql, Object... args) {
+												  int pageSize,
+												  String sql,
+												  Object... args) {
 		sql += " limit " + (currentPageNo - 1) * pageSize + "," + pageSize;
 		logger(sql);
 		return jdbcTemplate.queryForList(sql, args);
 	}
-	
-	
+
 	/**
 	 * 获取数据库前缀
+	 *
 	 * @return
 	 */
-	protected String getPreFix(){
+	protected String getPreFix() {
 		return dbConfig.getPrefix();
 	}
-	
-	
+
 	/**
 	 * 日志打印方法
 	 * 如果是数据库开发模式，方可打印日志
+	 *
 	 * @param info
 	 */
-	protected void logger(String info, Object... params){
-		if(dbConfig.isDebug()){// debug模式输入SQL语句
+	protected void logger(String info, Object... params) {
+		if (dbConfig.isDebug()) { // debug模式输入SQL语句
 			info = SQLUtil.format(info);
 			logger.info(info, params);
 		}
 	}
-
-
-
 
 }

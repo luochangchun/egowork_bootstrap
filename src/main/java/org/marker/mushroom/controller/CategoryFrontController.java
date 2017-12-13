@@ -46,7 +46,7 @@ public class CategoryFrontController extends SupportController
 	@RequestMapping(value = "/findMapCategory", method = RequestMethod.GET)
 	public Map findMapCategory(@RequestParam("pid") final Integer pid)
 	{
-		final Map<String, Object> view = new HashMap<String, Object>();
+		final Map<String, Object> view = new HashMap<>();
 		try
 		{
 			final List<Map<String, Object>> record = categoryService.findMapCategoryById(pid);

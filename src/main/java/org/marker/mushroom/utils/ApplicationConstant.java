@@ -35,7 +35,7 @@ public class ApplicationConstant {
 	
 	public static final String HANSAP_IDENTIFIER = "whicloud";
 	//单一的资产类型
-	public static final List<Integer> ASSET_SIMPLE_ARR = new ArrayList<Integer>(Arrays.asList(1004, 1008, 1016));
+	public static final List<Integer> ASSET_SIMPLE_ARR = new ArrayList<>(Arrays.asList(1004, 1008, 1016));
 	//用户注册成功,免费服务(产品)自动开通资产
 	//public static final List<Integer> REGIETER_AUTO_ASSET = new ArrayList<Integer>(Arrays.asList(1004, 1005, 1010, 1024));
 	//用户注册成功,免费服务(产品)自动开通时长

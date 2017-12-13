@@ -1,7 +1,6 @@
 package org.marker.mushroom.alias;
 
-public interface Services
-{
+public interface Services {
 
 	String CATEGORY = "categoryService";
 

@@ -17,52 +17,53 @@ package org.marker.mushroom.servlet;
 
 import java.io.Serializable;
 
-public class Cache implements Serializable{
-    private String key;
-    private Object value;
-    private long timeOut;
-    private boolean expired;
+public class Cache implements Serializable {
 
-    public Cache() {
-            super();
-    }
-            
-    public Cache(String key, String value, long timeOut, boolean expired) {
-            this.key = key;
-            this.value = value;
-            this.timeOut = timeOut;
-            this.expired = expired;
-    }
+	private String key;
+	private Object value;
+	private long timeOut;
+	private boolean expired;
 
-    public String getKey() {
-            return key;
-    }
+	public Cache() {
+		super();
+	}
 
-    public long getTimeOut() {
-            return timeOut;
-    }
+	public Cache(String key, String value, long timeOut, boolean expired) {
+		this.key = key;
+		this.value = value;
+		this.timeOut = timeOut;
+		this.expired = expired;
+	}
 
-    public Object getValue() {
-            return value;
-    }
+	public String getKey() {
+		return key;
+	}
 
-    public void setKey(String string) {
-            key = string;
-    }
+	public long getTimeOut() {
+		return timeOut;
+	}
 
-    public void setTimeOut(long l) {
-            timeOut = l;
-    }
+	public Object getValue() {
+		return value;
+	}
 
-    public void setValue(Object object) {
-            value = object;
-    }
+	public void setKey(String string) {
+		key = string;
+	}
 
-    public boolean isExpired() {
-            return expired;
-    }
+	public void setTimeOut(long l) {
+		timeOut = l;
+	}
 
-    public void setExpired(boolean b) {
-            expired = b;
-    }
+	public void setValue(Object object) {
+		value = object;
+	}
+
+	public boolean isExpired() {
+		return expired;
+	}
+
+	public void setExpired(boolean b) {
+		expired = b;
+	}
 }

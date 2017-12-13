@@ -28,17 +28,11 @@
 		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
 	</listener>
 
-
-	<!-- 在线人数统计监听器  
- 	<listener> 
-      	<listener-class>org.marker.mushroom.listener.SessionCounter</listener-class> 
-	</listener>-->
-
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
 			classpath:spring/applicationContext.xml
-			classpath:spring/application-Cache.xml
+			classpath:spring/applicationContext-cache.xml
 			classpath:spring/applicationContext-jdbc.xml
 			classpath:spring/spring-cms-interceptors.xml
 			classpath:spring/spring-cms-core.xml

@@ -18,6 +18,25 @@
 	<build>
 		<defaultGoal>compile</defaultGoal>
 		<sourceDirectory>src/main/java</sourceDirectory>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<excludes>
+					<exclude>debug/</exclude>
+					<exclude>test/</exclude>
+					<exclude>release/</exclude>
+				</excludes>
+			</resource>
+			<resource>
+				<directory>${runtime.env}</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>**/*.properties</include>
+				</includes>
+			</resource>
+		</resources>
+
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -368,4 +387,34 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+
+	<profiles>
+		<profile>
+			<id>debug</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<runtime.env>src/main/resources/debug</runtime.env>
+			</properties>
+		</profile>
+		<profile>
+			<id>test</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<runtime.env>src/main/resources/test</runtime.env>
+			</properties>
+		</profile>
+		<profile>
+			<id>release</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<runtime.env>src/main/resources/release</runtime.env>
+			</properties>
+		</profile>
+	</profiles>
 </project>

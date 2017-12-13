@@ -195,7 +195,7 @@ public class LoanController extends SupportController
 			cid = usercategory;
 		}
 
-		final Map<String, Object> params = new HashMap<String, Object>();
+		final Map<String, Object> params = new HashMap<>();
 		params.put("cid", cid);
 		params.put("status", status);
 		params.put("keyword", keyword);

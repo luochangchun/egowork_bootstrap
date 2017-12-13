@@ -20,10 +20,10 @@ public class TemplateModel {
 	private String freemarkerTpl;
 	
 	/** 模板文件集合 */
-	private List<File> files = new ArrayList<File>(5);
+	private List<File> files = new ArrayList<>(5);
 	
 	/** 解析出的sql集合 */
-	private List<SqlDataSource> sqls = new ArrayList<SqlDataSource>();
+	private List<SqlDataSource> sqls = new ArrayList<>();
 	
 	public long getReadModified() {
 		return readModified;

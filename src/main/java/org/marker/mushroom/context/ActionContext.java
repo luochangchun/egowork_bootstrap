@@ -68,7 +68,7 @@ class ActionScopeData {
 
 	private HttpServletRequest request;
 	private HttpServletResponse response;
-	static final ThreadLocal<ActionScopeData> threadLocalData = new ThreadLocal<ActionScopeData>();
+	static final ThreadLocal<ActionScopeData> threadLocalData = new ThreadLocal<>();
 
 	public static ActionScopeData getInstance() {
 		ActionScopeData instance = threadLocalData.get();

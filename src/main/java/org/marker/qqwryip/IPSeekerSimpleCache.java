@@ -18,7 +18,7 @@ import java.util.Map;
 public class IPSeekerSimpleCache extends IPSeeker {
 	
 	// 缓存
-	private static final Map<String, IPLocation> cache = new Hashtable<String, IPLocation>();
+	private static final Map<String, IPLocation> cache = new Hashtable<>();
 	
 	public IPSeekerSimpleCache(String path) throws IOException {
 		super(path);

@@ -33,10 +33,10 @@ public final class URLRewriteEngine {
 	private static final Pattern RIGHT_URL = Pattern.compile("\\w+\\=");
 	
 	/** 规则参数 */
-	public final Map<String,Parameter> ruleParameter = new HashMap<String,Parameter>();
+	public final Map<String,Parameter> ruleParameter = new HashMap<>();
 	
 	/** 维护规则对象 */
-	private final Map<String,RewriteRule> rules = new HashMap<String, RewriteRule>(5);
+	private final Map<String,RewriteRule> rules = new HashMap<>(5);
 	
 	
 

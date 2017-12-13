@@ -38,7 +38,7 @@ public class ChipContext implements IChip
 		{
 			final String prefix = DataBaseConfig.getInstance().getPrefix();
 			final List<Map<String, Object>> list = commonDao.queryForList("select * from " + prefix + "chip");
-			data = new HashMap<String, String>();
+			data = new HashMap<>();
 			for (final Map<String, Object> o : list)
 			{
 				final String mark = o.get("mark").toString();

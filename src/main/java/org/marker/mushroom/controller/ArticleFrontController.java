@@ -58,7 +58,7 @@ public class ArticleFrontController extends SupportController
 	@RequestMapping(value = "/findMapArticle", method = RequestMethod.GET)
 	public Map findMapArticle(@RequestParam("cid") final Integer cid)
 	{
-		final Map<String, Object> view = new HashMap<String, Object>();
+		final Map<String, Object> view = new HashMap<>();
 		try
 		{
 			final List<Map<String, Object>> record = articleService.findMapArticleByCid(cid);

@@ -1,9 +1,8 @@
 package org.marker.mushroom.dao;
 
-import java.util.List;
-
 import org.marker.mushroom.beans.Category;
- 
+
+import java.util.List;
 
 public interface ICategoryDao {
 

@@ -35,6 +35,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 import java.io.IOException;
 import java.net.URLEncoder;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -402,15 +403,14 @@ public class TransportServlet extends HttpServlet {
 		response.addCookie(cookie);
 	}
 
+	/*
 	private boolean isDownloadURL(final String resource) {
-
 		return StringUtils.contains(resource, "resource/download/");
 	}
 
 	private boolean isConsoleURL(final String module) {
-
 		return StringUtils.contains(module, "#/app");
-	}
+	}*/
 
 	private boolean isLoginURL(final String resource) {
 
@@ -544,8 +544,8 @@ public class TransportServlet extends HttpServlet {
 		currentUser.setPhone(r.get("phone") == null ? null : r.get("phone").toString());
 		currentUser.setEmail(r.get("email") == null ? null : r.get("email").toString());
 		currentUser.setLogintime(r.get("logintime") == null ? "" : r.get("logintime").toString());
-		currentUser.setRoles((List<String>) (r.get("roles") == null ? null : r.get("roles")));
-		currentUser.setAuths((List<String>) (r.get("auths") == null ? null : r.get("auths")));
+		currentUser.setRoles(r.get("roles") == null ? Collections.emptyList() : (List<String>) r.get("roles"));
+		currentUser.setAuths(r.get("auths") == null ? Collections.emptyList() : (List<String>) r.get("auths"));
 		currentUser.setHtmlTemp(r.get("htmlTemp") == null ? null : r.get("htmlTemp").toString());
 		currentUser.setBindWeChatUrl(r.get("bindWeChatUrl") == null ? null : r.get("bindWeChatUrl").toString());
 		currentUser.setAesPassword(r.get("aesPassword") == null ? null : r.get("aesPassword").toString());
@@ -611,10 +611,10 @@ public class TransportServlet extends HttpServlet {
 	 * @return
 	 */
 	private void initCSRFInfo(final String sessionid, final HttpServletResponse response, final boolean refresh) {
-		String csrf_token = null;
+		String csrf_token;
 		final String prefix = propertyUtil.getValue("sys.csrf_token_prefix");
 		if (mcm.get(prefix + sessionid) == null) {
-			final int csrf_token_timeout = propertyUtil.getIntValue("sys.csrf_token_timeout");
+//			final int csrf_token_timeout = propertyUtil.getIntValue("sys.csrf_token_timeout");
 			csrf_token = CSRFUtil.generateToken();
 			mcm.set(prefix + sessionid, csrf_token);
 			final Cookie cookie = new Cookie("csrftoken", csrf_token);

@@ -1,28 +1,23 @@
 package org.marker.mushroom.core;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.marker.mushroom.context.ActionContext;
 import org.marker.mushroom.core.config.impl.SystemConfig;
 
-
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * 请求参数解析器 调用get方法可以直接获取到请求参数数据
- * 
+ *
  * @author marker
  */
-public final class WebParam
-{
+public final class WebParam {
+
 	public static final String ATTR_WEB_PARAM = ".mrcms.Webparam";
 
 	public static final String FIELD_P = "p";
 	public static final String FIELD_T = "type";
 	public static final String FIELD_ID = "id";
 	public static final String FIELD_PAGE = "page";
-
-
-
 
 	/** 当前请求的静态URL名称 */
 	public String pageName = "";
@@ -46,16 +41,13 @@ public final class WebParam
 	/** 排序条件 **/
 	public String orderSql;
 
-
 	/** 系统配置信息 */
 	private static final SystemConfig config = SystemConfig.getInstance();
-
 
 	/**
 	 * 只有通过传递请求对象，才能获取解析数据对象
 	 */
-	public static WebParam get()
-	{
+	public static WebParam get() {
 		final HttpServletRequest req = ActionContext.getReq();
 		final WebParam param = (WebParam) req.getAttribute(ATTR_WEB_PARAM);
 		if (param != null)
@@ -63,36 +55,25 @@ public final class WebParam
 		return new WebParam(req);
 	}
 
-
 	/**
 	 * 私有构造禁止开发者创建此对象
 	 */
-	private WebParam(final HttpServletRequest req)
-	{
+	private WebParam(final HttpServletRequest req) {
 		this.pageName = req.getParameter(FIELD_P);// 页面名称
 		this.modelType = req.getParameter(FIELD_T);// 页面类型
-		if (this.modelType == null)
-		{
+		if (this.modelType == null) {
 			this.modelType = "channel";
 		}
-		if (!(this.pageName != null && !"".equals(this.pageName)))
-		{
+		if (!(this.pageName != null && !"".equals(this.pageName))) {
 			this.pageName = config.get("index_page");// 获取默认主页地址
 		}
 		this.contentId = req.getParameter(FIELD_ID);// 内容ID
 
-
-
-
 		this.page = req.getParameter(FIELD_PAGE);// 页码
-		try
-		{
+		try {
 			this.currentPageNo = Integer.parseInt(this.page);
+		} catch (final Exception ignored) {
 		}
-		catch (final Exception e)
-		{
-		}
-
 
 		// 初始化模版页面（指向错误页面）
 		this.template = config.get("error_page");
@@ -103,17 +84,13 @@ public final class WebParam
 
 	}
 
-
 	@Override
-	public String toString()
-	{
-		final StringBuilder sb = new StringBuilder("R:\n");
-		sb.append("pageName=" + pageName + "\n");
-		sb.append("modelType=" + modelType + "\n");
-		sb.append("contentId=" + contentId + "\n");
-		sb.append("page=" + page + "\n");
+	public String toString() {
 
-		return sb.toString();
+		return "R:\n" + "pageName=" + pageName + "\n" +
+			"modelType=" + modelType + "\n" +
+			"contentId=" + contentId + "\n" +
+			"page=" + page + "\n";
 	}
 
 }

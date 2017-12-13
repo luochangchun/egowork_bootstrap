@@ -1,27 +1,33 @@
 package org.marker.mushroom.dao.mapper;
 
+import org.marker.mushroom.beans.Category;
+import org.marker.mushroom.beans.Channel;
+import org.marker.mushroom.beans.Menu;
+import org.marker.mushroom.beans.Model;
+import org.marker.mushroom.beans.Module;
+import org.marker.mushroom.beans.Permission;
+import org.marker.mushroom.beans.Plugin;
+import org.marker.mushroom.beans.User;
+import org.marker.mushroom.beans.UserGroup;
+import org.marker.mushroom.beans.UserObject;
+import org.springframework.jdbc.core.RowMapper;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.marker.mushroom.beans.*;
-import org.springframework.jdbc.core.RowMapper;
-
-
 /**
  * 数据库查询结果集映射对象处理
- * 
+ *
  * 注意：这样做的目的是为了简化Dao实现的代码。而static final，这个是Spring3.2官方文档推荐使用的。
- * 
+ *
  * @author marker
  */
-public final class ObjectRowMapper
-{
+public final class ObjectRowMapper {
 
 	// 栏目RowMapper
-	public static final class RowMapperChannel implements RowMapper<Channel>
-	{
-		public Channel mapRow(final ResultSet rs, final int arg1) throws SQLException
-		{
+	public static final class RowMapperChannel implements RowMapper<Channel> {
+
+		public Channel mapRow(final ResultSet rs, final int arg1) throws SQLException {
 			final Channel channel = new Channel();
 			channel.setId(rs.getInt("id"));
 			channel.setPid(rs.getLong("pid"));
@@ -39,12 +45,10 @@ public final class ObjectRowMapper
 		}
 	}
 
-
 	// 菜单RowMapper
-	public static final class RowMapperMenu implements RowMapper<Menu>
-	{
-		public Menu mapRow(final ResultSet rs, final int arg1) throws SQLException
-		{
+	public static final class RowMapperMenu implements RowMapper<Menu> {
+
+		public Menu mapRow(final ResultSet rs, final int arg1) throws SQLException {
 			final Menu menu = new Menu();
 			menu.setId(rs.getInt("id"));
 			menu.setPid(rs.getInt("pid"));
@@ -56,12 +60,10 @@ public final class ObjectRowMapper
 		}
 	}
 
-
 	// 用户 RowMapper
-	public static final class RowMapperUser implements RowMapper<User>
-	{
-		public User mapRow(final ResultSet rs, final int num) throws SQLException
-		{
+	public static final class RowMapperUser implements RowMapper<User> {
+
+		public User mapRow(final ResultSet rs, final int num) throws SQLException {
 			final User user = new User();
 			user.setId(rs.getInt("id"));
 			user.setName(rs.getString("name"));
@@ -73,12 +75,10 @@ public final class ObjectRowMapper
 		}
 	}
 
-
 	// 插件 RowMapper
-	public static final class RowMapperPlugin implements RowMapper<Plugin>
-	{
-		public Plugin mapRow(final ResultSet rs, final int num) throws SQLException
-		{
+	public static final class RowMapperPlugin implements RowMapper<Plugin> {
+
+		public Plugin mapRow(final ResultSet rs, final int num) throws SQLException {
 			final Plugin plugin = new Plugin();
 			plugin.setId(rs.getInt("id"));
 			plugin.setName(rs.getString("name"));
@@ -90,12 +90,10 @@ public final class ObjectRowMapper
 		}
 	}
 
-
 	// 内容模型 RowMapper
-	public static final class RowMapperModule implements RowMapper<Module>
-	{
-		public Module mapRow(final ResultSet rs, final int num) throws SQLException
-		{
+	public static final class RowMapperModule implements RowMapper<Module> {
+
+		public Module mapRow(final ResultSet rs, final int num) throws SQLException {
 			final Module module = new Module();
 			module.setId(rs.getLong("id"));
 			module.setName(rs.getString("name"));
@@ -109,10 +107,9 @@ public final class ObjectRowMapper
 	}
 
 	// 权限 RowMapper
-	public static final class RowMapperPermission implements RowMapper<Permission>
-	{
-		public Permission mapRow(final ResultSet rs, final int rowNum) throws SQLException
-		{
+	public static final class RowMapperPermission implements RowMapper<Permission> {
+
+		public Permission mapRow(final ResultSet rs, final int rowNum) throws SQLException {
 			final Permission permission = new Permission();
 			permission.setGid(rs.getInt("gid"));
 			permission.setMid(rs.getInt("mid"));
@@ -121,10 +118,9 @@ public final class ObjectRowMapper
 
 	}
 
-	public static final class RowMapperUserObject implements RowMapper<UserObject>
-	{
-		public UserObject mapRow(final ResultSet rs, final int rowNum) throws SQLException
-		{
+	public static final class RowMapperUserObject implements RowMapper<UserObject> {
+
+		public UserObject mapRow(final ResultSet rs, final int rowNum) throws SQLException {
 			final UserObject object = new UserObject();
 			object.setGid(rs.getInt("gid"));
 			object.setOid(rs.getInt("oid"));
@@ -135,10 +131,9 @@ public final class ObjectRowMapper
 	}
 
 	// 用户分组 RowMapper
-	public static final class RowMapperUserGroup implements RowMapper<UserGroup>
-	{
-		public UserGroup mapRow(final ResultSet rs, final int rowNum) throws SQLException
-		{
+	public static final class RowMapperUserGroup implements RowMapper<UserGroup> {
+
+		public UserGroup mapRow(final ResultSet rs, final int rowNum) throws SQLException {
 			final UserGroup group = new UserGroup();
 			group.setId(rs.getInt("id"));
 			group.setName(rs.getString("name"));
@@ -149,13 +144,10 @@ public final class ObjectRowMapper
 
 	}
 
-
 	// 内容模型rowmapper
-	public static final class RowMapperModel implements RowMapper<Model>
-	{
+	public static final class RowMapperModel implements RowMapper<Model> {
 
-		public Model mapRow(final ResultSet rs, final int arg1) throws SQLException
-		{
+		public Model mapRow(final ResultSet rs, final int arg1) throws SQLException {
 			final Model model = new Model();
 
 			model.setId(rs.getInt("id"));
@@ -173,15 +165,10 @@ public final class ObjectRowMapper
 
 	}
 
-
-
-
 	// 分类(Category)
-	public static final class RowMapperCategory implements RowMapper<Category>
-	{
+	public static final class RowMapperCategory implements RowMapper<Category> {
 
-		public Category mapRow(final ResultSet rs, final int arg1) throws SQLException
-		{
+		public Category mapRow(final ResultSet rs, final int arg1) throws SQLException {
 			final Category categroy = new Category();
 			categroy.setId(rs.getInt("id"));
 			categroy.setName(rs.getString("name"));

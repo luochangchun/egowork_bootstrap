@@ -20,13 +20,11 @@
 	<bean id="springContextHolder" class="org.marker.mushroom.holder.SpringContextHolder"/>
 	<bean id="mushRoomInitBuildHolder" class="org.marker.mushroom.holder.InitBuilderHolder"/>
 
-
 	<!-- file uplaod -->
 	<bean id="multipartResolver"
 		  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="2097152"/>
 	</bean>
-
 
 	<!-- message support -->
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">

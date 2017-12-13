@@ -16,7 +16,7 @@ public class ChannelItem {
 	private Channel channel; 
 	
 	/** 此节点的子栏目对象集合 */
-	public List<ChannelItem> child = new ArrayList<ChannelItem>(5);
+	public List<ChannelItem> child = new ArrayList<>(5);
 	
 	
 	public String getChildIdToString(){

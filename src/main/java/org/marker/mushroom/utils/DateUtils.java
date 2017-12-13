@@ -144,8 +144,8 @@ public class DateUtils
 	{
 		Date date = null;
 		long timestamp = 0;
-		final Map<Long, long[]> map = new HashMap<Long, long[]>();
-		final List<Long> absoluteValues = new ArrayList<Long>();
+		final Map<Long, long[]> map = new HashMap<>();
+		final List<Long> absoluteValues = new ArrayList<>();
 
 		if (timestamps != null && timestamps.size() > 0)
 		{
@@ -233,8 +233,8 @@ public class DateUtils
 	public static DateStyle getDateStyle(final String date)
 	{
 		DateStyle dateStyle = null;
-		final Map<Long, DateStyle> map = new HashMap<Long, DateStyle>();
-		final List<Long> timestamps = new ArrayList<Long>();
+		final Map<Long, DateStyle> map = new HashMap<>();
+		final List<Long> timestamps = new ArrayList<>();
 		for (final DateStyle style : DateStyle.values())
 		{
 			if (style.isShowOnly())

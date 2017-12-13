@@ -66,7 +66,7 @@ public class ModuleLogDaoImpl extends DaoEngine implements IModuleLogDao{
 		sql.append("insert into ").append(prefix).append("module_install_log(type,file,time) values(?,?,?)");
 		
 		
-		List<Object[]> list = new ArrayList<Object[]>();
+		List<Object[]> list = new ArrayList<>();
 		for(ModuleLog log: logs){
 			Object[] args = new Object[]{log.getType(), log.getFile(), new Date()};
 			list.add(args);

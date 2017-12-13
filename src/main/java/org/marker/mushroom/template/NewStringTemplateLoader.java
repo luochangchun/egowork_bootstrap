@@ -101,7 +101,7 @@ import freemarker.cache.TemplateLoader;
  */
 public class NewStringTemplateLoader implements TemplateLoader {
     
-	private final Map<String,StringTemplateSource> templates = new HashMap<String,StringTemplateSource>();
+	private final Map<String,StringTemplateSource> templates = new HashMap<>();
     
     /**
      * Puts a template into the loader. A call to this method is identical to 

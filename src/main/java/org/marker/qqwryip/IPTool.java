@@ -33,7 +33,7 @@ public class IPTool {
 	public static final String DAT_FILE_PATH = "qqwry.dat";
 	
 	// 缓存
-	private static final Map<String, IPLocation> cache = new Hashtable<String, IPLocation>();
+	private static final Map<String, IPLocation> cache = new Hashtable<>();
     /**
      * 这种写法最大的美在于，完全使用了Java虚拟机的机制进行同步保证。
      * */
