@@ -36,14 +36,6 @@ public class SupportController {
 	protected String viewPath;
 
 	protected static final DataBaseConfig dbConfig = DataBaseConfig.getInstance();
-
-	/**
-	 * 获取数据库表前缀
-	 *
-	 * @return
-	 */
-	public String getPrefix() {
-		return dbConfig.getPrefix();//表前缀，如："yl_"
-	}
+	protected static final String prefix = dbConfig.getPrefix();
 
 }

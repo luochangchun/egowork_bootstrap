@@ -1,9 +1,9 @@
 package org.marker.mushroom.beans;
 
+import org.marker.mushroom.dao.annotation.Entity;
+
 import java.io.Serializable;
 import java.util.Date;
-
-import org.marker.mushroom.dao.annotation.Entity;
 
 
 /**
@@ -13,7 +13,7 @@ import org.marker.mushroom.dao.annotation.Entity;
  * @version 1.0
  */
 @Entity("apply_service")
-public class Apply_service implements Serializable
+public class ApplyService implements Serializable
 {
 
 	private static final long serialVersionUID = 78605547470034885L;

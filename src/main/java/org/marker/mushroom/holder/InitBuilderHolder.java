@@ -2,7 +2,6 @@ package org.marker.mushroom.holder;
 
 import org.marker.ext.Msei;
 import org.marker.ext.module.ModuleContext;
-import org.marker.mushroom.alias.LOG;
 import org.marker.mushroom.context.ActionContext;
 import org.marker.mushroom.core.AppStatic;
 import org.marker.mushroom.core.WebAPP;
@@ -40,7 +39,7 @@ import java.util.Map;
 public class InitBuilderHolder implements ServletContextAware {
 
 	/** 日志记录器 */
-	protected Logger logger = LoggerFactory.getLogger(LOG.WEBFOREGROUND);
+	protected Logger logger = LoggerFactory.getLogger(InitBuilderHolder.class);
 
 	@Override
 	public void setServletContext(ServletContext application) {

@@ -1,7 +1,6 @@
 package org.marker.mushroom.filter;
 
 import org.marker.mushroom.alias.CacheO;
-import org.marker.mushroom.alias.LOG;
 import org.marker.mushroom.core.AppStatic;
 import org.marker.mushroom.core.config.impl.SystemConfig;
 import org.marker.mushroom.core.proxy.SingletonProxyFrontURLRewrite;
@@ -40,7 +39,7 @@ import java.util.regex.Pattern;
 public class SystemCoreFilter implements Filter {
 
 	/** 日志记录器 */
-	protected Logger logger = LoggerFactory.getLogger(LOG.WEBFOREGROUND);
+	protected Logger logger = LoggerFactory.getLogger(SystemCoreFilter.class);
 
 	// URL重写引擎
 	private static URLRewriteEngine rewrite = SingletonProxyFrontURLRewrite.getInstance();
@@ -128,7 +127,7 @@ public class SystemCoreFilter implements Filter {
 		}
 		// 页面静态读取
 		if (syscfg.isStaticPage()) {
-			org.springframework.cache.Cache cache = cacheManager.getCache(CacheO.STATIC_HTML);
+			org.springframework.cache.Cache cache = cacheManager.getCache(CacheO.StaticHtmlCache);
 
 			// 传递页面URI给缓存模块
 			String pageName = "/".equals(uri) ? syscfg.getHomePage() : uri;

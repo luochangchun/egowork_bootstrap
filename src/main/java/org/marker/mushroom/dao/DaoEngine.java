@@ -1,6 +1,5 @@
 package org.marker.mushroom.dao;
 
-import org.marker.mushroom.alias.LOG;
 import org.marker.mushroom.beans.Page;
 import org.marker.mushroom.core.config.impl.DataBaseConfig;
 import org.marker.mushroom.dao.annotation.Entity;
@@ -37,7 +36,7 @@ import java.util.Map;
 public abstract class DaoEngine implements ISupportDao {
 
 	/** 日志记录器 */
-	protected Logger logger = LoggerFactory.getLogger(LOG.DAOENGINE);
+	protected Logger logger = LoggerFactory.getLogger(DaoEngine.class);
 
 	/** 数据库配置 */
 	protected static final DataBaseConfig dbConfig = DataBaseConfig.getInstance();

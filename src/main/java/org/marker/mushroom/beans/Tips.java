@@ -1,19 +1,17 @@
 package org.marker.mushroom.beans;
 
+import org.marker.mushroom.dao.annotation.Entity;
+
 import java.io.Serializable;
 import java.util.Date;
 
-import org.marker.mushroom.dao.annotation.Entity;
-
-
 /**
  * 补贴券
- * 
+ *
  * @author dd
  */
 @Entity("tips")
-public class Tips implements Serializable
-{
+public class Tips implements Serializable {
 
 	private static final long serialVersionUID = 1661046246773289468L;
 
@@ -46,73 +44,59 @@ public class Tips implements Serializable
 	 */
 	private Date time;
 
-	public Integer getId()
-	{
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(final Integer id)
-	{
+	public void setId(final Integer id) {
 		this.id = id;
 	}
 
-	public String getUserName()
-	{
+	public String getUserName() {
 		return userName;
 	}
 
-	public void setUserName(final String userName)
-	{
+	public void setUserName(final String userName) {
 		this.userName = userName;
 	}
 
-	public String getPhone()
-	{
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(final String phone)
-	{
+	public void setPhone(final String phone) {
 		this.phone = phone;
 	}
 
-	public Integer getHrId()
-	{
+	public Integer getHrId() {
 		return hrId;
 	}
 
-	public void setHrId(final Integer hrId)
-	{
+	public void setHrId(final Integer hrId) {
 		this.hrId = hrId;
 	}
 
-	public Integer getCid()
-	{
+	public Integer getCid() {
 		return cid;
 	}
 
-	public void setCid(final Integer cid)
-	{
+	public void setCid(final Integer cid) {
 		this.cid = cid;
 	}
 
-	public Integer getUserId()
-	{
+	public Integer getUserId() {
 		return userId;
 	}
 
-	public void setUserId(final Integer userId)
-	{
+	public void setUserId(final Integer userId) {
 		this.userId = userId;
 	}
 
-	public Date getTime()
-	{
+	public Date getTime() {
 		return time;
 	}
 
-	public void setTime(final Date time)
-	{
+	public void setTime(final Date time) {
 		this.time = time;
 	}
 }

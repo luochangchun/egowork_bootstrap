@@ -1,12 +1,12 @@
 package org.marker.mushroom.beans;
 
-import java.io.Serializable;
-
 import org.marker.mushroom.dao.annotation.Entity;
 
+import java.io.Serializable;
 
 /**
  * 商品
+ *
  * @author marker
  * @version 1.0
  */

@@ -9,7 +9,6 @@ import org.marker.develop.freemarker.ServletContextWrapperModel;
 import org.marker.develop.freemarker.SessionWrapperModel;
 import org.marker.mushroom.alias.CacheO;
 import org.marker.mushroom.alias.DAO;
-import org.marker.mushroom.alias.LOG;
 import org.marker.mushroom.context.ActionContext;
 import org.marker.mushroom.core.config.impl.SystemConfig;
 import org.marker.mushroom.core.exception.SystemException;
@@ -39,7 +38,7 @@ import java.util.List;
 public class SendDataToView {
 
 	/** 日志记录对象 */
-	protected Logger logger = LoggerFactory.getLogger(LOG.TEMPLATE_ENGINE);
+	protected Logger logger = LoggerFactory.getLogger(SendDataToView.class);
 
 	/** 系统配置信息 */
 	private static final SystemConfig syscfg = SystemConfig.getInstance();
@@ -122,7 +121,7 @@ public class SendDataToView {
 			if (syscfg.isStaticPage()) {
 				EhCacheCacheManager cm = SpringContextHolder.getBean(CacheO.CacheManager);
 
-				org.springframework.cache.Cache cache = cm.getCache(CacheO.STATIC_HTML);
+				org.springframework.cache.Cache cache = cm.getCache(CacheO.StaticHtmlCache);
 
 				String path = "data" + File.separator + "cache" + File.separator +
 					lang + File.separator + request.getAttribute("rewriterUrl");

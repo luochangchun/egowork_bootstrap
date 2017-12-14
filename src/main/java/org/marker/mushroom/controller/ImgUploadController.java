@@ -77,11 +77,10 @@ public class ImgUploadController extends SupportController {
 				byte[] fileByteArr = imgBase64.getBytes("UTF-8");
 				//拿到上传文件的输入流
 				fileByteArr = Base64.decodeBase64(fileByteArr);
-				final ByteArrayInputStream bai = new ByteArrayInputStream(fileByteArr);
-				final InputStream in = bai;
+				final InputStream in = new ByteArrayInputStream(fileByteArr);
 
 				//以写字节的方式写文件
-				int b = 0;
+				int b;
 				while ((b = in.read()) != -1) {
 					os.write(b);
 				}

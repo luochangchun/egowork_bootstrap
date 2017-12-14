@@ -1,17 +1,9 @@
 package org.marker.mushroom.controller;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.marker.mushroom.core.config.impl.DataBaseConfig;
-import org.marker.mushroom.core.config.impl.SystemConfig;
 import org.marker.mushroom.dao.IArticleDao;
 import org.marker.mushroom.service.impl.ArticleService;
 import org.marker.mushroom.service.impl.CategoryService;
 import org.marker.mushroom.support.SupportController;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,16 +11,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 文章管理
- * 
+ *
  * @author marker
  */
 @Controller
 @RequestMapping("/front/article")
-public class ArticleFrontController extends SupportController
-{
+public class ArticleFrontController extends SupportController {
 
 	// 文章Dao
 	@Autowired
@@ -40,33 +34,20 @@ public class ArticleFrontController extends SupportController
 	@Autowired
 	CategoryService categoryService;
 
-	private static final Logger logger = LoggerFactory.getLogger(ArticleFrontController.class);
-
-	/** 系统配置信息 */
-	private final SystemConfig syscfg = SystemConfig.getInstance();
-
-	private final String dbPrefix = DataBaseConfig.getInstance().getPrefix();
-
-	public ArticleFrontController()
-	{
+	public ArticleFrontController() {
 		this.viewPath = "/front/article/";
-
 	}
 
 	// 查找地图article
 	@ResponseBody
 	@RequestMapping(value = "/findMapArticle", method = RequestMethod.GET)
-	public Map findMapArticle(@RequestParam("cid") final Integer cid)
-	{
+	public Map findMapArticle(@RequestParam("cid") final Integer cid) {
 		final Map<String, Object> view = new HashMap<>();
-		try
-		{
+		try {
 			final List<Map<String, Object>> record = articleService.findMapArticleByCid(cid);
 			view.put("article", record);
 			view.put("code", 200);
-		}
-		catch (final Exception e)
-		{
+		} catch (final Exception e) {
 			view.put("code", 500);
 			view.put("error", e.getMessage());
 		}
@@ -76,16 +57,12 @@ public class ArticleFrontController extends SupportController
 
 	@ResponseBody
 	@RequestMapping(value = "/findSumArticle", method = RequestMethod.GET)
-	public Map findSumArticle()
-	{
+	public Map findSumArticle() {
 		final Map<String, Object> view = new HashMap<>();
-		try
-		{
+		try {
 			view.put("articleSum", articleService.findSumArticle());
 			view.put("code", 200);
-		}
-		catch (final Exception e)
-		{
+		} catch (final Exception e) {
 			view.put("code", 500);
 			view.put("error", e.getMessage());
 		}
@@ -116,6 +93,5 @@ public class ArticleFrontController extends SupportController
 	//
 	//		return view;
 	//	}
-
 
 }

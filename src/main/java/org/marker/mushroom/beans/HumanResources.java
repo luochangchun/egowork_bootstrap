@@ -1,19 +1,18 @@
 package org.marker.mushroom.beans;
 
+import org.marker.mushroom.dao.annotation.Entity;
+
 import java.io.Serializable;
 import java.util.Date;
 
-import org.marker.mushroom.dao.annotation.Entity;
-
-
 /**
  * 文章对象
- * 
+ *
  * @author marker
  */
 @Entity("human_resources")
-public class Human_resources implements Serializable
-{
+public class HumanResources implements Serializable {
+
 	private static final long serialVersionUID = 7449373866719190815L;
 	/** 文章ID */
 	private Integer id;
@@ -66,203 +65,163 @@ public class Human_resources implements Serializable
 
 	private String userId;
 
-	public Integer getId()
-	{
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(final Integer id)
-	{
+	public void setId(final Integer id) {
 		this.id = id;
 	}
 
-	public Integer getCid()
-	{
+	public Integer getCid() {
 		return cid;
 	}
 
-	public void setCid(final Integer cid)
-	{
+	public void setCid(final Integer cid) {
 		this.cid = cid;
 	}
 
-	public String getIcon()
-	{
+	public String getIcon() {
 		return icon;
 	}
 
-	public void setIcon(final String icon)
-	{
+	public void setIcon(final String icon) {
 		this.icon = icon;
 	}
 
-	public String getTitle()
-	{
+	public String getTitle() {
 		return title;
 	}
 
-	public void setTitle(final String title)
-	{
+	public void setTitle(final String title) {
 		this.title = title;
 	}
 
-	public String getExplain()
-	{
+	public String getExplain() {
 		return explain;
 	}
 
-	public void setExplain(final String explain)
-	{
+	public void setExplain(final String explain) {
 		this.explain = explain;
 	}
 
-	public String getWebsite()
-	{
+	public String getWebsite() {
 		return website;
 	}
 
-	public void setWebsite(final String website)
-	{
+	public void setWebsite(final String website) {
 		this.website = website;
 	}
 
-	public String getKeywords()
-	{
+	public String getKeywords() {
 		return keywords;
 	}
 
-	public void setKeywords(final String keywords)
-	{
+	public void setKeywords(final String keywords) {
 		this.keywords = keywords;
 	}
 
-	public String getPreferential()
-	{
+	public String getPreferential() {
 		return preferential;
 	}
 
-	public void setPreferential(final String preferential)
-	{
+	public void setPreferential(final String preferential) {
 		this.preferential = preferential;
 	}
 
-	public String getContent()
-	{
+	public String getContent() {
 		return content;
 	}
 
-	public void setContent(final String content)
-	{
+	public void setContent(final String content) {
 		this.content = content;
 	}
 
-	public String getDescription()
-	{
+	public String getDescription() {
 		return description;
 	}
 
-	public void setDescription(final String description)
-	{
+	public void setDescription(final String description) {
 		this.description = description;
 	}
 
-	public String getIntroduce()
-	{
+	public String getIntroduce() {
 		return introduce;
 	}
 
-	public void setIntroduce(final String introduce)
-	{
+	public void setIntroduce(final String introduce) {
 		this.introduce = introduce;
 	}
 
-	public String getAuthor()
-	{
+	public String getAuthor() {
 		return author;
 	}
 
-	public void setAuthor(final String author)
-	{
+	public void setAuthor(final String author) {
 		this.author = author;
 	}
 
-	public Date getTime()
-	{
+	public Date getTime() {
 		return time;
 	}
 
-	public void setTime(final Date time)
-	{
+	public void setTime(final Date time) {
 		this.time = time;
 	}
 
-	public int getViews()
-	{
+	public int getViews() {
 		return views;
 	}
 
-	public void setViews(final int views)
-	{
+	public void setViews(final int views) {
 		this.views = views;
 	}
 
-	public int getStatus()
-	{
+	public int getStatus() {
 		return status;
 	}
 
-	public void setStatus(final int status)
-	{
+	public void setStatus(final int status) {
 		this.status = status;
 	}
 
-	public int getType()
-	{
+	public int getType() {
 		return type;
 	}
 
-	public void setType(final int type)
-	{
+	public void setType(final int type) {
 		this.type = type;
 	}
 
-	public int getTips()
-	{
+	public int getTips() {
 		return tips;
 	}
 
-	public void setTips(final int tips)
-	{
+	public void setTips(final int tips) {
 		this.tips = tips;
 	}
 
-	public String getOrginal()
-	{
+	public String getOrginal() {
 		return orginal;
 	}
 
-	public void setOrginal(final String orginal)
-	{
+	public void setOrginal(final String orginal) {
 		this.orginal = orginal;
 	}
 
-	public Date getCreateTime()
-	{
+	public Date getCreateTime() {
 		return createTime;
 	}
 
-	public void setCreateTime(final Date createTime)
-	{
+	public void setCreateTime(final Date createTime) {
 		this.createTime = createTime;
 	}
 
-	public String getUserId()
-	{
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(final String userId)
-	{
+	public void setUserId(final String userId) {
 		this.userId = userId;
 	}
 }

@@ -1,6 +1,5 @@
 package org.marker.mushroom.ext.tag.impl;
 
-import org.marker.mushroom.alias.Core;
 import org.marker.mushroom.context.ActionContext;
 import org.marker.mushroom.core.exception.SystemException;
 import org.marker.mushroom.ext.tag.MatchRule;
@@ -50,7 +49,7 @@ public class ListTagImpl extends Taglib {
 	 * @throws Exception
 	 */
 	public void doDataReplace(final MatchRule mr) throws SystemException {
-		final MyCMSTemplate cmstemplate = SpringContextHolder.getBean(Core.ENGINE_TEMPLATE);
+		final MyCMSTemplate cmstemplate = SpringContextHolder.getBean(MyCMSTemplate.class);
 		final Matcher m = mr.getRegex().matcher(content);
 		while (m.find()) {
 			//处理提取数据.进行持久化操作

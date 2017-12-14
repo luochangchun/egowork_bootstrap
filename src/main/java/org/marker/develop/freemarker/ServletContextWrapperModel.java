@@ -5,7 +5,6 @@ import freemarker.template.TemplateHashModel;
 import freemarker.template.TemplateModel;
 import freemarker.template.TemplateModelException;
 
-import javax.servlet.GenericServlet;
 import javax.servlet.ServletContext;
 
 /**
@@ -19,9 +18,6 @@ public final class ServletContextWrapperModel implements TemplateHashModel {
 	private final ServletContext ctx;
 	private final ObjectWrapper wrapper;
 
-	/**
-	 * {@link #ServletContextHashModel(GenericServlet, ObjectWrapper)} instead.
-	 */
 	public ServletContextWrapperModel(ServletContext servletctx, ObjectWrapper wrapper) {
 		this.ctx = servletctx;
 		this.wrapper = wrapper;

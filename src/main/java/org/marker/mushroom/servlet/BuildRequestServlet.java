@@ -1,8 +1,8 @@
 package org.marker.mushroom.servlet;
 
+import org.marker.mushroom.holder.SpringContextHolder;
 import org.marker.mushroom.utils.EncryptUtil;
 import org.marker.mushroom.utils.PropertyUtil;
-import org.marker.mushroom.utils.SpringContextUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +15,7 @@ import java.util.Map;
 
 public class BuildRequestServlet extends HttpServlet {
 
-	private static final PropertyUtil propertyUtil = (PropertyUtil) SpringContextUtil.getBean("propertyUtil");
+	private static final PropertyUtil propertyUtil = SpringContextHolder.getBean(PropertyUtil.class);
 
 	protected void doGet(final HttpServletRequest request, final HttpServletResponse response)
 		throws ServletException, IOException {

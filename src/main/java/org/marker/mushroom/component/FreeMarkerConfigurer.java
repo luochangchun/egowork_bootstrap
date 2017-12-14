@@ -2,7 +2,6 @@ package org.marker.mushroom.component;
 
 import freemarker.template.Configuration;
 import freemarker.template.Version;
-import org.marker.mushroom.alias.LOG;
 import org.marker.mushroom.ext.plugin.freemarker.EmbedDirectiveInvokeTag;
 import org.marker.mushroom.freemarker.BootStrap3NavDirective;
 import org.marker.mushroom.freemarker.LoadDirective;
@@ -23,7 +22,7 @@ import java.util.Locale;
 public class FreeMarkerConfigurer {
 
 	/** 日志记录对象 */
-	protected Logger logger = LoggerFactory.getLogger(LOG.TEMPLATE_ENGINE);
+	protected Logger logger = LoggerFactory.getLogger(FreeMarkerConfigurer.class);
 
 	// freemarker配置
 	private static final Configuration config = new Configuration(new Version("2.3.23"));

@@ -21,7 +21,6 @@ import org.marker.mushroom.utils.CSRFUtil;
 import org.marker.mushroom.utils.HttpUtils;
 import org.marker.mushroom.utils.MemCachedManager;
 import org.marker.mushroom.utils.PropertyUtil;
-import org.marker.mushroom.utils.SpringContextUtil;
 import org.marker.mushroom.utils.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,8 +39,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
-//import net.sf.json.JSONObject;
-
 public class TransportServlet extends HttpServlet {
 
 	private static final long serialVersionUID = -266565810999894402L;
@@ -50,7 +47,7 @@ public class TransportServlet extends HttpServlet {
 
 	private static final MemCachedManager mcm = MemCachedManager.getInstance();
 
-	private static final PropertyUtil propertyUtil = (PropertyUtil) SpringContextUtil.getBean("propertyUtil");
+	private static final PropertyUtil propertyUtil = SpringContextHolder.getBean(PropertyUtil.class);
 
 	@Override
 	public void destroy() { }
@@ -73,17 +70,18 @@ public class TransportServlet extends HttpServlet {
 		doPost(request, response);
 	}
 
-	/*
+	/**
 	 * 
-	 * 通常 rest 请求分为 以下几大类: 1. 以/access 开头的 前端请求(包括注册, 登录, 注销请求) 2. 以/app 开头的 控制台请求 3. 特殊请求 以#/download开头之类 等
+	 * 通常 rest 请求分为 以下几大类:
+	 * 1. 以/access 开头的 前端请求(包括注册, 登录, 注销请求) 2. 以/app 开头的 控制台请求 3. 特殊请求 以#/download开头之类 等
 	 * 
 	 * 第1类请求不需要登录, 即无需校验 session, 而第2类请求必须检查session,如果session 为空 , 返回 419响应码, 由angular state管理转向登录;
 	 * 
-	 * 请求处理过程 如下: 1.解析各类参数 2.根据上面的请求类型做相应的处理 a.登录请求成功以后, 保存到session , 注销请求成功以后则清除session信息 b.过滤掉特殊请求
+	 * 请求处理过程 如下:
+	 * 1.解析各类参数 2.根据上面的请求类型做相应的处理 a.登录请求成功以后, 保存到session , 注销请求成功以后则清除session信息 b.过滤掉特殊请求
 	 * 
 	 * 3.发送请求 如果session 不为空,则session数据会附带发送
 	 */
-
 	@SuppressWarnings("unchecked")
 	@Override
 	public void doPost(final HttpServletRequest request, final HttpServletResponse response)

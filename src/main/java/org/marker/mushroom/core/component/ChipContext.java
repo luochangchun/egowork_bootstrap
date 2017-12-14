@@ -1,7 +1,6 @@
 package org.marker.mushroom.core.component;
 
 import org.marker.mushroom.core.IChip;
-import org.marker.mushroom.core.SystemStatic;
 import org.marker.mushroom.core.config.impl.DataBaseConfig;
 import org.marker.mushroom.dao.ISupportDao;
 import org.slf4j.Logger;
@@ -16,7 +15,7 @@ import java.util.Map;
 /**
  * 碎片
  */
-@Service(SystemStatic.SYSTEM_CMS_CHIP)
+@Service
 public class ChipContext implements IChip {
 
 	private static final Logger log = LoggerFactory.getLogger(ChipContext.class);

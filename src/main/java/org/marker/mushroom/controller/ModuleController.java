@@ -111,52 +111,6 @@ public class ModuleController extends SupportController {
 
 	}
 
-//
-//	/**
-//	 * 安装bundle
-//	 * @param path
-//	 * @param name
-//	 * @return
-//	 */
-//	@ResponseBody
-//	@RequestMapping("/install")
-//	public Object install(@RequestParam("path") String path, @RequestParam("name") String name){
-//		try {
-//			name = new String(name.getBytes("iso-8859-1"),"utf-8");
-//		} catch (UnsupportedEncodingException e) { 
-//			e.printStackTrace();
-//		}
-//		File file = new File(WebRealPathHolder.REAL_PATH + path + File.separator + name);
-//		try {
-//			ModuleFile pfile = new ModuleFile(file);
-//			if(!pfile.isInvalid()){// 有效
-//				String pluginsPath = WebRealPathHolder.REAL_PATH + "plugins"+File.separator;
-//				pfile.export(pluginsPath); // 导出
-//				PluginConfig config = PluginConfig.getInstance();
-//				config.set(pfile.getLabel(), pfile.getBundle()); 
-//				config.store();
-//				
-//				// 安装bundle
-//				String bundleJar = pluginsPath +pfile.getLabel()+File.separator+ pfile.getBundle();
-//				
-//				BundleContext context = (BundleContext) application.getAttribute(FelixStart.OSGI_FELIX);
-//				
-//				FileInputStream is = new FileInputStream(new File(bundleJar));
-//			 
-//				try {
-//					Bundle bundle = context.installBundle("",is);
-//					bundle.start(); 
-//				} catch (BundleException e) { 
-//					e.printStackTrace();
-//				} 
-//			} 
-//		} catch (IOException e) { 
-//			log.error("", e);
-//			return new ResultMessage(false, "插件安装失败!"); 
-//		}
-//		return new ResultMessage(false, "插件安装成功!"); 
-//	} 
-
 	/**
 	 * 停止某个bundle
 	 *

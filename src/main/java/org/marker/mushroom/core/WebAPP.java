@@ -1,8 +1,7 @@
 package org.marker.mushroom.core;
 
-import org.marker.mushroom.alias.Core;
-import org.marker.mushroom.alias.LOG;
 import org.marker.mushroom.context.ActionContext;
+import org.marker.mushroom.core.component.ChipContext;
 import org.marker.mushroom.core.config.impl.SystemConfig;
 import org.marker.mushroom.core.exception.SystemException;
 import org.marker.mushroom.ext.model.ContentModelContext;
@@ -32,7 +31,7 @@ import java.io.Writer;
 public final class WebAPP {
 
 	/** 日志记录器 */
-	protected Logger logger = LoggerFactory.getLogger(LOG.TEMPLATE_ENGINE);
+	protected Logger logger = LoggerFactory.getLogger(WebAPP.class);
 
 	/** 请求响应相关的对象 */
 	private HttpServletRequest request;
@@ -82,7 +81,7 @@ public final class WebAPP {
 
 				//初始化模板引擎
 				if (WebAPP.cmstemplate == null)
-					WebAPP.cmstemplate = SpringContextHolder.getBean(Core.ENGINE_TEMPLATE);
+					WebAPP.cmstemplate = SpringContextHolder.getBean(MyCMSTemplate.class);
 
 				// 数据发送对象
 				dataToView = new SendDataToView(cmstemplate);
@@ -120,7 +119,7 @@ public final class WebAPP {
 		 *                        採集碎片
 		 * ====================================================
 		 */
-		IChip chipData = SpringContextHolder.getBean(SystemStatic.SYSTEM_CMS_CHIP);
+		IChip chipData = SpringContextHolder.getBean(ChipContext.class);
 		request.setAttribute(AppStatic.WEB_APP_CHIP, chipData.getVector());
 
 		WebParam param = WebParam.get();// 解析地址 
@@ -156,7 +155,6 @@ public final class WebAPP {
 	/**
 	 * 发送错误消息
 	 *
-	 * @param errorCode
 	 * @throws org.marker.mushroom.core.exception.SystemException
 	 */
 	public void handleErrorMessage(SystemException e) {

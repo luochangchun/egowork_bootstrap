@@ -1,24 +1,19 @@
 package org.marker.mushroom.alias;
 
-
-
 /**
- * 
  * 数据库操作对象别名接口
- * 
+ *
  * 博客：www.yl-blog.com 微博：t.qq.com/wuweiit
- * 
+ *
  * @author marker
  */
-public interface DAO
-{
+public interface DAO {
 
 	String MENU = "mrcms_menu_dao";
 
 	String COMMON = "commonDao";
 
 	String STATISTICS = "mrcms_statistics_dao";
-
 
 	/** 内容模型 */
 	String MODULE = "moduleDao";
@@ -40,12 +35,11 @@ public interface DAO
 
 	/** 文章 DaoBean */
 	String ARTICLE = "articleDao";
+
 	/** 模型 DaoBean */
 	String MODEL = "modelDao";
 
 	/** 分类 DaoBean */
 	String CATEGORY = "categoryDao";
 
-	/** 家风博物馆DaoBean **/
-	String DONATION = "donationDao";
 }

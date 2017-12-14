@@ -22,8 +22,6 @@
 		</property>
 	</bean>
 
-	<bean id="SpringContextUtil" class="org.marker.mushroom.utils.SpringContextUtil"/>
-
 	<!-- 通过springContextHolder可以获取applicationContext中的数据信息 -->
 	<bean id="webRealPathHolder" class="org.marker.mushroom.holder.WebRealPathHolder"/>
 	<bean id="springContextHolder" class="org.marker.mushroom.holder.SpringContextHolder"/>

@@ -124,8 +124,7 @@ public class AdminController extends SupportController {
 				if (null != user) {
 					return "redirect:index.do";
 				}
-			} catch (final Exception e) {
-			}
+			} catch (final Exception ignored) { }
 		}
 		return this.viewPath + "login";
 	}
@@ -151,12 +150,12 @@ public class AdminController extends SupportController {
 			scode = ((String) authCode).toLowerCase();
 		}
 
-		ResultMessage msg = null;
-		if (scode != null && !scode.equals(randcode)) {// 验证码不匹配
+		ResultMessage msg;
+		if (!scode.equals(randcode)) {// 验证码不匹配
 			msg = new ResultMessage(false, "验证码错误!");
 			errorCode = 1;// 错误
 		} else {
-			String password2 = null;
+			String password2;
 			try {
 				password2 = GeneratePass.encode(password);
 				final User user = userDao.queryByNameAndPass(username, password2);

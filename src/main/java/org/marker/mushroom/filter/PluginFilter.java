@@ -1,6 +1,5 @@
 package org.marker.mushroom.filter;
 
-import org.marker.mushroom.alias.LOG;
 import org.marker.mushroom.context.ActionContext;
 import org.marker.mushroom.ext.plugin.PluginContext;
 import org.slf4j.Logger;
@@ -24,7 +23,7 @@ import java.io.IOException;
 public class PluginFilter implements Filter {
 
 	/** 日志记录器 */
-	protected Logger logger = LoggerFactory.getLogger(LOG.WEBFOREGROUND);
+	protected Logger logger = LoggerFactory.getLogger(PluginFilter.class);
 
 	/** 插件上下文 */
 	private PluginContext pluginContext = PluginContext.getInstance();

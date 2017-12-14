@@ -1,22 +1,18 @@
 package org.marker.mushroom.beans;
 
+import org.marker.mushroom.dao.annotation.Entity;
+
 import java.io.Serializable;
 import java.util.Date;
 
-import org.marker.mushroom.dao.annotation.Entity;
-
-
-
-
-
 /**
  * 文章对象
- * 
+ *
  * @author marker
  */
 @Entity("article")
-public class Article implements Serializable
-{
+public class Article implements Serializable {
+
 	private static final long serialVersionUID = -2456959238880328330L;
 
 	/** 文章ID */
@@ -63,183 +59,147 @@ public class Article implements Serializable
 
 	private String userId;
 
-	public String getOrginal()
-	{
+	public String getOrginal() {
 		return orginal;
 	}
 
-	public void setOrginal(final String orginal)
-	{
+	public void setOrginal(final String orginal) {
 		this.orginal = orginal;
 	}
 
-	public int getType()
-	{
+	public int getType() {
 		return type;
 	}
 
-	public void setType(final int type)
-	{
+	public void setType(final int type) {
 		this.type = type;
 	}
 
-	public Integer getId()
-	{
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(final Integer id)
-	{
+	public void setId(final Integer id) {
 		this.id = id;
 	}
 
-	public Integer getCid()
-	{
+	public Integer getCid() {
 		return cid;
 	}
 
-	public void setCid(final Integer cid)
-	{
+	public void setCid(final Integer cid) {
 		this.cid = cid;
 	}
 
-	public String getTitle()
-	{
+	public String getTitle() {
 		return title;
 	}
 
-	public void setTitle(final String title)
-	{
+	public void setTitle(final String title) {
 		this.title = title;
 	}
 
-	public String getDescription()
-	{
+	public String getDescription() {
 		return description;
 	}
 
-	public void setDescription(final String description)
-	{
+	public void setDescription(final String description) {
 		this.description = description;
 	}
 
-	public String getAuthor()
-	{
+	public String getAuthor() {
 		return author;
 	}
 
-	public void setAuthor(final String author)
-	{
+	public void setAuthor(final String author) {
 		this.author = author;
 	}
 
-	public long getViews()
-	{
+	public long getViews() {
 		return views;
 	}
 
-	public void setViews(final int views)
-	{
+	public void setViews(final int views) {
 		this.views = views;
 	}
 
-	public String getContent()
-	{
+	public String getContent() {
 		return content;
 	}
 
-	public void setContent(final String content)
-	{
+	public void setContent(final String content) {
 		this.content = content;
 	}
 
-	public Date getTime()
-	{
+	public Date getTime() {
 		return time;
 	}
 
-	public void setTime(final Date time)
-	{
+	public void setTime(final Date time) {
 		this.time = time;
 	}
 
-	public String getKeywords()
-	{
+	public String getKeywords() {
 		return keywords;
 	}
 
-	public void setKeywords(final String keywords)
-	{
+	public void setKeywords(final String keywords) {
 		this.keywords = keywords;
 	}
 
-	public int getStatus()
-	{
+	public int getStatus() {
 		return status;
 	}
 
-	public void setStatus(final int status)
-	{
+	public void setStatus(final int status) {
 		this.status = status;
 	}
 
-	public String getSource()
-	{
+	public String getSource() {
 		return source;
 	}
 
-	public void setSource(final String source)
-	{
+	public void setSource(final String source) {
 		this.source = source;
 	}
 
-	public String getIcon()
-	{
+	public String getIcon() {
 		return icon;
 	}
 
-	public void setIcon(final String icon)
-	{
+	public void setIcon(final String icon) {
 		this.icon = icon;
 	}
 
-	public Date getCreateTime()
-	{
+	public Date getCreateTime() {
 		return createTime;
 	}
 
-	public void setCreateTime(final Date createTime)
-	{
+	public void setCreateTime(final Date createTime) {
 		this.createTime = createTime;
 	}
 
-	public String getReject()
-	{
+	public String getReject() {
 		return reject;
 	}
 
-	public void setReject(final String reject)
-	{
+	public void setReject(final String reject) {
 		this.reject = reject;
 	}
 
-	public Integer getTop()
-	{
+	public Integer getTop() {
 		return top;
 	}
 
-	public void setTop(final Integer top)
-	{
+	public void setTop(final Integer top) {
 		this.top = top;
 	}
 
-	public String getUserId()
-	{
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(final String userId)
-	{
+	public void setUserId(final String userId) {
 		this.userId = userId;
 	}
 }

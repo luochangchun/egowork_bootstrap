@@ -7,7 +7,6 @@ import freemarker.template.TemplateDirectiveModel;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateModel;
 import freemarker.template.Version;
-import org.marker.mushroom.alias.Services;
 import org.marker.mushroom.beans.Page;
 import org.marker.mushroom.core.WebParam;
 import org.marker.mushroom.ext.model.ContentModel;
@@ -32,7 +31,7 @@ public class PageDirective implements TemplateDirectiveModel {
 
 	public PageDirective() {
 		cmc = ContentModelContext.getInstance();
-		categoryService = SpringContextHolder.getBean(Services.CATEGORY);
+		categoryService = SpringContextHolder.getBean(CategoryService.class);
 	}
 
 	@Override

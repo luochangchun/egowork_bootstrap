@@ -45,7 +45,6 @@ public class ModuleContext {
 			}
 
 			Map<String, Object> config = new Gson().fromJson(json, new TypeToken<Map<String, Object>>() {}.getType());
-//			Map<String,Object> config = (Map<String, Object>) JSON.parse(json);
 			config.put(Module.CONFIG_UUID, moduleFile.getName());// 设置模块唯一码
 
 			String src = moduleFile.getAbsolutePath() + File.separator + "src";

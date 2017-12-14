@@ -11,5 +11,5 @@ public interface CacheO {
 	/** 缓存管理器 */
 	String CacheManager = "cacheManager";
 
-	String STATIC_HTML = "staticHtmlCache";
+	String StaticHtmlCache = "staticHtmlCache";
 }

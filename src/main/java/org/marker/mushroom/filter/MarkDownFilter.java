@@ -1,7 +1,6 @@
 package org.marker.mushroom.filter;
 
 import org.markdown4j.Markdown4jProcessor;
-import org.marker.mushroom.alias.LOG;
 import org.marker.mushroom.context.ActionContext;
 import org.marker.mushroom.holder.WebRealPathHolder;
 import org.marker.mushroom.utils.FileTools;
@@ -28,7 +27,7 @@ import java.io.IOException;
 public class MarkDownFilter implements Filter {
 
 	/** 日志记录器 */
-	protected Logger logger = LoggerFactory.getLogger(LOG.WEBFOREGROUND);
+	protected Logger logger = LoggerFactory.getLogger(MarkDownFilter.class);
 
 	// 全局作用域
 	private ServletContext application;

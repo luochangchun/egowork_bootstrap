@@ -18,7 +18,6 @@ import java.io.Serializable;
 
 public final class SessionWrapperModel implements TemplateHashModel, Serializable {
 
-	/**  */
 	public static final String ATTR_SESSION_MODEL = ".freemarker.Session";
 
 	private static final long serialVersionUID = 1L;

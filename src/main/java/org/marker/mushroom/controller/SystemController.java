@@ -3,7 +3,6 @@ package org.marker.mushroom.controller;
 import groovy.lang.Binding;
 import groovy.lang.GroovyShell;
 import org.marker.mushroom.alias.CacheO;
-import org.marker.mushroom.alias.Core;
 import org.marker.mushroom.beans.ResultMessage;
 import org.marker.mushroom.core.config.impl.DataBaseConfig;
 import org.marker.mushroom.core.config.impl.SystemConfig;
@@ -15,7 +14,6 @@ import org.marker.mushroom.support.SupportController;
 import org.marker.mushroom.template.MyCMSTemplate;
 import org.marker.mushroom.utils.FileTools;
 import org.marker.mushroom.utils.HttpUtils;
-import org.marker.security.Base64;
 import org.marker.security.DES;
 import org.springframework.cache.ehcache.EhCacheCacheManager;
 import org.springframework.stereotype.Controller;
@@ -26,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -68,7 +67,7 @@ public class SystemController extends SupportController {
 	public Object saveinfo(HttpServletRequest request) {
 		try {
 			/* 判断统计是否修改 */
-			MyCMSTemplate cmstemplate = SpringContextHolder.getBean(Core.ENGINE_TEMPLATE);
+			MyCMSTemplate cmstemplate = SpringContextHolder.getBean(MyCMSTemplate.class);
 			String new_statistics = request.getParameter("config.statistics");
 			if (!config.get(SystemConfig.STATISTICS).equals(new_statistics)) {
 				cmstemplate.clearCache();
@@ -88,18 +87,17 @@ public class SystemController extends SupportController {
 			String new_statichtml = request.getParameter("config.statichtml");
 			if (Boolean.valueOf(new_statichtml)) {
 				EhCacheCacheManager cm = SpringContextHolder.getBean(CacheO.CacheManager);
-				org.springframework.cache.Cache cache = cm.getCache(CacheO.STATIC_HTML);
+				org.springframework.cache.Cache cache = cm.getCache(CacheO.StaticHtmlCache);
 				cache.clear();
 			}
 			/* 切换默认语言*/
-			String newDefaultLang = request.getParameter("config.defaultlang");
-			String oldDefaultLang = config.get(SystemConfig.DEFAULTLANG);
+//			String newDefaultLang = request.getParameter("config.defaultlang");
+//			String oldDefaultLang = config.get(SystemConfig.DEFAULTLANG);
+//			if (!oldDefaultLang.equals(newDefaultLang)) {
+//
+//			}
 
-			if (!oldDefaultLang.equals(newDefaultLang)) {
 
-			}
-			
-			
 			/* 系统基本信息配置 */
 			config.set("title", request.getParameter("config.title"));//网站标题
 			config.set("url", request.getParameter("config.url"));//网站地址
@@ -206,7 +204,7 @@ public class SystemController extends SupportController {
 	private String getDesCode(String pass) {
 		String key = SystemConfig.getInstance().get("secret_key");//网站秘钥，这是在安装的时候获取的
 		try {
-			return Base64.encode(DES.encrypt(pass.getBytes(), key));
+			return Base64.getEncoder().encodeToString(DES.encrypt(pass.getBytes(), key));
 		} catch (Exception e) { e.printStackTrace();}
 		return pass;
 	}

@@ -1,20 +1,20 @@
 /**
- * 
+ *
  */
 package org.marker.mushroom.beans;
 
 import java.util.List;
- 
+
 /**
  * 与角色关联的资源实体
- * 
+ *
  * @author jayd
  * @since 1.0
  */
 public class Resource implements java.io.Serializable {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = -4160433497595897081L;
 
@@ -24,7 +24,7 @@ public class Resource implements java.io.Serializable {
 	public static final String TYPE_MENU_ONE = "menu_one";
 	public static final String TYPE_MENU_TWO = "menu_two";
 	public static final String _TYPE = "menu";
-	
+
 	//资源对象ID
 	private Integer id;
 	//名称
@@ -37,12 +37,10 @@ public class Resource implements java.io.Serializable {
 	private String description;
 	//资源多对对关联的角色集合
 	private List<Role> roles;
-	
- 
 
 	/**
 	 * getter方法
-	 * 
+	 *
 	 * @return Resource对象的name属性
 	 */
 	public String getName() {
@@ -51,19 +49,16 @@ public class Resource implements java.io.Serializable {
 
 	/**
 	 * setter方法
-	 * 
-	 * @param name
-	 *            Resource对象的name属性
+	 *
+	 * @param name Resource对象的name属性
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
- 
 
- 
 	/**
 	 * getter方法
-	 * 
+	 *
 	 * @return Resource对象的res_string属性
 	 */
 	public String getRes_string() {
@@ -72,9 +67,8 @@ public class Resource implements java.io.Serializable {
 
 	/**
 	 * setter方法
-	 * 
-	 * @param res_string
-	 *            Resource对象的res_string属性
+	 *
+	 * @param res_string Resource对象的res_string属性
 	 */
 	public void setRes_string(String res_string) {
 		this.res_string = res_string;
@@ -82,7 +76,7 @@ public class Resource implements java.io.Serializable {
 
 	/**
 	 * getter方法
-	 * 
+	 *
 	 * @return Resource对象的descrption属性
 	 */
 	public String getDescription() {
@@ -91,9 +85,8 @@ public class Resource implements java.io.Serializable {
 
 	/**
 	 * setter方法
-	 * 
-	 * @param description
-	 *            description属性
+	 *
+	 * @param description description属性
 	 */
 	public void setDescrption(String description) {
 		this.description = description;
@@ -101,7 +94,7 @@ public class Resource implements java.io.Serializable {
 
 	/**
 	 * getter方法
-	 * 
+	 *
 	 * @return Resource对象的关联的role对象集合
 	 */
 	public List<Role> getRoles() {
@@ -110,9 +103,8 @@ public class Resource implements java.io.Serializable {
 
 	/**
 	 * setter方法
-	 * 
-	 * @param roles
-	 *            Resource对象的关联的role对象集合
+	 *
+	 * @param roles Resource对象的关联的role对象集合
 	 */
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
@@ -135,8 +127,6 @@ public class Resource implements java.io.Serializable {
 //		return new HashCodeBuilder().append(resource_id).append(name).append( type).append(res_string).append(
 //				description).toHashCode();
 //	}
-
- 
 
 //	/**
 //	 * 可访问该资源的授权名称字符串, 多个授权用','分隔.

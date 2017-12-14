@@ -1,19 +1,17 @@
 package org.marker.mushroom.beans;
 
+import org.marker.mushroom.dao.annotation.Entity;
+
 import java.io.Serializable;
 import java.util.Date;
 
-import org.marker.mushroom.dao.annotation.Entity;
-
-
 /**
  * 文章对象
- * 
+ *
  * @author marker
  */
 @Entity("activity")
-public class Activity implements Serializable
-{
+public class Activity implements Serializable {
 
 	private static final long serialVersionUID = -3081020382452658418L;
 	/** 文章ID */
@@ -40,13 +38,11 @@ public class Activity implements Serializable
 	private String author;
 	/** 浏览量 */
 	private Integer views;
-	/**
-	 * 活动时间
-	 */
+	/** 活动时间 */
 	private Date activeTime;
 	/** 发布时间 */
 	private Date time;
-	/* 发布状态：0草稿 1发布 */
+	/** 发布状态：0草稿 1发布 */
 	private Integer status;
 	/** 创建时间 **/
 	private Date createTime;
@@ -55,183 +51,147 @@ public class Activity implements Serializable
 	/** 留言id **/
 	private Integer gbid;
 
-	public Integer getId()
-	{
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(final Integer id)
-	{
+	public void setId(final Integer id) {
 		this.id = id;
 	}
 
-	public Integer getCid()
-	{
+	public Integer getCid() {
 		return cid;
 	}
 
-	public void setCid(final Integer cid)
-	{
+	public void setCid(final Integer cid) {
 		this.cid = cid;
 	}
 
-	public String getTitle()
-	{
+	public String getTitle() {
 		return title;
 	}
 
-	public void setTitle(final String title)
-	{
+	public void setTitle(final String title) {
 		this.title = title;
 	}
 
-	public String getIcon()
-	{
+	public String getIcon() {
 		return icon;
 	}
 
-	public void setIcon(final String icon)
-	{
+	public void setIcon(final String icon) {
 		this.icon = icon;
 	}
 
-	public String getContent()
-	{
+	public String getContent() {
 		return content;
 	}
 
-	public void setContent(final String content)
-	{
+	public void setContent(final String content) {
 		this.content = content;
 	}
 
-	public String getAddress()
-	{
+	public String getAddress() {
 		return address;
 	}
 
-	public void setAddress(final String address)
-	{
+	public void setAddress(final String address) {
 		this.address = address;
 	}
 
-	public Integer getPeopleLimit()
-	{
+	public Integer getPeopleLimit() {
 		return peopleLimit;
 	}
 
-	public void setPeopleLimit(final Integer peopleLimit)
-	{
+	public void setPeopleLimit(final Integer peopleLimit) {
 		this.peopleLimit = peopleLimit;
 	}
 
-	public String getTicket()
-	{
+	public String getTicket() {
 		return ticket;
 	}
 
-	public void setTicket(final String ticket)
-	{
+	public void setTicket(final String ticket) {
 		this.ticket = ticket;
 	}
 
-	public String getPhone()
-	{
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(final String phone)
-	{
+	public void setPhone(final String phone) {
 		this.phone = phone;
 	}
 
-	public Integer getType()
-	{
+	public Integer getType() {
 		return type;
 	}
 
-	public void setType(final Integer type)
-	{
+	public void setType(final Integer type) {
 		this.type = type;
 	}
 
-	public String getAuthor()
-	{
+	public String getAuthor() {
 		return author;
 	}
 
-	public void setAuthor(final String author)
-	{
+	public void setAuthor(final String author) {
 		this.author = author;
 	}
 
-	public Integer getViews()
-	{
+	public Integer getViews() {
 		return views;
 	}
 
-	public void setViews(final Integer views)
-	{
+	public void setViews(final Integer views) {
 		this.views = views;
 	}
 
-	public Date getActiveTime()
-	{
+	public Date getActiveTime() {
 		return activeTime;
 	}
 
-	public void setActiveTime(final Date activeTime)
-	{
+	public void setActiveTime(final Date activeTime) {
 		this.activeTime = activeTime;
 	}
 
-	public Date getTime()
-	{
+	public Date getTime() {
 		return time;
 	}
 
-	public void setTime(final Date time)
-	{
+	public void setTime(final Date time) {
 		this.time = time;
 	}
 
-	public Integer getStatus()
-	{
+	public Integer getStatus() {
 		return status;
 	}
 
-	public void setStatus(final Integer status)
-	{
+	public void setStatus(final Integer status) {
 		this.status = status;
 	}
 
-	public Date getCreateTime()
-	{
+	public Date getCreateTime() {
 		return createTime;
 	}
 
-	public void setCreateTime(final Date createTime)
-	{
+	public void setCreateTime(final Date createTime) {
 		this.createTime = createTime;
 	}
 
-	public String getUserId()
-	{
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(final String userId)
-	{
+	public void setUserId(final String userId) {
 		this.userId = userId;
 	}
 
-	public Integer getGbid()
-	{
+	public Integer getGbid() {
 		return gbid;
 	}
 
-	public void setGbid(final Integer gbid)
-	{
+	public void setGbid(final Integer gbid) {
 		this.gbid = gbid;
 	}
 }

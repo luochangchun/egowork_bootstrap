@@ -27,20 +27,17 @@ public class StatisticsController extends SupportController{
 	
 	@RequestMapping("/today")
 	public ModelAndView today(){
-		ModelAndView view = new ModelAndView(this.viewPath+"today");
-		return view;
+		return new ModelAndView(this.viewPath+"today");
 	}
 	
 	@RequestMapping("/yesterday")
 	public ModelAndView yesterday(){
-		ModelAndView view = new ModelAndView(this.viewPath+"yesterday");
-		return view;
+		return new ModelAndView(this.viewPath+"yesterday");
 	}
 	
 	@RequestMapping("/month")
 	public ModelAndView month(){
-		ModelAndView view = new ModelAndView(this.viewPath+"month");
-		return view;
+		return new ModelAndView(this.viewPath+"month");
 	}
 	
 	
@@ -58,7 +55,6 @@ public class StatisticsController extends SupportController{
 	
 	@RequestMapping("/plugin_list")
 	public ModelAndView plugin_list(Page page){
-		ModelAndView view = new ModelAndView(this.viewPath+"pluginlist");
-		return view;
+		return new ModelAndView(this.viewPath+"pluginlist");
 	}
 }

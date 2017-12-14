@@ -1,19 +1,17 @@
 package org.marker.mushroom.beans;
 
+import org.marker.mushroom.dao.annotation.Entity;
+
 import java.io.Serializable;
 import java.util.Date;
 
-import org.marker.mushroom.dao.annotation.Entity;
-
-
 /**
  * 第三方访问
- * 
+ *
  * @author dd
  */
 @Entity("three_visit_log")
-public class Three_visit_log implements Serializable
-{
+public class Three_visit_log implements Serializable {
 
 	private static final long serialVersionUID = -286044783950500542L;
 
@@ -38,53 +36,43 @@ public class Three_visit_log implements Serializable
 	 */
 	private Integer userId;
 
-	public Integer getId()
-	{
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(final Integer id)
-	{
+	public void setId(final Integer id) {
 		this.id = id;
 	}
 
-	public String getName()
-	{
+	public String getName() {
 		return name;
 	}
 
-	public void setName(final String name)
-	{
+	public void setName(final String name) {
 		this.name = name;
 	}
 
-	public String getUrl()
-	{
+	public String getUrl() {
 		return url;
 	}
 
-	public void setUrl(final String url)
-	{
+	public void setUrl(final String url) {
 		this.url = url;
 	}
 
-	public Date getTime()
-	{
+	public Date getTime() {
 		return time;
 	}
 
-	public void setTime(final Date time)
-	{
+	public void setTime(final Date time) {
 		this.time = time;
 	}
 
-	public Integer getUserId()
-	{
+	public Integer getUserId() {
 		return userId;
 	}
 
-	public void setUserId(final Integer userId)
-	{
+	public void setUserId(final Integer userId) {
 		this.userId = userId;
 	}
 }

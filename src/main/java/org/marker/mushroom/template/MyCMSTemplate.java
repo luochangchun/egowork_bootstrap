@@ -4,8 +4,6 @@ import freemarker.cache.StringTemplateLoader;
 import freemarker.template.Configuration;
 import freemarker.template.TemplateExceptionHandler;
 import freemarker.template.Version;
-import org.marker.mushroom.alias.Core;
-import org.marker.mushroom.alias.LOG;
 import org.marker.mushroom.context.ActionContext;
 import org.marker.mushroom.core.AppStatic;
 import org.marker.mushroom.core.config.impl.SystemConfig;
@@ -41,11 +39,11 @@ import java.util.Map;
  *
  * @author marker
  */
-@Service(Core.ENGINE_TEMPLATE)
+@Service
 public class MyCMSTemplate {
 
 	/** 日志记录对象 */
-	protected Logger logger = LoggerFactory.getLogger(LOG.TEMPLATE_ENGINE);
+	protected Logger logger = LoggerFactory.getLogger(MyCMSTemplate.class);
 
 	// freemarker配置
 	public final Configuration config = new Configuration(new Version("2.3.23"));

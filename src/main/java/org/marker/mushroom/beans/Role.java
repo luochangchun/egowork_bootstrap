@@ -1,25 +1,22 @@
 /**
- * 
+ *
  */
 package org.marker.mushroom.beans;
+
+import freemarker.template.TemplateModel;
 
 import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
 
-import freemarker.template.TemplateModel;
-
 /**
  * 角色实体
- * 
+ *
  * @author jayd
  * @since 1.0
  */
-public class Role implements Serializable,TemplateModel {
+public class Role implements Serializable, TemplateModel {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -868732181785287519L;
 	//角色对象ID
 	private long role_id;
@@ -34,7 +31,7 @@ public class Role implements Serializable,TemplateModel {
 
 	/**
 	 * getter方法
-	 * 
+	 *
 	 * @return Role对象ID
 	 */
 	public long getRole_id() {
@@ -43,9 +40,8 @@ public class Role implements Serializable,TemplateModel {
 
 	/**
 	 * setter方法
-	 * 
-	 * @param role_id
-	 *            Role对象ID
+	 *
+	 * @param role_id Role对象ID
 	 */
 	public void setRole_id(long role_id) {
 		this.role_id = role_id;
@@ -53,7 +49,7 @@ public class Role implements Serializable,TemplateModel {
 
 	/**
 	 * getter方法
-	 * 
+	 *
 	 * @return Role对象name属性
 	 */
 	public String getRole_name() {
@@ -62,9 +58,8 @@ public class Role implements Serializable,TemplateModel {
 
 	/**
 	 * setter方法
-	 * 
-	 * @param role_name
-	 *            Role对象name属性
+	 *
+	 * @param role_name Role对象name属性
 	 */
 	public void setRole_name(String role_name) {
 		this.role_name = role_name;
@@ -72,7 +67,7 @@ public class Role implements Serializable,TemplateModel {
 
 	/**
 	 * getter方法
-	 * 
+	 *
 	 * @return Role对象descprtion属性
 	 */
 	public String getDescprition() {
@@ -81,9 +76,8 @@ public class Role implements Serializable,TemplateModel {
 
 	/**
 	 * setter方法
-	 * 
-	 * @param descprition
-	 *            Role对象descprition属性
+	 *
+	 * @param descprition Role对象descprition属性
 	 */
 	public void setDescprition(String descprition) {
 		this.descprition = descprition;
@@ -91,7 +85,7 @@ public class Role implements Serializable,TemplateModel {
 
 	/**
 	 * getter方法
-	 * 
+	 *
 	 * @return Role对象关联的user对象的集合
 	 */
 	public Set<User> getUsers() {
@@ -100,9 +94,8 @@ public class Role implements Serializable,TemplateModel {
 
 	/**
 	 * setter方法
-	 * 
-	 * @param users
-	 *            Role对象关联的user对象的集合
+	 *
+	 * @param users Role对象关联的user对象的集合
 	 */
 	public void setUsers(Set<User> users) {
 		this.users = users;
@@ -110,7 +103,7 @@ public class Role implements Serializable,TemplateModel {
 
 	/**
 	 * getter方法
-	 * 
+	 *
 	 * @return Role对象关联的Resource对象的集合
 	 */
 	public List<Resource> getResources() {
@@ -119,13 +112,11 @@ public class Role implements Serializable,TemplateModel {
 
 	/**
 	 * setter方法
-	 * 
-	 * @param resources
-	 *            Role对象关联的Resource对象的集合
+	 *
+	 * @param resources Role对象关联的Resource对象的集合
 	 */
 	public void setResources(List<Resource> resources) {
 		this.resources = resources;
 	}
 
- 
 }

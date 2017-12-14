@@ -1,10 +1,9 @@
 package org.marker.mushroom.beans;
 
-import java.io.Serializable;
-import java.util.Date;
-
 import org.marker.mushroom.dao.annotation.Entity;
 
+import java.io.Serializable;
+import java.util.Date;
 
 /**
  * 我要报名
@@ -13,8 +12,7 @@ import org.marker.mushroom.dao.annotation.Entity;
  * @version 1.0
  */
 @Entity("apply_activity")
-public class Apply_activity implements Serializable
-{
+public class ApplyActivity implements Serializable {
 
 	private static final long serialVersionUID = 4339851351183579192L;
 	/**
@@ -58,103 +56,83 @@ public class Apply_activity implements Serializable
 	 */
 	private Integer userId;
 
-	public Integer getId()
-	{
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(final Integer id)
-	{
+	public void setId(final Integer id) {
 		this.id = id;
 	}
 
-	public Integer getActivityId()
-	{
+	public Integer getActivityId() {
 		return activityId;
 	}
 
-	public void setActivityId(final Integer activityId)
-	{
+	public void setActivityId(final Integer activityId) {
 		this.activityId = activityId;
 	}
 
-	public String getTitle()
-	{
+	public String getTitle() {
 		return title;
 	}
 
-	public void setTitle(final String title)
-	{
+	public void setTitle(final String title) {
 		this.title = title;
 	}
 
-	public String getName()
-	{
+	public String getName() {
 		return name;
 	}
 
-	public void setName(final String name)
-	{
+	public void setName(final String name) {
 		this.name = name;
 	}
 
-	public String getPhone()
-	{
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(final String phone)
-	{
+	public void setPhone(final String phone) {
 		this.phone = phone;
 	}
 
-	public String getEmail()
-	{
+	public String getEmail() {
 		return email;
 	}
 
-	public void setEmail(final String email)
-	{
+	public void setEmail(final String email) {
 		this.email = email;
 	}
 
-	public String getCompany()
-	{
+	public String getCompany() {
 		return company;
 	}
 
-	public void setCompany(final String company)
-	{
+	public void setCompany(final String company) {
 		this.company = company;
 	}
 
-	public Date getTime()
-	{
+	public Date getTime() {
 		return time;
 	}
 
-	public void setTime(final Date time)
-	{
+	public void setTime(final Date time) {
 		this.time = time;
 	}
 
-	public Date getCreateTime()
-	{
+	public Date getCreateTime() {
 		return createTime;
 	}
 
-	public void setCreateTime(final Date createTime)
-	{
+	public void setCreateTime(final Date createTime) {
 		this.createTime = createTime;
 	}
 
-	public Integer getUserId()
-	{
+	public Integer getUserId() {
 		return userId;
 	}
 
-	public void setUserId(final Integer userId)
-	{
+	public void setUserId(final Integer userId) {
 		this.userId = userId;
 	}
 }

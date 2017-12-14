@@ -4,6 +4,8 @@ package org.marker.mushroom.holder;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
+import java.util.Map;
+
 /**
  * 以静态变量保存Spring ApplicationContext, 可在任何代码任何地方任何时候中取出ApplicaitonContext.
  *
@@ -49,7 +51,9 @@ public class SpringContextHolder implements ApplicationContextAware {
 	@SuppressWarnings("unchecked")
 	public static <T> T getBean(Class<T> clazz) {
 		checkApplicationContext();
-		return (T) applicationContext.getBeansOfType(clazz);
+		Map<String, T> map =  applicationContext.getBeansOfType(clazz);
+		return map.values().iterator().next();
+//		return (T) applicationContext.getBeansOfType(clazz);
 	}
 
 	private static void checkApplicationContext() {

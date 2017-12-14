@@ -1,19 +1,20 @@
 package org.marker.mushroom.beans;
 
+import org.marker.mushroom.dao.annotation.Entity;
+
 import java.io.Serializable;
 import java.util.Date;
 
-import org.marker.mushroom.dao.annotation.Entity;
-
-
 /**
  * 内容模型
+ *
  * @author marker
- * */
+ */
 @Entity("model")
-public class Model implements Serializable{
+public class Model implements Serializable {
+
 	private static final long serialVersionUID = -4259189870337220290L;
-	
+
 	/** ID自动生成 */
 	private Integer id;
 	/** 图标 */
@@ -31,10 +32,11 @@ public class Model implements Serializable{
 	/** 安装时间 */
 	private Date time;
 	/** 模型描述 */
-	private String description; 
-	
+	private String description;
+
 	private String module;
-	public Model(){}
+
+	public Model() {}
 
 	public Integer getId() {
 		return id;
@@ -83,7 +85,6 @@ public class Model implements Serializable{
 	public void setAuthor(String author) {
 		this.author = author;
 	}
- 
 
 	public String getVersion() {
 		return version;
@@ -116,10 +117,5 @@ public class Model implements Serializable{
 	public void setModule(String module) {
 		this.module = module;
 	}
- 
-	 
-	
-	
- 
-	 
+
 }

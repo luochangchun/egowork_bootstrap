@@ -1,6 +1,5 @@
 package org.marker.mushroom.servlet;
 
-import org.marker.mushroom.alias.LOG;
 import org.marker.mushroom.context.ActionContext;
 import org.marker.mushroom.core.WebAPP;
 import org.slf4j.Logger;
@@ -26,7 +25,7 @@ public class DispatcherServlet extends HttpServlet {
 	private static final long serialVersionUID = 6700091564520406775L;
 
 	/** 日志记录器 */
-	protected Logger logger = LoggerFactory.getLogger(LOG.WEBFOREGROUND);
+	protected Logger logger = LoggerFactory.getLogger(DispatcherServlet.class);
 
 	/**
 	 * 处理请求/cms?参数=值&
