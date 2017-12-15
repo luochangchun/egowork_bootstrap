@@ -1,0 +1,121 @@
+<div class="content">
+	<div class="tab_bar">
+		<ul>
+			<li class="tab_index" onclick="setTabContent(this);">编辑企业</li>
+		</ul>
+		<button class="btn_tabbar" onclick="mySubmitForm(this);" return="enterprise/list.do?currentPageNo=1">保 存</button>
+	</div> 
+	<form id="myForm" action="enterprise/update.do" method="post">
+	<input type="hidden" name="id" value="${enterprise.id?c}"/>
+	<div class="tab_content">
+		<div class="tab_item tab_show"> 
+			<table class="table_for_add">
+				<tbody> 
+					<tr class="rowBgColor">
+						<th width="140">企业名称： </th>
+						<td><input class="input_for_add" name="name" type="text" value="${enterprise.name!}" /></td>
+						<td><span id="scope_status"></span></td>
+					</tr>
+					<tr>
+						<th>所属领域： </th>
+                        <td><input class="input_for_add" name="field" type="text" value="${enterprise.field!}"  required="true"></td>
+						<td><span id="scope_status"></span></td>
+					</tr>
+                    <tr class="rowBgColor">
+                        <th>联系人： </th>
+                        <td><input class="input_for_add" name="contact" type="text" value="${enterprise.contact!}" required="true"></td>
+                        <td><span id="scope_status"></span></td>
+                    </tr>
+                    <tr>
+                        <th>手机号： </th>
+                        <td><input class="input_for_add" name="phone" type="text" value="${enterprise.phone!}" required="true"></td>
+                        <td><span id="scope_status"></span></td>
+                    </tr>
+                    <tr class="rowBgColor">
+                        <th>邮箱： </th>
+                        <td><input class="input_for_add" name="email" type="text" value="${enterprise.email!}" required="true"></td>
+                        <td><span id="scope_status"></span></td>
+                    </tr>
+                    <tr>
+                        <th>企业logo： </th>
+                        <td>
+                            <input class="input_for_add" id="icon" name="icon" type="text" readonly="readonly" value="${enterprise.icon!}"  style="display:none;"/>
+                            <div class="input_for_img m-l-len">
+                                <div class="img-box" data-src=""></div>
+                                <button type="button" class="img-btn" onclick="frameDialogShow(16/9);">上传</button>
+                            </div>
+                        </td>
+                    </tr>
+					<tr class="rowBgColor">
+						<th>企业简介：</th>
+                        <td>
+                            <textarea name="intro" style="resize:none;" required="true" maxlength="200" onchange="this.value=this.value.substring(0, 200)" onkeydown="this.value=this.value.substring(0, 200)" onkeyup="this.value=this.value.substring(0, 200)">${enterprise.intro!}</textarea>
+                            <p style="margin:0;">(*最多可输入200字)</p>
+                        </td>
+					</tr>
+                    <tr>
+                        <th>企业优势：</th>
+                        <td>
+                        <textarea name="advantage" style="resize:none;" required="true" maxlength="200" onchange="this.value=this.value.substring(0, 200)" onkeydown="this.value=this.value.substring(0, 200)" onkeyup="this.value=this.value.substring(0, 200)">${enterprise.advantage!}</textarea>
+                        <p style="margin:0;">(*最多可输入200字)</p>
+                    </td>
+                    </tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	</form>
+	<!-- 图片上传 -->
+	<div id="showFrameDialog" class="frame_model fixed" style="display:none;">
+		<div class="clear_zone"></div>
+		<div class="frame_window" style="width:800px;margin-left:-400px; height: 500px; margin-top: -250px;">
+			<div class="frame_bar">
+				<span class="title">上传图片</span>
+				<div class="frame_exit" onClick="frameDialogHide()"></div>
+			</div>
+			<div class="frame_content" style="height:464px;">
+				<div class="frame_margin markdown">
+					<form id="uploadForm" action="img/upload.do" method="post" enctype="multipart/form-data" onsubmit="return false;" style="margin-bottom:15px;">
+						<input type="file" onChange="inputImageChange(this)" name="file" style="position:absolute;width:70px;opacity:0;"/>
+						<button type="buttom" class="submit_it" style="float: inherit;">选择图片</button>
+						<input id="imgSrc" name="imgSrc" type="text" style="display:none;"/>
+						<button type="submit" onclick="upload(this)" class=" submit_it" style="float: inherit;">上传</button>
+					</form>
+					<div class="img-container" style="max-width:400px;max-height:300px;float:left;margin-right:15px;">
+			          <img id="image">
+			        </div>
+					<div id="view" style="display:none;border: 1px solid #C8C8C8;width:300px;float:left;"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+
+ //上传图片
+    function upload(obj)
+    {
+//        window.editor.sync();//手动提交需要手动同步编辑器数据
+        uploadForm(obj);
+    }
+imgChange();
+$("#image").on({
+    ready: function (e) {
+    	getCroppedCanvas();
+    },
+    cropmove: function (e) {
+    	getCroppedCanvas();
+    },
+    crop: function (e) {
+    	getCroppedCanvas();
+    },
+    zoom: function (e) {
+    	getCroppedCanvas();
+    }
+}).cropper(options);
+
+
+function mySubmitForm(obj){
+	submitActionForm(obj);
+} 
+</script>
