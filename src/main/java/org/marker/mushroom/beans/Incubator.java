@@ -38,7 +38,18 @@ public class Incubator implements Serializable {
 	private String views;
 	private Double station;
 	private Double office;
+	/** 招商政策 */
+	private String policy;
+	/** 直投基金 */
+	private String fund;
+	/** 孵化器标签（字典） */
 	private String label;
+	/** 空间服务（字典） */
+	private String service;
+	/** 配套设施（字典） */
+	private String facility;
+	/** 入驻类型（字典） */
+	private String enter;
 
 	public Integer getId() {
 		return id;
@@ -246,6 +257,46 @@ public class Incubator implements Serializable {
 
 	public void setLabel(final String label) {
 		this.label = label;
+	}
+
+	public String getPolicy() {
+		return policy;
+	}
+
+	public void setPolicy(String policy) {
+		this.policy = policy;
+	}
+
+	public String getFund() {
+		return fund;
+	}
+
+	public void setFund(String fund) {
+		this.fund = fund;
+	}
+
+	public String getService() {
+		return service;
+	}
+
+	public void setService(String service) {
+		this.service = service;
+	}
+
+	public String getFacility() {
+		return facility;
+	}
+
+	public void setFacility(String facility) {
+		this.facility = facility;
+	}
+
+	public String getEnter() {
+		return enter;
+	}
+
+	public void setEnter(String enter) {
+		this.enter = enter;
 	}
 }
 

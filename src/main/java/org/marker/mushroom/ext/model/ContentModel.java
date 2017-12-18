@@ -8,6 +8,7 @@ import org.marker.mushroom.core.proxy.SingletonProxyFrontURLRewrite;
 import org.marker.mushroom.dao.ISupportDao;
 import org.marker.mushroom.holder.SpringContextHolder;
 import org.marker.mushroom.template.tags.res.SqlDataSource;
+import org.marker.mushroom.utils.StringUtil;
 import org.marker.urlrewrite.URLRewriteEngine;
 
 import java.io.Serializable;
@@ -35,6 +36,17 @@ public abstract class ContentModel {
 
 	/** 内容模型配置信息 */
 	protected Map<String, Object> config;
+
+	/**
+	 * 拼接查询的url字段
+	 * @param type cms?type=
+	 * @param alias 查询的表的别名
+	 */
+	protected String url(String type, String alias) {
+		if (StringUtil.isBlank(type) || StringUtil.isBlank(alias)) return "";
+		return " concat('/cms?','type=" + type + "','&id=',CAST("
+			+ alias + ".id as char),'&time=',DATE_FORMAT(" + alias + ".time,'%Y%m%d')) url";
+	}
 
 	/**
 	 * 初始化一些必要工具
@@ -82,6 +94,7 @@ public abstract class ContentModel {
 
 	/**
 	 * 分类单级数据查询
+	 *
 	 * @noinspection unused
 	 */
 	public void doSingleCategory() {

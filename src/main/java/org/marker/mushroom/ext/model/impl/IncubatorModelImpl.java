@@ -45,8 +45,11 @@ public class IncubatorModelImpl extends ContentModel {
 		final Object incubator = commonDao.queryForMap(sql, id);
 		commonDao.update("update " + prefix + "incubator set views = views+1 where id=?", id);// 更新浏览量
 
+		final String photoSql = "select id, uri from " + getPrefix() + "incubator_photo where incubatorId = ?";
+
 		request.getSession().setAttribute("incubator", incubator);
 		// 必须发送数据
+		request.setAttribute("photos", commonDao.queryForList(photoSql, id));
 		request.setAttribute("incubator", incubator);
 	}
 
