@@ -3,6 +3,8 @@ package org.marker.mushroom.service;
 import org.marker.mushroom.core.config.impl.DataBaseConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
  * 基础业务层
@@ -20,5 +22,8 @@ public class BaseService {
 
 	/** 数据库配置 */
 	protected DataBaseConfig config = DataBaseConfig.getInstance();
+
+	@Autowired
+	protected JdbcTemplate dao;
 
 }

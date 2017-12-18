@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -41,6 +42,11 @@ public class IncubatorService extends BaseService {
 	public Page find(final int currentPageNo, final int pageSize) {
 		final String sql = " select ai.* from " + config.getPrefix() + "apply_incubator ai order by ai.time desc";
 		return commonDao.findByPage(currentPageNo, pageSize, sql);
+	}
+
+	public List<Map<String, Object>> findPhotos(final int id) {
+		final String sql = "select id, uri from " + config.getPrefix() + "incubator_photo where incubatorId = " + id;
+		return commonDao.queryForList(sql);
 	}
 
 }
