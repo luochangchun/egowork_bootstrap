@@ -12,7 +12,13 @@ public class ResultMessage {
 	//消息
 	private String message;
 	// 传值
-	private String param;
+	private Object param;
+
+	public ResultMessage(final String message) {
+		this.status = false;
+		this.message = message;
+		this.param = null;
+	}
 
 	/**
 	 * 登录消息
@@ -32,7 +38,7 @@ public class ResultMessage {
 	 * @param message
 	 * @param param
 	 */
-	public ResultMessage(final boolean status, final String message, final String param) {
+	public ResultMessage(final boolean status, final String message, final Object param) {
 		this.status = status;
 		this.message = message;
 		this.param = param;
@@ -54,11 +60,11 @@ public class ResultMessage {
 		this.message = message;
 	}
 
-	public String getParam() {
+	public Object getParam() {
 		return param;
 	}
 
-	public void setParam(final String param) {
+	public void setParam(final Object param) {
 		this.param = param;
 	}
 }

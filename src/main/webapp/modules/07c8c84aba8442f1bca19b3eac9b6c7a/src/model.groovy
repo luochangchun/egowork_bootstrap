@@ -1,5 +1,3 @@
-package org.marker.mushroom.model.impl;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.marker.mushroom.beans.Article;

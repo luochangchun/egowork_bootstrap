@@ -2,9 +2,9 @@
     <div style="padding-bottom:10px; line-height:40px; vertical-align: top; float:right; overflow: auto; position: absolute;left:0; right:0; height: 80px;">
 	     <select id="incubatorCategory" class="select_for_add" style="width:150px;border-left-width:1px;">
 	     	<option value="">------ 所有类别 ------</option>
-			<@categoryTree id = 0 node = -1/> 
+			<@categoryTree id = 0 node = -1/>
 	     </select>
-	     &nbsp; 
+	     &nbsp;
 	     <select id="status" class="select_for_add" style="width:80px;border-left-width:1px; ">
 	        <option value="0,1">全部状态</option>
 	     	<option value="1">已 发 布</option>
@@ -15,11 +15,11 @@
 		 <button onclick="queryList();"><i class="fa fa-search"></i></button>
 		 <button class="btn_tabbar" action="incubator/add.do" onclick="refreshContentByElement(this);">发布信息</button>
     </div>
-	<div class="table_content" style="overflow: auto;  position: absolute; left:0; right:0; top:45px; bottom:35px; 
+	<div class="table_content" style="overflow: auto;  position: absolute; left:0; right:0; top:45px; bottom:35px;
 	    border: 1px solid #e5e5e5;">
 		<table class="table_for_list">
 			<thead>
-			   <tr> 
+			   <tr>
 		        <th width="30" class="quanxuan" onclick="allCheck();">全选</th>
 		        <th>标题</th>
 		        <th width="120">类别</th>
@@ -27,17 +27,17 @@
 		        <th>流量</th>
 		        <th width="140">发布时间</th>
 		        <th width="80">状态</th>
-		        <th width="60">操作</th>
+		        <th width="80">操作</th>
 		      </tr>
 			</thead>
 		    <tbody id="list-container">
-		     	
+
 			</tbody>
 		</table>
-		
-	</div>		
+
+	</div>
 	<div style="position: absolute; left: 0px; right:0; height: 30px; bottom:0; overflow: hidden; ">
-		 
+
 	    <div style="float:left;margin-left:5px;">
 			<button title="全选" onclick="allCheck();">全选 </button>
 			<button title="反选" onclick="allRecheck();">反选 </button>
@@ -53,53 +53,53 @@
 				<option value="60">60</option>
 				<option value="80">80</option>
 				<option value="100">100</option>
-			</select> 条 
-			
+			</select> 条
+
 			<button onclick="prevPage()" title="上一页"><i class="fa fa-step-backward"></i></button>
 			<button onclick="nextPage()" title="下一页"><i class="fa fa-step-forward"></i></button>
 			&nbsp;
 			<input id="currentPageNo" style="height: 25px; width: 50px;text-align: center;" value="1"  /> / <span id="totalPages">12</span>
 			&nbsp;
 			<button onclick="goPage();"  title="GO"><i class="fa fa-arrow-circle-right"></i></button>
-			
+
     	</div>
     </div>
-    
-    
+
+
 </div>
 <script type="text/javascript">
 var template;
 $(function(){
-	queryList(); 
+	queryList();
 	$("#pageSize").change(function(){ queryList();  });
 	$("#status").change(function(){ queryList();  });
 	$("#incubatorCategory").change(function(){ queryList();  });
-	
+
 	// 加载模板
 	var source   = $("#incubator-template").html();
 	template = Handlebars.compile(source);
-	
-	Date.prototype.format = function(format){ 
-	var o = { 
-	"M+" : this.getMonth()+1, //month 
-	"d+" : this.getDate(), //day 
-	"h+" : this.getHours(), //hour 
-	"m+" : this.getMinutes(), //minute 
-	"s+" : this.getSeconds(), //second 
-	"q+" : Math.floor((this.getMonth()+3)/3), //quarter 
-	"S" : this.getMilliseconds() //millisecond 
+
+	Date.prototype.format = function(format){
+	var o = {
+	"M+" : this.getMonth()+1, //month
+	"d+" : this.getDate(), //day
+	"h+" : this.getHours(), //hour
+	"m+" : this.getMinutes(), //minute
+	"s+" : this.getSeconds(), //second
+	"q+" : Math.floor((this.getMonth()+3)/3), //quarter
+	"S" : this.getMilliseconds() //millisecond
 	};
 
-	if(/(y+)/.test(format)) { 
-	format = format.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length)); 
-	} 
+	if(/(y+)/.test(format)) {
+	format = format.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+	}
 
-	for(var k in o) { 
-		if(new RegExp("("+ k +")").test(format)) { 
-			format = format.replace(RegExp.$1, RegExp.$1.length==1 ? o[k] : ("00"+ o[k]).substr((""+ o[k]).length)); 
-		} 
-	} 
-	return format; 
+	for(var k in o) {
+		if(new RegExp("("+ k +")").test(format)) {
+			format = format.replace(RegExp.$1, RegExp.$1.length==1 ? o[k] : ("00"+ o[k]).substr((""+ o[k]).length));
+		}
+	}
+	return format;
 	};
 	// 注册插件
 	Handlebars.registerHelper('dateformat', function() {
@@ -133,7 +133,7 @@ function queryList(){
 		keyword: keyword,
 		currentPageNo: currentPageNo,
 		pageSize: pageSize
-		
+
 	};
 	$.ajax({
 		url: "incubator.do",
@@ -144,32 +144,32 @@ function queryList(){
 			$("#totalPages").text(json.totalPages);
 			$("#currentPageNo").val(json.currentPageNo);
 			$("#totalPages").text(json.totalPages);
-			
-			
-		 	
+
+
+
 			var html = template({"data":json.data});
-			$('#list-container').html(html); 
-		} 
-		
+			$('#list-container').html(html);
+		}
+
 	});
 }
 
 // 上一页
 function prevPage(){
 	var inputPageNo = $("#currentPageNo");
-	var newPageNo = parseInt(inputPageNo.val())-1; 
+	var newPageNo = parseInt(inputPageNo.val())-1;
 	if(newPageNo <=0){
 		zoom.showMessageDialog("已经到第一页了！", "消息提示",500);
 	}else{
 		inputPageNo.val(newPageNo);
 		queryList();
-	} 
+	}
 }
 
 // 下一页
-function nextPage(){ 
+function nextPage(){
 	var inputPageNo = $("#currentPageNo");
-	var newPageNo = parseInt(inputPageNo.val())+1; 
+	var newPageNo = parseInt(inputPageNo.val())+1;
 	var pageSize  = parseInt($("#totalPages").text());
 	if(newPageNo > pageSize){
 		zoom.showMessageDialog("已经到最后一页了！", "消息提示",500);
@@ -192,7 +192,7 @@ function goPage(){
 		zoom.showMessageDialog("页码格式不正确哈！", "消息提示",500);
 	}else{
 		queryList();
-	} 
+	}
 }
 
 // 删除文章
@@ -202,15 +202,15 @@ function deleteIncubator(obj){
 	zoom.showConfirmDialog("确定删除吗？","消息提示", function(){
 		$.getJSON(action,null,function(data){
 			if(data.status){
-				queryList();  
+				queryList();
 			}else{
-				zoom.showMessageDialog(data.message,"消息提示",1500); 
+				zoom.showMessageDialog(data.message,"消息提示",1500);
 			}
 			zoom.closeConfirmDialog();
 		});
 	});
-	
-	
+
+
 }
 
 function deleteIncubatorCheck(){
@@ -220,10 +220,10 @@ function deleteIncubatorCheck(){
 	$(":checkbox").each(function(){
 		if($(this).attr("checked")){//被选择
 			temp = $(this).attr("value");
-			list += temp + ","; 
+			list += temp + ",";
 		}
 	});
-	list = list.substr(0,list.length-1);//去掉最后的逗号 
+	list = list.substr(0,list.length-1);//去掉最后的逗号
 	if(list == "rid"){//判断有没有选择
 		zoom.showMessageDialog("您还没有选择要删除的信息哦!","消息提示", 1500);
 	}else{
@@ -232,7 +232,7 @@ function deleteIncubatorCheck(){
 				if(data.status){
 					queryList();
 				}else{
-					zoom.showMessageDialog("批量删除失败!<br/>"+data.message,"消息提示", 1500); 
+					zoom.showMessageDialog("批量删除失败!<br/>"+data.message,"消息提示", 1500);
 				}
 				zoom.closeConfirmDialog();
 			});
@@ -281,6 +281,9 @@ function deleteIncubatorCheck(){
 		</a>
 		<a href="#" data-id="{{id}}" onclick="deleteIncubator(this);">
 			<i class="fa fa-trash-o"></i>
+		</a>
+		<a href="#" action="incubator/photo.do?id={{id}}" onclick="refreshContentByElement(this);" title="上传图片">
+			<i class="fa fa-photo"></i>
 		</a>
 	</tr>
 {{/each}}

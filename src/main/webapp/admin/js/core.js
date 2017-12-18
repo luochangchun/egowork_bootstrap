@@ -1,6 +1,6 @@
 /*
  * MRCMS后台交互核心JS文件
- * 
+ *
  * author： marker
  * email：weiweiit@gmail.com
  * blog:  www.yl-blog.com
@@ -17,18 +17,18 @@ window.view_callback = null;// 内容界面，关闭毁掉函数
 
 
 // 导航栏选择状态
-$(function(){ 
+$(function(){
 	$('#admin_nav ul li').click(function(){
 		$(".admin_content")[0].scrollTop = 0;// 滚动条归零
-		
+
 		var indexUrl = $(this).attr('index');
-		if(indexUrl != null && indexUrl != ""){ 
+		if(indexUrl != null && indexUrl != ""){
 			$('.admin_content').load(indexUrl);
 		}
-		
+
 		// showBreadCrumbMenu("", $(this).text()+"管理" );
-		
-		
+
+
 		var showtimeout = setTimeout(function(){
 			zoom.showModelDialog();// 200 毫秒若未加载完毕，则显示加载提示
 		}, options.modelTimeout);
@@ -36,14 +36,14 @@ $(function(){
 			if(showtimeout){clearTimeout(showtimeout);}
 			zoom.closeModelDialog();
 		});
-		
+
 	});
 });
 
 
 // 显示面包屑导航
 function showBreadCrumbMenu(one, two){
-	var lis = $(".bread_crumb_menu li"); 
+	var lis = $(".bread_crumb_menu li");
 	$(lis[2]).html(two);
 	$(lis[4]).html(one);
 }
@@ -52,16 +52,16 @@ function showBreadCrumbMenu(one, two){
 //动态加载内容区域
 function addContent(obj){
 	$(".admin_content")[0].scrollTop = 0;// 滚动条归零
-	
+
 	// 视图切换回调，资源回收操作
-	if(window.view_callback) window.view_callback(); 
-	
-	
+	if(window.view_callback) window.view_callback();
+
+
 	var nav_two = $(obj).parent().parent().parent().children().first().html();
 	var nav_one = $(obj).html();
-	
+
 	showBreadCrumbMenu(nav_one, nav_two );
-	
+
 	var showtimeout = setTimeout(function(){
 		zoom.showModelDialog();// 200 毫秒若未加载完毕，则显示加载提示
 	}, options.modelTimeout);
@@ -127,12 +127,15 @@ function uploadForm(obj)
             dataType: 'application/json',
             contentType:"text/plain;charset=utf-8",
             success: function(data) {
+				console.log(data);
                 zoom.closeConfirmDialog();//关闭确定提示
                 var reg = /<pre.+?>(.+)<\/pre>/g;
                 var result = data.match(reg);
                 data = RegExp.$1;
-                var reg=/[\\]/g;
-                var dataJson = JSON.stringify(data).replace(reg,"");
+				var reg=/[\\]/g;
+				console.log(data);
+				var dataJson = JSON.stringify(data).replace(reg,"");
+				console.log(dataJson);
                 if(dataJson.length  > 0){
                     dataJson = dataJson.substring(1, dataJson.length - 1);
                     dataJson = JSON.parse(dataJson);
@@ -203,14 +206,14 @@ function submitActionForm(obj){
 					if('101' == data.code){// 表示访问正常页面，但会话失效
 						zoom.showMessageDialog(data.message + "<br/>","消息提示",1500,function(){
 							window.location.href = "login.do";// 回调中刷新界面
-						}); 
+						});
 					}else{
-						zoom.showMessageDialog(data.message + "<br/>","消息提示",1500); 
+						zoom.showMessageDialog(data.message + "<br/>","消息提示",1500);
 					}
 				}
 			},
 			error: function(){
-				zoom.showMessageDialog( "网络错误，请重新尝试<br/>","消息提示",1500); 
+				zoom.showMessageDialog( "网络错误，请重新尝试<br/>","消息提示",1500);
 			}
 		};
 		$('#myForm').ajaxSubmit(options);
@@ -300,7 +303,7 @@ function deleteCheck(obj){
 	$(":checkbox").each(function(){
 		if($(this).attr("checked")){//被选择
 			temp = $(this).attr("value");
-			list += temp + ","; 
+			list += temp + ",";
 		}
 	});
 	list = list.substr(0,list.length-1);//去掉最后的逗号
@@ -350,7 +353,7 @@ function refreshContentByElement(obj){
 	$('.admin_content').load(uniqueUrl($(obj).attr('action')), param);
 }
 
- 
+
 
 /* *****************
 * 唯一URL地址算法(内部JS调用方法)
@@ -390,7 +393,7 @@ function transformObject(json){
 
 //全选
 function allCheck(){
-	$(":checkbox").attr("checked",'true');//全选  
+	$(":checkbox").attr("checked",'true');//全选
 }
 //反选
 function allRecheck(){
@@ -457,7 +460,7 @@ zoom.showMessageDialog = function(content,title,time, callback){
 		if(currentDialog != null) window.document.body.removeChild(currentDialog);
 		if(callback != null) callback();// 判断回调函数是否存在，存在则调用。
 	},time);
-}; 
+};
 
 
 /* 显示确定框Dialog */
@@ -492,8 +495,8 @@ zoom.showConfirmDialog = function(content,title,fun){
 	$("#dialogButtonCancel").bind("click",function(){
 		zoom.closeConfirmDialog();
 	});
-	
-}; 
+
+};
 
 
 /* 输入框框 */
@@ -572,13 +575,13 @@ zoom.showTextareaDialog = function(content,title,fun){
         zoom.closeTextareaDialog();
     });
 };
-/* 
+/*
  * 模态窗口
  * */
 zoom.closeModelDialog = function(){
 	var showInputDialog = document.getElementById("showModelDialog");
 	if(showInputDialog != null) window.document.body.removeChild(showInputDialog);
-	
+
 };
 
 zoom.showModelDialog = function(){
@@ -586,17 +589,17 @@ zoom.showModelDialog = function(){
 	$(dialog_div).attr("id","showModelDialog");
 
 	$(dialog_div).addClass("loading_model");
-	
+
 	var htmlText = "<div class=\"clear_zone\"></div>" +
 		 "<div class=\"loading_info\">" +
 	     "<i class=\"fa fa-spinner loading_animation\"></i> 正在载入页面 ......" +
 	 "</div>";
 	$(dialog_div).html(htmlText);
-	window.document.body.appendChild(dialog_div); 
+	window.document.body.appendChild(dialog_div);
 };
 
 
-/* 
+/*
  * iframe窗口
  * */
 
@@ -606,9 +609,9 @@ zoom.closeFrameDialog = function(){
 };
 zoom.showFrameDialog = function(title,width,height,content){
 	var dialog_div = document.createElement("div");
-	$(dialog_div).attr("id","showFrameDialog"); 
+	$(dialog_div).attr("id","showFrameDialog");
 	$(dialog_div).addClass("frame_model");
-	
+
 	var htmlText = "<div class=\"clear_zone\"></div>" +
 		 "<div class=\"frame_window\" style=\"width:"+width+"px;margin-left:-"+(width/2)+"px; height: "+height+"px; margin-top: -"+(height/2)+"px;"+   "\">" +
 	     	"<div class=\"frame_bar\"><span class=\"title\">"+title+"</span><div class=\"frame_exit\"></div></div>"+
@@ -617,8 +620,8 @@ zoom.showFrameDialog = function(title,width,height,content){
 	     	"</div></div>" +
 	 "</div>";
 	$(dialog_div).html(htmlText);
-	window.document.body.appendChild(dialog_div); 
-	
+	window.document.body.appendChild(dialog_div);
+
 	$(dialog_div).on("click",".frame_exit",function(){
 		zoom.closeFrameDialog();
 	});

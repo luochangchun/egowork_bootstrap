@@ -1,6 +1,8 @@
 package org.marker.mushroom.controller;
 
+import org.apache.commons.codec.binary.Base64;
 import org.marker.mushroom.beans.Incubator;
+import org.marker.mushroom.beans.IncubatorPhoto;
 import org.marker.mushroom.beans.Page;
 import org.marker.mushroom.beans.ResultMessage;
 import org.marker.mushroom.core.AppStatic;
@@ -10,14 +12,19 @@ import org.marker.mushroom.service.impl.CategoryService;
 import org.marker.mushroom.service.impl.DictionariesService;
 import org.marker.mushroom.service.impl.IncubatorService;
 import org.marker.mushroom.support.SupportController;
+import org.marker.mushroom.utils.DateUtils;
 import org.marker.mushroom.utils.HttpUtils;
+import org.marker.mushroom.utils.StringUtil;
+import org.marker.mushroom.utils.UUIDGenerator;
 import org.marker.urlrewrite.URLRewriteEngine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,6 +33,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -81,6 +92,87 @@ public class IncubatorController extends SupportController {
 		view.addObject("regions", dictionariesService.findDictionaries("region", "incubator"));
 
 		return view;
+	}
+
+	@GetMapping("/photo")
+	public ModelAndView photoView(@RequestParam("id") final int id) {
+		final ModelAndView view = new ModelAndView(this.viewPath + "photo");
+		view.addObject("incubator", commonDao.findById(Incubator.class, id));
+		view.addObject("photos", incubatorService.findPhotos(id));
+		return view;
+	}
+
+	@DeleteMapping("/photo")
+	@ResponseBody
+	public ResultMessage delPhoto(@RequestParam("id") final int id) {
+		commonDao.deleteByIds(IncubatorPhoto.class, String.valueOf(id));
+		return new ResultMessage(true, "删除成功！");
+	}
+
+	@PostMapping("/photo")
+	@ResponseBody
+	public ResultMessage photoUpload(@RequestParam("id") int id,
+									 @RequestParam("imgSrc") final String imgSrc,
+									 final HttpServletRequest request) {
+		final HttpSession session = request.getSession();
+		final Integer userId = (Integer) session.getAttribute(AppStatic.WEB_APP_SESSION_USER_ID);
+
+		if (StringUtil.isBlank(imgSrc)) {
+			log.info("file upload error: no file upload!");
+			return new ResultMessage("上传文件不存在!");
+		}
+
+		try {
+			//转换成图片的base64不要data:image/jpg;base64,这个头文件
+			final String header = imgSrc.substring(0, imgSrc.indexOf(","));
+			final String suffix = header.substring(header.indexOf("/") + 1, header.indexOf(";"));
+			final String fileName = System.currentTimeMillis() + "_" + UUIDGenerator.getPureUUID() + "." + suffix;
+
+			String realPath = request.getSession().getServletContext().getRealPath("");
+			realPath = realPath.substring(0, realPath.indexOf(request.getContextPath()));
+			String uri = File.separator + "upload" + File.separator + "qb"
+				+ File.separator + DateUtils.dateToString(new Date(), "yyyyMMdd");
+			String dirPath = realPath + uri;
+			String fullPath = dirPath + File.separator + fileName;
+
+			log.debug(fullPath);
+			new File(dirPath).mkdirs();
+
+			final int delLength = imgSrc.indexOf(',') + 1;
+			final String imgBase64 = imgSrc.substring(delLength, imgSrc.length() - delLength);
+			byte[] fileByteArr = imgBase64.getBytes("UTF-8");
+			//拿到上传文件的输入流
+			fileByteArr = Base64.decodeBase64(fileByteArr);
+
+			FileOutputStream os = null;
+			InputStream in = null;
+			try {
+				os = new FileOutputStream(fullPath);
+				in = new ByteArrayInputStream(fileByteArr);
+				int b;
+				while ((b = in.read()) != -1) {
+					os.write(b);
+				}
+				os.flush();
+			} catch (Exception e) {
+				e.printStackTrace();
+				return new ResultMessage("上传失败，文件写入失败!");
+			} finally {
+				if (os != null) os.close();
+				if (in != null) in.close();
+			}
+
+			IncubatorPhoto photo = new IncubatorPhoto();
+			photo.setUri(uri);
+			photo.setIncubatorId(id);
+			if (!commonDao.save(photo)) {
+				return new ResultMessage("上传失败，数据写入失败!");
+			}
+			return new ResultMessage(true, "上传成功!", photo);
+		} catch (final Exception e) {
+			e.printStackTrace();
+			return new ResultMessage("上传失败!");
+		}
 	}
 
 	/**

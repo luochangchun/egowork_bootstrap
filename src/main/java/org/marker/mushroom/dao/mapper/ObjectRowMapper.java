@@ -2,6 +2,7 @@ package org.marker.mushroom.dao.mapper;
 
 import org.marker.mushroom.beans.Category;
 import org.marker.mushroom.beans.Channel;
+import org.marker.mushroom.beans.Dictionaries;
 import org.marker.mushroom.beans.Menu;
 import org.marker.mushroom.beans.Model;
 import org.marker.mushroom.beans.Module;
@@ -183,4 +184,16 @@ public final class ObjectRowMapper {
 		}
 
 	}
+
+	public static final class RowMapperDict implements RowMapper<Dictionaries> {
+		public Dictionaries mapRow(final ResultSet rs, final int arg1) throws SQLException {
+			final Dictionaries dict = new Dictionaries();
+			dict.setId(rs.getInt("id"));
+			dict.setName(rs.getString("name"));
+			dict.setValue(rs.getString("value"));
+			dict.setType(rs.getString("type"));
+			return dict;
+		}
+	}
+
 }

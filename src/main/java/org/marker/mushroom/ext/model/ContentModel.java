@@ -120,9 +120,9 @@ public abstract class ContentModel {
 	 * 抓取内容
 	 * 可能有的模型不需要获取内容，由此类提供适配。
 	 *
-	 * @param cid 内容ID
+	 * @param id 内容ID
 	 * @return
 	 */
-	public void fetchContent(Serializable cid) { }
+	public void fetchContent(Serializable id) { }
 
 }
