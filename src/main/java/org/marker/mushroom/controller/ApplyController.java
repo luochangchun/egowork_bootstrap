@@ -23,7 +23,11 @@ import java.util.Date;
 @RequestMapping("/front/Apply")
 public class ApplyController extends SupportController {
 
-	//共享会议室申请
+	/**
+	 * 共享会议室申请
+	 * @param roomApply
+	 * @return
+	 */
 	@PostMapping("/inster/roomapply")
 	@ResponseBody
 	public ResultMessage Roominster(final RoomApply roomApply) {
@@ -36,7 +40,11 @@ public class ApplyController extends SupportController {
 
 	}
 
-	//预约参观申请
+	/**
+	 * 预约参观申请
+	 * @param visitApply
+	 * @return
+	 */
 	@PostMapping("/inster/visitapply")
 	@ResponseBody
 	public ResultMessage Visitinster(final VisitApply visitApply) {
@@ -48,7 +56,11 @@ public class ApplyController extends SupportController {
 		}
 	}
 
-	//线上孵化器表单提交
+	/**
+	 * 线上孵化器表单提交
+	 * @param onlineApply
+	 * @return
+	 */
 	@PostMapping("/inster/onlineapply")
 	@ResponseBody
 	public ResultMessage Onlineinster(final OnlineApply onlineApply) {
@@ -60,7 +72,11 @@ public class ApplyController extends SupportController {
 		}
 	}
 
-	//租赁空间,众创空间
+	/**
+	 * 租赁空间,众创空间
+	 * @param spaceApply
+	 * @return
+	 */
 	@PostMapping("/inster/tenancy")
 	@ResponseBody
 	public ResultMessage tenancyinster(final SpaceApply spaceApply) {

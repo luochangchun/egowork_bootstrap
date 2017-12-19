@@ -22,7 +22,12 @@ public class VisitApplyController extends SupportController {
 		this.viewPath = "/admin/visitapply/";
 	}
 
-	//预约参观申请页面展示
+
+	/**
+	 *预约参观者页面展示
+	 * @param page
+	 * @return
+	 */
 	@RequestMapping("/list")
 	public ModelAndView list(Page page) {
 		ModelAndView view = new ModelAndView(this.viewPath + "list");
@@ -31,7 +36,11 @@ public class VisitApplyController extends SupportController {
 		return view;
 	}
 
-	//删除
+	/**
+	 * 删除
+	 * @param rid
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping("/delete")
 	public ResultMessage delect(@RequestParam("rid") String rid) {

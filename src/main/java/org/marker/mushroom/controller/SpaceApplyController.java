@@ -22,7 +22,13 @@ public class SpaceApplyController extends SupportController {
 		this.viewPath = "/admin/spaceapply/";
 	}
 
-	//页面展示
+	/**
+	 * 页面展示
+	 *
+	 * @param page
+	 * @param ApplyId
+	 * @return
+	 */
 	@RequestMapping("/list")
 	public ModelAndView list(Page page, @RequestParam(value = "cid", required = false, defaultValue = "0") int ApplyId) {
 		ModelAndView view = new ModelAndView(this.viewPath + "list");
@@ -37,7 +43,12 @@ public class SpaceApplyController extends SupportController {
 		return view;
 	}
 
-	//删除
+	/**
+	 * 删除
+	 *
+	 * @param rid
+	 * @return
+	 */
 	@RequestMapping("/delete")
 	@ResponseBody
 	public ResultMessage delete(@RequestParam("rid") String rid) {
