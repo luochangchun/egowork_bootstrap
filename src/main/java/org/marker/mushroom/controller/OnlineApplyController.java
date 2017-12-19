@@ -33,7 +33,7 @@ public class OnlineApplyController extends SupportController{
 	//删除
 	@ResponseBody
 	@RequestMapping("/delete")
-	public Object delect(@RequestParam("rid")String rid){
+	public ResultMessage delect(@RequestParam("rid")String rid){
 		Boolean struts = commonDao.deleteByIds(OnlineApply.class,rid);
 		if(struts){
 			return new ResultMessage(true,"删除成功！");

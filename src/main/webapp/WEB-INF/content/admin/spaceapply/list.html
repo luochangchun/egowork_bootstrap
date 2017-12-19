@@ -7,16 +7,16 @@
         <select id="tenancySpaceApply" class="tab_bar" style="width:100px;border-left-width:1px;">
             <#if ApplyId==2>
             <option value="0">--- 全部 ---</option>
-            <option value="2" selected>工位租赁申请</option>
-            <option value="1">双创空间申请</option>
+            <option value="2" selected>租赁空间申请</option>
+            <option value="1">众创空间申请</option>
             <#elseif ApplyId==1>
             <option value="0">--- 全部 ---</option>
-            <option value="2">工位租赁申请</option>
-            <option value="1" selected>双创空间申请</option>
+            <option value="2">租赁空间申请</option>
+            <option value="1" selected>众创空间申请</option>
             <#else>
             <option value="0" selected>--- 全部 ---</option>
-            <option value="2">工位租赁申请</option>
-            <option value="1">双创空间申请</option>
+            <option value="2">租赁空间申请</option>
+            <option value="1">众创空间申请</option>
         </#if>
         </select>
     </div>
@@ -50,7 +50,9 @@
 				        <td>${x.appellation!}</td>
                         <td>${x.quantity!}</td>
                         <td>${x.cases!}</td>
-                        <td>${x.bool?string("是","否")}</td>
+                        <td>
+                            ${x.graduate?string("是","否")}
+                        </td>
                         <td>${x.range!}</td>
                         <td>${x.area!}</td>
                         <td>${x.name!}</td>

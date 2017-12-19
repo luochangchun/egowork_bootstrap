@@ -177,6 +177,7 @@ public class IncubatorController extends SupportController {
 
 	/**
 	 * 持久化文章操作
+	 *
 	 * @return
 	 */
 	@ResponseBody

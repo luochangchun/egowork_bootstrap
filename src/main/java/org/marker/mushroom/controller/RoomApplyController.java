@@ -33,7 +33,7 @@ public class RoomApplyController extends SupportController{
 	//删除
 	@RequestMapping("/delete")
 	@ResponseBody
-	public Object delete(@RequestParam("rid")String rid){
+	public ResultMessage delete(@RequestParam("rid")String rid){
 		Boolean struts = commonDao.deleteByIds(RoomApply.class,rid);
 		if(struts){
 			return new ResultMessage(true,"删除成功！");
