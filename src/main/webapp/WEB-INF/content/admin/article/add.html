@@ -10,14 +10,14 @@
 	<input id="status" name="status" value="0" type="hidden" />
 	<input  name="userId" value="${userid!}" type="hidden" />
 	<div class="tab_content">
-		<div class="tab_item tab_show"> 
+		<div class="tab_item tab_show">
 			<table class="table_for_add">
 				<tbody>
 					<tr class="rowBgColor">
 						<th width="140">文章类别：</th>
 						<td>
 							<select class="select_for_add" name="cid">
-					  			<@categoryTree id = 0 node = -1/> 
+					  			<@categoryTree id = 0 node = -1/>
 							</select>
 						</td>
 					</tr>
@@ -40,7 +40,7 @@
 						<td>
 							<input id="statistics_1" name="type" type="radio" value="0" checked="checked" /><label for="statistics_1">&nbsp;HTML&nbsp; &nbsp;</label>
 							<input id="statistics_2" name="type" type="radio" value="1" /><label for="statistics_2">&nbsp;text/markdown&nbsp; &nbsp;</label>
-		
+
 							<span class="tip_text">切换类型将会清空内容哦!</span>
 						</td>
 						<td></td>
@@ -48,10 +48,10 @@
 					<tr>
 				    	<th>文章内容：</th>
 						<td></td>
-					</tr> 
+					</tr>
 				    <tr>
 						<td colspan="2" >
-							<script type="text/plain" id="mushroomeditor" name="content"  style="height:350px;"/>
+							<script type="text/plain" id="mushroomeditor" name="content"  style="height:350px;"></script>
 						</td>
 					</tr>
 					<tr class="rowBgColor">
@@ -87,9 +87,9 @@
 				<div class="frame_margin markdown">
 					<form id="uploadForm" action="img/upload.do" method="post" enctype="multipart/form-data" onsubmit="return false;" style="margin-bottom:15px;">
 						<input type="file" onChange="inputImageChange(this)" name="file" style="position:absolute;width:70px;opacity:0;"/>
-						<button type="buttom" class="submit_it" style="float: inherit;">选择图片</button>					
+						<button type="buttom" class="submit_it" style="float: inherit;">选择图片</button>
 						<input id="imgSrc" name="imgSrc" type="text" style="display:none;"/>
-						<button type="submit" onclick="upload(this)" class=" submit_it" style="float: inherit;">上传</button>					
+						<button type="submit" onclick="upload(this)" class=" submit_it" style="float: inherit;">上传</button>
 					</form>
 					<div class="img-container" style="max-width:400px;max-height:300px;float:left;margin-right:15px;">
 			          <img id="image">
@@ -127,14 +127,14 @@ $(function(){
  		editor.execCommand( 'source');
 		if($(this).val() == 1){
  	 		editor.setDisabled();
-		}else{ 
+		}else{
 			editor.setEnabled();
 		}
 	 	editor.setContent('');
 	});
-	
-	
-	
+
+
+
 	if(window.editor != null){
 		window.editor.destroy();
 	}
@@ -142,18 +142,18 @@ $(function(){
     //实例化编辑器
     //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
     window.editor = UE.getEditor('mushroomeditor');
- 	
+
  	window.editor.ready(function(){
  		$("#title").focus();
- 		
+
  		var status = editor.queryCommandState( 'source' );
  		if(status != 1){
- 			
+
  		}
 
- 		
+
  	});
- 	 
+
 });
 
 
@@ -170,7 +170,7 @@ function submit(obj){
 	});
 	if(!isDone) return;
 	submitActionForm(obj);
-	
+
 }
 
 
@@ -187,20 +187,20 @@ function save(obj){
 		}
 	});
 	if(!isDone) return;
-	submitActionForm(obj); 
-	
+	submitActionForm(obj);
+
 }
 
- 
+
 	$('#myForm').validator({
 	    // 传入字段集合
 	    fields: {
-	    	"title": "required" 
+	    	"title": "required"
 	    }
 	});
-	
-	
- 
+
+
+
 
 
 
@@ -209,7 +209,7 @@ function save(obj){
  * */
 function keyword(){
 	var title = $("#title").val();
-	var content = window.editor.getContent(); 
+	var content = window.editor.getContent();
 	$.ajax({
 		url:"../keywords.do",
 		type:"POST",
@@ -219,7 +219,7 @@ function keyword(){
 			$("#keywords").val(data);
 		}
 	});
-	
+
 }
 </script>
 
@@ -230,7 +230,7 @@ function keyword(){
 	  	<option value="${x.id?c}"><#list 0..temp as i> &nbsp; &nbsp; </#list>├ ${x.name!}</option>
 	    <@categoryTree id = x.id node=temp/>
       	</#if>
-	</#list> 
+	</#list>
 </#macro>
 
 <#macro articleTree id node>

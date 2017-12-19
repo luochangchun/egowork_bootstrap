@@ -10,9 +10,9 @@
 	<input id="status" name="status" value="0" type="hidden" />
 	<input name="userId" value="${userid!}" type="hidden" />
 	<input name="author" type="hidden" value="${loginusername!}" />
-		<input id="label" name="label" type="hidden" value=""/>
+	<input id="label" name="label" type="hidden" value=""/>
 	<div class="tab_content">
-		<div class="tab_item tab_show"> 
+		<div class="tab_item tab_show">
 			<table class="table_for_add">
 				<tbody>
 					<tr class="rowBgColor">
@@ -95,9 +95,9 @@
 				<div class="frame_margin markdown">
 					<form id="uploadForm" action="img/upload.do" method="post" enctype="multipart/form-data" onsubmit="return false;" style="margin-bottom:15px;">
 						<input type="file" onChange="inputImageChange(this)" name="file" style="position:absolute;width:70px;opacity:0;"/>
-						<button type="buttom" class="submit_it" style="float: inherit;">选择图片</button>					
+						<button type="buttom" class="submit_it" style="float: inherit;">选择图片</button>
 						<input id="imgSrc" name="imgSrc" type="text" style="display:none;"/>
-						<button type="submit" onclick="upload(this)" class=" submit_it" style="float: inherit;">上传</button>					
+						<button type="submit" onclick="upload(this)" class=" submit_it" style="float: inherit;">上传</button>
 					</form>
 					<div class="img-container" style="max-width:400px;max-height:300px;float:left;margin-right:15px;">
 			          <img id="image">
@@ -179,7 +179,7 @@ function submit(obj){
 	});
 	if(!isDone) return;
 	submitActionForm(obj);
-	
+
 }
 
 function save(obj){
@@ -195,7 +195,7 @@ function save(obj){
 	});
 	if(!isDone) return;
 	submitActionForm(obj);
-	
+
 }
 
 $('#myForm').validator({
