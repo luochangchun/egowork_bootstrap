@@ -12,27 +12,27 @@ import java.io.Serializable;
 public class SpaceApply implements Serializable {
 
 	private Integer id;
-	//类型,type=1为众创空间，2为租赁空间
+	/**类型,type=1为众创空间，2为空间租赁*/
 	private Integer type;
-	//所属孵化器id
+	/**所属孵化器id*/
 	private Integer incubatorId;
-	//所属孵化器
+	/**所属孵化器*/
 	private String incubator;
-	//公司名称
+	/**公司名称*/
 	private String appellation;
-	//团队人数
+	/**团队人数*/
 	private Integer quantity;
-	//成立情况
+	/**成立情况*/
 	private String cases;
-	//是否毕业5年以上
-	private Boolean bool;
-	//公司经营范围
+	/**是否毕业五年以上,1是，2否*/
+	private int graduate;
+	/**公司经营范围*/
 	private String range;
-	//type=1，所需工位数量/type=2，所需办公面积
+	/**type=1，所需工位数量/type=2，所需办公面积*/
 	private Integer area;
-	//联系人
+	/**联系人*/
 	private String name;
-	//联系电话
+	/**联系电话*/
 	private String phone;
 
 	public Integer getId() {
@@ -91,12 +91,12 @@ public class SpaceApply implements Serializable {
 		this.cases = cases;
 	}
 
-	public Boolean getBool() {
-		return bool;
+	public int getGraduate() {
+		return graduate;
 	}
 
-	public void setBool(Boolean bool) {
-		this.bool = bool;
+	public void setGraduate(int graduate) {
+		this.graduate = graduate;
 	}
 
 	public String getRange() {

@@ -16,30 +16,30 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 @RequestMapping("/admin/visitapply")
-public class VisitApplyController extends SupportController{
+public class VisitApplyController extends SupportController {
 
-
-	public VisitApplyController () {
-		this.viewPath="/admin/visitapply/";
+	public VisitApplyController() {
+		this.viewPath = "/admin/visitapply/";
 	}
 
 	//预约参观申请页面展示
 	@RequestMapping("/list")
-	public ModelAndView list(Page page){
-		ModelAndView view = new ModelAndView(this.viewPath+"list");
-		view.addObject("page",commonDao.findByPage(page.getCurrentPageNo(),10,"select * from " + prefix + "visit_apply order by id desc"));
+	public ModelAndView list(Page page) {
+		ModelAndView view = new ModelAndView(this.viewPath + "list");
+		view.addObject("page", commonDao.findByPage(page.getCurrentPageNo(), 10,
+													"select * from " + prefix + "visit_apply order by id desc"));
 		return view;
 	}
 
 	//删除
 	@ResponseBody
 	@RequestMapping("/delete")
-	public Object delect(@RequestParam("rid")String rid){
-		boolean struts = commonDao.deleteByIds(VisitApply.class,rid);
-		if(struts){
-			return new ResultMessage(true,"删除成功！");
-		}else{
-			return new ResultMessage(false,"删除失败！");
+	public ResultMessage delect(@RequestParam("rid") String rid) {
+		boolean struts = commonDao.deleteByIds(VisitApply.class, rid);
+		if (struts) {
+			return new ResultMessage(true, "删除成功！");
+		} else {
+			return new ResultMessage(false, "删除失败！");
 		}
 	}
 }
