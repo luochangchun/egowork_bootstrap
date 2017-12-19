@@ -1,0 +1,1144 @@
+body {
+    font-family: "Microsoft YaHei";
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: transparent;
+}
+
+/*头部*/
+.index_btn{
+    width:120px;
+    height:30px;
+    border-radius:16px;
+    font-size:16px;
+    color:#fff;
+    background-color:#18b494;
+    border:none;
+}
+.top{
+    width:100%;
+    height:50px;
+    line-height:50px;
+    background-color:#2e2a3f!important;
+    position: fixed;
+    top:0;
+    left:0;
+    z-index:10000;
+}
+.navbar-collapse{
+    padding:0;
+}
+.index_login{
+    font-size:16px;
+    color:#fff;
+}
+.header .cur{
+    background-color: transparent!important;
+}
+.nav,
+.nav ul,
+.nav ul li,
+.nav ul li a,
+.nav #menu-button {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    list-style: none;
+    line-height: 1;
+    display: block;
+    position: relative;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.nav {
+    width: auto;
+    line-height: 1;
+    padding: 12px 0;
+    display: block;
+    right: 0;
+    z-index: 10;
+}
+.nav > li > a:hover, .nav > li > a{
+    color:#2e2a3f;
+    font-size:16px;
+}
+.header_btn{
+    width: 120px;
+    height: 30px;
+    line-height:30px;
+    border-radius: 16px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #18b494;
+    border: none;
+}
+.top{
+    color:#fff;
+}
+.pull-right a{
+    color:#fff;
+}
+.box-shadow{
+    clear:both;
+    margin-top:50px;
+}
+.bg-img{
+    background: url(../img/banner_1.png) no-repeat center center;
+    height:1030px;
+}
+.bg-color{
+    background-color:#fff;
+}
+/*头部*/
+
+
+
+
+/*footer*/
+.padder-v-md ul li{
+    width:100%;
+    color:#aaa;
+    font-size:14px;
+    line-height:25px;
+}
+.footer_logo img{
+    width:220px;
+    height:63px;
+    margin-left:0;
+    margin-bottom:50px;
+}
+.padder-v-md ul li:first-child{
+    margin-bottom:20px;
+    font-size:16px;
+    color:#ccc;
+}
+.attention{
+    margin-bottom:30px;
+    font-size:16px;
+    color:#ccc;
+    text-align: center;
+}
+.footer{
+    background-color: rgb(46,42,43);
+    height: 278px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.padder-v-xxs {
+    height:50px;
+    line-height:50px;
+}
+.tc {
+    text-align: center;
+}
+.bg-dark{
+    color: #666666;
+    background-color: #222222;
+}
+.footer ul li{
+    list-style: none;
+}
+/*footer*/
+
+
+
+
+
+
+/*首页*/
+/*为什么选择我们*/
+.index_why div{
+    background:url(../img/why_1.png) no-repeat center center;
+    width:40px;
+    margin-top:20px;
+    transition: all 0.4s;
+}
+.index_why div:hover{
+    background:url(../img/why_2.png) no-repeat center center;
+    background-color:#000;
+    transition: all 0.4s;
+}
+/*common*/
+.title{
+    margin-top:100px;
+    color:#2e2a3f;
+    font-size:48px;
+    text-align: center;
+    margin-bottom:100px;
+}
+.bg_title{
+    background-color:#e5ebe9;
+    padding-bottom:100px;
+    margin-top:100px;
+}
+
+.height{
+    height:300px;
+}
+/*.distance{*/
+/*padding-bottom:150px;*/
+/*}*/
+/*common*/
+.index_why{
+    width:224px;
+    overflow:hidden;
+    text-align:center;
+    /*margin-bottom:50px;*/
+    margin: auto;
+}
+.index_why div{
+    border:2px solid #2e2a3f;
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    margin-left:30%;
+    margin-bottom:10px;
+}
+.index_why_p{
+    text-align: center;
+    line-height:22px;
+    font-size:16px;
+    margin-bottom:20px;
+}
+/*为什么选择我们*/
+
+
+
+/*国家级孵化器*/
+.index_incubator{
+    position:relative;
+    /*width:576px;*/
+    height:582px;
+}
+.index_incubator_img img{
+    /*width:576px;*/
+    height:555px!important;
+}
+.el-carousel__container {
+    position: relative;
+    height: 582px;
+}
+.el-carousel__indicators{
+    display: none;
+}
+.carousel_btn .el-carousel__arrow--left{
+    top:495px;
+    left:26px;
+    z-index:100000;
+}
+.carousel_btn .el-carousel__arrow--right{
+    top:495px;
+    right:456px;
+    z-index:100000;
+}
+.carousel_btn .el-carousel__arrow:hover {
+    color:#18b494;
+}
+
+.index_incubator_content {
+    background-color: rgba(46, 42, 63, 0.5);
+    height: 555px;
+    bottom: 39px;
+    position: absolute;
+    padding: 60px 30px;
+    z-index: 100;
+    top:-582px;
+}
+.index_incubator_content h3{
+    font-size:24px;
+    color:#fff;
+    margin-bottom:32px;
+}
+.index_incubator_content p{
+    font-size:16px;
+    color:#999;
+    line-height:30px;
+}
+/*.carousel-control{*/
+/**/
+/*}*/
+.prev{
+    top:450px;
+    z-index: 10000;
+    position: absolute;
+    bottom: 0;
+    left: 35px;
+    width: 2%;
+    font-size: 10px;
+    color: #fff;
+    text-align: center;
+    /*text-shadow: 0 1px 2px rgba(0, 0, 0, .6);*/
+    filter: alpha(opacity=50);
+    opacity: .5;
+}
+.next{
+    top:450px;
+    z-index: 10000;
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    width: 2%;
+    font-size: 10px;
+    color: #fff;
+    text-align: center;
+    /*text-shadow: 0 1px 2px rgba(0, 0, 0, .6);*/
+    filter: alpha(opacity=50);
+    opacity: .5;
+}
+.fa-2x {
+    font-size: 1em;
+}
+.carousel-control.left{
+    background-color: transparent;
+}
+.fa-chevron-right {
+    position: absolute;
+    left:100px;
+}
+.fa-chevron-left {
+    position: absolute;
+}
+
+
+
+
+
+
+
+
+.label{
+    display: block;
+    width:130px;
+    height:26px;
+    line-height:26px;
+    font-size:12px;
+    color:#18b494;
+    border-radius:13px;
+    border:1px solid #18b494;
+    background-color: transparent;
+    margin-top: 36px;
+    text-align: center;
+}
+.right_img img{
+    height:158px;
+    width:175px;
+}
+.right_img{
+    /*height:167px;*/
+    /*width:220px;*/
+    margin-right: 20px;
+    margin-bottom:40px;
+}
+.right_content h3{
+    font-size:18px;
+    color:#333;
+    margin-bottom:10px;
+    margin-top:0;
+}
+.right_content p{
+    font-size:16px;
+    color:#333;
+    line-height:26px;
+}
+
+.small_btn button{
+    width:30px;
+    height:30px;
+    border:none;
+    background-color:#352f4f;
+    border-radius:4px;
+    color:#fff;
+}
+
+.label2{
+    display:inline-block;
+    padding:0 10px;
+    line-height:22px;
+    font-size:12px;
+    color:#18b494;
+    border-radius:4px;
+    border:1px solid #18b494;
+    background-color: transparent;
+    text-align: center;
+    margin-top:0;
+    margin-bottom:5px;
+}
+
+
+/*国家级孵化器*/
+
+/*数字*/
+.number{
+    width:100%;
+}
+.number img{
+    width:100%;
+    height:300px;
+    position:absolute;
+}
+.number .container{
+    position:relative;
+    top:0;
+    left:0;
+
+}
+.fullwidth-block-inner{
+    height:300px;
+}
+.index_number{
+    margin-top: 80px;
+}
+.index_number .num{
+    color:#18b494;
+    font-size:67px;
+    text-align: center;
+}
+.index_number_title{
+    font-size: 20px;
+    color:#fff;
+    margin-top: 5px;
+    text-align: center;
+}
+/*动画*/
+
+
+
+
+/*数字*/
+
+
+/*全面专业的服务体系*/
+.index_service{
+    height:300px;
+}
+.index_color:nth-child(1),.index_color:nth-child(3),.index_color:nth-child(6),.index_color:nth-child(8){
+    background-color:#e5ebe9;
+}
+.index_color:nth-child(2),.index_color:nth-child(4),.index_color:nth-child(5),.index_color:nth-child(7){
+    background-color:#d3ddda;
+}
+.index_color:hover{
+    background-color:#fff;
+}
+.index_service img{
+    /*width:200px;*/
+    height:200px;
+    padding-top: 50px;
+    padding-bottom:40px;
+}
+.index_service p{
+    margin-top:0;
+    line-height:30px;
+    height:30px;
+    font-size:24px;
+    color:#2e2a3f;
+    text-align: center;
+}
+
+/*动画*/
+.btn{display:inline-block; line-height:40px;font-size: 14px; color: #fff; border:none; background-color: #18b494;transition: 0.4s;}
+/*.btn:hover{background-color: transparent; color: #4d92d9; transition: 0.4s;}*/
+.text-desc{
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #fff;
+    height: 100%;
+    opacity: 0;
+    width: 100%;
+}
+
+.port-6{float: left; width: 100%; position: relative; overflow: hidden; text-align: center;overflow: visible;}
+.port-6.effect-3 img{transition: 0.5s;margin-top:20px;}
+.port-6.effect-3:hover img{transform: scale(0.3) translateY(-110%); position: relative; z-index: 9;width:286px;height:360px;margin-left:-20px}
+.port-6.effect-3 .text-desc{transform: translateY(100%); opacity: 0;transition: 0.5s;}
+.port-6.effect-3:hover .text-desc{transform: translateY(0px); opacity: 1;}
+
+
+
+
+
+
+/*全面专业的服务体系*/
+
+/*精彩活动*/
+.activity_carousel .el-carousel__container{
+    height:300px!important;
+}
+.activity_carousel .el-carousel__arrow--left{
+    width:42px;
+    height:42px;
+    color:#333;
+    background-color: transparent;
+    left:-100px;
+}
+.activity_carousel .el-carousel__arrow--right{
+    width:42px;
+    height:42px;
+    color:#333;
+    background-color:transparent;
+    right:-10px;
+}
+.carousel_btn .el-carousel__arrow:hover {
+    background-color: #fff;
+    /*opacity: 0.5;*/
+}
+.activity_carousel .el-carousel__item--card {
+    width: 380px;
+}
+.activity_carousel .el-carousel__item{
+    height:300px;
+}
+.activity_carousel .el-carousel--card{
+    padding-left:110px;
+    height:300px;
+}
+.activity_carousel{
+    /*position: absolute;*/
+}
+.carousel_height{
+    margin-bottom: 80px!important;
+}
+
+
+
+.el-carousel__item h3 {
+    color: #475669;
+    font-size: 14px;
+    opacity: 0.75;
+    line-height: 200px;
+    margin: 0;
+}
+.el-carousel__item:nth-child(2n) {
+    background-color: #99a9bf;
+}
+.el-carousel__item:nth-child(2n+1) {
+    background-color: #d3dce6;
+}
+.activity_carousel h2{
+    margin-top:85px;
+    font-size:24px;
+    color:#2a2a3f;
+    margin-bottom: 20px;
+}
+.activity_carousel p{
+    /*font-size:16px;*/
+    color:#2a2a3f;
+    margin-bottom: 20px;
+}
+.activity_carousel button{
+    width:138px;
+    height:34px;
+    border-radius:10px;
+    font-size:16px;
+    color:#fff;
+    background-color:#18b494;
+    margin-bottom: 40px;
+    border:none;
+}
+.activity_content_carousel{
+    background-color: rgba(46, 42, 63, 0.2);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 380px;
+    height: 300px;
+}
+
+/*精彩活动*/
+#cur{width: 100%;background-color: #f8f8f8;position: relative}
+#inner{width: 2750px;}
+#inner img{width: 255px;height: 200px;float: left;margin-left: 20px;margin-top: 50px;}
+#outer{margin: 50px auto;width: 1200px;overflow: hidden;padding-bottom: 50px;}
+#inner div{float: left}
+#cur p{position: absolute;    width: 44px;  height: 100px;cursor: pointer}
+/*.left{background: url("img/cur.png") no-repeat 0 0;top: 190px; left: 200px;}*/
+/*.right{background: url("img/cur.png") no-repeat -44px 0;top: 190px;left: 1660px;}*/
+
+
+
+
+
+
+
+/*立即预定*/
+.index_reserve{
+    margin-top:50px;
+    color:#fff;
+}
+.index_reserve_p p{
+    width:780px;
+    height:84px;
+    line-height:42px;
+    color:#fff;
+    font-size:30px;
+    margin:-60px auto;
+    text-align: center;
+}
+.reserve{
+    background-color:#18b494;
+}
+/*立即预定*/
+
+/*金牌导师*/
+.index_teacher{
+    text-align: center;
+}
+.index_teacher img{
+    width:166px;
+    height:166px;
+    border:1px solid #2e2a3f;
+    border-radius:50%;
+}
+.index_teacher h3{
+    font-size:30px;
+    color:#18b494;
+    margin-top: 10px;
+}
+.p1{
+    font-size:18px;
+    color:#666;
+    margin-top: 8px;
+}
+.p2{
+    margin:8px auto;
+    width:240px;
+    height: 58px;
+    line-height:20px;
+    font-size:16px;
+}
+.color1{
+    color:#333;
+}
+
+
+/*金牌导师*/
+
+
+/*热门头条*/
+.index_headline{
+    border:1px solid #ccc;
+    margin-right:30px;
+}
+.index_headline img{
+    width:319px;
+    height:200px;
+}
+.index_headline_content{
+    height:270px;
+    /*text-align: center;*/
+    padding:10px;
+    background-color:#fff;
+}
+.h4{
+    font-size:24px;
+    color:#2e2a3f;
+    margin-top:20px;
+    margin-bottom:30px;
+}
+.p3{
+    font-size:16px;
+    color:#333;
+    /*margin-bottom:10px;*/
+}
+.btn_betail{
+    width:138px;
+    height:34px;
+    line-height:34px;
+    text-align: center;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    background-color:#18b494;
+    color:#fff;
+}
+/*热门头条*/
+
+
+
+
+
+
+
+/*首页*/
+
+
+
+
+
+
+/*云创孵化*/
+
+/*图片旋转*/
+.back p:first-child{
+    margin-top:60px;
+    margin-bottom:36px;
+    color:#fff;
+}
+.flipper img{
+    width:80px;
+    height:80px;
+}
+.flipper p{
+    /*width:300px;*/
+    padding-left:30px;
+    padding-right:30px;
+    overflow: hidden;
+    margin: auto;
+}
+.btn{
+    border:none;
+    width:60%;
+    height:40px;
+    margin-top:20px;
+    border-radius:20px;
+    font-size:18px;
+}
+.btn1{
+    background-color:#18b494;
+    color:#fff;
+}
+.btn2{
+    background-color:#fff;
+    color:#18b494;
+    margin-top:30px;
+}
+.front{
+    border:1px solid #ddd;
+}
+.front img{
+    margin-top:60px;
+    margin-bottom:20px;
+}
+.flip-container {
+    width:100%;
+    display: inline-block;
+    -webkit-perspective: 500;
+    -moz-perspective: 500;
+    -ms-perspective: 500;
+    perspective: 500;
+    -ms-transform: perspective(500px);
+    -moz-transform: perspective(500px);
+    transform-style: preserve-3d;
+}
+.flipper {
+    text-align: center;
+    position: relative;
+    height: 350px;
+    transition: 1s;
+    transform-style: preserve-3d;
+}
+
+
+
+
+
+
+
+
+
+/* 触发翻转 */
+.flip-container:hover .flipper{
+    transform: rotateY(180deg);
+
+}
+.front ,.back{
+    position: absolute;
+    left: 0;
+    top: 0;
+    backface-visibility: hidden;
+    width: 100%;
+    height: 100%;
+}
+.front {
+    transform: rotateY(0deg);
+    z-index: 2;
+    background:#f1f1f1;
+}
+.front{
+    transform: rotateY(0deg);
+    z-index: 2;
+    background:#f1f1f1;
+}
+.back {
+    transform: rotateY(-180deg);
+    background:#18b494;
+}
+/*图片旋转*/
+
+/*云创孵化*/
+.bold{
+    margin-top:5px;
+    font-weight: bold;
+}
+.big_btn{
+    text-align: center;
+}
+.big_btn button{
+    margin: 60px;
+    text-align: center;
+    width:250px;
+    height:60px;
+    background-color: transparent;
+    font-size: 24px;
+    border:1px solid #666;
+    color:#666;
+}
+.line-height{
+    line-height:20px;
+}
+.index_headline_content h4{
+    margin-bottom: 15px;
+}
+/*云创孵化*/
+
+
+/*孵化项目*/
+.activity_content_carousel h1{
+    font-size:24px;
+    color:#18b494;
+    margin-top: 90px;
+}
+.activity_content_carousel button{
+    font-size:14px;
+    color:#fff;
+    margin-top: 20px;
+    width:166px;
+    height:30px;
+    line-height:27px;
+    text-align: center;
+    background-color: transparent;
+    border:1px solid #fff;
+    border-radius:15px;
+    font-weight: bold;
+}
+
+/*孵化项目*/
+
+
+/*入孵企业*/
+.incubation_company{
+    border:1px solid #ccc;
+    height:360px;
+    text-align: center;
+}
+.color2{
+    color:#666;
+}
+.center{
+    text-align: center;
+}
+.incubation_company h4{
+    margin-top:56px;
+    margin-bottom:10px;
+}
+.striping{
+    display:block;
+    width:60px;
+    border-bottom:2px solid #18b494;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+
+/*伪元素划横线*/
+/*.incubation_company_img:before, .incubation_company_img:after {*/
+/*content: '';*/
+/*position: relative;*/
+/*bottom: 10%;*/
+/*background: #ddd;*/
+/*width: 23%;*/
+/*height: 1px;*/
+/*display: block;*/
+/*}*/
+/*.incubation_company_img:before{*/
+/*left:22px;*/
+/*bottom:-10px;*/
+/*}*/
+/*.incubation_company_img:after{*/
+/*right:-195px;*/
+/*bottom:72px;*/
+/*}*/
+
+
+.incubation_company_img img{
+    width:70px;
+    height:70px;
+}
+
+.color3{
+    color:#fff;
+}
+.incubation_company_other p{
+    margin-top: -10px;
+    margin-left: 8px;
+    margin-right: 8px;
+    line-height:25px;
+    font-size: 16px;
+}
+/*入孵企业*/
+
+/*孵化器详情*/
+.float_left p{
+    float:left;
+    /*margin-right:30px;*/
+}
+.float_left h4{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.btn3{
+    width:80px;
+    height:35px;
+    line-height:35px;
+    text-align: center;
+    border:1px solid #18b494;
+    background-color: transparent;
+    color:#18b494;
+    border-radius:4px;
+    float:right;
+    margin-top: -35px;
+}
+.btn3:hover{
+    cursor: pointer;
+}
+.incubation_detail_content{
+    padding:10px 30px;
+    min-height:190px;
+}
+.p4{
+    margin:0 auto;
+    font-size:14px;
+    line-height:25px;
+}
+/*孵化器详情*/
+/*详情标题*/
+.detail_title{
+    font-size:16px;
+    line-height:50px;
+    color:#333;
+}
+.detail_title span{
+    color:#18b494;
+    font-weight: bold;
+    margin-right: 3px;
+}
+.space_show_img{
+    padding:15px;
+    margin-right: 15px;
+}
+.space_show_img img{
+    width:90%;
+    height:230px;
+}
+.space_show_right{
+    background-color: #fff;
+    padding:0 20px;
+    border-left:20px solid #f1f1f1;
+}
+
+
+
+
+.space_show ul{
+    padding:15px 20px;
+    line-height:25px;
+    font-size:14px;
+    color:#333;
+}
+.space_show ul li span{
+    color:#18b494;
+}
+.space_img{
+    padding:30px 15px 40px 20px;
+}
+.space_img div{
+    width:60px;
+    height: 60px;
+    border:1px solid #ddd;
+}
+.space_img div img{
+    width:40px;
+    height:40px;
+    margin:10px;
+}
+.space_img p{
+    text-align: center;
+}
+/*流程图*/
+.lc img{
+    width:100%;
+}
+/*流程图*/
+
+/*云创孵化*/
+
+
+
+
+
+/*表单*/
+.form_title{
+    font-size:24px;
+    color:#1877b4;
+    font-weight: 400;
+    padding-bottom:10px;
+    text-align: center;
+    margin-top: 30px;
+}
+.el-input ,.el-input__inner{
+    width:100%;
+}
+.modal-header{
+    border:none;
+}
+.control-label{
+    font-size: 14px;
+    color:#666;
+    line-height:30px;
+    margin-top: -5px;
+    font-weight: normal;
+}
+.form_btn{
+    width:100px;
+    height:30px;
+    line-height:30px;
+    text-align: center;
+    color:#fff;
+    background-color:#1877b4;
+    border-radius:6px;
+    border:none;
+}
+.modal-content{
+    z-index:1000000;
+}
+/*表单*/
+
+
+
+
+
+
+
+
+
+
+/*云创服务*/
+.partner_logo{
+    height:100px;
+    border:1px solid #ddd;
+    text-align: center;
+}
+.partner_logo img{
+    margin-top:30px;
+}
+.nav-tabs > li {
+    width: 136px;
+    text-align: center;
+}
+.nav-tabs {
+    height:55px;
+    border-bottom: 1px solid #18b494;
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    border: 1px solid #18b494;
+    border-bottom-color: transparent;
+}
+.service_index_li{
+    height:137px;
+    border-bottom:1px solid #ddd;
+    border-right:1px solid #ddd;
+    padding:10px;
+}
+.service_index_li h1{
+    color:#666;
+    font-size:16px;
+    line-height:40px;
+}
+.service_index_li p{
+    color:#999;
+    font-size:14px;
+    line-height:20px;
+}
+.tab-content .col-xs-3, .tab-content .col-sm-3, .tab-content .col-md-3, .tab-content .col-lg-3{
+    padding:0;
+}
+.service_index_li_two{
+    height:274px;
+    background:url(../img/service_bg.png) no-repeat bottom center;
+
+}
+
+
+
+/*云创服务详情页*/
+.breadcrumb{
+    background-color: transparent;
+}
+.panel-header{
+    display: inline-block;
+}
+
+
+.panel {
+    border: 1px solid #ddd;
+    margin-bottom: -2px;
+}
+.service_detail_header_title{
+    background: #fff;
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #ddd;
+}
+.panel-header{
+    width:80%;
+    color:#333;
+}
+.panel-body{
+    padding:0;
+}
+.panel-body ul li{
+    background: #fff;
+    padding: 10px;
+    cursor: pointer;
+    color:#666;
+}
+
+.activ{
+    border:1px solid #18b494!important;
+}
+
+
+
+
+
+
+
+
+.service_detail_title h1{
+    font-size:26px;
+    color:#fff;
+    background-color: #18b494;
+    font-weight: bold;
+    height:80px;
+    text-align: center;
+    line-height: 80px;
+}
+
+/*云创服务*/
+
+.pic img{
+    width:300px;
+    height:150px;
+}
+
+
+
+
+
+
+

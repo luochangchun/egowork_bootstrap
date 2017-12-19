@@ -1,0 +1,31 @@
+<div class="content">
+	<div class="tab_bar">
+		<ul>
+			<li class="tab_index" onclick="setTabContent(this);">${needsapply.enterprise!}</li>
+		</ul>
+        <button class="btn_tabbar" onclick="refreshContentByURL('needsapply/list.do');">返回</button>
+	</div>
+	<div class="table_content">
+		<div class="tab_item tab_show" style="padding: 10px 20px;">
+			<h3>需求分类：</h3>
+            <div>${needsapply.classify!}</div>
+			<h3>企业名称：</h3>
+			<div>${needsapply.enterprise!}</div>
+			<h3>联系人：</h3>
+			<div>${needsapply.contact!}</div>
+			<h3>手机号：</h3>
+			<div>${needsapply.phone!}</div>
+			<h3>需求标题：</h3>
+			<div>${needsapply.title!}</div>
+            <h3>需求内容：</h3>
+            <div>${needsapply.needs!}</div>
+            <h3>发布时间：</h3>
+            <div>${needsapply.time!}</div>
+		</div>
+	</div>
+</div>
+<script>
+    function mySubmitForm(obj){
+	submitActionForm(obj);
+}
+</script>
