@@ -4,6 +4,7 @@ import org.marker.mushroom.beans.OnlineApply;
 import org.marker.mushroom.beans.ResultMessage;
 import org.marker.mushroom.beans.RoomApply;
 import org.marker.mushroom.beans.SpaceApply;
+import org.marker.mushroom.beans.TrainingApply;
 import org.marker.mushroom.beans.VisitApply;
 import org.marker.mushroom.support.SupportController;
 import org.marker.mushroom.utils.StringUtil;
@@ -22,7 +23,11 @@ import java.util.Date;
 @RequestMapping("/front/Apply")
 public class ApplyController extends SupportController {
 
-	//共享会议室申请
+	/**
+	 * 共享会议室申请
+	 * @param roomApply
+	 * @return
+	 */
 	@PostMapping("/inster/roomapply")
 	@ResponseBody
 	public ResultMessage Roominster(final RoomApply roomApply) {
@@ -35,7 +40,11 @@ public class ApplyController extends SupportController {
 
 	}
 
-	//预约参观申请
+	/**
+	 * 预约参观申请
+	 * @param visitApply
+	 * @return
+	 */
 	@PostMapping("/inster/visitapply")
 	@ResponseBody
 	public ResultMessage Visitinster(final VisitApply visitApply) {
@@ -47,7 +56,11 @@ public class ApplyController extends SupportController {
 		}
 	}
 
-	//线上孵化器表单提交
+	/**
+	 * 线上孵化器表单提交
+	 * @param onlineApply
+	 * @return
+	 */
 	@PostMapping("/inster/onlineapply")
 	@ResponseBody
 	public ResultMessage Onlineinster(final OnlineApply onlineApply) {
@@ -59,7 +72,11 @@ public class ApplyController extends SupportController {
 		}
 	}
 
-	//租赁空间,众创空间
+	/**
+	 * 租赁空间,众创空间
+	 * @param spaceApply
+	 * @return
+	 */
 	@PostMapping("/inster/tenancy")
 	@ResponseBody
 	public ResultMessage tenancyinster(final SpaceApply spaceApply) {
@@ -88,4 +105,17 @@ public class ApplyController extends SupportController {
 		}
 	}
 
+	/**
+	 * 培训需求申请前台接口
+	 */
+	@RequestMapping("/inster/training")
+	@ResponseBody
+	public ResultMessage traininginster(final TrainingApply trainingApply){
+		trainingApply.setTime(new Date());
+		if(commonDao.save(trainingApply)){
+			return new ResultMessage(true,"申请成功！");
+		}else{
+			return new ResultMessage(false,"申请失败！");
+		}
+	}
 }

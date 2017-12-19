@@ -16,29 +16,40 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 @RequestMapping("/admin/onlineapply")
-public class OnlineApplyController extends SupportController{
+public class OnlineApplyController extends SupportController {
 
-	public OnlineApplyController () {
-		this.viewPath="/admin/onlineapply/";
+	public OnlineApplyController() {
+		this.viewPath = "/admin/onlineapply/";
 	}
 
-	//页面展示
+	/**
+	 * 页面展示
+	 *
+	 * @param page
+	 * @return
+	 */
 	@RequestMapping("/list")
-	public ModelAndView list(Page page){
+	public ModelAndView list(Page page) {
 		ModelAndView view = new ModelAndView(this.viewPath + "list");
-		view.addObject("page",commonDao.findByPage(page.getCurrentPageNo(),10,"select * from " +prefix+ "online_apply order by id desc"));
+		view.addObject("page", commonDao.findByPage(page.getCurrentPageNo(), 10,
+													"select * from " + prefix + "online_apply order by id desc"));
 		return view;
 	}
 
-	//删除
+	/**
+	 * 删除
+	 *
+	 * @param rid
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping("/delete")
-	public ResultMessage delect(@RequestParam("rid")String rid){
-		Boolean struts = commonDao.deleteByIds(OnlineApply.class,rid);
-		if(struts){
-			return new ResultMessage(true,"删除成功！");
-		}else{
-			return new ResultMessage(false,"删除失败！");
+	public ResultMessage delect(@RequestParam("rid") String rid) {
+		Boolean struts = commonDao.deleteByIds(OnlineApply.class, rid);
+		if (struts) {
+			return new ResultMessage(true, "删除成功！");
+		} else {
+			return new ResultMessage(false, "删除失败！");
 		}
 	}
 
