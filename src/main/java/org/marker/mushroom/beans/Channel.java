@@ -15,7 +15,7 @@ public class Channel implements Serializable {
 	private static final long serialVersionUID = -7383542815506431998L;
 
 	/** 自动生成ID */
-	private int id = 0;
+	private Integer id = 0;
 	/** 上级栏目ID */
 	private long pid = 0;
 	/** 图标 */
@@ -41,11 +41,11 @@ public class Channel implements Serializable {
 	/** 重定向URL */
 	private String redirect;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
