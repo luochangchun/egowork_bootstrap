@@ -1,5 +1,6 @@
 package org.marker.mushroom.controller;
 
+import org.marker.mushroom.beans.NeedsApply;
 import org.marker.mushroom.beans.OnlineApply;
 import org.marker.mushroom.beans.ResultMessage;
 import org.marker.mushroom.beans.RoomApply;
@@ -113,6 +114,19 @@ public class ApplyController extends SupportController {
 	public ResultMessage traininginster(final TrainingApply trainingApply){
 		trainingApply.setTime(new Date());
 		if(commonDao.save(trainingApply)){
+			return new ResultMessage(true,"申请成功！");
+		}else{
+			return new ResultMessage(false,"申请失败！");
+		}
+	}
+	/**
+	 * 服务需求申请
+	 */
+	@RequestMapping("/inster/needs")
+	@ResponseBody
+	public ResultMessage needsinster(final NeedsApply needsApply){
+		needsApply.setTime(new Date());
+		if(commonDao.save(needsApply)){
 			return new ResultMessage(true,"申请成功！");
 		}else{
 			return new ResultMessage(false,"申请失败！");
