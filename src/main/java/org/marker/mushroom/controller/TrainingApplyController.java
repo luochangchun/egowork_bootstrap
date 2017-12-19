@@ -2,7 +2,7 @@ package org.marker.mushroom.controller;
 
 import org.marker.mushroom.beans.Page;
 import org.marker.mushroom.beans.ResultMessage;
-import org.marker.mushroom.beans.VisitApply;
+import org.marker.mushroom.beans.TrainingApply;
 import org.marker.mushroom.support.SupportController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,44 +11,39 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- * Created by 30 on 2017/12/18 0018.
- * 预约参观申请
+ * Created by 30 on 2017/12/19 0019.
+ * 培训需求申请后台
  */
 @Controller
-@RequestMapping("/admin/visitapply")
-public class VisitApplyController extends SupportController {
+@RequestMapping("/admin/trainingapply")
+public class TrainingApplyController extends SupportController {
 
-	public VisitApplyController() {
-		this.viewPath = "/admin/visitapply/";
+	public TrainingApplyController() {
+		this.viewPath = "/admin/trainingapply/";
 	}
 
-
 	/**
-	 *预约参观者页面展示
-	 * @param page
-	 * @return
+	 * 页面展示
 	 */
 	@RequestMapping("/list")
 	public ModelAndView list(Page page) {
 		ModelAndView view = new ModelAndView(this.viewPath + "list");
 		view.addObject("page", commonDao.findByPage(page.getCurrentPageNo(), 10,
-													"select * from " + prefix + "visit_apply order by id desc"));
+													"select * from " + prefix + "training_apply order by id desc"));
 		return view;
 	}
 
 	/**
 	 * 删除
-	 * @param rid
-	 * @return
 	 */
-	@ResponseBody
 	@RequestMapping("/delete")
-	public ResultMessage delect(@RequestParam("rid") String rid) {
-		boolean struts = commonDao.deleteByIds(VisitApply.class, rid);
-		if (struts) {
-			return new ResultMessage(true, "删除成功！");
-		} else {
-			return new ResultMessage(false, "删除失败！");
+	@ResponseBody
+	public ResultMessage delete(@RequestParam("rid")String rid){
+		Boolean bool = commonDao.deleteByIds(TrainingApply.class,rid);
+		if(bool){
+			return new ResultMessage(true,"删除成功！");
+		}else{
+			return new ResultMessage(false,"删除失败！");
 		}
 	}
 }
