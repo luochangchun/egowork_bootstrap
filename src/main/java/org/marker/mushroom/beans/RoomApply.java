@@ -35,6 +35,8 @@ public class RoomApply implements Serializable {
 	private String usage;
 	/** 参加人数 */
 	private int attender;
+	/** 会议需求id（字典） */
+	private String requestId;
 	/** 会议需求 */
 	private String request;
 	/** 添加时间 */
@@ -134,6 +136,14 @@ public class RoomApply implements Serializable {
 
 	public void setAttender(int attender) {
 		this.attender = attender;
+	}
+
+	public String getRequestId() {
+		return requestId;
+	}
+
+	public void setRequestId(String requestId) {
+		this.requestId = requestId;
 	}
 
 	public String getRequest() {
