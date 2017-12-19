@@ -1,0 +1,62 @@
+<div class="content">
+	<#assign listParas="&cid="+cid>
+	<div class="tab_bar">
+		<ul>
+			<li class="tab_index" onclick="setTabContent(this);">服务产品</li>
+		</ul>
+		<select id="cid" class="select_for_add" style="width:150px;border-left-width:1px;">
+			<option value="">------ 所有类别 ------</option>
+			<@categoryTree id=0 node=- 1/>
+		</select>
+		<button class="btn_tabbar" action="product/add.do" onclick="refreshContentByElement(this);">添加产品</button>
+	</div>
+	<div class="tab_content">
+		<div class="tab_item tab_show">
+			<table class="table_for_list">
+				<thead>
+					<tr>
+						<th width="30" class="quanxuan" onclick="allCheck();">全选</th>
+						<th width="200">标题</th>
+						<th>简介</th>
+						<th width="50">浏览量</th>
+						<th width="150">添加时间</th>
+						<th width="50">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<#list page.getData() as x>
+						<tr>
+							<td class="checkbox">
+								<input type="checkbox" value="${x.id?c}" />
+							</td>
+							<td>${x.title!}</td>
+							<td style="max-width:400px;word-break:break-all;white-space:pre-wrap;">${x.intro!}</td>
+							<td>${x.views!0}</td>
+							<td>${x.time!}</td>
+							<td>
+								<a href="#" action="product/edit.do?id=${x.id?c}" onclick="refreshContentByElement(this,event);">修改</a>
+							</td>
+						</tr>
+					</#list>
+				</tbody>
+			</table>
+			<#include "/common/_page.html" />
+			<@paginate currentPage=page.currentPageNo totalPage=page.totalPages actionUrl="product/list.do" delUrl="product/delete.do" urlParas=listParas/>
+		</div>
+	</div>
+</div>
+<script>
+$('#cid').change(function(){
+	refreshContentByURL('product/list.do?currentPageNo=1&cid=' + $("#cid").val());
+});
+</script>
+
+<#macro categoryTree id node>
+	<#local temp=node + 1 />
+	<#list categorys as x>
+		<#if x.pid!=0 && Session.usercategory?index_of(x.id?c) !=-1>
+			<option value="${x.id?c}" <#if x.id == cid>selected</#if>>
+				<#list 0..temp as i> &nbsp; &nbsp; </#list>├ ${x.name!}</option>
+		</#if>
+	</#list>
+</#macro>

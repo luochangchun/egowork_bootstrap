@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
+ * 服务产品
  * Created by 30 on 2017/12/19.
  */
 @Entity("product")
@@ -22,8 +23,10 @@ public class Product implements Serializable {
 	private String content;
 	/** 图标 */
 	private String icon;
-	/**  */
+	/** 添加时间 */
 	private Date time;
+	/** 浏览量 */
+	private int views;
 
 	public Integer getId() {
 		return id;
@@ -79,5 +82,13 @@ public class Product implements Serializable {
 
 	public void setTime(Date time) {
 		this.time = time;
+	}
+
+	public int getViews() {
+		return views;
+	}
+
+	public void setViews(int views) {
+		this.views = views;
 	}
 }

@@ -223,9 +223,11 @@ public abstract class DaoEngine implements ISupportDao {
 				continue;
 			}
 
-			sql.append("`").append(fieldName).append("`,");
-			val.append("?,");
-			list.add(returnObject);
+			if (returnObject != null) {
+				sql.append("`").append(fieldName).append("`,");
+				val.append("?,");
+				list.add(returnObject);
+			}
 		}
 
 		final StringBuilder sql2 = new StringBuilder(sql.substring(0, sql.length() - 1));
