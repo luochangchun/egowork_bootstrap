@@ -4,6 +4,7 @@ import org.marker.mushroom.beans.OnlineApply;
 import org.marker.mushroom.beans.ResultMessage;
 import org.marker.mushroom.beans.RoomApply;
 import org.marker.mushroom.beans.SpaceApply;
+import org.marker.mushroom.beans.TrainingApply;
 import org.marker.mushroom.beans.VisitApply;
 import org.marker.mushroom.support.SupportController;
 import org.marker.mushroom.utils.StringUtil;
@@ -88,4 +89,17 @@ public class ApplyController extends SupportController {
 		}
 	}
 
+	/**
+	 * 培训需求申请前台接口
+	 */
+	@RequestMapping("/inster/training")
+	@ResponseBody
+	public ResultMessage traininginster(final TrainingApply trainingApply){
+		trainingApply.setTime(new Date());
+		if(commonDao.save(trainingApply)){
+			return new ResultMessage(true,"申请成功！");
+		}else{
+			return new ResultMessage(false,"申请失败！");
+		}
+	}
 }
