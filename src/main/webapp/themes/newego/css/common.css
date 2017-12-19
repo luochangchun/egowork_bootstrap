@@ -1077,6 +1077,7 @@ body {
 
 /*云创服务详情页*/
 .breadcrumb{
+    padding: 20px 0;
     background-color: transparent;
 }
 .panel-header{
@@ -1127,6 +1128,35 @@ body {
     height:80px;
     text-align: center;
     line-height: 80px;
+}
+.service_detail_title p{
+    margin-top:20px;
+    margin-bottom:30px;
+    line-height:25px;
+    text-align: center;
+    color:#666;
+}
+.service_detail_title h2{
+    font-size:24px;
+    color:#18b494;
+    font-weight: bold;
+    height:80px;
+    text-align: center;
+    line-height: 60px;
+}
+.service_detail_title table tr td{
+    padding:10px 20px;
+    font-size:16px;
+    color:#666;
+}
+.service_detail_title table tr td span{
+    font-size:12px;
+    color:#999;
+}
+.service_detail_title table tr td:first-child{
+    background-color:#f1f1f1;
+    width:25%;
+    text-align: center;
 }
 
 /*云创服务*/
