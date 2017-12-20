@@ -9,7 +9,27 @@ jQuery.fn.widResize = function (Func) {
 		Func();
 	});
 }
+// function initCourse() {
+// 	$.ajax({
+// 		url: "http://192.168.11.222/egocourse/webapp/cou/list?currentPage=1&pageSize=8",    //请求的url地址   
+// 		dataType: "json",   //返回格式为json    
+// 		async: true, //请求是否异步，默认为异步，这也是ajax重要特性    
+// 		data: {},    //参数值    
+// 		type: "GET",   //请求方式    
+// 		success: function (data) {
+// 			console.log(data);
+// 		},
+// 		complete: function () {
+// 			//请求完成的处理    
+// 		},
+// 		error: function () {
+// 			//请求出错处理    
+// 		}
+// 	});
+// }
 $(document).ready(function(){
+	// 初始化课程信息
+	// initCourse();
 	//[h-ctrl]
 	function hCtrl() {
 		$("[h-ctrl]").each(function () {
