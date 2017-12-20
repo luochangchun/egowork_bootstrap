@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>
+<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+
+<!--#include file="home/header.html" -->
+
+<body>
+	<div class="activity_detail">
+		<div class="container detail">
+			<div class="activity_top clearfix">
+				<div class="col-lg-3 col-sm-12">
+					<img src="http://www.egowork.com/upload/images/articleimage/2017091916/1505811548599_e1980b59fa3e4e6f9c0ace3bf228b882.jpeg"
+					 alt="">
+				</div>
+				<div class="col-lg-9 col-sm-12 info">
+					<h1 class="text-ellipsis">${activity.title}</h1>
+					<p class="f14 text-ellipsis">活动时间：
+						<span>${activity.activeTime?string("yyyy-MM-dd")}</span>
+					</p>
+					<!-- <p class="f16 text-ellipsis">主办单位：
+						<span>大潮会</span>
+					</p> -->
+					<!-- <p class="f16 text-ellipsis">特邀嘉宾：
+						<span>王冠</span>
+						<span class="cur">和田数</span>
+					</p> -->
+					<p class="f16 text-ellipsis">活动地址：
+						<span>${activity.address}</span>
+					</p>
+					<a href="#" class="sign_up tc">立即报名</a>
+				</div>
+			</div>
+			<div class="activity_bottom">
+				<div class="activity_bottom_tab clearfix">
+					<a href="javascript:;" class="l cur">活动详情</a>
+					<a href="javascript:;" class="l">活动评价</a>
+				</div>
+				<div class="activity_bottom_body">
+					 ${activity.content}
+				</div>
+				<!-- <div class="activity_bottom_body">
+					<div class="reply_list">
+						<div class="item rel">
+							<p class="name f16">李显龙：</p>
+							<p class="content f14">李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙</p>
+							<div class="time clearfix f14">
+								<p>
+									<span class="l">2017-01-10</span>
+									<img src="img/dialog_icon.png" alt="">
+	
+								</p>
+							</div>
+	
+							<div class="item rel" style="margin-left:20px">
+								<p class="name f16">李显龙：</p>
+								<p class="content f14">李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙</p>
+								<div class="time clearfix f14">
+									<p>
+										<span class="l">2017-01-10</span>
+										<img src="img/dialog_icon.png" alt="">
+									</p>
+								</div>
+							</div>
+							<div class="line line_b"></div>
+						</div>
+						<div class="item rel">
+							<p class="name f16">李显龙：</p>
+							<p class="content f14">李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙李显龙</p>
+							<div class="time clearfix f14">
+								<p>
+									<span class="l">2017-01-10</span>
+									<img src="img/dialog_icon.png" alt="">
+								</p>
+							</div>
+							<div class="line line_b"></div>
+						</div>
+					</div>
+					<form class="reply_form">
+						<textarea class="form-control" rows="3"></textarea>
+						<button type="button" class="btn btn-success r">评论</button>
+					</form>
+				</div> -->
+			</div>
+		</div>
+	</div>
+</body>
+</html>
