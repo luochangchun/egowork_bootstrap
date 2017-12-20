@@ -63,6 +63,8 @@ public class IncubatorController extends SupportController {
 	@Autowired
 	DictionariesService dictionariesService;
 
+	private final String QB = "incubator";
+
 	public IncubatorController() {
 		this.viewPath = "/admin/incubator/";
 	}
@@ -71,11 +73,15 @@ public class IncubatorController extends SupportController {
 	@RequestMapping("/add")
 	public ModelAndView add() {
 		final ModelAndView view = new ModelAndView(this.viewPath + "add");
-		view.addObject("categorys", categoryService.list("incubator"));
-		view.addObject("levels", dictionariesService.findDictionaries("level", "incubator"));
-		view.addObject("labels", dictionariesService.findDictionaries("label", "incubator"));
-		view.addObject("patterns", dictionariesService.findDictionaries("pattern", "incubator"));
-		view.addObject("regions", dictionariesService.findDictionaries("region", "incubator"));
+		view.addObject("categorys", categoryService.list(QB));
+
+		view.addObject("levels", dictionariesService.findDictionaries("level", QB));
+		view.addObject("labels", dictionariesService.findDictionaries("label", QB));
+		view.addObject("patterns", dictionariesService.findDictionaries("pattern", QB));
+		view.addObject("regions", dictionariesService.findDictionaries("region", QB));
+		view.addObject("provides", dictionariesService.findDictionaries("provide", QB));
+		view.addObject("facilities", dictionariesService.findDictionaries("facility", QB));
+		view.addObject("enters", dictionariesService.findDictionaries("enter", QB));
 
 		return view;
 	}
@@ -84,12 +90,16 @@ public class IncubatorController extends SupportController {
 	@RequestMapping("/edit")
 	public ModelAndView edit(@RequestParam("id") final int id) {
 		final ModelAndView view = new ModelAndView(this.viewPath + "edit");
-		view.addObject("incubator", commonDao.findById(Incubator.class, id));
-		view.addObject("categorys", categoryService.list("incubator"));
-		view.addObject("levels", dictionariesService.findDictionaries("level", "incubator"));
-		view.addObject("labels", dictionariesService.findDictionaries("label", "incubator"));
-		view.addObject("patterns", dictionariesService.findDictionaries("pattern", "incubator"));
-		view.addObject("regions", dictionariesService.findDictionaries("region", "incubator"));
+		view.addObject(QB, commonDao.findById(Incubator.class, id));
+		view.addObject("categorys", categoryService.list(QB));
+
+		view.addObject("levels", dictionariesService.findDictionaries("level", QB));
+		view.addObject("labels", dictionariesService.findDictionaries("label", QB));
+		view.addObject("patterns", dictionariesService.findDictionaries("pattern", QB));
+		view.addObject("regions", dictionariesService.findDictionaries("region", QB));
+		view.addObject("provides", dictionariesService.findDictionaries("provide", QB));
+		view.addObject("facilities", dictionariesService.findDictionaries("facility", QB));
+		view.addObject("enters", dictionariesService.findDictionaries("enter", QB));
 
 		return view;
 	}
@@ -97,7 +107,7 @@ public class IncubatorController extends SupportController {
 	@GetMapping("/photo")
 	public ModelAndView photoView(@RequestParam("id") final int id) {
 		final ModelAndView view = new ModelAndView(this.viewPath + "photo");
-		view.addObject("incubator", commonDao.findById(Incubator.class, id));
+		view.addObject(QB, commonDao.findById(Incubator.class, id));
 		view.addObject("photos", incubatorService.findPhotos(id));
 		return view;
 	}
@@ -182,7 +192,7 @@ public class IncubatorController extends SupportController {
 	 */
 	@ResponseBody
 	@RequestMapping("/save")
-	public Object save(@ModelAttribute("incubator") final Incubator incubator, @RequestParam("cid") final int cid) {
+	public Object save(@ModelAttribute(QB) final Incubator incubator, @RequestParam("cid") final int cid) {
 		incubator.setTime(new Date());
 		incubator.setCreateTime(new Date());
 		incubator.setCid(cid);// 这里是因为不能注入bean里
@@ -204,7 +214,7 @@ public class IncubatorController extends SupportController {
 	//保存
 	@ResponseBody
 	@RequestMapping("/update")
-	public Object update(@ModelAttribute("incubator") final Incubator incubator) {
+	public Object update(@ModelAttribute(QB) final Incubator incubator) {
 		incubator.setTime(new Date());
 
 		if (commonDao.update(incubator)) {
@@ -252,7 +262,7 @@ public class IncubatorController extends SupportController {
 	@RequestMapping("/list")
 	public ModelAndView listview(final HttpServletRequest request) {
 		final ModelAndView view = new ModelAndView(this.viewPath + "list");
-		view.addObject("categorys", categoryService.list("incubator"));
+		view.addObject("categorys", categoryService.list(QB));
 
 		return view;
 	}

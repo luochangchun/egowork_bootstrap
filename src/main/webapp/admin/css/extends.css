@@ -4,13 +4,16 @@
 	color: #FFF;
 	width: 180px;
 	height: 55px;
-	font-size: 38px; 
+	font-size: 38px;
 	height: 55px;
 	text-align: center;
 }
 
 .m-l-len{
 	margin-left:18px;
+}
+.m-l-xxl{
+	margin-left:20px;
 }
 .m-l-xxs{
 	margin-left:4px;
@@ -41,7 +44,7 @@
 	display: none;
 }
 
- 
+
 
 
 
@@ -129,7 +132,7 @@
 
 /* 信息table样式 */
 .table_info {
-	
+
 }
 
 .table_info thead tr th {
@@ -176,11 +179,11 @@
 
 /* 列表 */
 .table_for_list thead tr th { /*项目列表*/
-	
-} 
+
+}
 .table_for_list tbody tr th {
-	
-} 
+
+}
 .table_for_list tbody tr {
 	height: 28px;
 	border: 1px solid #e5e5e5;
@@ -204,7 +207,7 @@
 }
 
 .table_for_add tbody tr {
-	
+
 }
 
 .table_for_add tbody tr th {
@@ -444,7 +447,7 @@
 	right: 0px;
 	left: 0px;
 	top: 0px;
-	bottom: 0px; 
+	bottom: 0px;
 }
 .frame_model.fixed{
 	position: fixed;
@@ -480,14 +483,14 @@
 	height: 400px;
 	width:800px;
 }
-.frame_window .frame_bar{ 
+.frame_window .frame_bar{
 	border-radius:5px 5px 0 0 ;
  	background: url("images/bar_bg.png") repeat-x;
 	background:-webkit-gradient(linear, left top, left bottom, from(#fff), to(#efefef));
 	background:-moz-linear-gradient(center top , rgb(255, 255, 255), rgb(239, 239, 239)) repeat scroll 0% 0% transparent;
 	height:35px; line-height: 35px;
 	border-bottom:1px solid #ccc;
-	padding-left: 20px; 
+	padding-left: 20px;
 	font-size: 13px;
 	font-weight: bold;
 }
@@ -500,7 +503,7 @@
 	cursor: pointer;
 	background: url("images/icons-all.gif") no-repeat 0 -59px;
 }
-.frame_window .frame_content{ 
+.frame_window .frame_content{
 	background: #fff;
 	margin: 0;
 	overflow: auto;
@@ -522,20 +525,20 @@
 	width:150px;
 	height:40px;
 	background: black;
-	bottom:0px; 
+	bottom:0px;
 	filter:alpha(opacity=50);
 	-moz-opacity:0.5;
 	-khtml-opacity: 0.5;
 	opacity: 0.5;
-	
+
 }
 .theme_item .info{
 	position:absolute;
 	width:150px;
-	height:40px; 
+	height:40px;
 	text-align:center;
 	line-height:40px;
-	bottom:0px; 
+	bottom:0px;
 	color:white;
 }
 .theme_item_border{

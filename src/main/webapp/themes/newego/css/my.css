@@ -61,6 +61,7 @@ a {
 
 .commonList .img_wrap {
     width: 100%;
+    font-size: 0;
 }
 
 .commonList .item:hover {
@@ -103,8 +104,12 @@ a {
 .commonList .item .para p {
     color: #333333;
     line-height: 20px;
-    padding: 5px 0;
-    margin: 0;
+    padding-top: 5px;
+    margin-bottom: 5px;
+}
+
+.commonList .item .para p.f14 {
+    height: 45px;
 }
 
 /* 培训集锦 */
@@ -173,6 +178,10 @@ a {
     color: #666666;
     margin-bottom: 10px;
     text-align: justify;
+}
+
+.courseList .item p.text-ellipsis-2 {
+    height: 40px;
 }
 
 .courseList .item img {
@@ -255,20 +264,10 @@ a {
 }
 
 .tutorList .item p {
-    height: 20px;
+    /* height: 20px; */
     line-height: 20px;
     margin-bottom: 10px;
     color: #666;
-}
-
-.tutorList .item p span {
-    width: 46%;
-    box-sizing: border-box;
-    /* display: inline-block; */
-}
-
-.tutorList .item p span.w8 {
-    width: 8%;
 }
 
 /* 为什么选择我们 */

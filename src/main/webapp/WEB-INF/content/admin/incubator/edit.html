@@ -5,14 +5,17 @@
 		</ul>
 			<button class="btn_tabbar submit_it" onclick="mySubmitForm(this);" return="incubator/list.do?currentPageNo=1">保 存</button>
 	</div>
-	
+
 	<form id="myForm" action="incubator/update.do" method="post">
 	<input name="id" type="hidden" value="${incubator.id?c}" />
 	<input name="userId" type="hidden" value="${incubator.userId!}" />
 	<input type="hidden" id="label" name="label" value="${incubator.label!}"/>
+	<input type="hidden" id="service" name="service" value="${incubator.service!}"/>
+	<input type="hidden" id="facility" name="facility" value="${incubator.facility!}"/>
+	<input type="hidden" id="enter" name="enter" value="${incubator.enter!}"/>
 	<input type="hidden" id="isFree" name="isFree" value="${incubator.isFree!}"/>
 	<div class="tab_content">
-		<div class="tab_item tab_show"> 
+		<div class="tab_item tab_show">
 			<table class="table_for_add">
 				<tbody>
 					<tr class="rowBgColor">
@@ -22,12 +25,16 @@
 								<@categoryTree id = 0 node = -1/>
 							</select>
 						</td>
+						<th></th>
+						<td></td>
 					</tr>
 					<tr>
 						<th>孵化器名称： </th>
 						<td>
 							<i class="fa fa-asterisk text-red"></i>
 							<input id="title" class="input_for_add m-l-xxs" name="title" type="text" value="${incubator.title!}" placeholder="请输入孵化器名称" /></td>
+						<th></th>
+						<td></td>
 					</tr>
 					<tr class="rowBgColor">
 						<th>孵化器图标： </th>
@@ -38,43 +45,47 @@
 								<button type="button" class="img-btn" onclick="frameDialogShow()">上传</button>
 							</div>
 						</td>
+						<th></th>
+						<td></td>
 					</tr>
-					<tr class="rowBgColor">
+					<tr>
 						<th>联系人：</th>
 						<td>
 							<i class="fa fa-asterisk text-red"></i>
 							<input type="text" class="input_for_add m-l-xxs"  name="contact" value="${incubator.contact!}"/>
 						</td>
+						<th></th>
+						<td></td>
 					</tr>
-					<tr>
+					<tr class="rowBgColor">
 						<th>联系电话：</th>
 						<td>
 							<i class="fa fa-asterisk text-red"></i>
 							<input type="text" class="input_for_add m-l-xxs"  name="phone" value="${incubator.phone!}"/></td>
-					</tr>
-					<tr class="rowBgColor">
-						<th>地址：</th>
-						<td><input type="text" class="input_for_add m-l-len" name="address" value="${incubator.address!}"/></td>
+						<th></th>
+						<td></td>
 					</tr>
 					<tr>
+						<th>地址：</th>
+						<td><input type="text" class="input_for_add m-l-len" name="address" value="${incubator.address!}"/></td>
+						<th></th>
+						<td></td>
+					</tr>
+					<tr class="rowBgColor">
 						<th>孵化器级别：</th>
 						<td>
 							<select id="level" class="select_for_add m-l-len" name="level">
 								<@levelList/>
 							</select>
 						</td>
-					</tr>
-					<tr class="rowBgColor">
-						<th>孵化器类型：</th>
-						<td><input class="input_for_add m-l-len" name="types" type="text" value="${incubator.types}"/></td>
+						<th></th>
+						<td></td>
 					</tr>
 					<tr>
-						<th>标签：</th>
-						<td>
-							<#list labels as x>
-								<input class="input_for_checkbox m-l-len" name="labels" type="checkbox" value="${x.id!}"/>${x.value!}
-							</#list>
-						</td>
+						<th>孵化器类型：</th>
+						<td><input class="input_for_add m-l-len" name="types" type="text" value="${incubator.types}"/></td>
+						<th></th>
+						<td></td>
 					</tr>
 					<tr class="rowBgColor">
 						<th>孵化器类别：</th>
@@ -84,6 +95,8 @@
 								<@patternList/>
 							</select>
 						</td>
+						<th></th>
+						<td></td>
 					</tr>
 					<tr>
 						<th>孵化器区域：</th>
@@ -93,26 +106,52 @@
 								<@regionList/>
 							</select>
 						</td>
+						<th></th>
+						<td></td>
 					</tr>
 					<tr class="rowBgColor">
 						<th>开放工位（元/平方米/月）：</th>
 						<td><input class="input_for_add m-l-len" name="station" type="text" value="${incubator.station!}"/></td>
+						<th></th>
+						<td></td>
 					</tr>
 					<tr>
 						<th>独立办公室（元/平方米/月）：</th>
 						<td><input class="input_for_add m-l-len" name="office" type="text" VALUE="${incubator.office!}"/></td>
-					</tr>
-					<tr>
-						<th>场地面积（平方米）：</th>
-						<td><input type="text" name="area" class="input_for_add m-l-len" value="${incubator.area!}"/> </td>
+						<th></th>
+						<td></td>
 					</tr>
 					<tr class="rowBgColor">
-						<th>在孵企业数：</th>
-						<td><input type="text" name="enterprises" class="input_for_add m-l-len" value="${incubator.enterprises!}"/> </td>
+						<th>场地面积（平方米）：</th>
+						<td><input type="text" name="area" class="input_for_add m-l-len" value="${incubator.area!}"/> </td>
+						<th></th>
+						<td></td>
 					</tr>
 					<tr>
+						<th>在孵企业数：</th>
+						<td><input type="text" name="enterprises" class="input_for_add m-l-len" value="${incubator.enterprises!}"/> </td>
+						<th></th>
+						<td></td>
+					</tr>
+					<tr class="rowBgColor">
 						<th>入驻要求：</th>
 						<td><textarea class="input_for_add m-l-len" name="settled" type="text">${incubator.settled!}</textarea></td>
+						<th></th>
+						<td></td>
+					</tr>
+					<tr>
+						<th>招商政策：</th>
+						<td>
+							<textarea class="input_for_add m-l-len" name="policy" type="text" >${incubator.policy!}</textarea>
+						</td>
+						<th></th>
+						<td></td>
+					</tr>
+					<tr class="rowBgColor">
+						<th>直投基金：</th>
+						<td><input class="input_for_add m-l-len" name="fund" type="text" value="${incubator.fund!}" /></td>
+						<th></th>
+						<td></td>
 					</tr>
 					<tr>
 						<th>对大学生免费：</th>
@@ -123,6 +162,48 @@
 								<input class="input_for_add m-l-len" type="checkbox" name="isFrees" value="0" />
 							</#if>
 						</td>
+						<th></th>
+						<td></td>
+					</tr>
+					<tr class="rowBgColor">
+						<th>标签：</th>
+						<td>
+							<#list labels as x>
+								<input class="input_for_checkbox m-l-xxl" name="labels" type="checkbox" value="${x.id!}"/>${x.value!}
+							</#list>
+						</td>
+						<th></th>
+						<td></td>
+					</tr>
+					<tr>
+						<th>空间服务：</th>
+						<td>
+							<#list provides as x>
+								<input class="input_for_checkbox m-l-xxl" name="services" type="checkbox" value="${x.id!}"/>${x.value!}
+							</#list>
+						</td>
+						<th></th>
+						<td></td>
+					</tr>
+					<tr class="rowBgColor">
+						<th>配套设施：</th>
+						<td>
+							<#list facilities as x>
+								<input class="input_for_checkbox m-l-xxl" name="facilities" type="checkbox" value="${x.id!}"/>${x.value!}
+							</#list>
+						</td>
+						<th></th>
+						<td></td>
+					</tr>
+					<tr>
+						<th>入驻类型：</th>
+						<td>
+							<#list enters as x>
+								<input class="input_for_checkbox m-l-xxl" name="enters" type="checkbox" value="${x.id!}" />${x.value!}
+							</#list>
+						</td>
+						<th></th>
+						<td></td>
 					</tr>
 					<tr class="rowBgColor">
 						<th>状态：</th>
@@ -139,6 +220,8 @@
 										for="status_0">草稿</label>
 							</#if>
 						</td>
+						<th></th>
+						<td></td>
 					</tr>
 				</tbody>
 			</table>
@@ -157,9 +240,9 @@
 				<div class="frame_margin markdown">
 					<form id="uploadForm" action="img/upload.do" method="post" enctype="multipart/form-data" onsubmit="return false;" style="margin-bottom:15px;">
 						<input type="file" onChange="inputImageChange(this)" name="file" style="position:absolute;width:70px;opacity:0;"/>
-						<button type="buttom" class="submit_it" style="float: inherit;">选择图片</button>					
+						<button type="buttom" class="submit_it" style="float: inherit;">选择图片</button>
 						<input id="imgSrc" name="imgSrc" type="text" style="display:none;"/>
-						<button type="submit" onclick="upload(this)" class=" submit_it" style="float: inherit;">上传</button>					
+						<button type="submit" onclick="upload(this)" class=" submit_it" style="float: inherit;">上传</button>
 					</form>
 					<div class="img-container" style="max-width:400px;max-height:300px;float:left;margin-right:15px;">
 			          <img id="image">
@@ -223,22 +306,64 @@ $("#image").on({
 
 	});
 
-    
+
     function initlabelChecked()
 	{
         var label = $("#label").val();
-		var temp;
-        $("input[name='labels']:checkbox").each(function ()
-		{
-            temp = $(this).attr("value");
-            if(label.indexOf(temp) > -1)
-			{
+        $("input[name='labels']:checkbox").each(function () {
+            if(label.indexOf($(this).attr("value")) > -1)
 				$(this).attr("checked",true);
-			}
+        });
+
+        var service = $("#service").val();
+        $("input[name='services']:checkbox").each(function () {
+            if(service.indexOf($(this).attr("value")) > -1)
+				$(this).attr("checked",true);
+        });
+
+        var facility = $("#facility").val();
+        $("input[name='facilities']:checkbox").each(function () {
+            if(facility.indexOf($(this).attr("value")) > -1)
+				$(this).attr("checked",true);
+        });
+
+        var enter = $("#enter").val();
+        $("input[name='enters']:checkbox").each(function () {
+            if(enter.indexOf($(this).attr("value")) > -1)
+				$(this).attr("checked",true);
         });
     }
     initlabelChecked();
 
+    function labelChecked() {
+        var list = "";
+        $("input[name='labels']:checked").each(function () {
+            list += $(this).attr("value") + ",";
+        });
+        if (list != "") list = list.substr(0, list.length - 1);
+		$("#label").val(list);
+
+		var service = "";
+        $("input[name='services']:checked").each(function () {
+            service += $(this).attr("value") + ",";
+		});
+        if (service != "") service = service.substr(0, service.length - 1);
+		$("#service").val(service);
+
+		var facility = "";
+        $("input[name='facilities']:checked").each(function () {
+            facility += $(this).attr("value") + ",";
+		});
+        if (facility != "") facility = facility.substr(0, facility.length - 1);
+		$("#facility").val(facility);
+
+		var enter = "";
+        $("input[name='enters']:checked").each(function () {
+            enter += $(this).attr("value") + ",";
+		});
+        if (enter != "") enter = enter.substr(0, enter.length - 1);
+		$("#enter").val(enter);
+    }
 
     //设置栏目ID
 	var cid = '${incubator.cid?c}';
@@ -253,7 +378,7 @@ $("#image").on({
 	  	<option value="${x.id?c}"><#list 0..temp as i> &nbsp; &nbsp; </#list>├ ${x.name!}</option>
 	    <@categoryTree id = x.id node=temp/>
       	</#if>
-	</#list> 
+	</#list>
 </#macro>
 
 <#macro levelList>
