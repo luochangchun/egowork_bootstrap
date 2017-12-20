@@ -14,7 +14,7 @@
 	<input id="label" name="label" type="hidden" value=""/>
 
 	<div class="tab_content min-w">
-		<div class="tab_item tab_show"> 
+		<div class="tab_item tab_show">
 			<table class="table_for_add">
 				<tbody>
 					<tr class="rowBgColor">
@@ -24,6 +24,8 @@
 								<@categoryTree id = 0 node = -1/>
 							</select>
 						</td>
+						<th></th>
+						<td></td>
 					</tr>
 					<tr>
 						<th>孵化器名称： </th>
@@ -31,6 +33,8 @@
 							<i class="fa fa-asterisk text-red"></i>
 							<input id="title" class="input_for_add m-l-xxs" name="title" type="text"  value="" placeholder="请输入孵化器名称" />
 						</td>
+						<th></th>
+						<td></td>
 					</tr>
 					<tr class="rowBgColor">
 						<th>孵化器图标： </th>
@@ -41,20 +45,24 @@
 								<button type="button" class="img-btn" onclick="frameDialogShow()">上传</button>
 							</div>
 						</td>
+						<th></th>
+						<td></td>
 					</tr>
 					<tr>
 						<th>联系人：</th>
 						<td>
-						    <i class="fa fa-asterisk text-red"></i> 
+						    <i class="fa fa-asterisk text-red"></i>
 							<input id="contact" type="text" class="input_for_add m-l-xxs"  name="contact" value=""  />
 						</td>
 					</tr>
 					<tr class="rowBgColor">
 				    	<th>联系电话：</th>
 						<td>
-							<i class="fa fa-asterisk text-red"></i> 
+							<i class="fa fa-asterisk text-red"></i>
 							<input  id="phone" type="text" class="input_for_add m-l-xxs"  name="phone"  value=""  />
 						</td>
+						<th></th>
+						<td></td>
 					</tr>
 					<tr>
 						<th>地址：</th>
@@ -63,7 +71,7 @@
 							<input type="text" class="input_for_add m-l-len" name="address" value="" />
 						</td>
 					</tr>
-					<tr>
+					<tr class="rowBgColor">
 						<th>孵化器级别：</th>
 						<td>
 							<select class="select_for_add m-l-len" name="level">
@@ -72,18 +80,14 @@
 								</#list>
 							</select>
 						</td>
-					</tr>
-					<tr class="rowBgColor">
-						<th>孵化器类型：</th>
-						<td><input class="input_for_add m-l-len" name="types" type="text" value="" /></td>
+						<th></th>
+						<td></td>
 					</tr>
 					<tr>
-						<th>标签：</th>
-						<td>
-							<#list labels as x>
-								<input class="input_for_checkbox m-l-len" name="labels" type="checkbox" value="${x.id!}"/>${x.value!}
-							</#list>
-						</td>
+						<th>孵化器类型：</th>
+						<td><input class="input_for_add m-l-len" name="types" type="text" value="" /></td>
+						<th></th>
+						<td></td>
 					</tr>
 					<tr class="rowBgColor">
 						<th>孵化器类别：</th>
@@ -94,6 +98,8 @@
 								</#list>
 							</select>
 						</td>
+						<th></th>
+						<td></td>
 					</tr>
 					<tr>
 						<th>孵化器区域：</th>
@@ -104,32 +110,98 @@
 								</#list>
 							</select>
 						</td>
+						<th></th>
+						<td></td>
 					</tr>
 					<tr class="rowBgColor">
 						<th>开放工位（元/平方米/月）：</th>
 						<td><input class="input_for_add m-l-len" name="station" type="text" value="" /></td>
+						<th></th>
+						<td></td>
 					</tr>
 					<tr>
 						<th>独立办公室（元/平方米/月）：</th>
 						<td><input class="input_for_add m-l-len" name="office" type="text" value="" /></td>
+						<th></th>
+						<td></td>
 					</tr>
 					<tr class="rowBgColor">
-						<th>场地面积（平方米）：</th> 
+						<th>场地面积（平方米）：</th>
 						<td><input class="input_for_add m-l-len" name="area" type="text" value="" /></td>
+						<th></th>
+						<td></td>
 					</tr>
 					<tr>
 						<th>在孵企业数：</th>
 						<td><input class="input_for_add m-l-len" name="enterprises" type="text" value="" /></td>
+						<th></th>
+						<td></td>
 					</tr>
 					<tr class="rowBgColor">
 						<th>入驻要求：</th>
 						<td><textarea class="input_for_add m-l-len" name="settled" type="text" ></textarea></td>
+						<th></th>
+						<td></td>
+					</tr>
+					<tr>
+						<th>招商政策：</th>
+						<td><textarea class="input_for_add m-l-len" name="policy" type="text" ></textarea></td>
+						<th></th>
+						<td></td>
+					</tr>
+					<tr class="rowBgColor">
+						<th>直投基金：</th>
+						<td><input class="input_for_add m-l-len" name="fund" type="text" value="" /></td>
+						<th></th>
+						<td></td>
 					</tr>
 					<tr>
 						<th>对大学生免费：</th>
 						<td>
 							<input class="input_for_add m-l-len" type="checkbox" value="1" name="isFrees"/>
 						</td>
+						<th></th>
+						<td></td>
+					</tr>
+					<tr class="rowBgColor">
+						<th>标签：</th>
+						<td>
+							<#list labels as x>
+								<input class="input_for_checkbox m-l-xxl" name="labels" type="checkbox" value="${x.id!}"/>${x.value!}
+							</#list>
+						</td>
+						<th></th>
+						<td></td>
+					</tr>
+					<tr>
+						<th>空间服务：</th>
+						<td>
+							<#list provides as x>
+								<input class="input_for_checkbox m-l-xxl" name="service" type="checkbox" value="${x.id!}"/>${x.value!}
+							</#list>
+						</td>
+						<th></th>
+						<td></td>
+					</tr>
+					<tr class="rowBgColor">
+						<th>配套设施：</th>
+						<td>
+							<#list facilities as x>
+								<input class="input_for_checkbox m-l-xxl" name="facility" type="checkbox" value="${x.id!}"/>${x.value!}
+							</#list>
+						</td>
+						<th></th>
+						<td></td>
+					</tr>
+					<tr>
+						<th>入驻类型：</th>
+						<td>
+							<#list enters as x>
+								<input class="input_for_checkbox m-l-xxl" name="enter" type="checkbox" value="${x.id!}" />${x.value!}
+							</#list>
+						</td>
+						<th></th>
+						<td></td>
 					</tr>
 				</tbody>
 			</table>
@@ -148,9 +220,9 @@
 				<div class="frame_margin markdown">
 					<form id="uploadForm" action="img/upload.do" method="post" enctype="multipart/form-data" onsubmit="return false;" style="margin-bottom:15px;">
 						<input type="file" onChange="inputImageChange(this)" name="file" style="position:absolute;width:70px;opacity:0;"/>
-						<button type="buttom" class="submit_it" style="float: inherit;">选择图片</button>					
+						<button type="buttom" class="submit_it" style="float: inherit;">选择图片</button>
 						<input id="imgSrc" name="imgSrc" type="text" style="display:none;"/>
-						<button type="submit" onclick="upload(this)" class=" submit_it" style="float: inherit;">上传</button>					
+						<button type="submit" onclick="upload(this)" class=" submit_it" style="float: inherit;">上传</button>
 					</form>
 					<div class="img-container" style="max-width:400px;max-height:300px;float:left;margin-right:15px;">
 			          <img id="image">

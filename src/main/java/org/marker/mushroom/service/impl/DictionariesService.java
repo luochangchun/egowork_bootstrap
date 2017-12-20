@@ -20,4 +20,9 @@ public class DictionariesService extends BaseService {
 		return dao.query(sql, new RowMapperDict(), name, type);
 	}
 
+	public List<Dictionaries> findDictionaries(final String type) {
+		final String sql = "select * from " + config.getPrefix() + "dictionaries as m1 where m1.type = ?";
+		return dao.query(sql, new RowMapperDict(), type);
+	}
+
 }
