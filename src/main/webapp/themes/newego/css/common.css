@@ -62,6 +62,7 @@ body {
     display: block;
     right: 0;
     z-index: 10;
+    margin-top: -5px;
 }
 .nav > li > a:hover, .nav > li > a{
     color:#2e2a3f;
