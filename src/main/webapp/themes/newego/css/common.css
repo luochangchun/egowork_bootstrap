@@ -68,14 +68,16 @@ body {
     font-size:16px;
 }
 .header_btn{
-    width: 120px;
+    width: 110px;
     height: 30px;
     line-height:30px;
-    border-radius: 16px;
-    font-size: 16px;
+    border-radius: 14px;
+    font-size: 14px;
     color: #fff;
     background-color: #18b494;
     border: none;
+    outline: none;
+    margin-top:10px;
 }
 .top{
     color:#fff;
@@ -264,7 +266,7 @@ body {
 .text-ellipsis-6{
     -webkit-line-clamp: 6;
 }
-.prev{
+.index_incubator>.prev{
     top:450px;
     z-index: 10000;
     position: absolute;
@@ -278,7 +280,7 @@ body {
     filter: alpha(opacity=50);
     opacity: .5;
 }
-.next{
+.index_incubator>.next{
     top:450px;
     z-index: 10000;
     position: absolute;
@@ -403,6 +405,38 @@ body {
     .right_incubators{
         margin-bottom:11px;
     }
+    .label{
+        margin-top:20px;
+    }
+    .prev{
+        top:400px;
+        z-index: 10000;
+        position: absolute;
+        bottom: 0;
+        left: 35px;
+        width: 2%;
+        font-size: 10px;
+        color: #fff;
+        text-align: center;
+        /*text-shadow: 0 1px 2px rgba(0, 0, 0, .6);*/
+        filter: alpha(opacity=50);
+        opacity: .5;
+    }
+    .next{
+        top:400px;
+        z-index: 10000;
+        position: absolute;
+        bottom: 0;
+        left: 10px;
+        width: 2%;
+        font-size: 10px;
+        color: #fff;
+        text-align: center;
+        /*text-shadow: 0 1px 2px rgba(0, 0, 0, .6);*/
+        filter: alpha(opacity=50);
+        opacity: .5;
+    }
+
 }
 @media (max-width:992px){
     .index_incubator_img img{
@@ -545,7 +579,7 @@ body {
     width: 100%;
 }
 
-.port-6{float: left; width: 100%; position: relative; overflow: hidden; text-align: center;overflow: visible;}
+.port-6{float: left; width: 100%; position: relative; overflow: hidden; text-align: center;}
 .port-6.effect-3 img{transition: 0.5s;margin-top:20px;}
 .port-6.effect-3:hover img{transform: scale(0.3) translateY(-110%); position: relative; z-index: 9;width:286px;height:360px;margin:auto;}
 .port-6.effect-3 .text-desc{transform: translateY(100%); opacity: 0;transition: 0.5s;}
@@ -593,10 +627,6 @@ body {
 .activity_carousel{
     /*position: absolute;*/
 }
-.carousel_height{
-    margin-bottom: 80px!important;
-}
-
 
 
 .el-carousel__item h3 {
@@ -767,6 +797,10 @@ body {
 /*云创孵化*/
 
 /*图片旋转*/
+.incubator_one_p{
+    line-height:40px;
+    font-size:20px;
+}
 .back p:first-child{
     margin-top:60px;
     margin-bottom:36px;
@@ -777,8 +811,8 @@ body {
     height:80px;
 }
 .flipper p{
-    padding-left:30px;
-    padding-right:30px;
+    padding-left:40px;
+    padding-right:40px;
     overflow: hidden;
     margin: auto;
     margin-top:-10px;
@@ -809,8 +843,8 @@ body {
     border:1px solid #ddd;
 }
 .front img{
-    margin-top:60px;
-    margin-bottom:20px;
+    margin-top:50px;
+    margin-bottom:15px;
 }
 .flip-container {
     width:100%;
@@ -896,34 +930,44 @@ body {
     color:#666;
 }
 .line-height{
-    line-height:20px;
+    line-height:25px;
 }
 .index_headline_content h4{
     margin-bottom: 15px;
+}
+.all_label> .label2{
+    margin-top: 0;
+    padding:0 9px;
+}
+.all_label{
+    margin-top: 10px;
 }
 /*云创孵化*/
 
 
 /*孵化项目*/
-.activity_content_carousel h1{
+.incubation_project{
+    background: url(../img/fhxm_1.png) no-repeat center center;
+    height:200px;
+    background-size:95%;
+    margin-bottom:10px;
+}
+.incubation_project h1{
     font-size:24px;
     color:#18b494;
-    margin-top: 90px;
+    text-align: center;
+    margin-top:55px;
 }
-.activity_content_carousel button{
+.incubation_project p{
     font-size:14px;
     color:#fff;
-    margin-top: 20px;
-    width:166px;
-    height:30px;
-    line-height:27px;
     text-align: center;
-    background-color: transparent;
-    border:1px solid #fff;
-    border-radius:15px;
-    font-weight: bold;
+    margin:20px 70px;
 }
-
+.text-ellipsis-2 {
+    -webkit-line-clamp: 2;
+    /*文本占的行数,如果要设置2行加...则设置为2*/
+}
 /*孵化项目*/
 
 
@@ -1113,13 +1157,9 @@ body {
 
 
 /*云创服务*/
-.partner_logo{
-    height:100px;
-    border:1px solid #ddd;
-    text-align: center;
-}
-.partner_logo img{
-    margin-top:30px;
+.partner .col-lg-2 , .partner .col-md-2 , .partner .col-sm-3 , .partner .col-xs-4{
+    padding-right: 0;
+    padding-left: 0;
 }
 .nav-tabs > li {
     width: 136px;
@@ -1157,6 +1197,95 @@ body {
     background:url(../img/service_bg.png) no-repeat bottom center;
 
 }
+/*合作伙伴*/
+.partner_logo{
+    border:1px solid #ddd;
+    height:100px;
+    width:100%;
+}
+.partner_logo1{
+     background:url(../img/hansouyun.png) no-repeat bottom center;
+
+ }
+.partner_logo2{
+    background:url(../img/huaxiayinhang.png) no-repeat bottom center;
+}
+.partner_logo3{
+    background:url(../img/hubeiyinhang.png) no-repeat bottom center;
+
+}
+.partner_logo4{
+    background:url(../img/huitongrongda.png) no-repeat bottom center;
+}
+.partner_logo5{
+    background:url(../img/changjiangzhengquan.png) no-repeat bottom center;
+
+}
+.partner_logo6{
+    background:url(../img/aienngjin.png) no-repeat bottom center;
+}
+.partner_logo7{
+    background:url(../img/jinshilvshi.png) no-repeat bottom center;
+
+}
+.partner_logo8{
+    background:url(../img/puxincaishui.png) no-repeat bottom center;
+}
+.partner_logo9{
+    background:url(../img/qihaowang.png) no-repeat bottom center;
+}
+.partner_logo10{
+    background:url(../img/haimaowang.png) no-repeat bottom center;
+}
+.partner_logo11{
+    background:url(../img/wuhanzhihui.png) no-repeat bottom center;
+
+}
+.partner_logo12{
+    background:url(../img/yingxitouzi.png) no-repeat bottom center;
+}
+.partner_logo1:hover{
+    background:url(../img/1.png) no-repeat bottom center;
+}
+.partner_logo2:hover{
+    background:url(../img/huaxiayinhang.png) no-repeat bottom center;
+}
+.partner_logo3:hover{
+    background:url(../img/hubeiyinhang.png) no-repeat bottom center;
+
+}
+.partner_logo4:hover{
+    background:url(../img/huitongrongda.png) no-repeat bottom center;
+}
+.partner_logo5:hover{
+    background:url(../img/changjiangzhengquan.png) no-repeat bottom center;
+
+}
+.partner_logo6:hover{
+    background:url(../img/aienngjin.png) no-repeat bottom center;
+}
+.partner_logo7:hover{
+    background:url(../img/jinshilvshi.png) no-repeat bottom center;
+
+}
+.partner_logo8:hover{
+    background:url(../img/puxincaishui.png) no-repeat bottom center;
+}
+.partner_logo9:hover{
+    background:url(../img/qihaowang.png) no-repeat bottom center;
+}
+.partner_logo10:hover{
+    background:url(../img/haimaowang.png) no-repeat bottom center;
+}
+.partner_logo11:hover{
+    background:url(../img/wuhanzhihui.png) no-repeat bottom center;
+
+}
+.partner_logo12:hover{
+    background:url(../img/yingxitouzi.png) no-repeat bottom center;
+}
+
+/*合作伙伴*/
 
 
 
