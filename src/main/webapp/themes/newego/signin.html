@@ -6,56 +6,34 @@
 <!--<![endif]-->
 
 <body>
-<div class="box">
-
-	<!--#include file="home/header.html" -->
-
-	<div class="bg-light padder-v-md">
-		<div class="bg-white">
-			<div class="container">
-				<div class="row padder-v">
-					<div class="col-md-8 m-b">
-						<img src="img/editor.svg" class="img-responsive m-r-xs inline pull-left w-xxxs">
-						<p class="text-lg font-bold text-info m-b-none clear m-t-xs">登录Egowork云创空间账号</p>
-					</div>
-					<div class="col-md-3">
-						<p class="m-t-xs">已注册的会员请登录,或立即<a href="/signup.html" ><span class="text-info">注册</span></a></p>
+<!--#include file="home/header.html" -->
+<div class="login">
+	<div class="container">
+		<div class="loginBox">
+			<h1 class="tc">账号登录</h1>
+			<form class="form-horizontal">
+				<div class="form-group">
+					<label for="phone" class="col-sm-3 control-label">账号：</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" name="phone" id="phone" placeholder="请输入账号">
 					</div>
 				</div>
-			</div>
+				<div class="form-group">
+					<label for="password" class="col-sm-3 control-label">密码：</label>
+					<div class="col-sm-8">
+						<input type="password" class="form-control" name="password" id="password" placeholder="请输入密码">
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="tc">
+						<button type="submit" class="btn btn-success" onclick="login()">登录</button>
+					</div>
+				</div>
+			</form>
 		</div>
 	</div>
-	<div class="bg-light padder-v-xxl">
-		<div class="container">
-			<div class="bg-white padder-v padder m-b-xxxxl b w-xxxl w-auto-xs center-block">
-				<div class="text-md text-center padder-v-xs font-bold b-b line-info">账号登录</div>
-				<form class="form-horizontal m-t-xxl m-b-xxl" role="form">
-					<div class="form-group m-b-lg">
-						<label for="phone" class="col-sm-3 control-label">账   号：</label>
-						<div class="col-sm-8">
-							<input type="text" class="form-control" name="phone" id="phone" placeholder="请输入账号">
-						</div>
-					</div>
-					<div class="form-group m-b-lg">
-						<label for="password" class="col-sm-3 control-label text-center">密   码：</label>
-						<div class="col-sm-8">
-							<input type="password" class="form-control" name="password" id="password" placeholder="请输入密码">
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="text-center">
-							<a onclick="login()" class="btn btn-info btn-rounded"><span class="padder-xxl text-md">登录</span></a>
-						</div>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-
-	<!--#include file="home/footer.html" -->
-
 </div>
-
+<!--#include file="home/footer.html" -->
 </body>
 </html>
 

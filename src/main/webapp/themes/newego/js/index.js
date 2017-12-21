@@ -28,8 +28,19 @@ jQuery.fn.widResize = function (Func) {
 // 	});
 // }
 $(document).ready(function(){
-	// 初始化课程信息
-	// initCourse();
+	var startDate = new Date();
+	
+	$('#datetimepicker1').datetimepicker({
+		language: 'zh-CN',
+		format: 'yyyy-mm-dd hh:ii',
+		autoclose: true,
+		startDate: new Date(),
+		todayBtn: true
+		
+		
+		
+	});
+	
 	//[h-ctrl]
 	function hCtrl() {
 		$("[h-ctrl]").each(function () {
@@ -60,85 +71,7 @@ $(document).ready(function(){
 	$(window).widResize(hCtrl);
 	
 	
-    $("#showDiv").click(function(){
-        $(".tel-nav").toggleClass("open");
-    });
 
-	//首页活动
-	  var img_width = $(".act_list > a >div:first-child").width();
-	  $(".act").mouseover(function(){
-		  $(this).find(".top_line,.bottom_line").stop().animate({"width":img_width + 'px'});
-		  $(this).find(".right_line,.left_line").stop().animate({"height":"154px"});
-	  });
-	  $(".act").mouseout(function(){
-		  $(this).find(".top_line,.bottom_line").stop().animate({"width":"0px"});
-		  $(this).find(".right_line,.left_line").stop().animate({"height":"0px"});
-	  });
-	
-	//	企业信息化产品
-	var Pbox_width = $(".infomation .product-box").width();
-	$(".infomation .product-box").mouseover(function(){
-		$(this).find(".top_line,.bottom_line").stop().animate({"width":Pbox_width + 'px'});
-		$(this).find(".right_line,.left_line").stop().animate({"height":"94px"});
-	});
-	$(".infomation .product-box").mouseout(function(){
-		  $(this).find(".top_line,.bottom_line").stop().animate({"width":"0px"});
-		  $(this).find(".right_line,.left_line").stop().animate({"height":"0px"});
-	  });
-	  
-   //分类选择
-   $(".select a").click(function(){
-        $(this).addClass("active").siblings().removeClass("active");
-   });
-   $(".financial a").click(function(){
-        $(this).addClass("active").siblings().removeClass("active");
-   });
-   
-   //fiscal-CMS
-   $(".fiscal-CMS .use").hide();
-   $(".fiscal-CMS .content-box").hover(function(){
-	   $(this).children(".use").show();
-   },function(){
-	   $(this).children(".use").hide();
-   });
-   
-  //agri_electricity
-   $(".agri_electricity .mode .mode-content .mode-contentList").hide().first().show();
-   $(".agri_electricity .mode .mode-list").mouseenter(function(){
-	   $(this).addClass("active").siblings().removeClass("active");
-	   n = $(this).index();
-	   $(".agri_electricity .mode .mode-content .mode-contentList").eq(n).show().siblings().hide();
-   });
-   
-   //trade
-   $(".trade-box > div > div > img:nth-child(2)").hide();
-  $(".trade-box > div").hover(function(event){
-	   $(this).children("div").addClass("active");
-	   $(this).children("div").find("img:nth-child(2)").show().siblings("img").hide();
-   },function(event){
-	   $(this).children("div").removeClass("active");
-	   $(this).children("div").find("img:nth-child(1)").show().siblings("img").hide();
-   });
-  
-   
-	//企业信息化服务及其他页面高度
-   var test = function(){
-		 if(!document.getElementById("info")) return;
-		 var infoHeight = document.getElementById("info").scrollHeight;
-		 var bottomHeight = document.getElementById("bottom").scrollHeight;
-		 var allHeight = document.documentElement.clientHeight;
-		 var bottom = document.getElementById("bottom");
-		 if(infoHeight + bottomHeight < allHeight){
-			 bottom.style.position = "absolute";
-			 bottom.style.bottom = "0";
-		 }else{
-			 bottom.style.position = "";
-			 bottom.style.bottom = "";
-		 }
-	 }
-		test();
-
-		
 	$.ajax({
 		type : "get",
 		contentType : "text/plain;charset=utf-8",
@@ -165,37 +98,6 @@ $(document).ready(function(){
 });
 
 
-/*function validationLogin(forwardUrl,returndUrl)
-{
-    $.ajax
-	({
-        type : "get",
-        contentType : "text/plain;charset=utf-8",
-        url : "/ajax?resource=resource=signup/getUserInSession",
-        dataType : "json",
-		async : false,
-        success : function(data)
-		{
-            if(data.userId > 0)
-            {
-                loginUser = data;
-            }
-            else
-			{
-                loginUser = null;
-            }
-            if(loginUser !== null && loginUser.userName)
-            {
-                /!*window.location.href = forwardUrl;*!/
-                singleLogin(loginUser.userName,loginUser.aesPassword);
-            }
-            else
-			{
-                window.location.href = returndUrl;
-			}
-        }
-    });
-}*/
 function validationLogin(url)
 {
     $.ajax
