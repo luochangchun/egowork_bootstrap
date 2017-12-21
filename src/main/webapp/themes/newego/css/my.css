@@ -2,6 +2,69 @@ a {
     text-decoration: none;
 }
 
+/* 登录注册 */
+
+.login {
+    padding: 80px 0;
+    background-color: #edf1f2;
+}
+
+.loginBox {
+    width: 460px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 15px;
+}
+
+.loginBox h1 {
+    font-size: 18px;
+    line-height: 40px;
+    color: #18b494;
+    margin-bottom: 20px;
+    border-bottom: 2px dashed #18b494;
+}
+
+.loginBox .form-horizontal {
+    margin-top: 50px;
+    /* margin-bottom: 50px; */
+}
+
+.loginBox .form-horizontal .form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+}
+
+.loginBox .form-horizontal .form-group {
+    margin-bottom: 30px;
+}
+
+.loginBox .col-xs-7, .loginBox .col-xs-5 {
+    padding: 0;
+}
+
+.loginBox .col-xs-5 .btn-info {
+    color: #ffffff !important;
+    background-color: #18b494;
+    border-color: #18b494;
+    width: 100%;
+}
+
+.loginBox .form-horizontal .btn-success {
+    padding: 6px 100px;
+    font-size: 16px;
+    color: #fff;
+    border-radius: 50px;
+    background-color: #18b494;
+}
+
 /* 学院首页 */
 
 .text-ellipsis {
