@@ -110,7 +110,7 @@
                     <div class="appli_process_l">
                         <p class="tc">企业培训</p>
                         <p class="tc">申请流程</p>
-                        <a type="button" class="tc" data-toggle="modal" data-target="#exampleModal6" data-whatever="@mdo">提交培训申请</a>
+                        <a type="button" class="tc" data-toggle="modal" data-target="#trainService" data-whatever="@mdo">提交培训申请</a>
                     </div>
                 </div>
                 <div class="col-lg-10 col-md-10">
@@ -121,63 +121,46 @@
     </div>
 
     <!--培训需求模态框-->
-    <div class="modal fade" id="exampleModal6" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="z-index: 10000;">
+    <div class="modal fade" id="trainService" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="z-index: 10000;">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <h4 class="modal-title form_title" id="gridSystemModalLabel">培训服务需求表单</h4>
+                    <h4 class="modal-title form_title">培训服务需求表单</h4>
                 </div>
                 <div class="modal-body">
                     <form class="form-horizontal">
                         <div class="form-group">
-                            <label for="inputPassword3" class="col-sm-3 control-label">培训主题</label>
-                            <div class="col-sm-8">
+                            <label for="trainTitle" class="col-sm-3 control-label">培训主题</label>
+                            <div class="col-sm-8" id="trainTitle">
                                 <label class="checkbox-inline">
                                     <input type="checkbox" id="inlineCheckbox1" value="option1"> 销售类
                                 </label>
-                                <label class="checkbox-inline">
-                                    <input type="checkbox" id="inlineCheckbox2" value="option2"> 微商
-                                </label>
-                                <label class="checkbox-inline">
-                                    <input type="checkbox" id="inlineCheckbox3" value="option3"> 领导力
-                                </label>
-                                <label class="checkbox-inline">
-                                    <input type="checkbox" id="inlineCheckbox4" value="option1"> 电子商务
-                                </label>
-                                <label class="checkbox-inline">
-                                    <input type="checkbox" id="inlineCheckbox5" value="option2"> 农产品
-                                </label>
-                                <label class="checkbox-inline">
-                                    <input type="checkbox" id="inlineCheckbox6" value="option3"> 跨境电商
-                                </label>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputPassword3" class="col-sm-3 control-label">培训人数</label>
+                            <label for="trainAmount" class="col-sm-3 control-label">培训人数</label>
                             <div class="col-sm-8">
-                                <input type="password" class="form-control" id="inputTime" placeholder="请输入培训人数">
+                                <input type="number" class="form-control" id="trainAmount" placeholder="请输入培训人数">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-3 control-label">企业名称</label>
+                            <label for="trainEnterprise" class="col-sm-3 control-label">企业名称</label>
                             <div class="col-sm-8">
-                                <input type="email" class="form-control" id="inputEmail3" placeholder="请输入企业名称">
+                                <input type="text" class="form-control" id="trainEnterprise" placeholder="请输入企业名称">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputPassword3" class="col-sm-3 control-label">联系电话</label>
+                            <label for="trainPhone" class="col-sm-3 control-label">联系电话</label>
                             <div class="col-sm-8">
-                                <input type="password" class="form-control" id="inputPassword3" placeholder="请填写联系人的手机号码">
+                                <input type="text" class="form-control" id="trainPhone" placeholder="请填写联系人的手机号码">
                             </div>
                         </div>
-    
-    
                         <div class="form-group">
                             <div class="col-sm-offset-5 col-sm-6">
-                                <button type="submit" class="form_btn">提 交</button>
+                                <button type="button" class="form_btn" id="trainBtn">提 交</button>
                             </div>
                         </div>
                     </form>
