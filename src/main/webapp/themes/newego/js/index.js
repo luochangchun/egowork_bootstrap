@@ -188,6 +188,7 @@ $(document).ready(function () {
 			if (data.status == true) {
 				alert(data.message);
 				$('#demandForm').modal('hide');
+				$('#demandForm1').modal('hide');
 			} else {
 				alert("提交失败，请稍后再试");
 			}
@@ -196,7 +197,60 @@ $(document).ready(function () {
 	$('#demandBtn').click(function () {
 		demandApply();
 	})
-
+	function demandApply1() {
+		var demandClassify = $("#demandClassify1 option:selected").val();
+		var demandClassifyId = $("#demandClassify1 option:selected").attr('data-id');
+		var demandTitle = $("#demandTitle1").val();
+		var demandNeeds = $("#demandNeeds1").val();
+		var demandEnterprise = $("#demandEnterprise1").val();
+		var demandName = $("#demandName1").val();
+		var demandPhone = $("#demandPhone1").val();
+		if (demandEnterprise == "") {
+			alert("请输入企业名称");
+			return false;
+		}
+		if (demandName == "") {
+			alert("请输入联系人姓名");
+			return false;
+		}
+		if (demandPhone == "") {
+			alert("请输入联系方式");
+			return false;
+		}
+		var params = {
+			"classifyId": demandClassifyId, //需求分类id
+			"classify": demandClassify, //需求分类
+			"enterprise": demandEnterprise, //企业名称
+			"contact": demandName, //联系人
+			"phone": demandPhone, //手机号
+			"title": demandTitle, //需求标题
+			"needs": demandNeeds //需求内容
+		};
+		var settings = {
+			"async": true,
+			"crossDomain": true,
+			"url": form_url + "/front/Apply/inster/needs.do",
+			"method": "POST",
+			"headers": {
+				"content-type": "application/x-www-form-urlencoded",
+				"cache-control": "no-cache",
+				"postman-token": "ae2414ac-3bc5-34fe-6d2c-d969aa34ff91"
+			},
+			"data": params
+		}
+		$.ajax(settings).done(function (data) {
+			if (data.status == true) {
+				alert(data.message);
+				$('#demandForm').modal('hide');
+				$('#demandForm1').modal('hide');
+			} else {
+				alert("提交失败，请稍后再试");
+			}
+		});
+	}
+	$('#demandBtn1').click(function () {
+		demandApply1();
+	})
 	// 线上孵化表单
 	function onlineApply() {
 		var onlineEnterprise = $("#onlineEnterprise").val(); //企业名称
@@ -554,6 +608,45 @@ $(document).ready(function () {
 	$("#rentBtn").click(function () {
 		spaceRent();
 	})
+
+	// 培训服务需求表单
+	function trainService() {
+		var trainAmount = $("#trainAmount").val(); 
+		var trainEnterprise = $("#trainEnterprise").val(); 
+		var trainPhone = $("#trainPhone").val(); //联系电话	
+		var params = {
+			"subject": "aaa",
+			"amount": trainAmount,
+			"enterprise": trainEnterprise,
+			"phone": trainPhone
+		};
+
+		var settings = {
+			"async": true,
+			"crossDomain": true,
+			"url": form_url + "/front/Apply/inster/training.do",
+			"method": "POST",
+			"headers": {
+				"content-type": "application/x-www-form-urlencoded",
+				"cache-control": "no-cache",
+				"postman-token": "ae2414ac-3bc5-34fe-6d2c-d969aa34ff91"
+			},
+			"data": params
+		}
+		$.ajax(settings).done(function (data) {
+			console.log(data);
+			if (data.status == true) {
+				alert(data.message);
+				$('#trainService').modal('hide');
+			} else {
+				alert("提交失败，请稍后再试");
+			}
+		});
+	}
+	$("#trainBtn").click(function () {
+		trainService();
+	})
+
 	//[h-ctrl]
 	function hCtrl() {
 		$("[h-ctrl]").each(function () {
