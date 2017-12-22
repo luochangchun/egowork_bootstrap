@@ -19,12 +19,12 @@
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 							<div class="list_tab">
 								<ul class="list_tab_3">
-									<li><a href="">全部</a><span>|</span></li>
-									<li><a href="">武汉</a><span>|</span></li>
-									<li><a href="">宜昌</a><span>|</span></li>
-									<li><a href="">荆门</a><span>|</span></li>
-									<li><a href="">随州</a><span>|</span></li>
-									<li><a href="">钟祥</a></li>
+									<li><a href="">全部孵化器</a><span>:</span></li>
+									<!--<li><a href="">武汉</a><span>|</span></li>-->
+									<!--<li><a href="">宜昌</a><span>|</span></li>-->
+									<!--<li><a href="">荆门</a><span>|</span></li>-->
+									<!--<li><a href="">随州</a><span>|</span></li>-->
+									<!--<li><a href="">钟祥</a></li>-->
 								</ul>
 							</div>
 						</div>
@@ -39,72 +39,48 @@
 				<div class="row">
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 						<div class="row clearfix">
+							<@page model="incubator" size="9" cid="133" status="1" order="top desc,time desc">
+							<#list page.data as incubator>
 							<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
 								<div class="index_headline">
-									<img src="img/eg2.jpg" alt="">
+									<a href="/incubatorDetails.html" style="height:200px;display:block;">
+										<img src="${incubator.icon!}" alt="">
+									</a>
 									<div class="index_headline_content">
-										<h4 class="h4">武汉火凤凰云计算公司</h4>
-										<p class="p3 line-height text-ellipsis-muti text-ellipsis-4">简介 : 与是否还能吃的看能否是否开始打回访萨克好歹是的导火索金合欢花你们那个方法与是否还能吃的看能否是否开始打回访萨克好歹是的导火索金合欢花你们那个方法与是否还能吃的看能否是否开始打回访萨克好歹是的导火索金合欢花你们那个方法</p>
-										<p class="p5 line-height text-ellipsis-muti text-ellipsis-2">入驻政策 : 与是否还能吃的看能否是否开始打回访萨克好歹是的导火索金合欢花你们那个</p>
+										<h4 class="h4 text-ellipsis">${incubator.title!}</h4>
+										<!--<p class="p3 line-height text-ellipsis-muti text-ellipsis-3" style="height:72px;">简介 : ${incubator.settled!}</p>-->
+										<!--<p class="p5 line-height text-ellipsis-muti text-ellipsis-2" style="height:47px;">入驻政策 : ${incubator.policy!}</p>-->
+										<p class="p3 line-height text-ellipsis">地址: ${incubator.address!}</p>
+										<p class="p3 line-height text-ellipsis">联系电话: ${incubator.phone!}</p>
+										<p class="p3 line-height text-ellipsis">级别:
+											<!-- {dictionaries:list table=(dictionaries) name=('level') type=('incubator')} -->
+											<#if incubator.level == dictionaries.id?c >
+												${dictionaries.value}
+											</#if>
+											<!-- {/list} -->
+										</p>
+										<p class="p3 line-height text-ellipsis">地区:
+											<!-- {dictionaries:list table=(dictionaries) name=('region') type=('incubator')} -->
+											<#if incubator.region == dictionaries.id?c >
+												${dictionaries.value}
+											</#if>
+											<!-- {/list} -->
+										</p>
+										<!--<div  class="text-ellipsis">-->
+											<!--&lt;!&ndash; {dictionaries:list table=(dictionaries) name=('label') type=('incubator')} &ndash;&gt;-->
+											<!--<#if incubator.label?index_of(dictionaries.id?c) != -1>-->
+												<!--<span class="label2">${dictionaries.value}</span>-->
+											<!--</#if>-->
+											<!--&lt;!&ndash; {/list} &ndash;&gt;-->
+										<!--</div>-->
 										<button class="btn5">申请入驻</button>
 									</div>
 								</div>
 							</div>
-							<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-								<div class="index_headline">
-									<img src="img/eg2.jpg" alt="">
-									<div class="index_headline_content">
-										<h4 class="h4">武汉火凤凰云计算公司</h4>
-										<p class="p3 line-height text-ellipsis-muti text-ellipsis-4">简介 : 与是否还能吃的看能否是否开始打回访萨克好歹是的导火索金合欢花你们那个方法与是否还能吃的看能否是否开始打回访萨克好歹是的导火索金合欢花你们那个方法与是否还能吃的看能否是否开始打回访萨克好歹是的导火索金合欢花你们那个方法</p>
-										<p class="p5 line-height text-ellipsis-muti text-ellipsis-2">入驻政策 : 与是否还能吃的看能否是否开始打回访萨克好歹是的导火索金合欢花你们那个</p>
-										<button class="btn5">申请入驻</button>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-								<div class="index_headline">
-									<img src="img/eg2.jpg" alt="">
-									<div class="index_headline_content">
-										<h4 class="h4">武汉火凤凰云计算公司</h4>
-										<p class="p3 line-height text-ellipsis-muti text-ellipsis-4">简介 : 与是否还能吃的看能否是否开始打回访萨克好歹是的导火索金合欢花你们那个方法与是否还能吃的看能否是否开始打回访萨克好歹是的导火索金合欢花你们那个方法与是否还能吃的看能否是否开始打回访萨克好歹是的导火索金合欢花你们那个方法</p>
-										<p class="p5 line-height text-ellipsis-muti text-ellipsis-2">入驻政策 : 与是否还能吃的看能否是否开始打回访萨克好歹是的导火索金合欢花你们那个</p>
-										<button class="btn5">申请入驻</button>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-								<div class="index_headline">
-									<img src="img/eg2.jpg" alt="">
-									<div class="index_headline_content">
-										<h4 class="h4">武汉火凤凰云计算公司</h4>
-										<p class="p3 line-height text-ellipsis-muti text-ellipsis-4">简介 : 与是否还能吃的看能否是否开始打回访萨克好歹是的导火索金合欢花你们那个方法与是否还能吃的看能否是否开始打回访萨克好歹是的导火索金合欢花你们那个方法与是否还能吃的看能否是否开始打回访萨克好歹是的导火索金合欢花你们那个方法</p>
-										<p class="p5 line-height text-ellipsis-muti text-ellipsis-2">入驻政策 : 与是否还能吃的看能否是否开始打回访萨克好歹是的导火索金合欢花你们那个</p>
-										<button class="btn5">申请入驻</button>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-								<div class="index_headline">
-									<img src="img/eg2.jpg" alt="">
-									<div class="index_headline_content">
-										<h4 class="h4">武汉火凤凰云计算公司</h4>
-										<p class="p3 line-height text-ellipsis-muti text-ellipsis-4">简介 : 与是否还能吃的看能否是否开始打回访萨克好歹是的导火索金合欢花你们那个方法与是否还能吃的看能否是否开始打回访萨克好歹是的导火索金合欢花你们那个方法与是否还能吃的看能否是否开始打回访萨克好歹是的导火索金合欢花你们那个方法</p>
-										<p class="p5 line-height text-ellipsis-muti text-ellipsis-2">入驻政策 : 与是否还能吃的看能否是否开始打回访萨克好歹是的导火索金合欢花你们那个</p>
-										<button class="btn5">申请入驻</button>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-								<div class="index_headline">
-									<img src="img/eg2.jpg" alt="">
-									<div class="index_headline_content">
-										<h4 class="h4">武汉火凤凰云计算公司</h4>
-										<p class="p3 line-height text-ellipsis-muti text-ellipsis-4">简介 : 与是否还能吃的看能否是否开始打回访萨克好歹是的导火索金合欢花你们那个方法与是否还能吃的看能否是否开始打回访萨克好歹是的导火索金合欢花你们那个方法与是否还能吃的看能否是否开始打回访萨克好歹是的导火索金合欢花你们那个方法</p>
-										<p class="p5 line-height text-ellipsis-muti text-ellipsis-2">入驻政策 : 与是否还能吃的看能否是否开始打回访萨克好歹是的导火索金合欢花你们那个</p>
-										<button class="btn5">申请入驻</button>
-									</div>
-								</div>
-							</div>
+							</#list>
+						</@page>
+						<!--#include file="../common/page.html"-->
+						<@paginate currentPage=page.currentPageNo totalPage=page.totalPages actionUrl=""  />
 						</div>
 					</div>
 				</div>
