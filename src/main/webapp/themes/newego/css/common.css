@@ -9,6 +9,38 @@ body {
 }
 
 /*头部*/
+@media (max-width: 767px){
+    .hidden-xs {
+        display: none !important;
+    }
+}
+.tel-nav {
+    display: none !important;
+}
+.tel-nav.open {
+    display: block !important;
+}
+.z-ind {
+    z-index: 2;
+}
+.w-full {
+    width: 100%;
+}
+.pos-abt {
+    position: absolute;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 .index_btn{
     width:120px;
     height:30px;
@@ -538,53 +570,52 @@ body {
 
 /*全面专业的服务体系*/
 .index_service{
-    height:300px;
+    height:140px;
+    text-align: center;
 }
-.index_color:nth-child(1),.index_color:nth-child(3),.index_color:nth-child(6),.index_color:nth-child(8){
-    background-color:#e5ebe9;
-}
-.index_color:nth-child(2),.index_color:nth-child(4),.index_color:nth-child(5),.index_color:nth-child(7){
-    background-color:#d3ddda;
-}
-.index_color:hover{
-    background-color:#fff;
-}
+/*.index_color:nth-child(1),.index_color:nth-child(3),.index_color:nth-child(6),.index_color:nth-child(8){*/
+    /*background-color:#e5ebe9;*/
+/*}*/
+/*.index_color:nth-child(2),.index_color:nth-child(4),.index_color:nth-child(5),.index_color:nth-child(7){*/
+    /*background-color:#d3ddda;*/
+/*}*/
+/*.index_color:hover{*/
+    /*background-color:#e5ebe9;*/
+/*}*/
 .index_service img{
-    /*width:200px;*/
-    height:200px;
-    padding-top: 50px;
-    padding-bottom:40px;
+    width:50px;
+    height:50px;
+    margin-top: 25px;
 }
 .index_service p{
     margin-top:0;
     line-height:30px;
     height:30px;
-    font-size:18px;
-    color:#2e2a3f;
+    font-size:16px;
     text-align: center;
 }
 
 /*动画*/
-.btn4{display:block; line-height:40px;font-size: 14px; color: #fff!important; border:none; background-color: #18b494;transition: 0.4s;
-    border-radius: 16px;width:50%;
-    margin:30px auto;
-}
-/*.btn:hover{background-color: transparent; color: #4d92d9; transition: 0.4s;}*/
-.text-desc{
-    position: absolute;
-    left: 0;
-    top: 0;
-    background-color: #fff;
-    height: 100%;
-    opacity: 0;
-    width: 100%;
-}
+/*.btn4{display:block; line-height:40px;font-size: 14px; color: #fff!important; border:none; background-color: #18b494;transition: 0.4s;*/
+    /*border-radius: 16px;width:50%;*/
+    /*margin:30px auto;*/
+/*}*/
+/*!*.btn:hover{background-color: transparent; color: #4d92d9; transition: 0.4s;}*!*/
+/*.text-desc{*/
+    /*position: absolute;*/
+    /*left: 0;*/
+    /*top: 0;*/
+    /*background-color: #fff;*/
+    /*height: 100%;*/
+    /*opacity: 0;*/
+    /*width: 100%;*/
+/*}*/
 
-.port-6{float: left; width: 100%; position: relative; overflow: hidden; text-align: center;}
-.port-6.effect-3 img{transition: 0.5s;margin-top:20px;}
-.port-6.effect-3:hover img{transform: scale(0.3) translateY(-110%); position: relative; z-index: 9;width:286px;height:360px;margin:auto;}
-.port-6.effect-3 .text-desc{transform: translateY(100%); opacity: 0;transition: 0.5s;}
-.port-6.effect-3:hover .text-desc{transform: translateY(0px); opacity: 1;}
+/*.port-6{float: left; width: 100%; position: relative; overflow: hidden; text-align: center;}*/
+/*.port-6.effect-3 img{transition: 0.5s;margin-top:20px;}*/
+/*.port-6.effect-3:hover img{transform: scale(0.3) translateY(-110%); position: relative; z-index: 9;width:286px;height:360px;margin:auto;}*/
+/*.port-6.effect-3 .text-desc{transform: translateY(100%); opacity: 0;transition: 0.5s;}*/
+/*.port-6.effect-3:hover .text-desc{transform: translateY(0px); opacity: 1;}*/
 
 
 
@@ -756,6 +787,7 @@ body {
 .index_headline_content{
     padding:20px 15px 30px 15px;
     background-color:#fff;
+    margin-top: -4px;
 }
 .h4{
     font-size:16px;
@@ -1256,85 +1288,101 @@ body {
     width:100%;
 }
 .partner_logo1{
-     background:url(../img/hansouyun.png) no-repeat center center;
-
+     background:url(../img/aienngjin.png) no-repeat center center;
+    background-size:90%;
  }
 .partner_logo2{
-    background:url(../img/huaxiayinhang.png) no-repeat center center;
+    background:url(../img/baizeqiye.png) no-repeat center center;
+    background-size:90%;
 }
 .partner_logo3{
-    background:url(../img/hubeiyinhang.png) no-repeat center center;
-
+    background:url(../img/changjiangzhengquan.png) no-repeat center center;
+    background-size:90%;
 }
 .partner_logo4{
-    background:url(../img/huitongrongda.png) no-repeat center center;
+    background:url(../img/huaxiayinhang.png) no-repeat center center;
+    background-size:90%;
 }
 .partner_logo5{
-    background:url(../img/changjiangzhengquan.png) no-repeat center center;
-
+    background:url(../img/hubeiyinhang.png) no-repeat center center;
+    background-size:90%;
 }
 .partner_logo6{
-    background:url(../img/aienngjin.png) no-repeat center center;
+    background:url(../img/huitongrongda.png) no-repeat center center;
+    background-size:90%;
 }
 .partner_logo7{
     background:url(../img/jinshilvshi.png) no-repeat center center;
+    background-size:90%;
 
 }
 .partner_logo8{
     background:url(../img/puxincaishui.png) no-repeat center center;
+    background-size:90%;
 }
 .partner_logo9{
     background:url(../img/qihaowang.png) no-repeat center center;
+    background-size:90%;
 }
 .partner_logo10{
-    background:url(../img/haimaowang.png) no-repeat center center;
+    background:url(../img/wuhanzhihui.png) no-repeat center center;
+    background-size:90%;
 }
 .partner_logo11{
-    background:url(../img/wuhanzhihui.png) no-repeat center center;
-
+    background:url(../img/yingxitouzi.png) no-repeat center center;
+    background-size:90%;
 }
 .partner_logo12{
-    background:url(../img/yingxitouzi.png) no-repeat center center;
+    background:url(../img/zhongdishiyun.png) no-repeat center center;
+    background-size:90%;
 }
 .partner_logo1:hover{
-    background:url(../img/4.png) no-repeat center center;
+    background:url(../img/1.png) no-repeat center center;
+    background-size:90%;
 }
 .partner_logo2:hover{
-    background:url(../img/5.png) no-repeat center center;
+    background:url(../img/2.png) no-repeat center center;
+    background-size:90%;
 }
 .partner_logo3:hover{
-    background:url(../img/6.png) no-repeat center center;
-
+    background:url(../img/3.png) no-repeat center center;
+    background-size:90%;
 }
 .partner_logo4:hover{
-    background:url(../img/7.png) no-repeat center center;
+    background:url(../img/4.png) no-repeat center center;
+    background-size:90%;
 }
 .partner_logo5:hover{
-    background:url(../img/2.png) no-repeat center center;
-
+    background:url(../img/5.png) no-repeat center center;
+    background-size:90%;
 }
 .partner_logo6:hover{
-    background:url(../img/1.png) no-repeat center center;
+    background:url(../img/6.png) no-repeat center center;
+    background-size:90%;
 }
 .partner_logo7:hover{
-    background:url(../img/8.png) no-repeat center center;
-
+    background:url(../img/7.png) no-repeat center center;
+    background-size:90%;
 }
 .partner_logo8:hover{
-    background:url(../img/9.png) no-repeat center center;
+    background:url(../img/8.png) no-repeat center center;
+    background-size:90%;
 }
 .partner_logo9:hover{
-    background:url(../img/10.png) no-repeat center center;
+    background:url(../img/9.png) no-repeat center center;
+    background-size:90%;
 }
 .partner_logo10:hover{
-    background:url(../img/3.png) no-repeat center center;
+    background:url(../img/10.png) no-repeat center center;
+    background-size:90%;
 }
 .partner_logo11:hover{
     background:url(../img/11.png) no-repeat center center;
-
+    background-size:90%;
 }
 .partner_logo12:hover{
     background:url(../img/12.png) no-repeat center center;
+    background-size:90%;
 }
 
 /*合作伙伴*/
