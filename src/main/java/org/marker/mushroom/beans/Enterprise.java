@@ -29,6 +29,8 @@ public class Enterprise implements Serializable {
 	private String email;
 	/** 图标 */
 	private String icon;
+	/** 详细介绍 */
+	private String content;
 	/** 添加时间 */
 	private Date time;
 
@@ -102,6 +104,14 @@ public class Enterprise implements Serializable {
 
 	public void setIcon(String icon) {
 		this.icon = icon;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
 	}
 
 	public Date getTime() {
