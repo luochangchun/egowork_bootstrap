@@ -3,6 +3,7 @@ package org.marker.mushroom.beans;
 import org.marker.mushroom.dao.annotation.Entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by 30 on 2017/12/18 0018.
@@ -34,6 +35,8 @@ public class SpaceApply implements Serializable {
 	private String name;
 	/**联系电话*/
 	private String phone;
+	/** 添加时间 */
+	private Date time;
 
 	public Integer getId() {
 		return id;
@@ -129,5 +132,13 @@ public class SpaceApply implements Serializable {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	public Date getTime() {
+		return time;
+	}
+
+	public void setTime(Date time) {
+		this.time = time;
 	}
 }
