@@ -40,6 +40,15 @@
                             <p style="margin:0;">(*最多可输入200字)</p>
                         </td>
 					</tr>
+                    <tr class="rowBgColor">
+                        <th>详细介绍：</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <script type="text/plain" id="mushroomeditor" name="content" style="height:350px;"></script>
+						</td>
+					</tr>
 				</tbody>
 			</table>
 		</div>
@@ -93,8 +102,37 @@ $("#image").on({
   }
 }).cropper();
 
+function mySubmitForm(obj) {
+	window.editor.sync();//手动提交需要手动同步编辑器数据
+	submitActionForm(obj);
+}
 
-function mySubmitForm(obj){
- 	submitActionForm(obj);
-} 
+$(function () {
+	if (window.editor != null) window.editor.destroy();
+
+	//实例化编辑器
+	//建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+	window.editor = UE.getEditor('mushroomeditor');
+	window.editor.ready(function () {
+ 		$("#title").focus();
+ 		var status = editor.queryCommandState( 'source' );
+ 		if(status != 1){
+ 		}
+	});
+});
+
+$('#myForm').validator({
+	// 传入字段集合
+	messages: {
+		required: "不能为空",
+	},
+	fields: {
+		'title': 'required;title;',
+		'intro': 'required;intro;'
+	}
+}).on("click", ".submit_it", function(){
+	$('#myForm').trigger("submit");
+	window.editor.sync();//手动提交需要手动同步编辑器数据
+	submitActionForm(obj);
+});
 </script>
