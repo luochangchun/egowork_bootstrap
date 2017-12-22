@@ -5,6 +5,7 @@ import org.marker.mushroom.beans.ResultMessage;
 import org.marker.mushroom.core.config.impl.SystemConfig;
 import org.marker.mushroom.support.SupportController;
 import org.marker.mushroom.utils.GenerateUUID;
+import org.marker.mushroom.utils.StringUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,11 +47,14 @@ public class ImgUploadController extends SupportController {
 		if (!StringUtils.isEmpty(imgSrc)) {
 			try {
 				final SimpleDateFormat dateformat = new SimpleDateFormat("yyyyMMddHH");
+
 				//构建图片保存的目录
 				String webAppPath = request.getSession().getServletContext().getRealPath("");
 				//				System.out.println("webAppPath--old_" + webAppPath);
-				final int index = webAppPath.lastIndexOf("/") > 0 ? webAppPath.lastIndexOf("/") : 0;
-				webAppPath = webAppPath.substring(0, index);
+//				final int index = webAppPath.lastIndexOf("/") > 0 ? webAppPath.lastIndexOf("/") : 0;
+//				webAppPath = webAppPath.substring(0, index);
+				String ctxPath = request.getContextPath();
+				if (!StringUtil.isBlank(ctxPath)) webAppPath = webAppPath.substring(0, webAppPath.indexOf(ctxPath));
 				//				System.out.println("webAppPath--new_" + webAppPath);
 
 				final String imgRealPathDir = webAppPath + "/" + syscfg.getRelativePath() + dateformat.format(new Date());

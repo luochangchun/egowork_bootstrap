@@ -74,7 +74,7 @@ public class FetchServlet extends HttpServlet {
 			data.append(bVersion).append(",");
 			data.append(system).append(",");
 			data.append(visitorId).append(",");
-			data.append(isFlash).append(",");
+			data.append(isFlash == null ? "0" : isFlash).append(",");
 
 			final String prefix = dbconfig.getPrefix();
 			final ISupportDao dao = SpringContextHolder.getBean(DAO.COMMON);

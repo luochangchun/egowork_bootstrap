@@ -232,7 +232,7 @@ public class AdminController extends SupportController {
 			}
 		}
 
-		userLoginLogDao.save(log);
+		userLoginLogDao.save(loginLog);
 
 		return msg;
 	}

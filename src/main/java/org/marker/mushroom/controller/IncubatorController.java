@@ -139,7 +139,8 @@ public class IncubatorController extends SupportController {
 			final String fileName = System.currentTimeMillis() + "_" + UUIDGenerator.getPureUUID() + "." + suffix;
 
 			String realPath = request.getSession().getServletContext().getRealPath("");
-			realPath = realPath.substring(0, realPath.indexOf(request.getContextPath()));
+			String ctxPath = request.getContextPath();
+			if (!StringUtil.isBlank(ctxPath)) realPath = realPath.substring(0, realPath.indexOf(ctxPath));
 			String uri = File.separator + "upload" + File.separator + "qb"
 				+ File.separator + DateUtils.dateToString(new Date(), "yyyyMMdd");
 			String dirPath = realPath + uri;

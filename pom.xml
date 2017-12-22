@@ -16,6 +16,7 @@
 	</properties>
 
 	<build>
+		<finalName>egowork</finalName>
 		<defaultGoal>compile</defaultGoal>
 		<sourceDirectory>src/main/java</sourceDirectory>
 		<resources>
