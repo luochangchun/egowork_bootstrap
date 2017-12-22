@@ -26,6 +26,7 @@ public class ApplyController extends SupportController {
 
 	/**
 	 * 共享会议室申请
+	 *
 	 * @param roomApply
 	 * @return
 	 */
@@ -43,6 +44,7 @@ public class ApplyController extends SupportController {
 
 	/**
 	 * 预约参观申请
+	 *
 	 * @param visitApply
 	 * @return
 	 */
@@ -59,6 +61,7 @@ public class ApplyController extends SupportController {
 
 	/**
 	 * 线上孵化器表单提交
+	 *
 	 * @param onlineApply
 	 * @return
 	 */
@@ -75,6 +78,7 @@ public class ApplyController extends SupportController {
 
 	/**
 	 * 租赁空间,众创空间
+	 *
 	 * @param spaceApply
 	 * @return
 	 */
@@ -87,22 +91,15 @@ public class ApplyController extends SupportController {
 		int incubatorId = spaceApply.getIncubatorId();
 		int graduate = spaceApply.getGraduate();
 
-		if (type > 0) {
-			if (!StringUtil.isBlank(incubator) && incubatorId > 0) {
-				if(graduate>=0){
-					if (commonDao.save(spaceApply)) {
-						return new ResultMessage(true, "申请成功！");
-					} else {
-						return new ResultMessage(false, "申请失败！");
-					}
-				}else{
-					return new ResultMessage(false,"是否毕业5年以上一项不能为空！");
-				}
-			} else {
-				return new ResultMessage(false, "所属孵化器不能为空！");
-			}
+		if (type <= 0) return new ResultMessage(false, "所选类型不能为空！");
+		if (StringUtil.isBlank(incubator) || incubatorId <= 0)
+			return new ResultMessage(false, "所属孵化器不能为空！");
+
+		spaceApply.setTime(new Date());
+		if (commonDao.save(spaceApply)) {
+			return new ResultMessage(true, "申请成功！");
 		} else {
-			return new ResultMessage(false, "所选类型不能为空！");
+			return new ResultMessage(false, "申请失败！");
 		}
 	}
 
@@ -111,25 +108,26 @@ public class ApplyController extends SupportController {
 	 */
 	@RequestMapping("/inster/training")
 	@ResponseBody
-	public ResultMessage traininginster(final TrainingApply trainingApply){
+	public ResultMessage traininginster(final TrainingApply trainingApply) {
 		trainingApply.setTime(new Date());
-		if(commonDao.save(trainingApply)){
-			return new ResultMessage(true,"申请成功！");
-		}else{
-			return new ResultMessage(false,"申请失败！");
+		if (commonDao.save(trainingApply)) {
+			return new ResultMessage(true, "申请成功！");
+		} else {
+			return new ResultMessage(false, "申请失败！");
 		}
 	}
+
 	/**
 	 * 服务需求申请
 	 */
 	@RequestMapping("/inster/needs")
 	@ResponseBody
-	public ResultMessage needsinster(final NeedsApply needsApply){
+	public ResultMessage needsinster(final NeedsApply needsApply) {
 		needsApply.setTime(new Date());
-		if(commonDao.save(needsApply)){
-			return new ResultMessage(true,"申请成功！");
-		}else{
-			return new ResultMessage(false,"申请失败！");
+		if (commonDao.save(needsApply)) {
+			return new ResultMessage(true, "申请成功！");
+		} else {
+			return new ResultMessage(false, "申请失败！");
 		}
 	}
 }
