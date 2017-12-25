@@ -27,254 +27,270 @@
 </head>
 
 <body>
-<div class="header">
-    <div class="top">
-        <div class="container">
-            <p class="pull-left hidden-xs">创新创业孵化公共服务平台 中小企业一站式服务平台</p>
-            <p class="pull-right" id="unloginElement">
-                <button type="button" class="header_btn" data-toggle="modal" data-target="#demandForm" data-whatever="@mdo">发布需求></button>
-                <button type="button" class="header_btn" data-toggle="modal" data-target="#bookVisit" data-whatever="@mdo" style="margin-right:50px;">预约参观></button>
-                <a class="text-white" href="/signin.html">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-                <a class="text-white" href="/signup.html">免费注册</a>
-            </p>
-        </div>
-        <!--发布需求模态框-->
-        <div class="modal fade" id="demandForm" tabindex="-1" role="dialog" aria-labelledby="demandForm">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <h4 class="modal-title form_title" id="gridSystemModalLabel">发布服务需求表单</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form class="form-horizontal">
-                            <div class="form-group">
-                                <label for="demandClassify" class="col-sm-3 control-label">需求类别</label>
-                                <div class="col-sm-8" id=>
-                                    <select class="form-control" placeholder="请选择" id="demandClassify">
-                                        <option data-id="0">请选择</option>
-                                        <!-- {dictionaries:list table=(dictionaries) name=('classify') type=('needsApply')} -->
-                                        <option data-id="${dictionaries.id}">${dictionaries.value}</option>
-                                        <!-- {/list} -->
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="demandTitle" class="col-sm-3 control-label">需求标题</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control"  id="demandTitle" placeholder="请输入你的需求标题">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="demandNeeds" class="col-sm-3 control-label">需求描述</label>
-                                <div class="col-sm-8">
-                                    <textarea class="form-control" rows="3" id="demandNeeds" placeholder="请输入您的需求描述,不超过250字"></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="demandEnterprise" class="col-sm-3 control-label">企业名称</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="demandEnterprise" placeholder="请填写企业名称">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="demandName" class="col-sm-3 control-label">联系人</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="demandName" placeholder="请填写联系人的姓名">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="demandPhone" class="col-sm-3 control-label">联系电话</label>
-                                <div class="col-sm-8">
-                                    <input type="tel" class="form-control" id="demandPhone" placeholder="请填写联系人的手机号码">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-5 col-sm-6">
-                                    <a href="#" class="db form_btn" id="demandBtn">提 交</a>
-                                    <!-- <button type="submit" class="">提 交</button> -->
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+    <div class="header">
+        <div class="top">
+            <div class="container">
+                <p class="pull-left hidden-xs">创新创业孵化公共服务平台 中小企业一站式服务平台</p>
+                <p class="pull-right" id="unloginElement">
+                    <button type="button" class="header_btn" data-toggle="modal" data-target="#demandForm" data-whatever="@mdo">发布需求></button>
+                    <button type="button" class="header_btn" data-toggle="modal" data-target="#bookVisit" data-whatever="@mdo" style="margin-right:50px;">预约参观></button>
+                    <a class="text-white" href="/signin.html">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                    <a class="text-white" href="/signup.html">免费注册</a>
+                </p>
             </div>
-        </div>
-
-        <!--预约参观模态框-->
-        <div class="modal fade bookVisit" id="bookVisit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <h4 class="modal-title form_title">预约参观</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form class="form-horizontal">
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label" for="visitName">联系人</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="visitName" placeholder="请填写联系人的姓名">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="visitPhone" class="col-sm-3 control-label">联系电话</label>
-                                <div class="col-sm-8">
-                                    <input type="tel" class="form-control" id="visitPhone"  placeholder="请填写联系人的手机号码">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="incubatorId" class="col-sm-3 control-label">选择参观孵化器</label>
-                                <div class="col-sm-8">
-                                    <select class="form-control" placeholder="请选择" id="visitIncubator">
-                                        <!-- {incubator:list table=(incubator) status=(1)} -->
-                                        <option data-id="${incubator.id}">${incubator.title}</option>
-                                        <!-- {/list} -->
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">参观时间</label>
-                                <div class="col-sm-8">
-                                    <div class='input-group date' id='visitPicker'>
-                                        <input type='text' class="form-control"/>
-                                        <span class="input-group-addon">
-                                                <span class="glyphicon glyphicon-calendar"></span>
-                                            </span>
+            <!--发布需求模态框-->
+            <div class="modal fade" id="demandForm" tabindex="-1" role="dialog" aria-labelledby="demandForm">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title form_title" id="gridSystemModalLabel">
+                                发布服务需求表单</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="demandClassify" class="col-sm-3 control-label">
+                                        <span class="red">*</span>需求类别</label>
+                                    <div class="col-sm-8" id=>
+                                        <select class="form-control" placeholder="请选择" id="demandClassify">
+                                            <option data-id="-1">请选择</option>
+                                            <!-- {dictionaries:list table=(dictionaries) name=('classify') type=('needsApply')} -->
+                                            <option data-id="${dictionaries.id}">${dictionaries.value}</option>
+                                            <!-- {/list} -->
+                                        </select>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">感兴趣产品</label>
-                                <div class="col-sm-8">
-                                    <select class="form-control" placeholder="请选择" id="visitProduct">
-                                        <!-- {dictionaries:list table=(dictionaries) name=('interest') type=('visitApply')} -->
-                                        <option data-id="${dictionaries.id}">${dictionaries.value}</option>
-                                        <!-- {/list} -->
-                                    </select>
+                                <div class="form-group">
+                                    <label for="demandTitle" class="col-sm-3 control-label">
+                                        <span class="red">*</span>需求标题
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="demandTitle" placeholder="请输入你的需求标题">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">了解更多</label>
-                                <div class="col-sm-8">
-                                    <textarea class="form-control" rows="3" placeholder="请提供与您咨询相关的详细信息,不超过200字"></textarea>
+                                <div class="form-group">
+                                    <label for="demandNeeds" class="col-sm-3 control-label">
+                                        <span class="red">*</span>需求描述</label>
+                                    <div class="col-sm-8">
+                                        <textarea class="form-control" rows="3" id="demandNeeds" placeholder="请输入您的需求描述,不超过250字"></textarea>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-5 col-sm-6">
-                                    <a href="#" class="db form_btn" id="visitBtn">提 交</a>
+                                <div class="form-group">
+                                    <label for="demandEnterprise" class="col-sm-3 control-label">
+                                        <span class="red">*</span>企业名称</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="demandEnterprise" placeholder="请填写企业名称">
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
+                                <div class="form-group">
+                                    <label for="demandName" class="col-sm-3 control-label">
+                                        <span class="red">*</span>联系人</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="demandName" placeholder="请填写联系人的姓名">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="demandPhone" class="col-sm-3 control-label">
+                                        <span class="red">*</span>联系电话</label>
+                                    <div class="col-sm-8">
+                                        <input type="tel" class="form-control" id="demandPhone" placeholder="请填写联系方式">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-5 col-sm-6">
+                                        <a href="#" class="db form_btn" id="demandBtn">提 交</a>
+                                        <!-- <button type="submit" class="">提 交</button> -->
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-    </div>
-    <div class="box-shadow">
-        <nav class="navbar navbar-transparency" role="navigation" style="height: 50px;">
-            <div class="container">
-                <!--省略-->
-                <div class="navbar-header pos-rlt">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-collapse" id="showDiv">
-                        <i class="glyphicon glyphicon-align-justify"></i>
-                    </button>
-                    <a href="/index.html">
-                        <img src="img/logo_header.png" class="padder-v img-responsive" style="margin-top:10px;">
-                    </a>
-                </div>
-                <!--hidden-->
-                <div class="collapse navbar-collapse hidden-xs pull-right padder-v" id="bs-example-navbar-collapse">
-                    <ul class="nav navbar-nav text-md" id="menu">
-                        <li>
-                            <a href="/index.html">首页</a>
-                        </li>
-                        <li>
-                            <a href="/incubators.html">云创孵化</a>
-                        </li>
-                        <li>
-                            <a href="/university.html">云创学院</a>
-                        </li>
-                        <li>
-                            <a href="/service.html">云创服务</a>
-                        </li>
-                        <li>
-                            <a href="">云创咖啡</a>
-                        </li>
-                        <li>
-                            <a href="">云创农商</a>
-                        </li>
-                        <li>
-                            <a href="">云创保险 </a>
-                        </li>
-                        <li>
-                            <a href="">中小企业协会</a>
-                        </li>
-                        <li>
-                            <a href="">云创基金</a>
-                        </li>
-                        <li>
-                            <a href="">资讯中心</a>
-                        </li>
-                        <!-- <li><a href="http://192.168.11.216/index.html" target="_blank">新三板</a></li> -->
-                    </ul>
-                </div>
-                <!--block-->
-                <div class="navbar-collapse tel-nav visible-xs tras-03 pos-abt w-full z-ind">
-                    <ul class="nav navbar-nav text-md bg-menu tras-03">
-                        <li>
-                            <a href="/index.html">首页</a>
-                        </li>
-                        <li>
-                            <a href="/incubators.html">云创孵化</a>
-                        </li>
-                        <li>
-                            <a href="/university.html">云创学院</a>
-                        </li>
-                        <li>
-                            <a href="/service.html">云创服务</a>
-                        </li>
-                        <li>
-                            <a href="">云创咖啡</a>
-                        </li>
-                        <li>
-                            <a href="">云创农商</a>
-                        </li>
-                        <li>
-                            <a href="">云创保险 </a>
-                        </li>
-                        <li>
-                            <a href="">中小企业协会</a>
-                        </li>
-                        <li>
-                            <a href="">云创基金</a>
-                        </li>
-                        <li>
-                            <a href="">资讯中心</a>
-                        </li>
-                        <!-- <li><a href="http://192.168.11.216/index.html" target="_blank">新三板</a></li> -->
-                    </ul>
+            <!--预约参观模态框-->
+            <div class="modal fade bookVisit" id="bookVisit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title form_title">
+                                <span class="red">*</span>预约参观</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="visitName">
+                                        <span class="red">*</span>联系人</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="visitName" placeholder="请填写联系人的姓名">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="visitPhone" class="col-sm-3 control-label">
+                                        <span class="red">*</span>联系电话</label>
+                                    <div class="col-sm-8">
+                                        <input type="tel" class="form-control" id="visitPhone" placeholder="请填写联系人的手机号码">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="incubatorId" class="col-sm-3 control-label">
+                                        <span class="red">*</span>选择参观孵化器</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" placeholder="请选择" id="visitIncubator">
+                                            <option data-id="-1">请选择</option>
+                                            <!-- {incubator:list table=(incubator) status=(1)} -->
+                                            <option data-id="${incubator.id}">${incubator.title}</option>
+                                            <!-- {/list} -->
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">
+                                        <span class="red">*</span>参观时间</label>
+                                    <div class="col-sm-8">
+                                        <div class='input-group date' id='visitPicker'>
+                                            <input type='text' class="form-control" />
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">
+                                        <span class="red">*</span>感兴趣产品</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" placeholder="请选择" id="visitProduct">
+                                            <option data-id="-1">请选择</option>
+                                            <!-- {dictionaries:list table=(dictionaries) name=('interest') type=('visitApply')} -->
+                                            <option data-id="${dictionaries.id}">${dictionaries.value}</option>
+                                            <!-- {/list} -->
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">了解更多</label>
+                                    <div class="col-sm-8">
+                                        <textarea class="form-control" rows="3" placeholder="请提供与您咨询相关的详细信息,不超过200字"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-5 col-sm-6">
+                                        <a href="#" class="db form_btn" id="visitBtn">提 交</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </nav>
+
+        </div>
+        <div class="box-shadow">
+            <nav class="navbar navbar-transparency" role="navigation" style="height: 50px;">
+                <div class="container">
+                    <!--省略-->
+                    <div class="navbar-header pos-rlt">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-collapse" id="showDiv">
+                            <i class="glyphicon glyphicon-align-justify"></i>
+                        </button>
+                        <a href="/index.html">
+                            <img src="img/logo_header.png" class="padder-v img-responsive" style="margin-top:10px;">
+                        </a>
+                    </div>
+                    <!--hidden-->
+                    <div class="collapse navbar-collapse hidden-xs pull-right padder-v" id="bs-example-navbar-collapse">
+                        <ul class="nav navbar-nav text-md" id="menu">
+                            <li>
+                                <a href="/index.html">首页</a>
+                            </li>
+                            <li>
+                                <a href="/incubators.html">云创孵化</a>
+                            </li>
+                            <li>
+                                <a href="/university.html">云创学院</a>
+                            </li>
+                            <li>
+                                <a href="/service.html">云创服务</a>
+                            </li>
+                            <li>
+                                <a href="">云创咖啡</a>
+                            </li>
+                            <li>
+                                <a href="">云创农商</a>
+                            </li>
+                            <li>
+                                <a href="">云创保险 </a>
+                            </li>
+                            <li>
+                                <a href="">中小企业协会</a>
+                            </li>
+                            <li>
+                                <a href="">云创基金</a>
+                            </li>
+                            <li>
+                                <a href="">资讯中心</a>
+                            </li>
+                            <!-- <li><a href="http://192.168.11.216/index.html" target="_blank">新三板</a></li> -->
+                        </ul>
+                    </div>
+                    <!--block-->
+                    <div class="navbar-collapse tel-nav visible-xs tras-03 pos-abt w-full z-ind">
+                        <ul class="nav navbar-nav text-md bg-menu tras-03">
+                            <li>
+                                <a href="/index.html">首页</a>
+                            </li>
+                            <li>
+                                <a href="/incubators.html">云创孵化</a>
+                            </li>
+                            <li>
+                                <a href="/university.html">云创学院</a>
+                            </li>
+                            <li>
+                                <a href="/service.html">云创服务</a>
+                            </li>
+                            <li>
+                                <a href="">云创咖啡</a>
+                            </li>
+                            <li>
+                                <a href="">云创农商</a>
+                            </li>
+                            <li>
+                                <a href="">云创保险 </a>
+                            </li>
+                            <li>
+                                <a href="">中小企业协会</a>
+                            </li>
+                            <li>
+                                <a href="">云创基金</a>
+                            </li>
+                            <li>
+                                <a href="">资讯中心</a>
+                            </li>
+                            <!-- <li><a href="http://192.168.11.216/index.html" target="_blank">新三板</a></li> -->
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
     </div>
-</div>
 
 
-<script type="text/javascript">
-    $(function () {
-        $(".nav .navbar-nav a").each(function () {
-            if ($(this).attr("href") == location.pathname) {
-                $(this).addClass("active");
-            }
-        });
-    })
-</script>
+    <script type="text/javascript">
+        $(function () {
+            $(".nav .navbar-nav a").each(function () {
+                if ($(this).attr("href") == location.pathname) {
+                    $(this).addClass("active");
+                }
+            });
+        })
+    </script>
 </body>
 
 </html>

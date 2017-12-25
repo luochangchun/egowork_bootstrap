@@ -11,24 +11,7 @@ jQuery.fn.widResize = function (Func) {
 		Func();
 	});
 }
-// function initCourse() {
-// 	$.ajax({
-// 		url: "http://192.168.11.222/egocourse/webapp/cou/list?currentPage=1&pageSize=8",    //请求的url地址   
-// 		dataType: "json",   //返回格式为json    
-// 		async: true, //请求是否异步，默认为异步，这也是ajax重要特性    
-// 		data: {},    //参数值    
-// 		type: "GET",   //请求方式    
-// 		success: function (data) {
-// 			console.log(data);
-// 		},
-// 		complete: function () {
-// 			//请求完成的处理    
-// 		},
-// 		error: function () {
-// 			//请求出错处理    
-// 		}
-// 	});
-// }
+
 $(document).ready(function () {
 	var startDate = new Date();
 	//预约表单参观日历初始化
@@ -65,7 +48,6 @@ $(document).ready(function () {
 		autoclose: true,
 		todayBtn: true,
 	});
-
 	$('#visitBtn').click(function () {
 		bookVisit();
 	})
@@ -79,12 +61,52 @@ $(document).ready(function () {
 		}
 	})
 	// 验证手机号是否输入
+	$("#demandPhone").blur(function () {
+		var demandPhone = $("#demandPhone").val();
+		if (demandPhone === "" || !tel_reg.test(demandPhone) || demandPhone.length < 7) {
+			$("#demandPhone").parent().parent('.form-group').addClass("has-error");
+		} else {
+			$("#demandPhone").parent().parent('.form-group').removeClass("has-error");
+		}
+	})
 	$("#visitPhone").blur(function () {
 		var visitPhone = $("#visitPhone").val();
 		if (visitPhone === "" || !tel_reg.test(visitPhone) || visitPhone.length < 7) {
 			$("#visitPhone").parent().parent('.form-group').addClass("has-error");
 		} else {
 			$("#visitPhone").parent().parent('.form-group').removeClass("has-error");
+		}
+	})
+	$("#onlinePhone").blur(function () {
+		var onlinePhone = $("#onlinePhone").val();
+		if (onlinePhone === "" || !tel_reg.test(onlinePhone) || onlinePhone.length < 7) {
+			$("#onlinePhone").parent().parent('.form-group').addClass("has-error");
+		} else {
+			$("#onlinePhone").parent().parent('.form-group').removeClass("has-error");
+		}
+	})
+	$("#createPhone").blur(function () {
+		var createPhone = $("#createPhone").val();
+		if (createPhone === "" || !tel_reg.test(createPhone) || createPhone.length < 7) {
+			$("#createPhone").parent().parent('.form-group').addClass("has-error");
+		} else {
+			$("#createPhone").parent().parent('.form-group').removeClass("has-error");
+		}
+	})
+	$("#sharePhone").blur(function () {
+		var sharePhone = $("#sharePhone").val();
+		if (sharePhone === "" || !tel_reg.test(sharePhone) || sharePhone.length < 7) {
+			$("#sharePhone").parent().parent('.form-group').addClass("has-error");
+		} else {
+			$("#sharePhone").parent().parent('.form-group').removeClass("has-error");
+		}
+	})
+	$("#rentPhone").blur(function () {
+		var rentPhone = $("#rentPhone").val();
+		if (rentPhone === "" || !tel_reg.test(rentPhone) || rentPhone.length < 7) {
+			$("#rentPhone").parent().parent('.form-group').addClass("has-error");
+		} else {
+			$("#rentPhone").parent().parent('.form-group').removeClass("has-error");
 		}
 	})
 	// 预约参观提交
@@ -94,7 +116,6 @@ $(document).ready(function () {
 		var visitIncubator = $("#visitIncubator option:selected").text();
 		var visitIncubatorId = $("#visitIncubator option:selected").attr('data-id');
 		var visitTime = $("#visitPicker").find("input").val();
-
 		var visitProduct = $("#visitProduct option:selected").text();
 		var visitProductId = $("#visitProduct option:selected").attr('data-id');
 		if (visitName == "") {
@@ -105,13 +126,20 @@ $(document).ready(function () {
 			alert("请输入联系方式");
 			return false;
 		}
+		if (visitIncubatorId == '-1') {
+			alert('请选择参观孵化器');
+			return false;
+		}
 		if (visitTime == "") {
 			alert("请选择参观时间");
 			return false;
 		} else {
 			var createAt = new Date(visitTime);
 		}
-
+		if (visitProductId == '-1') {
+			alert('请选择感兴趣产品');
+			return false;
+		}
 		var params = {
 			"contact": visitName,//联系人姓名
 			"phone": visitPhone,//联系人手机号
@@ -151,6 +179,18 @@ $(document).ready(function () {
 		var demandEnterprise = $("#demandEnterprise").val();
 		var demandName = $("#demandName").val();
 		var demandPhone = $("#demandPhone").val();
+		if (demandClassifyId == '-1') {
+			alert("请输入需求类别");
+			return false;
+		}
+		if (demandTitle == "") {
+			alert("请输入需求标题");
+			return false;
+		}
+		if (demandNeeds == "") {
+			alert("请输入需求标题");
+			return false;
+		}
 		if (demandEnterprise == "") {
 			alert("请输入企业名称");
 			return false;
