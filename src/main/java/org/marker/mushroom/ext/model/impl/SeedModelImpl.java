@@ -56,6 +56,6 @@ public class SeedModelImpl extends ContentModel {
 	 * @param tableName 表名称
 	 */
 	public StringBuilder doWebFront(final String tableName, final SqlDataSource sqlDataSource) {
-		return new StringBuilder("select M.*," + url("seed", "M") + " from " + getPrefix() + "financing M");
+		return new StringBuilder("select M.*," + url("seed", "M") + " from " + getPrefix() + "seed M");
 	}
 }

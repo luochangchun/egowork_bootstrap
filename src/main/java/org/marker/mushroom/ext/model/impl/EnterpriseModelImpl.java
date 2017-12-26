@@ -56,6 +56,6 @@ public class EnterpriseModelImpl extends ContentModel {
 	 * @param tableName 表名称
 	 */
 	public StringBuilder doWebFront(final String tableName, final SqlDataSource sqlDataSource) {
-		return new StringBuilder("select M.*," + url("enterprise", "M") + " from " + getPrefix() + "financing M");
+		return new StringBuilder("select M.*," + url("enterprise", "M") + " from " + getPrefix() + "enterprise M");
 	}
 }
