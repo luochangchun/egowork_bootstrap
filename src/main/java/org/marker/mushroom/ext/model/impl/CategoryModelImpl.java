@@ -35,7 +35,9 @@ public class CategoryModelImpl extends ContentModel {
 		final String prefix = getPrefix();//表前缀，如："yl_"
 		final HttpServletRequest request = ActionContext.getReq();
 
-		final String sql = "select M.*," + url("category", "M") + " from " + prefix + "category M where M.id=?";
+		final String sql = "select M.*,"
+			+ " concat('/cms?','type=cateogry','&id=',CAST(M.id as char)) url"
+			+ " from " + prefix + "category M where M.id=?";
 		final Object category = commonDao.queryForMap(sql, id);
 		request.setAttribute("category", category);
 	}
@@ -44,8 +46,9 @@ public class CategoryModelImpl extends ContentModel {
 	 * 处理分页
 	 */
 	public Page doPage(final WebParam param) {
-		final String sql = "select M.*," + url("category", "M") + " from "
-			+ getPrefix() + "category M where 1=1 " + param.extendSql + param.orderSql;
+		final String sql = "select M.*,"
+			+ " concat('/cms?','type=cateogry','&id=',CAST(M.id as char)) url"
+			+ " from " + getPrefix() + "category M where 1=1 " + param.extendSql + param.orderSql;
 		return commonDao.findByPage(param.currentPageNo, param.pageSize, sql);
 	}
 
@@ -55,6 +58,7 @@ public class CategoryModelImpl extends ContentModel {
 	 * @param tableName 表名称
 	 */
 	public StringBuilder doWebFront(final String tableName, final SqlDataSource sqlDataSource) {
-		return new StringBuilder("select M.*," + url("category", "M") + " from " + getPrefix() + "category M");
+		return new StringBuilder(
+			"select M.*, concat('/cms?','type=cateogry','&id=',CAST(M.id as char)) url from " + getPrefix() + "category M");
 	}
 }
