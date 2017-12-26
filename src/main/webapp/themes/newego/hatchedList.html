@@ -14,120 +14,31 @@
 	<div class="hatchedList">
 		<div class="container">
 			<div class="row clearfix">
+				<@page model="enterprise" size="8">
+				<#list page.data as enterprise>
 				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 					<a href="#" class="item db">
 						<!-- <img src="img/01.png" alt=""> -->
-						<h1 class="tc text-ellipsis">长城快递</h1>
+						<h1 class="tc text-ellipsis">${enterprise.name!}</h1>
 						<div class="line_green"></div>
-						<p class="tc text-ellipsis-muti text-ellipsis-2">中国最大民营电信运营商 鹏博士集团全资子公司</p>
+						<p class="tc text-ellipsis-muti text-ellipsis-2">${enterprise.intro!}</p>
 						<p class="tc">
-							<span>高价</span>|
-							<span>低俗</span>|
-							<span>小苏局</span>
+							<span>${enterprise.field!}</span>|
+							<!--<span>低俗</span>|-->
+							<!--<span>小苏局</span>-->
 						</p>
 						<div class="rel">
 							<div class="img_wrap abs">
-								<img src="img/01.png" alt="">
+								<img src="http://192.168.11.132:8080${enterprise.icon!}" alt="">
 							</div>
 							<div class="img_line abs"></div>
 						</div>
 					</a>
 				</div>
-				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-					<a href="#" class="item db">
-						<!-- <img src="img/01.png" alt=""> -->
-						<h1 class="tc text-ellipsis">长城快递</h1>
-						<div class="line_green"></div>
-						<p class="tc text-ellipsis-muti text-ellipsis-2">中国最大民营电信运营商 鹏博士集团全资子公司</p>
-						<p class="tc">
-							<span>高价</span>|
-							<span>低俗</span>|
-							<span>小苏局</span>
-						</p>
-						<div class="rel">
-							<div class="img_wrap abs">
-								<img src="img/01.png" alt="">
-							</div>
-							<div class="img_line abs"></div>
-						</div>
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-					<a href="#" class="item db">
-						<!-- <img src="img/01.png" alt=""> -->
-						<h1 class="tc text-ellipsis">长城快递</h1>
-						<div class="line_green"></div>
-						<p class="tc text-ellipsis-muti text-ellipsis-2">中国最大民营电信运营商 鹏博士集团全资子公司</p>
-						<p class="tc">
-							<span>高价</span>|
-							<span>低俗</span>|
-							<span>小苏局</span>
-						</p>
-						<div class="rel">
-							<div class="img_wrap abs">
-								<img src="img/01.png" alt="">
-							</div>
-							<div class="img_line abs"></div>
-						</div>
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-					<a href="#" class="item db">
-						<!-- <img src="img/01.png" alt=""> -->
-						<h1 class="tc text-ellipsis">长城快递</h1>
-						<div class="line_green"></div>
-						<p class="tc text-ellipsis-muti text-ellipsis-2">中国最大民营电信运营商 鹏博士集团全资子公司</p>
-						<p class="tc">
-							<span>高价</span>|
-							<span>低俗</span>|
-							<span>小苏局</span>
-						</p>
-						<div class="rel">
-							<div class="img_wrap abs">
-								<img src="img/01.png" alt="">
-							</div>
-							<div class="img_line abs"></div>
-						</div>
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-					<a href="#" class="item db">
-						<!-- <img src="img/01.png" alt=""> -->
-						<h1 class="tc text-ellipsis">长城快递</h1>
-						<div class="line_green"></div>
-						<p class="tc text-ellipsis-muti text-ellipsis-2">中国最大民营电信运营商 鹏博士集团全资子公司</p>
-						<p class="tc">
-							<span>高价</span>|
-							<span>低俗</span>|
-							<span>小苏局</span>
-						</p>
-						<div class="rel">
-							<div class="img_wrap abs">
-								<img src="img/01.png" alt="">
-							</div>
-							<div class="img_line abs"></div>
-						</div>
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-					<a href="#" class="item db">
-						<!-- <img src="img/01.png" alt=""> -->
-						<h1 class="tc text-ellipsis">长城快递</h1>
-						<div class="line_green"></div>
-						<p class="tc text-ellipsis-muti text-ellipsis-2">中国最大民营电信运营商 鹏博士集团全资子公司</p>
-						<p class="tc">
-							<span>高价</span>|
-							<span>低俗</span>|
-							<span>小苏局</span>
-						</p>
-						<div class="rel">
-							<div class="img_wrap abs">
-								<img src="img/01.png" alt="">
-							</div>
-							<div class="img_line abs"></div>
-						</div>
-					</a>
-				</div>
+				</#list>
+			</@page>
+			<!--#include file="../common/page.html"-->
+			<@paginate currentPage=page.currentPageNo totalPage=page.totalPages actionUrl=""  />
 			</div>
 		</div>
 	</div>
