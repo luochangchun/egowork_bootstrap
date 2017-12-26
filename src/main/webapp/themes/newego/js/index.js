@@ -44,7 +44,7 @@ $(document).ready(function () {
 		language: 'zh-CN',
 		format: 'yyyy-mm-dd hh:ii',
 		minuteStep: 10,
-		startDate: new Date((new Date()).getTime() + 30*60*1000),
+		startDate: new Date((new Date()).getTime() + 30 * 60 * 1000),
 		autoclose: true,
 		todayBtn: true,
 	});
@@ -521,7 +521,7 @@ $(document).ready(function () {
 		});
 		if (shareRequestId == "") {
 			alert("请参会需求");
-		    return false;
+			return false;
 		} else {
 			shareRequestId = shareRequestId.substring(1)
 		}
@@ -651,8 +651,8 @@ $(document).ready(function () {
 
 	// 培训服务需求表单
 	function trainService() {
-		var trainAmount = $("#trainAmount").val(); 
-		var trainEnterprise = $("#trainEnterprise").val(); 
+		var trainAmount = $("#trainAmount").val();
+		var trainEnterprise = $("#trainEnterprise").val();
 		var trainPhone = $("#trainPhone").val(); //联系电话	
 		var params = {
 			"subject": "aaa",
