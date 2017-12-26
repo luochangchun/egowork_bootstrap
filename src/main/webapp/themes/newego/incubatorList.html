@@ -41,11 +41,14 @@
 						<div class="row clearfix">
 							<@page model="incubator" size="9" cid="133" status="1" order="top desc,time desc">
 							<#list page.data as incubator>
-							<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-								<div class="index_headline">
-									<a href="${incubator.url}" style="height:200px;display:block;">
+							<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+								<div class="index_headline" style="margin-right:0;border:none;">
+									<a href="${incubator.url}" style="height:227px;display:block;">
 										<img src="http://192.168.11.132:8080/${incubator.icon!}" alt="">
 									</a>
+								</div>
+							</div>
+									<div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
 									<div class="index_headline_content">
 										<h4 class="h4 text-ellipsis">${incubator.title!}</h4>
 										<!--<p class="p3 line-height text-ellipsis-muti text-ellipsis-3" style="height:72px;">简介 : ${incubator.settled!}</p>-->
@@ -74,6 +77,7 @@
 											<!--&lt;!&ndash; {/list} &ndash;&gt;-->
 										<!--</div>-->
 										<button class="btn5">申请入驻</button>
+									</div>
 									</div>
 								</div>
 							</div>
