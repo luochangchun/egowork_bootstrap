@@ -37,8 +37,8 @@ public class SeedModelImpl extends ContentModel {
 		final HttpServletRequest request = ActionContext.getReq();
 
 		final String sql = "select M.*," + url("seed", "M") + " from " + prefix + "seed M where M.id=?";
-		final Object enterprise = commonDao.queryForMap(sql, id);
-		request.setAttribute("enterprise", enterprise);
+		final Object seed = commonDao.queryForMap(sql, id);
+		request.setAttribute("seed", seed);
 	}
 
 	/**
