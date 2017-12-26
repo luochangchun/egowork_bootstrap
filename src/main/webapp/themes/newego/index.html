@@ -92,26 +92,47 @@
 		<div class="container">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<p  class="incubator title">国家级孵化器</p>
-					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom:10px;">
 						<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 								<div class="banner pos-rlt">
 									<div id="myCarousel" class="carousel slide index_incubator" data-ride="carousel">
 										<div class="carousel-inner">
-											<div class="carousel-inner">
-												<!-- {incubator:list table=(incubator) cid=(133) status=(1) limit=(2) order=(top desc,time desc)} -->
-												<div class="item active index_incubator_img">
-													<div class="bg-cover" onclick="location='humanResources/10.html'">
-														<img src="http://192.168.11.132:8080${incubator.icon!}">
-														<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-															<div class="index_incubator_content">
-																<h3>${incubator.title!}</h3>
-																<p class="text-ellipsis-muti text-ellipsis-6">武汉火凤凰云计算孵化器管武汉火凤凰云计算孵化器管武汉火凤凰云计算孵化器管武汉火凤凰云计算孵化器管武汉火凤凰云计算孵化器管武汉火凤凰云计算孵化器管理有限公司武汉公司武汉火凤凰云计算孵化器管理有限公司武汉火凤凰云计算孵化器管理有限公司武汉火凤凰云计算孵化器管理有限公司</p>
-																<span class="label">云计算/大数据平台</span>
-															</div>
+											<div class="item active index_incubator_img">
+												<div class="bg-cover" onclick="location='humanResources/10.html'">
+													<img src="img/fh_bg1.jpg">
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+														<div class="index_incubator_content">
+															<h3>火凤凰（荆门）云商服务基地</h3>
+															<p class="text-ellipsis-muti text-ellipsis-6">武汉火凤凰云计算孵化器管武汉火凤凰云计算孵化器管武汉火凤凰云计算孵化器管武汉火凤凰云计算孵化器管武汉火凤凰云计算孵化器管武汉火凤凰云计算孵化器管理有限公司武汉公司武汉火凤凰云计算孵化器管理有限公司武汉火凤凰云计算孵化器管理有限公司武汉火凤凰云计算孵化器管理有限公司</p>
+															<span class="label">云计算/大数据平台</span>
 														</div>
 													</div>
 												</div>
-												<!-- {/list} -->
+											</div>
+											<div class="item index_incubator_img">
+												<div class="bg-cover" onclick="location='humanResources/10.html'">
+													<img src="img/fu_bg2.jpg">
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+														<div class="index_incubator_content">
+															<h3>宜昌慧云电子商务创业园</h3>
+															<p class="text-ellipsis-muti text-ellipsis-6">武汉火凤凰云计算孵化器管武汉火凤凰云计算孵化器管武汉火凤凰云计算孵化器管武汉火凤凰云计算孵化器管武汉火凤凰云计算孵化器管武汉火凤凰云计算孵化器管理有限公司武汉公司武汉火凤凰云计算孵化器管理有限公司武汉火凤凰云计算孵化器管理有限公司武汉火凤凰云计算孵化器管理有限公司</p>
+															<span class="label">云计算/大数据平台</span>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="item index_incubator_img">
+												<div class="bg-cover" onclick="location='humanResources/10.html'">
+													<img src="img/fh_bg3.jpg">
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+														<div class="index_incubator_content">
+															<h3>武汉火凤凰云计算孵化器管理有限公司</h3>
+															<p class="text-ellipsis-muti text-ellipsis-6">武汉火凤凰云计算孵化器管武汉火凤凰云计算孵化器管武汉火凤凰云计算孵化器管武汉火凤凰云计算孵化器管武汉火凤凰云计算孵化器管武汉火凤凰云计算孵化器管理有限公司武汉公司武汉火凤凰云计算孵化器管理有限公司武汉火凤凰云计算孵化器管理有限公司武汉火凤凰云计算孵化器管理有限公司</p>
+															<span class="label">云计算/大数据平台</span>
+														</div>
+													</div>
+												</div>
+											</div>
 										</div>
 										<a class="carousel-control prev hidden-xs" href="#myCarousel" data-slide="prev">
 											<i class="fa fa-chevron-left fa-2x"></i>
@@ -122,12 +143,11 @@
 									</div>
 								</div>
 							</div>
-					</div>
 						<!-- {incubator:list table=(incubator) cid=(133) status=(1) limit=(3) order=(top desc,time desc)} -->
 						<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12  right_incubators">
 							<div class="col-lg-5 col-md-5 col-sm-4 col-xs-4">
-								<a href="incubatorDetails.html" class="right_img">
-									<img src="http://192.168.11.132:8080${incubator.icon!}" alt="">
+								<a href="${incubator.url!}" class="right_img">
+									<img src="http://192.168.11.132:8080/${incubator.icon!}" alt="">
 								</a>
 							</div>
 							<div class="col-lg-7 col-md-7 col-sm-8 col-xs-8 right_content">
@@ -223,13 +243,13 @@
 							<!-- {article:list table=(article) cid=(127) status=(1) limit=(3) order=(top desc,time desc)} -->
 							<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
 								<div class="index_headline">
-									<a href="/newsDetail.html">
-										<img src="http://192.168.11.132:8080${article.icon!}">
+									<a href="${article.url!}">
+										<img src="http://192.168.11.132:8080/${article.icon!}">
 									</a>
 									<div class="index_headline_content">
 										<h4 class="h4 text-ellipsis">${article.title}</h4>
 										<p class="p3 text-ellipsis-muti text-ellipsis-3" style="line-height:25px;">${article.description!}</p>
-										<a href="/newsDetail.html" type="button" class="btn_betail margin_btn" style="margin-top:20px;">查看详情</a>
+										<a href="${article.url!}" type="button" class="btn_betail margin_btn" style="margin-top:20px;">查看详情</a>
 									</div>
 								</div>
 							</div>

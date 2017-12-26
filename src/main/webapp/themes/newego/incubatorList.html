@@ -43,8 +43,8 @@
 							<#list page.data as incubator>
 							<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
 								<div class="index_headline">
-									<a href="/incubatorDetails.html" style="height:200px;display:block;">
-										<img src="${incubator.icon!}" alt="">
+									<a href="${incubator.url}" style="height:200px;display:block;">
+										<img src="http://192.168.11.132:8080/${incubator.icon!}" alt="">
 									</a>
 									<div class="index_headline_content">
 										<h4 class="h4 text-ellipsis">${incubator.title!}</h4>
