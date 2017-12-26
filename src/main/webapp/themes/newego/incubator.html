@@ -37,7 +37,7 @@
                                 </p>
                                 <!--<el-button type="text" @click="spaceForm = true" class="btn3" style="line-height:20px;">立即申请 ></el-button>-->
                                 <button class="btn3">申请入驻</button>
-                                <p class="p4 color2">${incubator.settled!}</p>
+                                <p class="p4 color2 text-ellipsis-muti text-ellipsis-4">${incubator.settled!}</p>
                             </div>
                         </div>
                     </div>
@@ -64,7 +64,7 @@
                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 space_show_right">
                                     <div style="border-bottom:1px solid #ddd;padding-bottom:10px;">
                                         <h1 class="detail_title"><span>|</span> 直投基金</h1>
-                                        <p>有</p>
+                                        <p>${incubator.fund}</p>
                                     </div>
                                     <div style="padding-bottom:30px;">
                                         <h1 class="detail_title"><span>|</span> 入驻类型</h1>
@@ -90,13 +90,7 @@
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 space_show">
                         <div class="investment_policy">
                             <ul>
-                                <li>
-                                    <!-- {dictionaries:list table=(dictionaries) name=('label') type=('incubator')} -->
-                                    <#if incubator.label == dictionaries.id?c >
-                                        ${dictionaries.value}
-                                    </#if>
-                                    <!-- {/list} -->
-                                </li>
+                                <li>${incubator.policy!}</li>
                             </ul>
                         </div>
                     </div>
@@ -111,8 +105,12 @@
                                 <div class="col-lg-1 col-md-1 col-sm-3 col-xs-4 space_show">
                                     <div class="space_img">
                                         <div>
-                                            <img src="img/why_1.png" alt="">
-                                            <p>信息产业</p>
+                                            <!-- {dictionaries:list table=(dictionaries) name=('service') type=('incubator')} -->
+                                            <img src="${dictionaries.icon!}" alt="">
+                                            <#if incubator.service == dictionaries.id?c >
+                                                ${dictionaries.value}
+                                            </#if>
+                                            <!-- {/list} -->
                                         </div>
                                     </div>
                                 </div>
@@ -130,9 +128,9 @@
                                 <div class="col-lg-1 col-md-1 col-sm-3 col-xs-4">
                                     <div class="space_img">
                                         <div>
-                                            <img src="img/why_1.png" alt="">
                                             <p>
                                                 <!-- {dictionaries:list table=(dictionaries) name=('facility') type=('incubator')} -->
+                                                <img src="${dictionaries.icon!}" alt="">
                                                 <#if incubator.facility == dictionaries.id?c >
                                                     ${dictionaries.value}
                                                 </#if>

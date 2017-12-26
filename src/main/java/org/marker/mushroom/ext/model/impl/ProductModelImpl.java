@@ -47,8 +47,8 @@ public class ProductModelImpl extends ContentModel {
 	 * 处理分页
 	 */
 	public Page doPage(final WebParam param) {
-		String sql = "select M.*, C.name as cname," + url("product", "M")
-			+ " from " + getPrefix() + "product M join " + getPrefix() + "category C on M.cid=C.id"
+		String sql = "select A.*, C.name as cname," + url("product", "A")
+			+ " from " + getPrefix() + "product A join " + getPrefix() + "category C on A.cid=C.id"
 			+ " where 1=1 " + param.extendSql + param.orderSql;
 
 		return commonDao.findByPage(param.currentPageNo, param.pageSize, sql);

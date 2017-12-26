@@ -17,7 +17,7 @@
 			<div class="container">
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<div class="incubation_overturn clearfix">
-					<div class="item col-lg-3 col-md-4 col-sm-6 col-xs-12">
+					<div class="item col-lg-3 col-md-3 col-sm-6 col-xs-12">
 						<div class="flip-container">
 							<div class="flipper">
 								<div class="front">
@@ -35,7 +35,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="item col-lg-3 col-md-4 col-sm-6 col-xs-12">
+					<div class="item col-lg-3 col-md-3 col-sm-6 col-xs-12">
 						<div class="flip-container">
 							<div class="flipper">
 								<div class="front">
@@ -52,7 +52,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="item col-lg-3 col-md-4 col-sm-6 col-xs-12">
+					<div class="item col-lg-3 col-md-3 col-sm-6 col-xs-12">
 						<div class="flip-container">
 							<div class="flipper">
 								<div class="front">
@@ -70,7 +70,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="item col-lg-3 col-md-4 col-sm-6 col-xs-12">
+					<div class="item col-lg-3 col-md-3 col-sm-6 col-xs-12">
 						<div class="flip-container">
 							<div class="flipper">
 								<div class="front">
@@ -540,10 +540,12 @@
 												</#if>
 												<!-- {/list} -->
 											</p>
-											<div class="all_label">
+											<div>
+												<!-- {dictionaries:list table=(dictionaries) name=('label') type=('incubator')} -->
 												<#if incubator.label?index_of(dictionaries.id?c) != -1>
-													<span class="label2 margin">${dictionaries.value}</span>
+													<span class="label2">${dictionaries.value}</span>
 												</#if>
+												<!-- {/list} -->
 											</div>
 										</div>
 									</a>

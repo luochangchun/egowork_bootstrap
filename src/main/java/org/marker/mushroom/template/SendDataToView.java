@@ -101,6 +101,7 @@ public class SendDataToView {
 		try {
 			template = config.getTemplate(tpl);
 		} catch (IOException e) {
+			e.printStackTrace();
 			throw new SystemException("获取模板失败：" + tpl);
 		}
 		Writer writer = null;

@@ -11,7 +11,7 @@
 <body>
 <!-- <div class="bg-img"></div> -->
 <div class="index">
-	<!--全面专业的服务体系-->
+	<!--轮播-->
 	<div class="swiper-container">
 		<a class="arrow-left" href="#"></a>
 		<a class="arrow-right" href="#"></a>
@@ -60,75 +60,46 @@
 		</div>
 		<div class="pagination"></div>
 	</div>
+	<!--全面专业的服务体系-->
 	<div class="distance margin-bottom" style="margin-bottom:20px;">
 		<div class="container">
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<p  class="title">全面专业的服务体系</p>
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<!-- {category:list table=(category) pid=(161)} -->
 					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 index_color">
-						<div class="port-6 effect-3">
+						<a href="" style="color:#333;">
 							<div class="index_service image-box">
-								<img src="img/qiyexinxihua.png" alt="">
-								<p style="color:#ff6666">企业信息化</p>
+								<#if category.id == 162>
+									<img src="img/qiyexinxihua.png" alt="">
+								</#if>
+								<#if category.id == 163>
+									<img src="img/rongzidaikuan.png" alt="">
+								</#if>
+								<#if category.id == 164>
+									<img src="img/renliziyuan.png" alt="">
+								</#if>
+								<#if category.id == 165>
+									<img src="img/caishuifawu.png" alt="">
+								</#if>
+								<#if category.id == 166>
+									<img src="img/xiangmushenbao.png" alt="">
+								</#if>
+								<#if category.id == 167>
+									<img src="img/maoyifuwu.png" alt="">
+								</#if>
+								<#if category.id == 168>
+									<img src="img/gongshangdaiban.png" alt="">
+								</#if>
+								<#if category.id == 169>
+									<img src="img/zhishichanquan.png" alt="">
+								</#if>
+								<p>${category.name}</p>
 							</div>
-						</div>
+						</a>
+
 					</div>
-					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 index_color">
-						<div class="port-6 effect-3">
-							<div class="index_service image-box">
-								<img src="img/rongzidaikuan.png" alt="">
-								<p style="color:#ffcc66">融资贷款</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 index_color">
-						<div class="port-6 effect-3">
-							<div class="index_service image-box">
-								<img src="img/renliziyuan.png" alt="">
-								<p style="color:#6cf">人力资源</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 index_color">
-						<div class="port-6 effect-3">
-							<div class="index_service image-box">
-								<img src="img/caishuifawu.png" alt="">
-								<p style="color:#69f">财税法务</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 index_color">
-						<div class="port-6 effect-3">
-							<div class="index_service image-box">
-								<img src="img/xiangmushenbao.png" alt="">
-								<p style="color:#96f">项目申报</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 index_color">
-						<div class="port-6 effect-3">
-							<div class="index_service image-box">
-								<img src="img/maoyifuwu.png" alt="">
-								<p style="color:#3cc">贸易服务</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 index_color">
-						<div class="port-6 effect-3">
-							<div class="index_service image-box">
-								<img src="img/gongshangdaiban.png" alt="">
-								<p style="color:#f96">工商代办</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 index_color">
-						<div class="port-6 effect-3">
-							<div class="index_service image-box">
-								<img src="img/zhishichanquan.png" alt="">
-								<p style="color:#c66">知识产权</p>
-							</div>
-						</div>
-					</div>
+					<!-- {/list} -->
 				</div>
 			</div>
 		</div>
@@ -210,8 +181,8 @@
 									</#if>
 									<!-- {/list} -->
 								</p>
-								<div  class="text-ellipsis">
-									<!-- {dictionaries:list table=(dictionaries) name=('label') type=('incubator')} -->
+								<div>
+									<!-- {dictionaries:list table=(dictionaries) name=('label') type=('incubator') limit=(3)} -->
 									<#if incubator.label?index_of(dictionaries.id?c) != -1>
 										<span class="label2">${dictionaries.value}</span>
 									</#if>
@@ -243,33 +214,33 @@
 									<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
 										<div class="index_number">
 											<div class="num">
-												<b>1289</b>
+												<b>${chip.providers!}</b>
 											</div>
-											<div class="index_number_title">入孵企业</div>
+											<div class="index_number_title">服务商(个)</div>
 										</div>
 									</div>
 									<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
 										<div class="index_number">
 											<div class="num">
-												<b>268</b>
+												<b>${chip.mentors!}</b>
 											</div>
-											<div class="index_number_title">入孵企业</div>
+											<div class="index_number_title">导师(个)</div>
 										</div>
 									</div>
 									<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
 										<div class="index_number">
 											<div class="num">
-												<b>888</b>
+												<b>${chip.categories!}</b>
 											</div>
-											<div class="index_number_title">入孵企业</div>
+											<div class="index_number_title">服务产品种类(个)</div>
 										</div>
 									</div>
 									<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
 										<div class="index_number">
 											<div class="num">
-												<b>1289</b>
+												<b>${chip.area!}</b>
 											</div>
-											<div class="index_number_title">入孵企业</div>
+											<div class="index_number_title">孵化面积(m²)</div>
 										</div>
 									</div>
 								</div>
