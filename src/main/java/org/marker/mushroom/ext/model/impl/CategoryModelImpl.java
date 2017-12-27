@@ -40,6 +40,7 @@ public class CategoryModelImpl extends ContentModel {
 			+ " from " + prefix + "category M where M.id=?";
 		final Object category = commonDao.queryForMap(sql, id);
 		request.setAttribute("category", category);
+		request.setAttribute("products", commonDao.queryForList("select * from mr_product where cid = " + id));
 	}
 
 	/**
