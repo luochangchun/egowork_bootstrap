@@ -107,7 +107,7 @@ a {
     background-position: 0 -139px;
 }
 
-.pagination {
+.swiper-container .pagination {
     position: absolute;
     left: 0;
     text-align: center;
@@ -315,6 +315,14 @@ a {
     direction: ltr
 }
 
+.pagination>.active>a {
+    background-color: #18b494;
+    border-color: #18b494;
+}
+
+.pagination>li>a, .pagination>li>span {
+    color: #18b494;
+}
 .datetimepicker-inline {
     width: 220px
 }
