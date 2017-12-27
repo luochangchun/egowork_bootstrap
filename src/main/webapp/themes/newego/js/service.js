@@ -30,7 +30,7 @@ $(function () {
                         break;
                     }
                 }
-                $('.nav-tabs li:first-child').addClass('active');
+                $('.nav-tabs li:nth-child(2)').addClass('active');
                 $('#tab-pane').html(htmlStr);
             }
         })
