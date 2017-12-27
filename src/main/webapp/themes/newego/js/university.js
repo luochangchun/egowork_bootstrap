@@ -10,9 +10,10 @@ function initCourse() {
             if (data['success'] == true) {
                 var entity = data['entity']['courseList'];
                 var htmlStr = "";
+                var turl ="http://vedio.whwomen.org.cn/free/play/";
                 for (var i = 0; i < entity.length; i++) {
                     if (i == 2) {
-                        htmlStr += '<a href="javascript:;" class="col-lg-4 col-md-4 col-sm-6 col-sm-12 item rel">\
+                        htmlStr += '<a href=' + turl + entity[i]['courseId'] + ' class="col-lg-4 col-md-4 col-sm-6 col-sm-12 item rel">\
                         <h2 class="text-ellipsis">'+ entity[i]['courseName'] + '</h2>\
                         <p class="text-ellipsis-muti text-ellipsis-2">'+ entity[i]['context'] + '</p>\
                         <p>\
@@ -26,7 +27,7 @@ function initCourse() {
                         continue;
                     }
                     if (i == 3 || i == 4) {
-                        htmlStr += '<a href="javascript:;" class="col-lg-4 col-md-4 col-sm-6 col-sm-12 item rel">\
+                        htmlStr += '<a href=' + turl + entity[i]['courseId'] + ' class="col-lg-4 col-md-4 col-sm-6 col-sm-12 item rel">\
                         <h2 class="text-ellipsis">'+ entity[i]['courseName'] + '</h2>\
                         <p class="text-ellipsis-muti text-ellipsis-2">'+ entity[i]['context'] + '</p>\
                         <p>\
@@ -40,7 +41,7 @@ function initCourse() {
                         continue;
                     }
                     if (i == 5) {
-                        htmlStr += '<a href="javascript:;" class="col-lg-4 col-md-4 col-sm-6 col-sm-12 item rel">\
+                        htmlStr += '<a href=' + turl + entity[i]['courseId'] + ' class="col-lg-4 col-md-4 col-sm-6 col-sm-12 item rel">\
                         <h2 class="text-ellipsis">'+ entity[i]['courseName'] + '</h2>\
                         <p class="text-ellipsis-muti text-ellipsis-2">'+ entity[i]['context'] + '</p>\
                         <p>\
@@ -52,7 +53,7 @@ function initCourse() {
                         </a>';
                         continue;
                     }
-                    htmlStr += '<a href="javascript:;" class="col-lg-4 col-md-4 col-sm-6 col-sm-12 item rel">\
+                    htmlStr += '<a href=' + turl + entity[i]['courseId'] + ' class="col-lg-4 col-md-4 col-sm-6 col-sm-12 item rel">\
                     <h2 class="text-ellipsis">'+ entity[i]['courseName'] + '</h2>\
                     <p class="text-ellipsis-muti text-ellipsis-2">'+ entity[i]['context'] +'</p>\
                     <p>\
@@ -94,9 +95,10 @@ function initTutor() {
                 console.log(data);
                 var entity = data['entity']['teacherList'];
                 var htmlStr = "";
+                var turl = "http://vedio.whwomen.org.cn/front/teacher/";
                 for (var i = 0; i < entity.length; i++) {
-                    htmlStr += '<a href="javascript:;" class="item col-lg-3 col-md-3 col-sm-6 col-sm-12">\
-                            <img src=entity[i]["picPath"]>\
+                    htmlStr += '<a href='+turl+ entity[i]['id'] + ' class="item col-lg-3 col-md-3 col-sm-6 col-sm-12">\
+                            <img src='+"http://192.168.11.132:8080"+entity[i]["picPath"]+'>\
                             <h1 class="tc">'+ entity[i]['name'] + '</h1>\
                             <p class="tc f14 text-ellipsis">'+ entity[i]['career'] + '</p>\
                             <p class="tc f14 text-ellipsis-muti text-ellipsis-2">'+ entity[i]['education'] + '</p>\

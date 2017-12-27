@@ -593,13 +593,13 @@
 				<div class="row clearfix">
 					<!-- {enterprise:list table=(enterprise) limit=(4)} -->
 					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 port-1 effect-2">
-						<a href="${enterprise.url}" class="item db image-box">
+						<a href="${enterprise.url}" class="item db image-box" style="margin-bottom: 0;">
 							<!-- <img src="img/01.png" alt=""> -->
 							<h1 class="tc text-ellipsis p_padding">${enterprise.name!}</h1>
 							<div class="line_green"></div>
-							<p class="tc text-ellipsis-muti text-ellipsis-4" style="height:80px">${enterprise.advantage!}</p>
+							<p class="tc text-ellipsis-muti text-ellipsis-4" style="height:80px">优势 : ${enterprise.advantage!}</p>
 							<p class="tc">
-								<span>${enterprise.field!}</span>|
+								<span>所属领域 : ${enterprise.field!}</span>
 							</p>
 							<div class="rel">
 								<div class="img_wrap abs">
@@ -609,7 +609,7 @@
 							</div>
 						</a>
 
-						<a href="${enterprise.url}" class="item db text-desc" style="padding-bottom: 55px;display:none;z-index:10;margin-bottom: 0!important;background-color:#18b494;">
+						<a href="${enterprise.url}" class="item db text-desc" style="padding-bottom: 55px;height:334px;display:none;z-index:10;margin-bottom: 0!important;background-color:#18b494;">
 							<!-- <img src="img/01.png" alt=""> -->
 							<div class="rel"  style="margin-top: 0;">
 								<div class="img_wrap abs">
@@ -617,7 +617,7 @@
 								</div>
 								<div class="img_line abs" style="background-color:#fff;"></div>
 							</div>
-							<p class="tc text-ellipsis-muti text-ellipsis-6" style="height:120px;color:#fff;">${enterprise.intro!}</p>
+							<p class="tc text-ellipsis-muti text-ellipsis-6" style="height:120px;color:#fff;">简介 : ${enterprise.intro!}</p>
 						</a>
 
 					</div>
