@@ -35,13 +35,13 @@
 	</div>
 	<div class="container">
 		<div class="row" style="margin-top: 20px;">
-			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
 				<div class="row">
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 						<div class="row clearfix">
 							<@page model="incubator" size="9" cid="133" status="1" order="top desc,time desc">
 								<#list page.data as incubator>
-								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 " style="clear:both;">
 									<div class="index_headline" style="margin-right:0;border:none;">
 										<a href="${incubator.url}" style="height:227px;display:block;">
 											<img src="http://192.168.11.132:8080/${incubator.icon!}" alt="" style="height:224px;">
@@ -76,7 +76,7 @@
 												<!--</#if>-->
 												<!--&lt;!&ndash; {/list} &ndash;&gt;-->
 											<!--</div>-->
-											<button class="btn5">申请入驻</button>
+											<button class="btn5">查看详情</button>
 										</div>
 									</div>
 								</#list>
