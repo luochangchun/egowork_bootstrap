@@ -68,7 +68,7 @@
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<!-- {category:list table=(category) pid=(161)} -->
 					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-4 index_color">
-						<a href="" style="color:#333;">
+						<a href="/service_detail_list.html" style="color:#333;">
 							<div class="index_service image-box">
 								<#if category.id == 162>
 									<img src="img/1621.png" alt="">
@@ -252,36 +252,90 @@
 		</div>
 	</div>
 	<!--数字-->
-
-	<!--资讯中心-->
-	<div class="bg_title distance">
+	
+	<div class="onlineCourse">
 		<div class="container">
-				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-					<p class="title">资讯中心</p>
-					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-							<!-- {article:list table=(article) cid=(127) status=(1) limit=(3) order=(top desc,time desc)} -->
-							<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-								<div class="index_headline">
-									<a href="${article.url!}">
-										<img src="http://192.168.11.132:8080/${article.icon!}">
-									</a>
-									<div class="index_headline_content">
-										<h4 class="h4 text-ellipsis">${article.title}</h4>
-										<p class="p3 text-ellipsis-muti text-ellipsis-3" style="line-height:25px;">${article.description!}</p>
-										<a href="${article.url!}" type="button" class="btn_betail margin_btn" style="margin-top:20px;">查看详情</a>
-									</div>
-								</div>
-							</div>
-							<!-- {/list} -->
+			<p class="title">线上课堂</p>
+			<div class="row clearfix" id="onlineList">
+				<!-- <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 item" style="margin-bottom: 20px">
+					<div class="onlineWrap rel ovh">
+						<img src="img/01.png" class="abs">
+						<div class="abs onlineMask">
+							<a href="#" class="tc white db">开始学习</a>
+						</div>
 					</div>
+					<div class="onlineWord">
+						<p class="text-ellipsis f14">如何赚钱</p>
+						<p class="clearfix">
+							<i class="fa fa-graduation-cap"></i>
+							<span>8</span>&nbsp;&nbsp;|&nbsp;
+							<i class="fa fa-eye" aria-hidden="true"></i>
+							<span>8</span>
+							<strong class="r white tc">免费</strong>
+						</p>
+					</div>
+				</div> -->
+				<!-- <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 item" style="margin-bottom: 20px">
+					<div class="onlineWrap rel ovh">
+						<img src="img/01.png" class="abs">
+						<div class="abs onlineMask">
+							<a href="#" class="tc white db">开始学习</a>
+						</div>
+					</div>
+					<div class="onlineWord">
+						<p class="text-ellipsis f14">如何赚钱</p>
+						<p class="clearfix">
+							<i class="fa fa-graduation-cap"></i>
+							<span>8</span>&nbsp;&nbsp;|&nbsp;
+							<i class="fa fa-eye" aria-hidden="true"></i>
+							<span>8</span>
+							<strong class="r white tc">免费</strong>
+						</p>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 item" style="margin-bottom: 20px">
+					<div class="onlineWrap rel ovh">
+						<img src="img/01.png" class="abs">
+						<div class="abs onlineMask">
+							<a href="#" class="tc white db">开始学习</a>
+						</div>
+					</div>
+					<div class="onlineWord">
+						<p class="text-ellipsis f14">如何赚钱</p>
+						<p class="clearfix">
+							<i class="fa fa-graduation-cap"></i>
+							<span>8</span>&nbsp;&nbsp;|&nbsp;
+							<i class="fa fa-eye" aria-hidden="true"></i>
+							<span>8</span>
+							<strong class="r white tc">免费</strong>
+						</p>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 item" style="margin-bottom: 20px">
+					<div class="onlineWrap rel ovh">
+						<img src="img/01.png" class="abs">
+						<div class="abs onlineMask">
+							<a href="#" class="tc white db">开始学习</a>
+						</div>
+					</div>
+					<div class="onlineWord">
+						<p class="text-ellipsis f14">如何赚钱</p>
+						<p class="clearfix">
+							<i class="fa fa-graduation-cap"></i>
+							<span>8</span>&nbsp;&nbsp;|&nbsp;
+							<i class="fa fa-eye" aria-hidden="true"></i>
+							<span>8</span>
+							<strong class="r white tc">免费</strong>
+						</p>
+					</div>
+				</div> -->
 			</div>
-			<a target="_blank" href="/newsList.html" class="view_more db tc clearfix">
+			<a target="_blank" href="http://vedio.whwomen.org.cn/front/showcoulist" class="view_more db tc clearfix">
 				查看更多
 				<i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
 			</a>
 		</div>
-	</div>
-	<!--热门头条-->
+	</div>	
 
 </div>
 
@@ -325,6 +379,7 @@
 
 </script>
 <script src="js/banner.js"></script>
+<script src="js/onlineCourse.js"></script>
 </body>
 <!--#include file="home/footer.html" -->
 </html>

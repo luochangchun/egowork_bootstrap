@@ -2,7 +2,7 @@ $(function () {
     function initService() {
         $.ajax({
             contentType: "text/plain;charset=utf-8",
-            url: "front/service/162.do",    //请求的url地址   
+            url: "front/service/163.do",    //请求的url地址   
             dataType: "json",   //返回格式为json    
             async: true, //请求是否异步，默认为异步，这也是ajax重要特性    
             data: {},    //参数值    
@@ -10,13 +10,15 @@ $(function () {
             success: function (data) {
                 var entity = data;
                 var htmlStr = '';
-                for (var i = 0; i < entity.length; i++) {
-                    if (i == 0) {
-                        htmlStr += '<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">\
+                if (entity.length>0) {
+                    $("#noData").hide();
+                    for (var i = 0; i < entity.length; i++) {
+                        if (i == 0) {
+                            htmlStr += '<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">\
                                 <img style = "width:100%;height:410px;" src='+ "themes/newego/img/" + entity[i]['cid'] + ".png" + '>\
                                 </div>';
-                    }
-                    htmlStr += '<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">\
+                        }
+                        htmlStr += '<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">\
                     <ul class="service_index_ul cl">\
                         <a href=' + "/cms?type=category&id=" + entity[i]['cid'] + '>\
                             <li class="service_index_li">\
@@ -26,10 +28,14 @@ $(function () {
                         </a>\
                 	</ul>\
                   </div >';
-                    if (i >= 8) {
-                        break;
+                        if (i >= 8) {
+                            break;
+                        }
                     }
+                } else {
+                    $("#noData").show();
                 }
+                
                 $('.nav-tabs li:nth-child(2)').addClass('active');
                 $('#tab-pane').html(htmlStr);
             }
@@ -48,13 +54,15 @@ $(function () {
             success: function (data) {
                 var entity = data;
                 var htmlStr = '';
-                for (var i = 0; i < entity.length; i++) {
-                    if(i == 0) {
-                        htmlStr += '<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">\
-                                <img style = "width:100%;height:410px;" src='+"themes/newego/img/"+entity[i]['cid']+".png"+'>\
+                if (entity.length > 0) {
+                    $("#noData").hide();
+                    for (var i = 0; i < entity.length; i++) {
+                        if (i == 0) {
+                            htmlStr += '<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">\
+                                <img style = "width:100%;height:410px;" src='+ "themes/newego/img/" + entity[i]['cid'] + ".png" + '>\
                                 </div>';
-                    }
-                    htmlStr += '<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">\
+                        }
+                        htmlStr += '<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">\
                     <ul class="service_index_ul cl">\
                         <a href=' + "/cms?type=category&id=" + entity[i]['cid'] + '>\
                             <li class="service_index_li">\
@@ -64,10 +72,14 @@ $(function () {
                         </a>\
                 	</ul>\
                   </div >';
-                    if (i >= 8) {
-                        break;
+                        if (i >= 8) {
+                            break;
+                        }
                     }
+                } else {
+                    $("#noData").show();
                 }
+                
                 $('#tab-pane').html(htmlStr);
             }
         })
