@@ -19,7 +19,6 @@
                         <div class="index_headline" style="margin-right:0;background-color:#fff;border:none;">
                             <div class="incubation_detail_content float_left">
                                 <h4 class="h4">${incubator.title!}</h4>
-
                                 <p class="p3 line-height">地址: ${incubator.address!}</p>
                                 <p class="p3 line-height">联系电话: ${incubator.phone!}</p>
                                 <p class="p3 line-height">级别:
@@ -37,6 +36,7 @@
                                     <!-- {/list} -->
                                 </p>
                                 <!--<el-button type="text" @click="spaceForm = true" class="btn3" style="line-height:20px;">立即申请 ></el-button>-->
+                                <a class="btn btn3 goLogin" style="line-height:20px;" href="/signin.html">申请入驻</a>
                                 <button class="btn3" data-toggle="modal" data-target="#spaceRent" data-whatever="@mdo">申请入驻</button>
                                 <!--<button type="button" class="btn btn2" data-toggle="modal" data-target="#spaceRent" data-whatever="@mdo" style="margin-top:20px;line-height:20px;">立即申请 ></button>-->
                                 <p class="p4 color2 text-ellipsis-muti text-ellipsis-4">${incubator.settled!}</p>
@@ -204,12 +204,17 @@
                                 <div class="col-lg-1 col-md-1 col-sm-3 col-xs-4 space_show">
                                     <div class="space_img">
                                         <div>
-                                            <img src="${dictionaries.icon!}" alt="">
-                                            <p>
                                             <#if incubator.service?index_of(dictionaries.id?c) != -1 >
+                                                <!--判断有无图片-->
+                                                <#if dictionaries.icon??>
+                                                    <img src="${dictionaries.icon}" alt="">
+                                                    <#else>
+                                                        <img src="img/kjmoren.jpg" alt="">
+                                                </#if>
+                                                <p>
                                                 ${dictionaries.value}
+                                                </p>
                                             </#if>
-                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -218,6 +223,8 @@
                         </div>
                     </div>
                 </div>
+
+
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 space_show">
                         <h1 class="detail_title"><span>|</span> 配套设施</h1>
@@ -229,12 +236,10 @@
                                 <div class="col-lg-1 col-md-1 col-sm-3 col-xs-4">
                                     <div class="space_img">
                                         <div>
-                                            <img src="${dictionaries.icon!}" alt="">
-                                            <p>
                                             <#if incubator.facility?index_of(dictionaries.id?c) != -1 >
-                                                ${dictionaries.value}
+                                                <img src="${dictionaries.icon!}" alt="">
+                                                <p>${dictionaries.value}</p>
                                             </#if>
-                                            </p>
                                         </div>
                                     </div>
                                 </div>
