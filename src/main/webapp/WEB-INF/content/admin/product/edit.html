@@ -77,18 +77,15 @@
 			</div>
 			<div class="frame_content" style="height:464px;">
 				<div class="frame_margin markdown">
-					<form id="uploadForm" action="img/upload.do" method="post" enctype="multipart/form-data"
-							onsubmit="return false;" style="margin-bottom:15px;">
-						<input type="file" onChange="inputImageChange(this)" name="file"
-								style="position:absolute;width:70px;opacity:0;"/>
-						<button type="buttom" class="submit_it" style="float: inherit;">选择图片</button>
+					<form id="uploadForm" action="img/upload.do" method="post" enctype="multipart/form-data" onsubmit="return false;" style="margin-bottom:15px;">
+						<input type="file" onChange="inputImageLoaded(this)" name="file" style="position:absolute;width:70px;opacity:0;"/>
+						<button type="button" class="submit_it" style="float: inherit;">选择图片</button>
 						<input id="imgSrc" name="imgSrc" type="text" style="display:none;"/>
-						<button type="submit" onclick="upload(this)" class=" submit_it" style="float: inherit;">上传
-						</button>
+						<button type="submit" onclick="upload(this)" class=" submit_it" style="float: inherit;">上传</button>
 					</form>
-					<div class="img-container" style="max-width:400px;max-height:300px;float:left;margin-right:15px;">
-						<img id="image">
-					</div>
+					<div class="img-container" style="max-width:600px;max-height:300px;float:left;margin-right:15px;">
+			          <img id="image" style="max-width:600px;max-height:300px;">
+			        </div>
 					<div id="view" style="display:none;border: 1px solid #C8C8C8;width:300px;float:left;"></div>
 				</div>
 			</div>
@@ -97,20 +94,6 @@
 </div>
 <script type="text/javascript">
 imgChange();
-$("#image").on({
-	ready: function (e) {
-		getCroppedCanvas();
-	},
-	cropmove: function (e) {
-		getCroppedCanvas();
-	},
-	crop: function (e) {
-		getCroppedCanvas();
-	},
-	zoom: function (e) {
-		getCroppedCanvas();
-	}
-}).cropper();
 
 function submit(obj) {
 	window.editor.sync();//手动提交需要手动同步编辑器数据

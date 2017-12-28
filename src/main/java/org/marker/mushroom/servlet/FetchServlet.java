@@ -12,6 +12,7 @@ import org.marker.mushroom.dao.ISupportDao;
 import org.marker.mushroom.dto.UserData;
 import org.marker.mushroom.holder.SpringContextHolder;
 import org.marker.mushroom.utils.HttpUtils;
+import org.marker.mushroom.utils.StringUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -54,7 +55,7 @@ public class FetchServlet extends HttpServlet {
 
 		if (!"1".equals(leave)) {
 			final String url = req.getParameter("v0");// 当前url
-			final String referer = req.getParameter("v1");// 旧URL
+			String referer = req.getParameter("v1");// 旧URL
 			final String system = req.getParameter("v2");// 操作系统
 			final String screen = req.getParameter("v3");// 屏幕分辨率
 			final String browser = req.getParameter("v4");// 浏览器
@@ -63,6 +64,8 @@ public class FetchServlet extends HttpServlet {
 			final String isFlash = req.getParameter("v7");// 是否安装Flash
 			final String ipv4 = HttpUtils.getRemoteHost(req);// 用户真实IP，处理了ngnix的代理IP
 			final String visitorId = HttpUtils.getCookie(req, "FETCHSESSIONID");// UV统计使用
+			if (!StringUtil.isBlank(referer) && referer.length() > 480)
+				referer = referer.substring(0, 480);
 
 			final StringBuilder data = new StringBuilder();
 			data.append(ipv4).append(",");

@@ -174,7 +174,7 @@ public class IncubatorController extends SupportController {
 			}
 
 			IncubatorPhoto photo = new IncubatorPhoto();
-			photo.setUri(uri);
+			photo.setUri(uri + File.separator + fileName);
 			photo.setIncubatorId(id);
 			if (!commonDao.save(photo)) {
 				return new ResultMessage("上传失败，数据写入失败!");
