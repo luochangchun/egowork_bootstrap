@@ -20,7 +20,7 @@
             </h1>
             <div class="row commonList clearfix">
                 <!-- {activity:list table=(activity) cid=(128) limit=(4) status=(1) order=(top desc,time desc)} -->
-                <a href="${activity.url}" class="col-lg-3 col-md-3 col-sm-6 col-sm-12 item">
+                <a href="${activity.url!}" class="col-lg-3 col-md-3 col-sm-6 col-sm-12 item">
                     <div class="img_wrap rel">
                         <#if ( activity.activeTime?date gt .now?date )>
                             <span class="abs flag f12">报名中</span>
@@ -52,7 +52,7 @@
             </h1>
             <div class="row commonList clearfix">
                 <!-- {activity:list table=(activity) cid=(129) limit=(4) status=(1) order=(top desc,time desc)} -->
-                <a href="${activity.url}" class="col-lg-3 col-md-3 col-sm-6 col-sm-12 item">
+                <a href="${activity.url!}" class="col-lg-3 col-md-3 col-sm-6 col-sm-12 item">
                     <div class="img_wrap rel">
                         <#if ( activity.activeTime?date gt .now?date )>
                             <span class="abs flag f12">已结束</span>
