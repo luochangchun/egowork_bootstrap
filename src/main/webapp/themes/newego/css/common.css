@@ -1683,12 +1683,12 @@ body {
     position: fixed;
     top:50%;
     right:0;
-    z-index:100000000;
+    z-index:100000;
 }
 /*电话*/
 #telnumber {
     margin-top: -80px;
-    background: #33cccc;
+    background: rgba(6, 146, 63, 0.8);
     color: rgba(255, 255, 255, 0.7);
     border-radius: 4px 0 0 0;
     line-height: 40px;
@@ -1703,7 +1703,7 @@ body {
     top: -80px;
     padding-left: 10px;
     padding-right: 10px;
-    background: #33cccc;
+    background: rgba(6, 146, 63, 1);
     border-radius: 4px;
 }
 .text-xs {
@@ -1716,14 +1716,14 @@ body {
     margin-top: 6px;
 }
 #telnumber:not(.telCtrl):hover {
-    background: #33cccc;
+    background: rgba(6, 146, 63, 1);
     color: white;
 }
 #telnumber:not(.telCtrl):hover span {
     display: block;
 }
 #telnumber span::after {
-    border-left-color: #33cccc;
+    border-left-color: rgba(6, 146, 63, 1);
     content: "";
     display: block;
     position: absolute;
@@ -1737,12 +1737,12 @@ body {
 
 /*QQ*/
 #qq:not(.telCtrl):hover {
-    background: #ffcc66;
+    background: rgba(116, 41, 184, 0.8);
     color: white;
 }
 #qq {
     /*margin-top: -40px;*/
-    background: #ffcc66;
+    background: rgba(116, 41, 184, 0.8);
     color: rgba(255, 255, 255, 0.7);
     height: 40px;
     width: 40px;
@@ -1757,7 +1757,7 @@ body {
     right: 60px;
     width: 90px;
     top: -40px;
-    background: #ffcc66;
+    background: rgba(116, 41, 184, 1);
     border-radius: 4px;
 }
 .text-xs {
@@ -1780,7 +1780,7 @@ body {
     font-size: 2em;
 }
 #qq span::after {
-    border-left-color: #ffcc66;
+    border-left-color: rgba(116, 41, 184, 1);
     content: "";
     display: block;
     position: absolute;
