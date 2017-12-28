@@ -43,7 +43,7 @@
 								<#list page.data as incubator>
 								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 " style="clear:both;">
 									<div class="index_headline" style="margin-right:0;border:none;">
-										<a href="${incubator.url}" style="height:227px;display:block;">
+										<a href="${incubator.url!}" style="height:227px;display:block;">
 											<img src="${incubator.icon!}" alt="" style="height:224px;">
 										</a>
 									</div>
@@ -76,7 +76,7 @@
 												<!--</#if>-->
 												<!--&lt;!&ndash; {/list} &ndash;&gt;-->
 											<!--</div>-->
-											<a class="btn5" href="${incubator.url}">查看详情</a>
+											<a class="btn5" href="${incubator.url!}">查看详情</a>
 										</div>
 									</div>
 								</#list>

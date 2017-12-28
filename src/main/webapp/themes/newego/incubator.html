@@ -19,7 +19,7 @@
                         <div class="index_headline" style="margin-right:0;background-color:#fff;border:none;">
                             <div class="incubation_detail_content float_left">
                                 <h4 class="h4">${incubator.title!}</h4>
-                                
+
                                 <p class="p3 line-height">地址: ${incubator.address!}</p>
                                 <p class="p3 line-height">联系电话: ${incubator.phone!}</p>
                                 <p class="p3 line-height">级别:
@@ -153,7 +153,7 @@
                                         <#list photos as incubator>
                                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                                 <div class="s_show_img">
-                                                    <img src="${incubator.url}" alt="">
+                                                    <img src="${incubator.url!}" alt="">
                                                 </div>
                                             </div>
                                         </#list>
