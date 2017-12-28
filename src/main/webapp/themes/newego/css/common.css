@@ -1110,6 +1110,7 @@ body {
     color:#fff;
     text-align: center;
     margin:20px 40px;
+    height:40px;
 }
 .text-ellipsis-2 {
     -webkit-line-clamp: 2;
