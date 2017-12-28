@@ -2,6 +2,9 @@ function setCategory(id) {
     var cid = parseInt(id)
     window.localStorage.setItem("categoryId",cid);
 }
+function setId(id) {
+    window.localStorage.setItem("serviceId", id);
+}
 $(function () {
     function initService() {
         $.ajax({
@@ -24,7 +27,7 @@ $(function () {
                         }
                         htmlStr += '<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">\
                     <ul class="service_index_ul cl">\
-                        <a href=' + "/cms?type=category&id=" + entity[i]['cid'] + '>\
+                        <a onclick="setId(' + entity[i]['id'] + ')" href=' + "/cms?type=category&id=" + entity[i]['cid'] + '>\
                             <li class="service_index_li">\
                                 <h1>'+ entity[i]['title'] + '</h1>\
                                 <p class="text-ellipsis-muti text-ellipsis-3">'+ entity[i]['intro'] + '</p>\
@@ -39,8 +42,8 @@ $(function () {
                 } else {
                     $("#noData").show();
                 }
-                
-                $('.nav-tabs li:nth-child(2)').addClass('active');
+                $('.nav-tabs li:nth-child(2)').css('display','none');
+                $('.nav-tabs li:nth-child(3)').addClass('active');
                 $('#tab-pane').html(htmlStr);
             }
         })
@@ -68,7 +71,7 @@ $(function () {
                         }
                         htmlStr += '<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">\
                     <ul class="service_index_ul cl">\
-                        <a href=' + "/cms?type=category&id=" + entity[i]['cid'] + '>\
+                        <a onclick="setId(' + entity[i]['id'] + ')" href=' + "/cms?type=category&id=" + entity[i]['cid'] + '>\
                             <li class="service_index_li">\
                                 <h1>'+ entity[i]['title'] + '</h1>\
                                 <p class="text-ellipsis-muti text-ellipsis-3">'+ entity[i]['intro'] + '</p>\

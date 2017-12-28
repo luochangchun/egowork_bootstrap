@@ -19,6 +19,7 @@
                         <div class="index_headline" style="margin-right:0;background-color:#fff;border:none;">
                             <div class="incubation_detail_content float_left">
                                 <h4 class="h4">${incubator.title!}</h4>
+                                
                                 <p class="p3 line-height">地址: ${incubator.address!}</p>
                                 <p class="p3 line-height">联系电话: ${incubator.phone!}</p>
                                 <p class="p3 line-height">级别:
@@ -61,10 +62,7 @@
                                             <span class="red">*</span>选择入驻孵化器</label>
                                         <div class="col-sm-7">
                                             <select class="form-control" placeholder="请选择" id="rentIncubator">
-                                                <option data-id="-1">请选择</option>
-                                                <!-- {incubator:list table=(incubator) status=(1)} -->
-                                                <option data-id="${incubator.id}">${incubator.title}</option>
-                                                <!-- {/list} -->
+                                                <option data-id="${incubator.id!}">${incubator.title!}</option>
                                             </select>
                                         </div>
                                     </div>
@@ -77,34 +75,29 @@
                                     <div class="form-group">
                                         <label for="rentQuantity" class="col-sm-4 control-label"><span class="red">*</span>团队人数</label>
                                         <div class="col-sm-7">
-                                            <input type="text" class="form-control" id="rentQuantity" placeholder="请请输入团队企业人数">
+                                            <input type="number" class="form-control" id="rentQuantity" placeholder="请请输入团队企业人数">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputPassword3" class="col-sm-4 control-label"><span class="red">*</span>成立情况</label>
-                                        <div class="col-sm-7" id="rentCases">
-                                            <label class="radio-inline" for="Radio1">
-                                                <input type="radio" name="inlineRadioOptions" id="Radio1" data-value="筹建"> 筹建
-                                            </label>
-                                            <label class="radio-inline" for="Radio2">
-                                                <input type="radio" name="inlineRadioOptions" id="Radio2" data-value="初建"> 初建
-                                            </label>
-                                            <label class="radio-inline" for="Radio3">
-                                                <input type="radio" name="inlineRadioOptions" id="Radio3" data-value="2年以内"> 2年以内
-                                            </label>
-                                            <label class="radio-inline" for="Radio4">
-                                                <input type="radio" name="inlineRadioOptions" id="Radio4" data-value="2年以上"> 2年以上
-                                            </label>
+                                        <div class="col-sm-7">
+                                            <select class="form-control" placeholder="请选择" id="rentCases">
+                                                <option data-value="请选择">请选择</option>
+                                                <option data-value="筹建">筹建</option>
+                                                <option data-value="初建">初建</option>
+                                                <option data-value="2年以内">2年以内</option>
+                                                <option data-value="2年以上">2年以上</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputPassword3" class="col-sm-4 control-label">
                                             <span class="red">*</span>是否为毕业5年以上大学生</label>
                                         <div class="col-sm-7" id="rentGraduate">
-                                            <label class="radio-inline" for="createGraduate1">
+                                            <label class="radio-inline" for="rentGraduate1">
                                                 <input type="radio" name="inlineRadioOptions" id="rentGraduate1" data-id="1"> 是
                                             </label>
-                                            <label class="radio-inline" for="createGraduate2">
+                                            <label class="radio-inline" for="rentGraduate2">
                                                 <input type="radio" name="inlineRadioOptions" id="rentGraduate2" data-id="2"> 否
                                             </label>
                                         </div>
