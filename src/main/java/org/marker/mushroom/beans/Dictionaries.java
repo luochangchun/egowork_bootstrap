@@ -22,6 +22,7 @@ public class Dictionaries implements Serializable {
 	private String value;
 	/** 实体类型 **/
 	private String type;
+	private String icon;
 
 	public int getId() {
 		return id;
@@ -53,5 +54,13 @@ public class Dictionaries implements Serializable {
 
 	public void setType(final String type) {
 		this.type = type;
+	}
+
+	public String getIcon() {
+		return icon;
+	}
+
+	public void setIcon(String icon) {
+		this.icon = icon;
 	}
 }
