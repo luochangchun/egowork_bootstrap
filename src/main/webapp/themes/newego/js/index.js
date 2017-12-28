@@ -4,7 +4,7 @@ var tel_reg = /(^1[34578]\d{9}$)|(^0\d{2,3}-\d{7,8}$)|(^\d{7,8}$)/;
 var pwd_reg = /^[A-Za-z0-9\!\@\#\$\%\^\&\*\(\)\_\+\`\~\-\=]{6,22}$/;
 var username_reg = /^[a-zA-Z]{1}[0-9a-zA-Z_]{5,22}$/;
 var email_reg = /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/;
-var form_url = "http://localhost:8080";
+var form_url = "";
 jQuery.fn.widResize = function (Func) {
 	Func();
 	$(window).resize(function () {
