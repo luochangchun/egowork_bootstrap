@@ -109,8 +109,6 @@ function mySubmitForm(obj) {
 }
 
 $(function () {
-	var cid = '${enterprise.id?c}';
-	$("#categoryid").attr('value', cid);
 	if (window.editor != null) window.editor.destroy();
 
 	//实例化编辑器
@@ -128,7 +126,7 @@ $('#myForm').validator({
 		required: "不能为空",
 	},
 	fields: {
-		'title': 'required;title;',
+		'name': 'required;name;',
 		'intro': 'required;intro;'
 	}
 }).on("click", ".submit_it", function(){
