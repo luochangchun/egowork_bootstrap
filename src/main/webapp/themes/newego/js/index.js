@@ -13,6 +13,16 @@ jQuery.fn.widResize = function (Func) {
 }
 
 $(document).ready(function () {
+	$('#tab1').click(function () {
+		$(this).addClass('cur').siblings().removeClass('cur');
+		$('#tab11').addClass('db').removeClass('dn')
+		$('#tab22').addClass('dn').removeClass('db')
+	})
+	$('#tab2').click(function () {
+		$(this).addClass('cur').siblings().removeClass('cur');
+		$('#tab22').addClass('db').removeClass('dn')
+		$('#tab11').addClass('dn').removeClass('db')
+	})
 	// 文章留言回复展开
 	$('.dialogIcon').click(function () {
 		if ($(this).parent().parent().next().find('dn')) {
@@ -21,7 +31,6 @@ $(document).ready(function () {
 		}
 		
 	})
-
 	var startDate = new Date();
 	//预约表单参观日历初始化
 	$('#visitPicker').datetimepicker({
@@ -394,7 +403,7 @@ $(document).ready(function () {
 		var createIncubatorId = $("#createIncubator option:selected").attr('data-id'); //孵化器id
 		var createAppellation = $("#createAppellation").val(); //公司名称
 		var createQuantity = $("#createQuantity").val(); //团队人数
-		var createCases = $("#createCases input:radio:checked").attr('data-value'); //成立情况
+		var createCases = $("#createCases option:selected").attr('data-value'); //成立情况
 		var createGraduate = $('#createGraduate input:radio:checked').attr('data-id'); //是否毕业5年
 		var createRange = $("#createRange").val(); //经营范围
 		var createArea = $("#createArea").val(); //工位数量
@@ -408,6 +417,10 @@ $(document).ready(function () {
 			alert("请选择是否为毕业5年以上");
 			return false;
 		}
+		if (createArea == "") {
+			alert("请输入所需工位数量");
+			return false;
+		}
 		if (createName == "") {
 			alert("请输入联系人姓名");
 			return false;
@@ -416,7 +429,7 @@ $(document).ready(function () {
 			alert("请输入联系方式");
 			return false;
 		}
-		if (createCases == undefined) {
+		if (createCases == "") {
 			var params = {
 				"type": 1,
 				"incubatorId": createIncubatorId,
@@ -581,7 +594,7 @@ $(document).ready(function () {
 		var rentIncubatorId = $("#rentIncubator option:selected").attr('data-id'); //孵化器id
 		var rentAppellation = $("#rentAppellation").val(); //公司名称
 		var rentQuantity = $("#rentQuantity").val(); //团队人数
-		var rentCases = $("#rentCases input:radio:checked").attr('data-value'); //成立情况
+		var rentCases = $("#rentCases option:selected").attr('data-value'); //成立情况
 		var rentGraduate = $('#rentGraduate input:radio:checked').attr('data-id'); //是否毕业5年
 		var rentRange = $("#rentRange").val(); //经营范围
 		var rentArea = $("#rentArea").val(); //工位数量
@@ -591,8 +604,28 @@ $(document).ready(function () {
 			alert("请选择入驻孵化器");
 			return false;
 		}
+		if (rentAppellation == "") {
+			alert("请输入公司名称");
+			return false;
+		}
+		if (rentQuantity == "") {
+			alert("请输入团队人数");
+			return false;
+		}
+		if (rentCases == "请选择") {
+			alert("请选择成立情况");
+			return false;
+		}
 		if (rentGraduate == undefined) {
 			alert("请选择是否为毕业5年以上");
+			return false;
+		}
+		if (rentRange == "") {
+			alert("请输入经营范围");
+			return false;
+		}
+		if (rentArea == "") {
+			alert("请输入办公面积");
 			return false;
 		}
 		if (rentName == "") {
@@ -603,35 +636,22 @@ $(document).ready(function () {
 			alert("请输入联系方式");
 			return false;
 		}
-		if (rentCases == undefined) {
-			var params = {
-				"type": 2,
-				"incubatorId": rentIncubatorId,
-				"incubator": rentIncubator,
-				"appellation": rentAppellation,
-				"quantity": rentQuantity,
-				"graduate": rentGraduate,
-				"range": rentRange,
-				"area": rentArea,
-				"name": rentName,
-				"phone": rentPhone
-			};
-		} else {
-			var params = {
-				"type": 2,
-				"incubatorId": rentIncubatorId,
-				"incubator": rentIncubator,
-				"appellation": rentAppellation,
-				"quantity": rentQuantity,
-				"cases": rentCases,
-				"graduate": rentAppellation,
-				"range": rentRange,
-				"area": rentArea,
-				"name": rentName,
-				"phone": rentPhone
-			};
-		}
+		
 
+		var params = {
+			"type": 2,
+			"incubatorId": rentIncubatorId,
+			"incubator": rentIncubator,
+			"appellation": rentAppellation,
+			"quantity": rentQuantity,
+			"cases": rentCases,
+			"graduate": rentAppellation,
+			"range": rentRange,
+			"area": rentArea,
+			"name": rentName,
+			"phone": rentPhone
+		};
+		
 		var settings = {
 			"async": true,
 			"crossDomain": true,

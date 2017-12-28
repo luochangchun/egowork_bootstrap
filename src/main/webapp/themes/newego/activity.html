@@ -22,29 +22,21 @@
 					<p class="f14 text-ellipsis">活动时间：
 						<span>${activity.activeTime?string("yyyy-MM-dd")}</span>
 					</p>
-					<!-- <p class="f16 text-ellipsis">主办单位：
-						<span>大潮会</span>
-					</p> -->
-					<!-- <p class="f16 text-ellipsis">特邀嘉宾：
-						<span>王冠</span>
-						<span class="cur">和田数</span>
-					</p> -->
 					<p class="f14 text-ellipsis">活动地址：
 						<span>${activity.address}</span>
 					</p>
-					<a href="#" class="sign_up tc">立即报名</a>
+					<!-- <a href="#" class="sign_up tc">立即报名</a> -->
 				</div>
 			</div>
 			<div class="activity_bottom">
 				<div class="activity_bottom_tab clearfix">
-					<a href="javascript:;" class="l cur">活动详情</a>
-					<a href="javascript:;" class="l">活动评价</a>
+					<a class="l cur" id="tab1">活动详情</a>
+					<a class="l" id="tab2">活动评价</a>
 				</div>
-				
-				<div class="activity_bottom_body">
+				<div class="activity_bottom_body db" id="tab11">
 					${activity.content}
 				</div>
-				<div class="activity_bottom_body">
+				<div class="activity_bottom_body dn" id="tab22">
 					<div class="reply_list">
 						<@page model="guestbook" size="10" aid="${activity.id?c}" status="3" order="time desc">
 						<#list page.data as guestbook>
