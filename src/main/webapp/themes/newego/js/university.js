@@ -36,7 +36,7 @@ function initCourse() {
                             <i class="fa fa-eye" aria-hidden="true"></i>\
                             <span>'+ entity[i]['pageViewcount'] + '</span>\
                         </p>\
-                        <img src=' + turl + entity[i]['logo'] + ' alt="">\
+                        <img src=' + domain + entity[i]['logo'] + ' alt="">\
                         <div class="line line_r abs"></div>\
                         </a>';
                         continue;
@@ -50,7 +50,7 @@ function initCourse() {
                             <i class="fa fa-eye" aria-hidden="true"></i>\
                             <span>'+ entity[i]['pageViewcount'] + '</span>\
                         </p>\
-                        <img src=' + turl + entity[i]['logo'] + ' alt="">\
+                        <img src=' + domain + entity[i]['logo'] + ' alt="">\
                         </a>';
                         continue;
                     }
@@ -62,12 +62,10 @@ function initCourse() {
                         <i class="fa fa-eye" aria-hidden="true"></i>\
                         <span>'+ entity[i]['pageViewcount'] +'</span>\
                     </p>\
-                    <img src=' + turl + entity[i]['logo'] + ' alt="">\
+                    <img src=' + domain + entity[i]['logo'] + ' alt="">\
                         <div class="line line_r abs"></div>\
                         <div class="line line_b abs"></div>\
                     </a>';
-
-
                 }
                 $('#courseList').html(htmlStr);
             }
