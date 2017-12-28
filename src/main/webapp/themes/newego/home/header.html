@@ -195,7 +195,7 @@
             </div>
 
         </div>
-        <div class="box-shadow clearfix">
+        <div class="box-shadow">
             <nav class="navbar navbar-transparency" role="navigation" style="height: 50px;">
                 <div class="container">
                     <!--省略-->
@@ -286,7 +286,11 @@
                     $(this).addClass("active");
                 }
             });
-        })
+        });
+
+        $("#showDiv").click(function(){
+            $(".tel-nav").toggleClass("open");
+        });
     </script>
 </body>
 
