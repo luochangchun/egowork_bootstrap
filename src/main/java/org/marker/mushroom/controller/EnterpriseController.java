@@ -4,9 +4,8 @@ import org.marker.mushroom.beans.Enterprise;
 import org.marker.mushroom.beans.Page;
 import org.marker.mushroom.beans.ResultMessage;
 import org.marker.mushroom.support.SupportController;
-import org.marker.mushroom.validator.ChipValidator;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -45,7 +44,7 @@ public class EnterpriseController extends SupportController {
 	//保存操作
 	@ResponseBody
 	@RequestMapping("/save")
-	public Object save(@Validated(ChipValidator.class) Enterprise enterprise) {
+	public Object save(Enterprise enterprise) {
 		enterprise.setTime(new Date());
 		if (commonDao.save(enterprise)) {
 			return new ResultMessage(true, "添加成功!");
@@ -77,7 +76,7 @@ public class EnterpriseController extends SupportController {
 	/** 修改操作 */
 	@ResponseBody
 	@RequestMapping("/update")
-	public Object update(Enterprise enterprise){
+	public Object update(@ModelAttribute("enterprise") Enterprise enterprise){
 		enterprise.setTime(new Date());
 		if (commonDao.update(enterprise)) {
 			return new ResultMessage(true, "更新成功!");

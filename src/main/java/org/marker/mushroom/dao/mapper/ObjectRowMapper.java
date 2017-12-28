@@ -192,6 +192,7 @@ public final class ObjectRowMapper {
 			dict.setName(rs.getString("name"));
 			dict.setValue(rs.getString("value"));
 			dict.setType(rs.getString("type"));
+			dict.setIcon(rs.getString("icon"));
 			return dict;
 		}
 	}
