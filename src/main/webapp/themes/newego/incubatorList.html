@@ -20,11 +20,6 @@
 							<div class="list_tab">
 								<ul class="list_tab_3">
 									<li><a href="">全部孵化器</a><span>:</span></li>
-									<!--<li><a href="">武汉</a><span>|</span></li>-->
-									<!--<li><a href="">宜昌</a><span>|</span></li>-->
-									<!--<li><a href="">荆门</a><span>|</span></li>-->
-									<!--<li><a href="">随州</a><span>|</span></li>-->
-									<!--<li><a href="">钟祥</a></li>-->
 								</ul>
 							</div>
 						</div>
@@ -43,7 +38,7 @@
 								<#list page.data as incubator>
 								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 " style="clear:both;">
 									<div class="index_headline" style="margin-right:0;border:none;">
-										<a href="${incubator.url}" style="height:227px;display:block;">
+										<a href="${incubator.url!}" style="height:227px;display:block;">
 											<img src="${incubator.icon!}" alt="" style="height:224px;">
 										</a>
 									</div>
@@ -51,8 +46,6 @@
 									<div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
 										<div class="index_headline_content">
 											<h4 class="h4 text-ellipsis">${incubator.title!}</h4>
-											<!--<p class="p3 line-height text-ellipsis-muti text-ellipsis-3" style="height:72px;">简介 : ${incubator.settled!}</p>-->
-											<!--<p class="p5 line-height text-ellipsis-muti text-ellipsis-2" style="height:47px;">入驻政策 : ${incubator.policy!}</p>-->
 											<p class="p3 line-height text-ellipsis">地址: ${incubator.address!}</p>
 											<p class="p3 line-height text-ellipsis">联系电话: ${incubator.phone!}</p>
 											<p class="p3 line-height text-ellipsis">级别:
@@ -69,14 +62,7 @@
 												</#if>
 												<!-- {/list} -->
 											</p>
-											<!--<div  class="text-ellipsis">-->
-												<!--&lt;!&ndash; {dictionaries:list table=(dictionaries) name=('label') type=('incubator')} &ndash;&gt;-->
-												<!--<#if incubator.label?index_of(dictionaries.id?c) != -1>-->
-													<!--<span class="label2">${dictionaries.value}</span>-->
-												<!--</#if>-->
-												<!--&lt;!&ndash; {/list} &ndash;&gt;-->
-											<!--</div>-->
-											<a class="btn5" href="${incubator.url}">查看详情</a>
+											<a class="btn5" href="${incubator.url!}">查看详情</a>
 										</div>
 									</div>
 								</#list>

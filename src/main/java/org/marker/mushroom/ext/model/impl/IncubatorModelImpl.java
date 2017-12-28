@@ -60,7 +60,7 @@ public class IncubatorModelImpl extends ContentModel {
 		final String prefix = getPrefix();//表前缀，如："yl_" 
 
 		String sql = "select A.*, C.name as cname,"
-			+ " concat('type=incubator&id=',CAST(A.id as char),'&time=',DATE_FORMAT(A.time,'%Y%m%d')) as url"
+			+ " concat('/cms?', 'type=incubator&id=',CAST(A.id as char),'&time=',DATE_FORMAT(A.time,'%Y%m%d')) as url"
 			+ " from " + prefix + "incubator A join " + prefix + "category C on A.cid=C.id"
 			+ " where 1=1 " + param.extendSql + param.orderSql;
 

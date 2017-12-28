@@ -746,19 +746,20 @@ $(document).ready(function () {
 	$(window).widResize(hCtrl);
 
 
-
 	$.ajax({
 		type: "get",
 		contentType: "text/plain;charset=utf-8",
 		url: "/ajax?resource=resource=signup/getUserInSession",
 		dataType: "json",
 		success: function (data) {
+			$('.goLogin').show().next('button').hide();
 			if (data.userId > 0) {
 				loginUser = data;
 			} else {
 				loginUser = null;
 			}
 			if (loginUser != null && loginUser.userName) {
+				$('.goLogin').hide().next('button').show();
 				$("#unloginElement").html("<a class=\"padder-xxs\" href=\"javascript:void(0)\">您好," + loginUser.userName + "</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class=\"text-3C\" href=\"javascript:void(0)\" onclick=\"logout();return false;\">注销</a>");
 			}
 		}
@@ -1009,7 +1010,6 @@ function getNewsDetail(id, cnid, template) {
 	});
 
 }
-
 /**
  * 登陆 login	：支持 用户名、手机
  */
@@ -1038,12 +1038,14 @@ function login() {
 		async: false,
 		success: function (data) {
 			if (data.code === 200) {
+				// window.location.href = '/index.html';
 				if (location.search === "") {
 					window.location.href = document.referrer;
+					console.log(document.referrer);
 				}
-				else if (template === "tsb") {
-					template = "signin.html?tsb";
-				}
+				// else if (template === "tsb") {
+				// 	template = "signin.html?tsb";
+				// }
 				else if (template.startsWith("http")) {
 					window.open(template);
 					window.location.href = document.referrer;
@@ -1066,6 +1068,7 @@ function login() {
 	}
 
 }
+
 
 /**
  * 注销 logout
