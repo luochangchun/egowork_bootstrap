@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>
+<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+
+<!--#include file="home/header.html" -->
+
+<body>
+<div class="bg-img2"></div>
+    <div class="container">
+        <!-- 精彩活动 -->
+        <div class="activity">
+            <h1 class="commonTitle clearfix">
+                <span class="l">精彩活动</span>
+                <a class="commonMore r" href="javascript:;">MORE+</a>
+            </h1>
+            <div class="row commonList clearfix">
+                <!-- {activity:list table=(activity) cid=(128) limit=(4) status=(1) order=(top desc,time desc)} -->
+                <a href="${activity.url}" class="col-lg-3 col-md-3 col-sm-6 col-sm-12 item">
+                    <div class="img_wrap rel">
+                        <#if ( activity.activeTime?date gt .now?date )>
+                            <span class="abs flag f12">报名中</span>
+                            <#else>
+                                <span class="abs flag f12">已结束</span>
+                        </#if>
+                        <img src="img/01.png" alt="">
+                        <p class="tc white abs text-ellipsis-muti text-ellipsis-2">
+                            ${activity.title!}</p>
+                    </div>
+                    <div class="para">
+                        <p class="f14 text-ellipsis-muti text-ellipsis-2">${activity.title!}</p>
+                        <p class="f12">活动时间：
+                            <span>${activity.activeTime?string("yyyy-MM-dd")}</span>
+                        </p>
+                    </div>
+                </a>
+                <!-- {/list} -->
+            </div>
+        </div>
+
+    </div>
+    <!-- 培训集锦 -->
+    <div class="train">
+        <div class="container train_wrap">
+            <h1 class="commonTitle clearfix">
+                <span class="l">培训集锦</span>
+                <a class="commonMore r" href="javascript:;">MORE+</a>
+            </h1>
+            <div class="row commonList clearfix">
+                <!-- {activity:list table=(activity) cid=(129) limit=(4) status=(1) order=(top desc,time desc)} -->
+                <a href="${activity.url}" class="col-lg-3 col-md-3 col-sm-6 col-sm-12 item">
+                    <div class="img_wrap rel">
+                        <#if ( activity.activeTime?date gt .now?date )>
+                            <span class="abs flag f12">已结束</span>
+                            <#else>
+                            <span class="abs flag f12">已结束</span>
+                        </#if>
+                        <img src="img/01.png" alt="">
+                        <p class="tc white abs text-ellipsis-muti text-ellipsis-2">
+                            ${activity.title!}
+                        </p>
+                    </div>
+                    <div class="para">
+                        <p class="f14">${activity.title!}</p>
+                        <p class="f12">活动时间：
+                            <span>${activity.activeTime?string("yyyy-MM-dd")}</span>
+                        </p>
+                    </div>
+                </a>
+                <!-- {/list} -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 热门课程 -->
+    <div class="container">
+        <div class="hot_course">
+            <h1 class="commonTitle tc">热门课程</h1>
+            <div class="row courseList clearfix" id="courseList">
+                <!-- <a href="javascript:;" class="col-lg-4 col-md-4 col-sm-6 col-sm-12 item rel">
+                    <h2>客户开发技巧</h2>
+                    <p>客户开发技巧客户开发技巧客户开发技巧客户开发技巧客户开发技巧客户开发技巧</p>
+                    <p>
+                        <i class="fa fa-graduation-cap"></i>
+                        <span>8</span>&nbsp;&nbsp;|&nbsp;
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                        <span>8</span>
+                    </p>
+                    <img src="img/bg_CMS_1.jpg" alt="">
+                    <div class="line line_r abs"></div>
+                    <div class="line line_b abs"></div>
+                </a> -->
+            </div>
+            <a target="_blank" href="http://vedio.whwomen.org.cn/front/showcoulist" class="view_more db tc">
+                查看更多
+                <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- 企业培训申请流程 -->
+    <div class="appli_process">
+        <div class="container">
+            <div class="row appli_process_list clearfix">
+                <div class="col-lg-2 col-md-2">
+                    <div class="appli_process_l">
+                        <p class="tc">企业培训</p>
+                        <p class="tc">申请流程</p>
+                        <a type="button" class="tc" data-toggle="modal" data-target="#trainService" data-whatever="@mdo">提交培训申请</a>
+                    </div>
+                </div>
+                <div class="col-lg-10 col-md-10">
+                    <div class="appli_process_r rel"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--培训需求模态框-->
+    <div class="modal fade" id="trainService" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="z-index: 10000;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title form_title">培训服务需求表单</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="trainTitle" class="col-sm-3 control-label">培训主题</label>
+                            <div class="col-sm-8" id="trainTitle">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" id="inlineCheckbox1" value="option1"> 销售类
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="trainAmount" class="col-sm-3 control-label">培训人数</label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" id="trainAmount" placeholder="请输入培训人数">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="trainEnterprise" class="col-sm-3 control-label">企业名称</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="trainEnterprise" placeholder="请输入企业名称">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="trainPhone" class="col-sm-3 control-label">联系电话</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="trainPhone" placeholder="请填写联系人的手机号码">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-5 col-sm-6">
+                                <button type="button" class="form_btn" id="trainBtn">提 交</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 金牌导师 -->
+    <div class="container">
+        <div class="tutor">
+            <h1 class="commonTitle tc">金牌导师</h1>
+            <div class="tutorList clearfix" id="tutorList">
+                <!-- <a href="javascript:;" class="item col-lg-3 col-md-3 col-sm-6 col-sm-12">
+                    <img src="img/guest.png" alt="">
+                    <h1 class="tc">李政道</h1>
+                    <p class="tc f14 text-ellipsis"></p>
+                    <p class="tc f16 text-ellipsis-muti text-ellipsis-2"></p>
+                </a> -->
+            </div>
+            <a target="_blank"  href="http://vedio.whwomen.org.cn/front/teacherlist" class="view_more db tc">
+                查看更多
+                <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- 为什么选择我们 -->
+    <div class="whyChangeUs">
+        <div class="container">
+            <h1 class="commonTitle tc">为什么选择我们?</h1>
+            <div class="usList row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-sm-12">
+                    <div class="item clearfix">
+                        <div class="col-lg-3 col-md-3">
+                            <img src="img/goldIcon.png">
+                        </div>
+                        <div class="col-lg-9 col-md-9">
+                            <h1 class="f24 text-ellipsis">打造精英社交平台</h1>
+                            <p class="f16 text-ellipsis-muti text-ellipsis-2">
+                                 云创学院通过各种线上线下的交流活动，资源整合，增进企业家、创业者们的深入了解，增加彼此的合作机会、业务机会和工作机会</p>
+                        </div>
+                    </div>
+                    <div class="item clearfix">
+                        <div class="col-lg-3 col-md-3">
+                            <img src="img/courseIcon.png">
+                        </div>
+                        <div class="col-lg-9 col-md-9">
+                            <h1 class="f24 text-ellipsis">平台+模块的课程体系</h1>
+                            <p class="f16 text-ellipsis-muti text-ellipsis-2">
+                                 依据行业内企业最新技术要求，制定相应的教学目标、教学大纲、教师指导、项目操作等相关手册，使每个阶段学员培养目标明确和落地</p>
+                        </div>
+                    </div>
+                    <div class="item clearfix">
+                        <div class="col-lg-3 col-md-3">
+                            <img src="img/friendIcon.png">
+                        </div>
+                        <div class="col-lg-9 col-md-9">
+                            <h1 class="text-ellipsis">基地化产、学、研深度结合</h1>
+                            <p class="text-ellipsis-muti text-ellipsis-2">
+                                 与多所知名大学开展校企合作，和武汉大学共同成立联合云安全实验室，和中南民族大学共同成立联合电子商务研发基地</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-sm-12">
+                    <div class="usImg">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   <script src="js/university.js"></script>
+    <!--#include file="home/footer.html" -->
+    
+</body>
+
+</html>

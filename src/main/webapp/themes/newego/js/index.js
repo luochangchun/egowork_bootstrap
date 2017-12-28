@@ -388,7 +388,7 @@ $(document).ready(function () {
 			console.log(data);
 			if (data.status == true) {
 				alert(data.message);
-				$('#onlineForm').modal('hide');
+				$('#onlineIncubation').modal('hide');
 			} else {
 				alert("提交失败，请稍后再试");
 			}
@@ -450,7 +450,7 @@ $(document).ready(function () {
 				"appellation": createAppellation,
 				"quantity": createQuantity,
 				"cases": createCases,
-				"graduate": createAppellation,
+				"graduate": createGraduate,
 				"range": createRange,
 				"area": createArea,
 				"name": createName,
@@ -645,7 +645,7 @@ $(document).ready(function () {
 			"appellation": rentAppellation,
 			"quantity": rentQuantity,
 			"cases": rentCases,
-			"graduate": rentAppellation,
+			"graduate": rentGraduate,
 			"range": rentRange,
 			"area": rentArea,
 			"name": rentName,

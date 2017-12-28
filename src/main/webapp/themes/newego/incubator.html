@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>
+<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+
+<!--#include file="home/header.html" -->
+<body>
+<!--双创空间详情页-->
+<div style="background-color:#f1f1f1;width:100%;padding-top:30px;padding-bottom:50px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="index_headline" style="margin-right:0;background-color:#fff;border:none;">
+                            <div class="incubation_detail_content float_left">
+                                <h4 class="h4">${incubator.title!}</h4>
+                                
+                                <p class="p3 line-height">地址: ${incubator.address!}</p>
+                                <p class="p3 line-height">联系电话: ${incubator.phone!}</p>
+                                <p class="p3 line-height">级别:
+                                    <!-- {dictionaries:list table=(dictionaries) name=('level') type=('incubator')} -->
+                                    <#if incubator.level == dictionaries.id?c >
+                                        ${dictionaries.value}
+                                    </#if>
+                                    <!-- {/list} -->
+                                </p>
+                                <p class="p3 line-height">地区:
+                                    <!-- {dictionaries:list table=(dictionaries) name=('region') type=('incubator')} -->
+                                    <#if incubator.region == dictionaries.id?c >
+                                        ${dictionaries.value}
+                                    </#if>
+                                    <!-- {/list} -->
+                                </p>
+                                <!--<el-button type="text" @click="spaceForm = true" class="btn3" style="line-height:20px;">立即申请 ></el-button>-->
+                                <button class="btn3" data-toggle="modal" data-target="#spaceRent" data-whatever="@mdo">申请入驻</button>
+                                <!--<button type="button" class="btn btn2" data-toggle="modal" data-target="#spaceRent" data-whatever="@mdo" style="margin-top:20px;line-height:20px;">立即申请 ></button>-->
+                                <p class="p4 color2 text-ellipsis-muti text-ellipsis-4">${incubator.settled!}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--空间租赁申请表-->
+                <div class="modal fade" id="spaceRent" tabindex="-1" role="dialog" aria-labelledby="spaceRent" style="z-index: 10000;">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 class="modal-title form_title">空间租赁申请表</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="rentIncubator" class="col-sm-4 control-label">
+                                            <span class="red">*</span>选择入驻孵化器</label>
+                                        <div class="col-sm-7">
+                                            <select class="form-control" placeholder="请选择" id="rentIncubator">
+                                                <option data-id="${incubator.id!}">${incubator.title!}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="rentAppellation" class="col-sm-4 control-label"><span class="red">*</span>公司名称</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control" id="rentAppellation" placeholder="请输入您的企业名称">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="rentQuantity" class="col-sm-4 control-label"><span class="red">*</span>团队人数</label>
+                                        <div class="col-sm-7">
+                                            <input type="number" class="form-control" id="rentQuantity" placeholder="请请输入团队企业人数">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword3" class="col-sm-4 control-label"><span class="red">*</span>成立情况</label>
+                                        <div class="col-sm-7">
+                                            <select class="form-control" placeholder="请选择" id="rentCases">
+                                                <option data-value="请选择">请选择</option>
+                                                <option data-value="筹建">筹建</option>
+                                                <option data-value="初建">初建</option>
+                                                <option data-value="2年以内">2年以内</option>
+                                                <option data-value="2年以上">2年以上</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword3" class="col-sm-4 control-label">
+                                            <span class="red">*</span>是否为毕业5年以上大学生</label>
+                                        <div class="col-sm-7" id="rentGraduate">
+                                            <label class="radio-inline" for="rentGraduate1">
+                                                <input type="radio" name="inlineRadioOptions" id="rentGraduate1" data-id="1"> 是
+                                            </label>
+                                            <label class="radio-inline" for="rentGraduate2">
+                                                <input type="radio" name="inlineRadioOptions" id="rentGraduate2" data-id="2"> 否
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="rentRange" class="col-sm-4 control-label"><span class="red">*</span>公司经营范围</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control" id="rentRange" placeholder="请详细介绍公司经营范围">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="rentArea" class="col-sm-4 control-label">
+                                            <span class="red">*</span>所需工位数量</label>
+                                        <div class="col-sm-7">
+                                            <input type="number" class="form-control" id="rentArea" placeholder="请输入公司需要工位的数量,以个为单位">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="rentName" class="col-sm-4 control-label">
+                                            <span class="red">*</span>联系人</label>
+                                        <div class="col-sm-7">
+                                            <input type="email" class="form-control" id="rentName" placeholder="请填写联系人的姓名">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="rentPhone" class="col-sm-4 control-label">
+                                            <span class="red">*</span>联系电话</label>
+                                        <div class="col-sm-7">
+                                            <input type="tel" class="form-control" id="rentPhone" placeholder="请填写联系人的手机号码">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-5 col-sm-6">
+                                            <button type="button" class="form_btn" id="rentBtn">提 交</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--空间展示-->
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 space_show">
+                        <h1 class="detail_title"><span>|</span>空间展示</h1>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 space_show">
+                        <div class="space_show_img" style="margin-right:0;;border:none;">
+                            <div class="row">
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12" style="background-color:#fff">
+                                    <div class="row">
+                                        <#list photos as incubator>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                <div class="s_show_img">
+                                                    <img src="http://192.168.11.132:8080/${incubator.url}" alt="">
+                                                </div>
+                                            </div>
+                                        </#list>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 space_show_right">
+                                    <div style="border-bottom:1px solid #ddd;padding-bottom:10px;">
+                                        <h1 class="detail_title"><span>|</span> 直投基金</h1>
+                                        <p>${incubator.fund}</p>
+                                    </div>
+                                    <div style="padding-bottom:30px;">
+                                        <h1 class="detail_title"><span>|</span> 入驻类型</h1>
+                                        <span class="label2">
+                                            <!-- {dictionaries:list table=(dictionaries) name=('pattern') type=('incubator')} -->
+                                            <#if incubator.pattern == dictionaries.id?c >
+                                                ${dictionaries.value}
+                                            </#if>
+                                            <!-- {/list} -->
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--招商政策-->
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 space_show">
+                        <h1 class="detail_title"><span>|</span> 招商政策</h1>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 space_show">
+                        <div class="investment_policy">
+                            <ul>
+                                <li>${incubator.policy!}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 space_show">
+                        <h1 class="detail_title"><span>|</span> 空间服务</h1>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 space_show">
+                        <div class="index_headline" style="margin-right:0;background-color:#fff;border:none;">
+                            <div class="row">
+                                <!-- {dictionaries:list table=(dictionaries) name=('service') type=('incubator')} -->
+                                <div class="col-lg-1 col-md-1 col-sm-3 col-xs-4 space_show">
+                                    <div class="space_img">
+                                        <div>
+                                            <img src="${dictionaries.icon!}" alt="">
+                                            <p>
+                                            <#if incubator.service == dictionaries.id?c >
+                                                ${dictionaries.value}
+                                            </#if>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- {/list} -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 space_show">
+                        <h1 class="detail_title"><span>|</span> 配套设施</h1>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 space_show">
+                        <div class="index_headline" style="margin-right:0;background-color:#fff;border:none;">
+                            <div class="row">
+                                <!-- {dictionaries:list table=(dictionaries) name=('facility') type=('incubator')} -->
+                                <div class="col-lg-1 col-md-1 col-sm-3 col-xs-4">
+                                    <div class="space_img">
+                                        <div>
+                                            <img src="${dictionaries.icon!}" alt="">
+                                            <p>
+                                            <#if incubator.facility == dictionaries.id?c >
+                                                ${dictionaries.value}
+                                            </#if>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- {/list} -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<!--#include file="home/footer.html" -->
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>
+<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+
+<!--#include file="home/header.html" -->
+
+<body>
+	<div class="bg-img3"></div>
+	<div class="service" style="padding-bottom:150px;">
+		<!-- 创业服务 -->
+		<div class="container">
+			<div class="row service margin-bottom">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<p class="title carousel_height">创业服务</p>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" role="navigation">
+						<ul class="nav nav-tabs tab1" id="myTab" style="background-color: #f1f1f1;padding: 0;height:auto;">
+							<li role="presentation" style="width:12%;">
+								<a href="https://www.hansap.com/portal/welcome">
+									企业信息化
+								</a>
+							</li>
+							<!-- {category:list table=(category) pid=(161)} -->
+							<li role="presentation" style="width:12%;">
+								<a data-id="${category.id}" onclick="setCategory('${category.id}')" href="/service_detail_list.html">
+									${category.name}
+								</a>
+							</li>
+							<!-- {/list} -->
+						</ul>
+						<!--<ul class="nav nav-tabs" id="myTab">-->
+						<!--<li role="presentation" class="active" style="width:16%;"><a href="#home1">企业信息化</a></li>-->
+						<!--<li role="presentation"><a href="#home2">融资贷款</a></li>-->
+						<!--</ul>-->
+					</div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" role="navigation">
+						<div class="tab-content" style="min-height: 300px">
+							<p id="noData">此栏目暂无数据</p>
+							<div role="tabpanel" class="tab-pane active" id="tab-pane">
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 创业服务 -->
+		<!-- 企业培训申请流程 -->
+		<div class="appli_process">
+			<div class="container">
+				<div class="row appli_process_list clearfix">
+					<div class="col-lg-2 col-md-2">
+						<div class="appli_process_l">
+							<p class="tc">服务</p>
+							<p class="tc">申请流程</p>
+							<a type="button" class="tc" data-toggle="modal" data-target="#demandForm1" data-whatever="@mdo">提交培训申请</a>
+						</div>
+					</div>
+					<div class="col-lg-10 col-md-10">
+						<div class="appli_process_r_1 rel"></div>
+					</div>
+				</div>
+				<!--服务需求模态框-->
+				<div class="modal fade" id="demandForm1" tabindex="-1" role="dialog" aria-labelledby="demandForm1">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								<h4 class="modal-title form_title" id="gridSystemModalLabel">发布服务需求表单</h4>
+							</div>
+							<div class="modal-body">
+								<form class="form-horizontal">
+									<div class="form-group">
+										<label for="demandClassify" class="col-sm-3 control-label">需求类别</label>
+										<div class="col-sm-8" id=>
+											<select class="form-control" placeholder="请选择" id="demandClassify1">
+												<option data-id="0">请选择</option>
+												<!-- {dictionaries:list table=(dictionaries) name=('classify') type=('needsApply')} -->
+												<option data-id="${dictionaries.id}">${dictionaries.value}</option>
+												<!-- {/list} -->
+											</select>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="demandTitle1" class="col-sm-3 control-label">需求标题</label>
+										<div class="col-sm-8">
+											<input type="text" class="form-control" id="demandTitle1" placeholder="请输入你的需求标题">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="demandNeeds1" class="col-sm-3 control-label">需求描述</label>
+										<div class="col-sm-8">
+											<textarea class="form-control" rows="3" id="demandNeeds1" placeholder="请输入您的需求描述,不超过250字"></textarea>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="demandEnterprise1" class="col-sm-3 control-label">企业名称</label>
+										<div class="col-sm-8">
+											<input type="text" class="form-control" id="demandEnterprise1" placeholder="请填写企业名称">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="demandName1" class="col-sm-3 control-label">联系人</label>
+										<div class="col-sm-8">
+											<input type="text" class="form-control" id="demandName1" placeholder="请填写联系人的姓名">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="demandPhone1" class="col-sm-3 control-label">联系电话</label>
+										<div class="col-sm-8">
+											<input type="tel" class="form-control" id="demandPhone1" placeholder="请填写联系人的手机号码">
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-sm-offset-5 col-sm-6">
+											<a href="#" class="db form_btn" id="demandBtn1">提 交</a>
+											<!-- <button type="submit" class="">提 交</button> -->
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--成功案例-->
+		<div class="bg_title distance">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<p class="title">成功案例</p>
+						<div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+							<img src="img/06.png" alt="">
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+							<img src="img/07.png" alt="">
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+							<img src="img/02.png" alt="">
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+							<img src="img/03.png" alt="">
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+							<img src="img/04.png" alt="">
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+							<img src="img/05.png" alt="">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--成功案例-->
+
+		<!--合作伙伴-->
+		<div class="partner">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<p class="title carousel_height">合作伙伴</p>
+						<div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+							<div class="partner_logo partner_logo1">
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+							<div class="partner_logo partner_logo2">
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+							<div class="partner_logo partner_logo3">
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+							<div class="partner_logo partner_logo4">
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+							<div class="partner_logo partner_logo5">
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+							<div class="partner_logo partner_logo6">
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+							<div class="partner_logo partner_logo7">
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+							<div class="partner_logo partner_logo8">
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+							<div class="partner_logo partner_logo9">
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+							<div class="partner_logo partner_logo10">
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+							<div class="partner_logo partner_logo11">
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+							<div class="partner_logo partner_logo12">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--合作伙伴-->
+
+	</div>
+
+
+
+
+	<script>
+		//tab切换
+		// $(function () {
+		// 	$('#myTab a:first').tab('show');
+		// 	$('#myTab a').mouseover(function (e) {
+		// 		e.preventDefault();
+		// 		$(this).tab('show');
+		// 	})
+		// });
+	</script>
+	<script src="js/service.js">
+	</script>
+</body>
+<!--#include file="home/footer.html" -->
+
+</html>

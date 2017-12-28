@@ -21,7 +21,7 @@ function initCourse() {
                                     <div class="onlineWrap rel ovh">\
                                         <img src="img/01.png" class="abs">\
                                         <div class="abs onlineMask">\
-                                            <a href="#" class="tc white db">开始学习</a>\
+                                            <a href=' + turl + entity[i]['courseId'] + ' class="tc white db">开始学习</a>\
                                         </div>\
                                     </div>\
                                     <div class="onlineWord">\

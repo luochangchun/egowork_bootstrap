@@ -141,6 +141,7 @@ public class IncubatorController extends SupportController {
 			String realPath = request.getSession().getServletContext().getRealPath("");
 			String ctxPath = request.getContextPath();
 			if (!StringUtil.isBlank(ctxPath)) realPath = realPath.substring(0, realPath.indexOf(ctxPath));
+			else if (realPath.contains("/ROOT")) realPath = realPath.substring(0, realPath.indexOf("/ROOT"));
 			String uri = File.separator + "upload" + File.separator + "qb"
 				+ File.separator + DateUtils.dateToString(new Date(), "yyyyMMdd");
 			String dirPath = realPath + uri;
