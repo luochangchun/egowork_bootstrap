@@ -122,8 +122,16 @@ body {
     clear:both;
     margin-top:50px;
 }
-.bg-img{
-    background: url(../img/banner_1.png) no-repeat center center;
+.bg-img1{
+    background: url(../img/kongjianbanner.png) no-repeat center center;
+    height:500px;
+}
+.bg-img2{
+    background: url(../img/xueyuanbanner.png) no-repeat center center;
+    height:500px;
+}
+.bg-img3{
+    background: url(../img/fuwubanner.png) no-repeat center center;
     height:500px;
 }
 .bg-color{
@@ -1364,20 +1372,17 @@ body {
     padding: 10px 0;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*服务*/
+
+/*入孵企业详情*/
+.hatchedBody6{
+    line-height:30px;
+}
+/*入孵企业详情*/
+
+
+
+
 /*流程图*/
 .appli_process_r_1{
     width: 100%;

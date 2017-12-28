@@ -36,12 +36,117 @@
                                     <!-- {/list} -->
                                 </p>
                                 <!--<el-button type="text" @click="spaceForm = true" class="btn3" style="line-height:20px;">立即申请 ></el-button>-->
-                                <button class="btn3">申请入驻</button>
+                                <button class="btn3" data-toggle="modal" data-target="#spaceRent" data-whatever="@mdo">申请入驻</button>
+                                <!--<button type="button" class="btn btn2" data-toggle="modal" data-target="#spaceRent" data-whatever="@mdo" style="margin-top:20px;line-height:20px;">立即申请 ></button>-->
                                 <p class="p4 color2 text-ellipsis-muti text-ellipsis-4">${incubator.settled!}</p>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <!--空间租赁申请表-->
+                <div class="modal fade" id="spaceRent" tabindex="-1" role="dialog" aria-labelledby="spaceRent" style="z-index: 10000;">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 class="modal-title form_title">空间租赁申请表</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="rentIncubator" class="col-sm-4 control-label">
+                                            <span class="red">*</span>选择入驻孵化器</label>
+                                        <div class="col-sm-7">
+                                            <select class="form-control" placeholder="请选择" id="rentIncubator">
+                                                <option data-id="-1">请选择</option>
+                                                <!-- {incubator:list table=(incubator) status=(1)} -->
+                                                <option data-id="${incubator.id}">${incubator.title}</option>
+                                                <!-- {/list} -->
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="rentAppellation" class="col-sm-4 control-label"><span class="red">*</span>公司名称</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control" id="rentAppellation" placeholder="请输入您的企业名称">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="rentQuantity" class="col-sm-4 control-label"><span class="red">*</span>团队人数</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control" id="rentQuantity" placeholder="请请输入团队企业人数">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword3" class="col-sm-4 control-label"><span class="red">*</span>成立情况</label>
+                                        <div class="col-sm-7" id="rentCases">
+                                            <label class="radio-inline" for="Radio1">
+                                                <input type="radio" name="inlineRadioOptions" id="Radio1" data-value="筹建"> 筹建
+                                            </label>
+                                            <label class="radio-inline" for="Radio2">
+                                                <input type="radio" name="inlineRadioOptions" id="Radio2" data-value="初建"> 初建
+                                            </label>
+                                            <label class="radio-inline" for="Radio3">
+                                                <input type="radio" name="inlineRadioOptions" id="Radio3" data-value="2年以内"> 2年以内
+                                            </label>
+                                            <label class="radio-inline" for="Radio4">
+                                                <input type="radio" name="inlineRadioOptions" id="Radio4" data-value="2年以上"> 2年以上
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword3" class="col-sm-4 control-label">
+                                            <span class="red">*</span>是否为毕业5年以上大学生</label>
+                                        <div class="col-sm-7" id="rentGraduate">
+                                            <label class="radio-inline" for="createGraduate1">
+                                                <input type="radio" name="inlineRadioOptions" id="rentGraduate1" data-id="1"> 是
+                                            </label>
+                                            <label class="radio-inline" for="createGraduate2">
+                                                <input type="radio" name="inlineRadioOptions" id="rentGraduate2" data-id="2"> 否
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="rentRange" class="col-sm-4 control-label"><span class="red">*</span>公司经营范围</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control" id="rentRange" placeholder="请详细介绍公司经营范围">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="rentArea" class="col-sm-4 control-label">
+                                            <span class="red">*</span>所需工位数量</label>
+                                        <div class="col-sm-7">
+                                            <input type="number" class="form-control" id="rentArea" placeholder="请输入公司需要工位的数量,以个为单位">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="rentName" class="col-sm-4 control-label">
+                                            <span class="red">*</span>联系人</label>
+                                        <div class="col-sm-7">
+                                            <input type="email" class="form-control" id="rentName" placeholder="请填写联系人的姓名">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="rentPhone" class="col-sm-4 control-label">
+                                            <span class="red">*</span>联系电话</label>
+                                        <div class="col-sm-7">
+                                            <input type="tel" class="form-control" id="rentPhone" placeholder="请填写联系人的手机号码">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-5 col-sm-6">
+                                            <button type="button" class="form_btn" id="rentBtn">提 交</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!--空间展示-->
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 space_show">
@@ -102,18 +207,20 @@
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 space_show">
                         <div class="index_headline" style="margin-right:0;background-color:#fff;border:none;">
                             <div class="row">
+                                <!-- {dictionaries:list table=(dictionaries) name=('service') type=('incubator')} -->
                                 <div class="col-lg-1 col-md-1 col-sm-3 col-xs-4 space_show">
                                     <div class="space_img">
                                         <div>
-                                            <!-- {dictionaries:list table=(dictionaries) name=('service') type=('incubator')} -->
                                             <img src="${dictionaries.icon!}" alt="">
+                                            <p>
                                             <#if incubator.service == dictionaries.id?c >
                                                 ${dictionaries.value}
                                             </#if>
-                                            <!-- {/list} -->
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
+                                <!-- {/list} -->
                             </div>
                         </div>
                     </div>
@@ -125,20 +232,20 @@
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 space_show">
                         <div class="index_headline" style="margin-right:0;background-color:#fff;border:none;">
                             <div class="row">
+                                <!-- {dictionaries:list table=(dictionaries) name=('facility') type=('incubator')} -->
                                 <div class="col-lg-1 col-md-1 col-sm-3 col-xs-4">
                                     <div class="space_img">
                                         <div>
+                                            <img src="${dictionaries.icon!}" alt="">
                                             <p>
-                                                <!-- {dictionaries:list table=(dictionaries) name=('facility') type=('incubator')} -->
-                                                <img src="${dictionaries.icon!}" alt="">
-                                                <#if incubator.facility == dictionaries.id?c >
-                                                    ${dictionaries.value}
-                                                </#if>
-                                                <!-- {/list} -->
+                                            <#if incubator.facility == dictionaries.id?c >
+                                                ${dictionaries.value}
+                                            </#if>
                                             </p>
                                         </div>
                                     </div>
                                 </div>
+                                <!-- {/list} -->
                             </div>
                         </div>
                     </div>

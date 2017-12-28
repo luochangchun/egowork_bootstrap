@@ -16,20 +16,30 @@
         <div class="container">
             <div class="hatchedWrap clearfix">
                 <img src="http://192.168.11.132:8080/${enterprise.icon!}" alt="" class="l hatchedImg">
-                <div class="l hatchedInfo">
+                <div class="l hatchedInfo" style="margin-top: 20px;">
                     <!-- 公司名 -->
                     <p>${enterprise.name!}</p>
                     <!--所属领域-->
                     <p>所属领域 : ${enterprise.field!}</p>
-                    <!-- 优势 -->
-                    <p style="min-width:550px;max-width:1000px;" class="text-ellipsis-muti text-ellipsis-2">优势 : ${enterprise.advantage!}</p>
-
                 </div>
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="hatchedBody clearfix">${enterprise.content!}</div>
+    <div class="container" style="min-height:500px;margin-top:10px;">
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" style="border-right:5px solid #f2f5f9;">
+            <!-- 优势 -->
+            <div class="hatchedBody clearfix"><span style="font-size: 16px;color:#18b494">优势</span> : ${enterprise.advantage!}</div>
+            <!--简介-->
+            <div class="hatchedBody clearfix">简介 : ${enterprise.content!}</div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <!--联系人-->
+            <div class="hatchedBody6 clearfix">联系人 : ${enterprise.contact!}</div>
+            <!--手机号-->
+            <div class="hatchedBody6 clearfix">手机号 : ${enterprise.phone!}</div>
+            <!--邮箱-->
+            <div class="hatchedBody6 clearfix">邮箱 : ${enterprise.email!}</div>
+        </div>
     </div>
 
 
