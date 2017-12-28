@@ -148,17 +148,17 @@ a {
 }
 
 .slide1 {
-    background: url(../img/banner01.jpg) no-repeat center center;
+    background: url(../img/bg01.jpg) no-repeat center center;
     background-size: cover;
 }
 
 .slide2 {
-    background: url(../img/banner02.jpg) no-repeat center center;
+    background: url(../img/bg02.jpg) no-repeat center center;
     background-size: cover;
 }
 
 .slide3 {
-    background: url(../img/banner03.jpg) no-repeat center center;
+    background: url(../img/bg03.jpg) no-repeat center center;
     background-size: cover;
 }
 
