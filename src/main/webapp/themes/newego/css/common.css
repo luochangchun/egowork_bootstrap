@@ -1798,3 +1798,8 @@ body {
     display: block;
 }
 /*客服*/
+
+.footer-pointer li a:hover{
+    cursor: pointer;
+}
+
