@@ -55,6 +55,7 @@ public class ImgUploadController extends SupportController {
 //				webAppPath = webAppPath.substring(0, index);
 				String ctxPath = request.getContextPath();
 				if (!StringUtil.isBlank(ctxPath)) webAppPath = webAppPath.substring(0, webAppPath.indexOf(ctxPath));
+				else if (webAppPath.contains("/ROOT")) webAppPath = webAppPath.substring(0, webAppPath.indexOf("/ROOT"));
 				//				System.out.println("webAppPath--new_" + webAppPath);
 
 				final String imgRealPathDir = webAppPath + "/" + syscfg.getRelativePath() + dateformat.format(new Date());
