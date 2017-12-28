@@ -760,7 +760,7 @@ $(document).ready(function () {
 			}
 			if (loginUser != null && loginUser.userName) {
 				$('.goLogin').hide().next('button').show();
-				$("#unloginElement").html("<a class=\"padder-xxs\" href=\"javascript:void(0)\">您好," + loginUser.userName + "</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class=\"text-3C\" href=\"javascript:void(0)\" onclick=\"logout();return false;\">注销</a>");
+				$("#unloginElement").html("<button style=\"margin-right:5px;\" type=\"button\" class=\"header_btn\" data-toggle=\"modal\" data-target=\"#demandForm\" data-whatever=\"@mdo\">发布需求></button><button type=\"button\" class=\"header_btn header_btn_2\" data-toggle=\"modal\" data-target=\"#bookVisit\" data-whatever=\"@mdo\">预约参观></button><a class=\"padder-xxs\" href=\"javascript:void(0)\">您好," + loginUser.userName + "</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class=\"text-3C\" href=\"javascript:void(0)\" onclick=\"logout();return false;\">注销</a>");
 			}
 		}
 	});

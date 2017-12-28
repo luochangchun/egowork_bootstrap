@@ -6,7 +6,7 @@ $(function () {
     function initService() {
         $('#cate' + cid).parent('li').addClass('active').siblings().removeClass('active');
         // $('#cate' + cid).parent('li').siblings().removeClass('active').addClass('s666');
-        $('.list_tab_1 li:nth-child(3)').css('display', 'none');
+        // $('.list_tab_1 li:nth-child(3)').css('display', 'none');
         $.ajax({
             contentType: "text/plain;charset=utf-8",
             url: "front/service/" + cid+".do",    //请求的url地址
@@ -42,7 +42,7 @@ $(function () {
     }
     $('.nav-tabs a').click(function () {
         $(this).parent('li').addClass('active').siblings().removeClass('active');
-        $('.list_tab_1 li:nth-child(3)').css('display', 'none');
+        // $('.list_tab_1 li:nth-child(3)').css('display', 'none');
         var cid = $(this).attr('data-id');
         window.localStorage.setItem("categoryId", cid);
         $.ajax({

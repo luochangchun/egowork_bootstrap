@@ -84,7 +84,7 @@ function initCourse() {
 function initTutor() {
     $.ajax({
         contentType: "text/plain;charset=utf-8",
-        url: "http://vedio.whwomen.org.cn/webapp/teacher/list?currentPage=1&pageSize=6",    //请求的url地址
+        url: "http://vedio.whwomen.org.cn/webapp/teacher/list?currentPage=1&pageSize=8",    //请求的url地址
         dataType: "json",   //返回格式为json
         async: true, //请求是否异步，默认为异步，这也是ajax重要特性
         data: {},    //参数值
