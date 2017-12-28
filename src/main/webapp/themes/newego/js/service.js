@@ -1,3 +1,7 @@
+function setCategory(id) {
+    var cid = parseInt(id)
+    window.localStorage.setItem("categoryId",cid);
+}
 $(function () {
     function initService() {
         $.ajax({

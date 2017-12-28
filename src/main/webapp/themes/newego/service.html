@@ -21,7 +21,7 @@
 						<ul class="nav nav-tabs tab1" id="myTab" style="background-color: #f1f1f1;padding: 0;height:auto;">
 							<!-- {category:list table=(category) pid=(161)} -->
 							<li role="presentation" style="width:12%;">
-								<a data-id="${category.id}" href="/service_detail_list.html">
+								<a data-id="${category.id}" onclick="setCategory('${category.id}')" href="/service_detail_list.html">
 									${category.name}
 								</a>
 							</li>

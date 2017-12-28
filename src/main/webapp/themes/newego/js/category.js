@@ -20,13 +20,20 @@ $(function() {
     })
 });
 
+$(function () {
+    var curId = window.localStorage.getItem('serviceId');
+    // console.log(curId);
+    $('#tab' + curId).addClass('s777').removeClass('s666');
+    $('#text' + curId).show();
 
-
-
-$(function(){
-    $(".panel-body ul li a").click(function(){//获取点击id
-        var id = $(this).attr("p.id");
-        alert("当前点击id："+id);
+    $(".panel-body ul li a").click(function () {//获取点击id
+        var id = $(this).attr("data-id");
+        
+        var curId = window.localStorage.setItem('serviceId',id);
+        $('#text' + id).show().siblings().hide();
+        $('#tab' + id).addClass('s777').removeClass('s666');
+        $('#tab' + id).parents().siblings().find('a').removeClass('s777').addClass('s666');
+        
     })
 })
 

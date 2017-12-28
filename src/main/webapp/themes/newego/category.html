@@ -8,7 +8,14 @@
 <!--<![endif]-->
 
 <!--#include file="home/header.html" -->
-
+<style>
+    .s666 {
+        color:#666;
+    }
+    .s777 {
+        color:#18b494;
+    }
+</style>
 <body>
     <div class="service_detail" style="padding-bottom:150px;">
         <div class="container">
@@ -35,7 +42,7 @@
                             <ul>
                                 <#list products as p>
                                     <li>
-                                        <a data-id="${p.id}" style="color:#666;">${p.title}</a>
+                                        <a id="tab${p.id}" data-id="${p.id}" class="s666">${p.title}</a>
                                     </li>
                                 </#list>
                             </ul>
@@ -47,7 +54,7 @@
                         <div class="service_body col-lg-8 col-md-8 col-sm-8 col-xs-8 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2">
                             <#list products as p>
                                 <div id="text${p.id}" class="info dn">
-                                    <p>${p.content}</p>
+                                    ${p.content}
                                 </div>
                             </#list>
                         </div>
