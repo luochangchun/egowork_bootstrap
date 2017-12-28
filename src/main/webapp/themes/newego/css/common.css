@@ -1364,20 +1364,17 @@ body {
     padding: 10px 0;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*服务*/
+
+/*入孵企业详情*/
+.hatchedBody6{
+    line-height:30px;
+}
+/*入孵企业详情*/
+
+
+
+
 /*流程图*/
 .appli_process_r_1{
     width: 100%;
