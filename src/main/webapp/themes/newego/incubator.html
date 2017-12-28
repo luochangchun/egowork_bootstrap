@@ -150,17 +150,17 @@
                             <div class="row">
                                 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12" style="background-color:#fff">
                                     <div class="row">
-                                        <#list photos as incubator>
+                                        <#list photos as photo>
                                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                                 <div class="s_show_img">
-                                                    <img src="${incubator.url!}" alt="">
+                                                    <img src="${photo.uri!}" alt="">
                                                 </div>
                                             </div>
                                         </#list>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 space_show_right">
-                                    <div style="border-bottom:1px solid #ddd;padding-bottom:10px;">
+                                    <div style="border-bottom:1px solid #A53B3B;padding-bottom:10px;">
                                         <h1 class="detail_title"><span>|</span> 直投基金</h1>
                                         <p>${incubator.fund}</p>
                                     </div>
