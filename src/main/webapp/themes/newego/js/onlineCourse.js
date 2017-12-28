@@ -19,7 +19,7 @@ function initCourse() {
                     if(i < 4) {
                         htmlStr += '<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 item db" style="margin-bottom: 20px">\
                                     <div class="onlineWrap rel ovh">\
-                                        <img src="img/01.png" class="abs">\
+                                        <img src=' + turl + entity[i]['logo'] + ' class="abs">\
                                         <div class="abs onlineMask">\
                                             <a href=' + turl + entity[i]['courseId'] + ' class="tc white db">开始学习</a>\
                                         </div>\

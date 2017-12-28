@@ -21,7 +21,7 @@ function initCourse() {
                             <i class="fa fa-eye" aria-hidden="true"></i>\
                             <span>'+ entity[i]['pageViewcount'] + '</span>\
                         </p>\
-                        <img src="img/bg_CMS_1.jpg" alt="">\
+                        <img src=' + turl + entity[i]['logo'] + ' alt="">\
                             <div class="line line_b abs"></div>\
                         </a>';
                         continue;
@@ -35,7 +35,7 @@ function initCourse() {
                             <i class="fa fa-eye" aria-hidden="true"></i>\
                             <span>'+ entity[i]['pageViewcount'] + '</span>\
                         </p>\
-                        <img src="img/bg_CMS_1.jpg" alt="">\
+                        <img src=' + turl + entity[i]['logo'] + ' alt="">\
                         <div class="line line_r abs"></div>\
                         </a>';
                         continue;
@@ -49,7 +49,7 @@ function initCourse() {
                             <i class="fa fa-eye" aria-hidden="true"></i>\
                             <span>'+ entity[i]['pageViewcount'] + '</span>\
                         </p>\
-                        <img src="img/bg_CMS_1.jpg" alt="">\
+                        <img src=' + turl + entity[i]['logo'] + ' alt="">\
                         </a>';
                         continue;
                     }
@@ -61,7 +61,7 @@ function initCourse() {
                         <i class="fa fa-eye" aria-hidden="true"></i>\
                         <span>'+ entity[i]['pageViewcount'] +'</span>\
                     </p>\
-                    <img src="img/bg_CMS_1.jpg" alt="">\
+                    <img src=' + turl + entity[i]['logo'] + ' alt="">\
                         <div class="line line_r abs"></div>\
                         <div class="line line_b abs"></div>\
                     </a>';
@@ -98,7 +98,7 @@ function initTutor() {
                 var turl = "http://vedio.whwomen.org.cn/front/teacher/";
                 for (var i = 0; i < entity.length; i++) {
                     htmlStr += '<a href='+turl+ entity[i]['id'] + ' class="item col-lg-3 col-md-3 col-sm-6 col-sm-12">\
-                            <img src='+"http://192.168.11.132:8080"+entity[i]["picPath"]+'>\
+                            <img src=' + turl + entity[i]['picPath'] + '>\
                             <h1 class="tc">'+ entity[i]['name'] + '</h1>\
                             <p class="tc f14 text-ellipsis">'+ entity[i]['career'] + '</p>\
                             <p class="tc f14 text-ellipsis-muti text-ellipsis-2">'+ entity[i]['education'] + '</p>\
