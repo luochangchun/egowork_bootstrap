@@ -166,13 +166,11 @@
                                     </div>
                                     <div style="padding-bottom:30px;">
                                         <h1 class="detail_title"><span>|</span> 入驻类型</h1>
-                                        <span class="label2">
-                                            <!-- {dictionaries:list table=(dictionaries) name=('pattern') type=('incubator')} -->
-                                            <#if incubator.pattern == dictionaries.id?c >
-                                                ${dictionaries.value}
+                                            <!-- {dictionaries:list table=(dictionaries) name=('enter') type=('incubator')} -->
+                                            <#if incubator.enter?index_of(dictionaries.id?c) != -1 >
+                                                <span class="label2">${dictionaries.value}</span>
                                             </#if>
                                             <!-- {/list} -->
-                                        </span>
                                     </div>
                                 </div>
                             </div>
