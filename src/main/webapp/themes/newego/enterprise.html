@@ -16,7 +16,7 @@
         <div class="container">
             <div class="hatchedWrap clearfix">
                 <img src="http://192.168.11.132:8080/${enterprise.icon!}" alt="" class="l hatchedImg">
-                <div class="l hatchedInfo">
+                <div class="l hatchedInfo" style="margin-top: 20px;">
                     <!-- 公司名 -->
                     <p>${enterprise.name!}</p>
                     <!--所属领域-->
@@ -28,7 +28,7 @@
     <div class="container" style="min-height:500px;margin-top:10px;">
         <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" style="border-right:5px solid #f2f5f9;">
             <!-- 优势 -->
-            <div class="hatchedBody clearfix">优势 : ${enterprise.advantage!}</div>
+            <div class="hatchedBody clearfix"><span style="font-size: 16px;color:#18b494">优势</span> : ${enterprise.advantage!}</div>
             <!--简介-->
             <div class="hatchedBody clearfix">简介 : ${enterprise.content!}</div>
         </div>
