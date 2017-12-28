@@ -206,7 +206,7 @@
                                         <div>
                                             <img src="${dictionaries.icon!}" alt="">
                                             <p>
-                                            <#if incubator.service == dictionaries.id?c >
+                                            <#if incubator.service?index_of(dictionaries.id?c) != -1 >
                                                 ${dictionaries.value}
                                             </#if>
                                             </p>
@@ -231,7 +231,7 @@
                                         <div>
                                             <img src="${dictionaries.icon!}" alt="">
                                             <p>
-                                            <#if incubator.facility == dictionaries.id?c >
+                                            <#if incubator.facility?index_of(dictionaries.id?c) != -1 >
                                                 ${dictionaries.value}
                                             </#if>
                                             </p>
