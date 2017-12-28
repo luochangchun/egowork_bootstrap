@@ -753,6 +753,7 @@ $(document).ready(function () {
 		dataType: "json",
 		success: function (data) {
 			$('.goLogin').show().next('button').hide();
+			
 			if (data.userId > 0) {
 				loginUser = data;
 			} else {
@@ -760,6 +761,11 @@ $(document).ready(function () {
 			}
 			if (loginUser != null && loginUser.userName) {
 				$('.goLogin').hide().next('button').show();
+				
+				$('#kjenter').html("<li>快速入口</li><li><a data-toggle=\"modal\" data-target=\"#spaceRent\" data-whatever=\"@mdo\" style=\"color:#aaa;\">空间租赁申请</a></li>\
+					<li> <a data-toggle=\"modal\" data-target=\"#onlineIncubation\" data-whatever=\"@mdo\" style=\"color:#aaa;\">线上孵化申请</a></li >\
+					<li><a data-toggle=\"modal\" data-target=\"#createSpace\" data-whatever=\"@mdo\" style=\"color:#aaa;\">共享办公申请</a></li>\
+					<li><a data-toggle=\"modal\" data-target=\"#shareMeetingRoom\" data-whatever=\"@mdo\" style=\"color:#aaa;\">共享会议室申请</a></li>");
 				$("#unloginElement").html("<button style=\"margin-right:5px;\" type=\"button\" class=\"header_btn\" data-toggle=\"modal\" data-target=\"#demandForm\" data-whatever=\"@mdo\">发布需求></button><button type=\"button\" class=\"header_btn header_btn_2\" data-toggle=\"modal\" data-target=\"#bookVisit\" data-whatever=\"@mdo\">预约参观></button><a class=\"padder-xxs\" href=\"javascript:void(0)\">您好," + loginUser.userName + "</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class=\"text-3C\" href=\"javascript:void(0)\" onclick=\"logout();return false;\">注销</a>");
 			}
 		}

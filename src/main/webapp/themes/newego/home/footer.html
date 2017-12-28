@@ -32,12 +32,20 @@
 				</ul>
 			</div>
 			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 contact_info padder-v contact_img footer_none footer-pointer">
-				<ul>
+				<ul id="kjenter">
 					<li>快速入口</li>
-					<li><a data-toggle="modal" data-target="#spaceRent" data-whatever="@mdo"style="color:#aaa;">空间租赁申请</a></li>
-					<li><a data-toggle="modal" data-target="#onlineIncubation" data-whatever="@mdo" style="color:#aaa;">线上孵化申请</a></li>
-					<li><a data-toggle="modal" data-target="#createSpace" data-whatever="@mdo" style="color:#aaa;">共享办公申请</a></li>
-					<li><a data-toggle="modal" data-target="#shareMeetingRoom" data-whatever="@mdo" style="color:#aaa;">共享会议室申请</a></li>
+					<li class="goLogin">
+						<a href="/signup.html" style="color:#aaa;">空间租赁申请</a>
+					</li>
+					<li class="goLogin">
+						<a href="/signup.html" style="color:#aaa;">共享办公申请</a>
+					</li>
+					<li class="goLogin">
+						<a href="/signup.html" style="color:#aaa;">线上孵化申请</a>
+					</li>
+					<li class="goLogin">
+						<a href="/signup.html" style="color:#aaa;">共享会议室申请</a>
+					</li>
 				</ul>
 			</div>
 			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 contact_info padder-v contact_img">
@@ -190,23 +198,11 @@
 									<option data-value="2年以内">2年以内</option>
 									<option data-value="2年以上">2年以上</option>
 								</select>
-								<!-- <label class="radio-inline" for="inlineRadio1">
-                                    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" data-value="筹建"> 筹建
-                                </label>
-                                <label class="radio-inline" for="inlineRadio2">
-                                    <input type="radio" name="inlineRadioOptions" id="inlineRadio2" data-value="初建"> 初建
-                                </label>
-                                <label class="radio-inline" for="inlineRadio3">
-                                    <input type="radio" name="inlineRadioOptions" id="inlineRadio3" data-value="2年以内"> 2年以内
-                                </label>
-                                <label class="radio-inline" for="inlineRadio4">
-                                    <input type="radio" name="inlineRadioOptions" id="inlineRadio4" data-value="2年以上"> 2年以上
-                                </label> -->
 							</div>
 						</div>
 						<div class="form-group">
 							<label  class="col-sm-4 control-label">
-								<span class="red">*</span>是否为毕业5年以上大学生</label>
+								<span class="red">*</span>毕业5年以内大学生</label>
 							<div class="col-sm-7" id="createGraduate">
 								<label class="radio-inline" for="createGraduate1">
 									<input type="radio" name="inlineRadioOptions" id="createGraduate1" data-id="1"> 是
@@ -426,7 +422,7 @@
 						</div>
 						<div class="form-group">
 							<label class="col-sm-4 control-label">
-								<span class="red">*</span>是否为毕业5年以上大学生</label>
+								<span class="red">*</span>毕业5年以内大学生</label>
 							<div class="col-sm-7" id="rentGraduate">
 								<label class="radio-inline" for="rentGraduate1">
 									<input type="radio" name="inlineRadioOptions" id="rentGraduate1" data-id="1"> 是

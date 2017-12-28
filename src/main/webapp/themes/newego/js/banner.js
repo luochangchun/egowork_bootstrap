@@ -1,7 +1,7 @@
 var mySwiper = new Swiper('.swiper-container', {
     pagination: '.pagination',
     paginationClickable: true,
-    autoplay: 5000,
+    autoplay: 500000,
     speed: 1,
     // loop: true,
     //autoplayDisableOnInteraction : false,
