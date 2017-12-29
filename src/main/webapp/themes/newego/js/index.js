@@ -182,6 +182,7 @@ $(document).ready(function () {
 		$.ajax(settings).done(function (data) {
 			if (data.status == true) {
 				alert(data.message);
+				$('#bookVisit input').val(" ");
 				$('#bookVisit').modal('hide');
 			} else {
 				alert("提交失败，请稍后再试");
@@ -245,6 +246,7 @@ $(document).ready(function () {
 		$.ajax(settings).done(function (data) {
 			if (data.status == true) {
 				alert(data.message);
+				$('#demandForm input').val(" ");
 				$('#demandForm').modal('hide');
 				$('#demandForm1').modal('hide');
 			} else {
@@ -299,6 +301,7 @@ $(document).ready(function () {
 		$.ajax(settings).done(function (data) {
 			if (data.status == true) {
 				alert(data.message);
+				$('#demandForm input').val(" ");
 				$('#demandForm').modal('hide');
 				$('#demandForm1').modal('hide');
 			} else {
@@ -388,6 +391,7 @@ $(document).ready(function () {
 			console.log(data);
 			if (data.status == true) {
 				alert(data.message);
+				$('#onlineIncubation input').val(" ");
 				$('#onlineIncubation').modal('hide');
 			} else {
 				alert("提交失败，请稍后再试");
@@ -474,6 +478,7 @@ $(document).ready(function () {
 			console.log(data);
 			if (data.status == true) {
 				alert(data.message);
+				$('#createSpace input').val(" ");
 				$('#createSpace').modal('hide');
 			} else {
 				alert("提交失败，请稍后再试");
@@ -578,6 +583,7 @@ $(document).ready(function () {
 			console.log(data);
 			if (data.status == true) {
 				alert(data.message);
+				$('#shareMeetingRoom input').val(" ");
 				$('#shareMeetingRoom').modal('hide');
 			} else {
 				alert("提交失败，请稍后再试");
@@ -680,15 +686,46 @@ $(document).ready(function () {
 
 	// 培训服务需求表单
 	function trainService() {
+		var trainTitle = $("#trainTitle").val();
 		var trainAmount = $("#trainAmount").val();
 		var trainEnterprise = $("#trainEnterprise").val();
 		var trainPhone = $("#trainPhone").val(); //联系电话	
-		var params = {
-			"subject": "aaa",
-			"amount": trainAmount,
-			"enterprise": trainEnterprise,
-			"phone": trainPhone
-		};
+		if (trainTitle == "") {
+			alert("请输入培训主题");
+			return false;
+		}
+		if (trainPhone == "") {
+			alert("请输入联系方式");
+			return false;
+		}
+		if (trainAmount == "" && trainEnterprise != "") {
+			var params = {
+				"subject": trainTitle,
+				"enterprise": trainEnterprise,
+				"phone": trainPhone
+			};
+		} else if (trainAmount != "" && trainEnterprise == "") {
+			var params = {
+				"subject": trainTitle,
+				"amount": trainAmount,
+				"enterprise": null,
+				"phone": trainPhone
+			};
+		} else if (trainAmount == "" && trainEnterprise == "") {
+			var params = {
+				"subject": trainTitle,
+				"enterprise": null,
+				"phone": trainPhone
+			};
+		} else {
+			var params = {
+				"subject": trainTitle,
+				"amount": trainAmount,
+				"enterprise": trainEnterprise,
+				"phone": trainPhone
+			};
+		}
+		
 
 		var settings = {
 			"async": true,
@@ -706,6 +743,7 @@ $(document).ready(function () {
 			console.log(data);
 			if (data.status == true) {
 				alert(data.message);
+				$('#trainService input').val(" ");
 				$('#trainService').modal('hide');
 			} else {
 				alert("提交失败，请稍后再试");

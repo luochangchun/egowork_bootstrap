@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>
+<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+
+<!--#include file="home/header.html" -->
+<style>
+	.list_tab_3 a {
+		padding: 0 5px;
+		font-size: 14px;
+	}
+</style>
+
+<body>
+	<!--双创空间列表页-->
+	<div style="background-color:#f1f1f1;width:100%;">
+		<div style="background-color:#fff;margin-bottom:20px">
+			<div class="container">
+				<ul class="list_tab_3">
+					<a class="black2">云创学院</a>&nbsp;/
+					<a class="black2">精彩活动列表</a>
+				</ul>
+			</div>
+		</div>
+		<div class="container">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="row clearfix">
+					<@page model="activity" size="10" cid="128" status="1" order="top desc,time desc">
+						<#list page.data as activity>
+							<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 " style="clear:both;">
+								<div class="index_headline" style="margin-right:0;border:none;">
+									<a class="db" style="height:172px;">
+										<img src="${activity.icon!}" alt="" style="height:172px;">
+									</a>
+								</div>
+							</div>
+							<div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
+								<div class="index_headline_content">
+									<h4 class="h4 text-ellipsis">
+										${activity.title!}
+									</h4>
+									<p class="p3 line-height text-ellipsis">活动时间: ${activity.activeTime!?string("yyyy-MM-dd")}
+										<#if ( activity.activeTime?date gt .now?date )>
+											<span class="black3 flag f12">[报名中]</span>
+											<#else>
+												<span class="black3 flag f12">[已结束]</span>
+										</#if>
+									</p>
+									<p class="p3 line-height text-ellipsis">地址: ${activity.address!}</p>
+									<a class="btn5" href="${activity.url!}">查看详情</a>
+								</div>
+							</div>
+						</#list>
+					</@page>
+					<!--#include file="../common/page.html"-->
+					<@paginate currentPage=page.currentPageNo totalPage=page.totalPages actionUrl="" />
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<!--#include file="home/footer.html" -->
+
+</html>
