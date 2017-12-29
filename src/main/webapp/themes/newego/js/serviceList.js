@@ -20,7 +20,7 @@ $(function () {
                 if (entity.length > 0) {
                     $('.noData').hide();
                     for (var i = 0; i < entity.length; i++) {
-                        htmlStr += '<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">\
+                        htmlStr += '<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">\
                     <ul class="service_index_ul cl">\
                         <a onclick="setId(' + entity[i]['id'] + ')" href=' + "/cms?type=category&id=" + entity[i]['cid'] + '>\
                             <li class="service_index_li" style="height:200px;border:none;margin-bottom:10px;">\

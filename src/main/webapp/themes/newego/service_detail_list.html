@@ -14,15 +14,16 @@
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div class="list_tab">
-						<ul class="list_tab_1 nav nav-tabs tab2" id="myTab" style="padding: 0;height:auto;">
-							<li style="width:10%;">服务类别:</li>
-							
-							<li style="width:10%;">
-								<a target="__blank" href="https://www.hansap.com/portal/welcome" style="line-height:30px;height:50px;">企业信息化</a>
-							</li>
-							<!-- {category:list table=(category) pid=(161)} -->
-							<li style="width:10%;"><a id="cate${category.id}"data-id="${category.id}" style="line-height:30px;height:50px;">${category.name}</a></li>
-							<!-- {/list} -->
+						<ul class="list_tab_1 nav nav-tabs tab2" id="myTab" style="padding:0 10px;height:auto;">
+							<div>
+								<li>服务类别:</li>
+								<li>
+									<a target="__blank" href="https://www.hansap.com/portal/welcome" style="line-height:30px;height:50px;width:75px;">企业信息化</a>
+								</li>
+								<!-- {category:list table=(category) pid=(161)} -->
+								<li><a id="cate${category.id}"data-id="${category.id}" style="line-height:30px;">${category.name}</a></li>
+								<!-- {/list} -->
+							</div>
 						</ul>
 
 					</div>
