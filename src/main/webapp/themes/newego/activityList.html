@@ -44,14 +44,14 @@
 										${activity.title!}
 									</h4>
 									<p class="p3 line-height text-ellipsis">活动时间: ${activity.activeTime!?string("yyyy-MM-dd")}
-										<#if ( activity.activeTime?date gt .now?date )>
+										<#if (activity.activeTime?? && activity.activeTime?date gt .now?date )>
 											<span class="black3 flag f12">[报名中]</span>
 											<#else>
 												<span class="black3 flag f12">[已结束]</span>
 										</#if>
 									</p>
 									<p class="p3 line-height text-ellipsis">地址: ${activity.address!}</p>
-									<a class="btn5" href="${activity.url!}">查看详情</a>
+									<a class="btn5" href="/cms?type=activity&id=${activity.id}">查看详情</a>
 								</div>
 							</div>
 						</#list>

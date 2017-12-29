@@ -18,12 +18,12 @@
 					    alt="">
 				</div>
 				<div class="col-lg-9 col-sm-12 info">
-					<h1 class="text-ellipsis">${activity.title}</h1>
+					<h1 class="text-ellipsis">${activity.title!}</h1>
 					<p class="f14 text-ellipsis">活动时间：
-						<span>${activity.activeTime?string("yyyy-MM-dd")}</span>
+						<span>${activity.activeTime!}</span>
 					</p>
 					<p class="f14 text-ellipsis">活动地址：
-						<span>${activity.address}</span>
+						<span>${activity.address!}</span>
 					</p>
 					<!-- <a href="#" class="sign_up tc">立即报名</a> -->
 				</div>
