@@ -1,6 +1,45 @@
 a {
     text-decoration: none;
 }
+.navbar-nav a.cur {
+    color: #18b494;
+}
+.top_line,
+.bottom_line,
+.left_line,
+.right_line {
+    transition: all .4s cubic-bezier(.4, 0, .2, 1);
+    background: #18b494;
+    position: absolute;
+}
+
+.top_line {
+    width: 0px;
+    height: 2px;
+    left: 0;
+    top: 0;
+}
+
+.bottom_line {
+    width: 0px;
+    height: 2px;
+    left: 0;
+    bottom: 0px;
+}
+
+.left_line {
+    width: 2px;
+    height: 0px;
+    left: 0px;
+    bottom: 2px;
+}
+
+.right_line {
+    width: 2px;
+    height: 0px;
+    right: 0px;
+    top: 2px;
+}
 
 .swiper-container {
     margin: 0 auto;
@@ -305,9 +344,34 @@ a {
         left: -370px;
     }
 }
-
+.num01,
+.num02,
+.num03,
+.num04 {
+    opacity: 0;
+}
 /* 在线课堂 */
+.z01 {
+    -webkit-animation:zoomInDown 0.5s 1s forwards linear;
+    -moz-animation:zoomInDown 0.5s 1s forwards linear;
+    animation:zoomInDown 0.5s 1s forwards linear;
+}
+.z02 {
+    -webkit-animation: zoomInDown 1s 1s forwards linear;
+    -moz-animation: zoomInDown 1s 1s forwards linear;
+    animation: zoomInDown 1s 1s forwards linear;
 
+}
+.z03 {
+    -webkit-animation: zoomInDown 1.5s 1s forwards linear;
+    -moz-animation: zoomInDown 1.5s 1s forwards linear;
+    animation: zoomInDown 1.5s 1s forwards linear;
+}
+.z04 {
+    -webkit-animation: zoomInDown 2s 1s forwards linear;
+    -moz-animation: zoomInDown 2s 1s forwards linear;
+    animation: zoomInDown 2s 1s forwards linear;
+}
 .onlineCourse {
     margin-bottom: 50px;
 }
@@ -358,8 +422,33 @@ a {
     padding: 2px;
     border-radius: 5px;
 }
-
 /* 在线课堂 */
+
+/* 全面专业的服务体系 */
+.index_service,
+.tutorList .item {
+    -webkit-transition: all .2s linear;
+    transition: all .2s linear;
+}
+.index_service:hover,
+.tutorList .item:hover {
+    z-index: 2;
+    -webkit-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    -webkit-transform: translate3d(0, -2px, 0);
+    transform: translate3d(0, -2px, 0);
+}
+/* 孵化项目 */
+.index_headline:hover {
+    border: 1px solid #18b494;
+    border-radius: 5px;
+}
+.incubation_project:hover h1{
+    color: #fff;
+}
+.incubation_project:hover p {
+    color: #18b494;
+}
 
 .datetimepicker {
     padding: 4px;
@@ -815,11 +904,17 @@ a {
     width: 100%;
     font-size: 0;
 }
-
 .commonList .item:hover {
     text-decoration: none;
 }
-
+.commonList .item:hover .left_line,
+.commonList .item:hover .right_line {
+    height: 100% !important;
+}
+.commonList .item:hover .top_line,
+.commonList .item:hover .bottom_line {
+    width: 100% !important;
+}
 .commonList .img_wrap .flag {
     top: 0;
     right: 0;
@@ -941,6 +1036,15 @@ a {
     height: 186px;
     border-top-left-radius: 20px;
     border-bottom-right-radius: 20px;
+    -webkit-transition: all .2s linear;
+    -moz-transition: all .2s linear;
+    transition: all .2s linear;
+}
+.courseList .item:hover img {
+    border-top-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+     border-top-right-radius: 20px;
+     border-bottom-left-radius: 20px;
 }
 
 .view_more {
@@ -1000,7 +1104,9 @@ a {
 .tutor {
     padding: 20px 0 50px 0;
 }
-
+.tutorList .item {
+    padding: 20px 10px;
+}
 .tutorList .item img {
     width: 60%;
     margin-left: auto;
@@ -1035,7 +1141,12 @@ a {
 }
 
 .usList .item {
-    margin-bottom: 60px;
+    margin-bottom: 40px;
+    transition: all .4s;
+    padding: 20px 0;
+}
+.usList .item:hover {
+    background-color: #fff;
 }
 
 .usList .item img {
@@ -1300,4 +1411,10 @@ a {
 
 #shareForm input[placeholder], [placeholder], *[placeholder], #shareTo input[placeholder], [placeholder], *[placeholder] {
     font-size: 12px;
+}
+.partner_logo {
+    transition: all 0.4s;
+}
+.partner_logo:hover {
+    background-color: #f1f1f1;
 }

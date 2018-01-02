@@ -21,22 +21,30 @@
             <div class="row commonList clearfix">
                 <!-- {activity:list table=(activity) cid=(128) limit=(4) status=(1) order=(top desc,time desc)} -->
                 <a href="${activity.url!}" class="col-lg-3 col-md-3 col-sm-6 col-sm-12 item">
-                    <div class="img_wrap rel">
-                        <#if ( activity.activeTime?date gt .now?date )>
-                            <span class="abs flag f12">报名中</span>
-                            <#else>
-                                <span class="abs flag f12">已结束</span>
-                        </#if>
-                        <img src="img/01.png" alt="">
-                        <p class="tc white abs text-ellipsis-muti text-ellipsis-2">
-                            ${activity.title!}</p>
+                    <div class="rel">
+                        <div class="img_wrap rel">
+                            <#if ( activity.activeTime?date gt .now?date )>
+                                <span class="abs flag f12">报名中</span>
+                                <#else>
+                                    <span class="abs flag f12">已结束</span>
+                            </#if>
+                            <img src="img/01.png" alt="">
+                            <p class="tc white abs text-ellipsis-muti text-ellipsis-2">
+                                ${activity.title!}</p>
+                        </div>
+                        <div class="para">
+                            <p class="f14 text-ellipsis-muti text-ellipsis-2">${activity.title!}</p>
+                            <p class="f12">活动时间：
+                                <span>${activity.activeTime?string("yyyy-MM-dd")}</span>
+                            </p>
+                            
+                        </div>
+                        <div class="top_line" style="width: 0px"></div>
+                        <div class="bottom_line" style="width: 0px;"></div>
+                        <div class="left_line" style="height: 0px;"></div>
+                        <div class="right_line" style="height: 0px;"></div>
                     </div>
-                    <div class="para">
-                        <p class="f14 text-ellipsis-muti text-ellipsis-2">${activity.title!}</p>
-                        <p class="f12">活动时间：
-                            <span>${activity.activeTime?string("yyyy-MM-dd")}</span>
-                        </p>
-                    </div>
+                   
                 </a>
                 <!-- {/list} -->
             </div>
@@ -53,22 +61,28 @@
             <div class="row commonList clearfix">
                 <!-- {activity:list table=(activity) cid=(129) limit=(4) status=(1) order=(top desc,time desc)} -->
                 <a href="${activity.url!}" class="col-lg-3 col-md-3 col-sm-6 col-sm-12 item">
-                    <div class="img_wrap rel">
-                        <#if ( activity.activeTime?date gt .now?date )>
-                            <span class="abs flag f12">已结束</span>
-                            <#else>
-                            <span class="abs flag f12">已结束</span>
-                        </#if>
-                        <img src="img/01.png" alt="">
-                        <p class="tc white abs text-ellipsis-muti text-ellipsis-2">
-                            ${activity.title!}
-                        </p>
-                    </div>
-                    <div class="para">
-                        <p class="f14">${activity.title!}</p>
-                        <p class="f12">活动时间：
-                            <span>${activity.activeTime?string("yyyy-MM-dd")}</span>
-                        </p>
+                    <div class="rel">
+                        <div class="img_wrap rel">
+                            <#if ( activity.activeTime?date gt .now?date )>
+                                <span class="abs flag f12">已结束</span>
+                                <#else>
+                                    <span class="abs flag f12">已结束</span>
+                            </#if>
+                            <img src="img/01.png" alt="">
+                            <p class="tc white abs text-ellipsis-muti text-ellipsis-2">
+                                ${activity.title!}
+                            </p>
+                        </div>
+                        <div class="para">
+                            <p class="f14">${activity.title!}</p>
+                            <p class="f12">活动时间：
+                                <span>${activity.activeTime?string("yyyy-MM-dd")}</span>
+                            </p>
+                        </div>
+                        <div class="top_line" style="width: 0px"></div>
+                        <div class="bottom_line" style="width: 0px;"></div>
+                        <div class="left_line" style="height: 0px;"></div>
+                        <div class="right_line" style="height: 0px;"></div>
                     </div>
                 </a>
                 <!-- {/list} -->
