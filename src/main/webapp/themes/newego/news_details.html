@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+
+<body>
+
+<!--#include file="home/header.html" -->
+
+
+
+
+<!-- {article:list table=(article) id=($artid) limit=(1) status=(1) order=(id desc)} -->
+<div class="padder-v-xxl">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="text-center">
+                    <p class="text-xxxl">${article.title}</p>
+                    <p>时间：${article.time?string("yyyy-MM-dd")}</p>
+                </div>
+                <div class="wrapper-lg">
+                    <p>${article.content}</p>
+                    <img src="img/incubator-1.jpg" class="img-responsive"> -->
+                </div>
+            </div>
+<!--右边部分:热门资讯-->
+<!--浏览量:views-->
+            <div class="col-md-4 news-rightlist">
+                <p class="news-rightlist-p">热门资讯</p><hr class="m-n b-b">
+                <div class="news-rightlist row">
+                    <!-- {activity:list table=(activity) cid=(128) limit=(4) status=(1) order=(top desc,time desc)} -->
+                    <div class="m-t col-md-12 col-sm-6">
+                        <div>
+                            <a href="${activity.url}">
+                                <p class="text-ellipsis-muti text-ellipsis-5"> ${article.description!}</p>
+                                <div class="pos-abt" style="bottom:0;">
+                                    <p class="text-muted pull-left m-r"><i class="fa fa-clock-o m-r-xs"></i><span>时间：${article.time?string("yyyy-MM-dd")}</span></p>
+                                    <p class="text-muted pull-left"><i class="fa fa-edit m-r-xs"></i><span>云创空间</span></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!--{/list}-->
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--{/list}-->
+</div>
+
+<!--#include file="home/footer.html" -->
+
+</body>
+</html>

@@ -103,6 +103,7 @@ html>body .clearfix { overflow: hidden; }
 .black { color: #000; }
 .black2 { color: #666; }
 .black3 { color: #999; }
+.main-color { color: #18b494; }
 .txt_indent{ text-indent:2em;}
 .el-button {padding: none !important;}
 
