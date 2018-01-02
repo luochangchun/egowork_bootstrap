@@ -13,7 +13,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="css/ani.css">
     <link rel="stylesheet" href="css/bootstrap.css">
-    
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/common.css" type="text/css">
@@ -306,9 +305,9 @@
 
     <script type="text/javascript">
         $(function () {
-            $(".nav .navbar-nav a").each(function () {
+            $(".nav a").each(function () {
                 if ($(this).attr("href") == location.pathname) {
-                    $(this).addClass("active");
+                    $(this).addClass("cur");
                 }
             });
         });

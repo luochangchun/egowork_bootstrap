@@ -103,7 +103,6 @@
 								<p>${category.name}</p>
 							</div>
 						</a>
-
 					</div>
 					<!-- {/list} -->
 				</div>
@@ -217,35 +216,35 @@
 					<div class="fullwidth-block-inner">
 						<div class="container">
 							<div class="vc_row wpb_row vc_inner vc_row-fluid">
-								<div class="row">
-									<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+								<div class="row" id="numList">
+									<div class="num01 col-lg-3 col-md-3 col-sm-3 col-xs-3">
 										<div class="index_number">
 											<div class="num">
-												<b>${chip.providers!}</b>
+												${chip.providers!}
 											</div>
 											<div class="index_number_title">服务商(家)</div>
 										</div>
 									</div>
-									<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+									<div class="num02 col-lg-3 col-md-3 col-sm-3 col-xs-3">
 										<div class="index_number">
 											<div class="num">
-												<b>${chip.mentors!}</b>
+												${chip.mentors!}
 											</div>
 											<div class="index_number_title">导师(位)</div>
 										</div>
 									</div>
-									<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+									<div class="num03 col-lg-3 col-md-3 col-sm-3 col-xs-3">
 										<div class="index_number">
 											<div class="num">
-												<b>${chip.categories!}</b>
+												${chip.categories!}
 											</div>
 											<div class="index_number_title">服务产品种类(种)</div>
 										</div>
 									</div>
-									<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+									<div class="num04 col-lg-3 col-md-3 col-sm-3 col-xs-3">
 										<div class="index_number">
 											<div class="num">
-												<b>${chip.area!}</b>
+												${chip.area!}
 											</div>
 											<div class="index_number_title">孵化面积(m²)</div>
 										</div>
@@ -274,45 +273,6 @@
 	</div>	
 
 </div>
-<script>
-	//数字
-	var numstr = "1289";
-	numGrow($('.index_number .num b'), numstr, 2000, 10);
-	//数字增长
-	function numGrow(obj, str, time, delay) {
-		var num = numstr.replace(/[^0-9]/ig, "");
-		var g = 0;
-		obj.text(g);
-		var step = Math.ceil(num / (time / delay));
-		var time = setInterval(function() {
-			if (g <= num - step) {
-				g += step;
-			} else {
-				g = num;
-			}
-			obj.text(formatNum(g.toString()));
-			if (g >= num) {
-				clearInterval(time);
-				return;
-			}
-		}, delay);
-	}
-	//数值处理
-	function formatNum(str) {
-		var newStr = "";
-		var count = 0;
-		for (var i = str.length - 1; i >= 0; i--) {
-			if (count % 3 == 0 && count != 0) {
-				newStr = str.charAt(i) + "," + newStr;
-			} else {
-				newStr = str.charAt(i) + newStr;
-			}
-			count++;
-		}
-		return newStr;
-	}
-
-</script>
 <script src="js/banner.js"></script>
 <script src="js/onlineCourse.js"></script>
 </body>
