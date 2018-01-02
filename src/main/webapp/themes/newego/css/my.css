@@ -4,6 +4,9 @@ a {
 .navbar-nav a.cur {
     color: #18b494;
 }
+a.goLogin:hover {
+    color: #fff;
+}
 .top_line,
 .bottom_line,
 .left_line,
@@ -442,6 +445,10 @@ a {
 .index_headline:hover {
     border: 1px solid #18b494;
     border-radius: 5px;
+}
+.incubation_project h1,
+.incubation_project p {
+    transition: color .4s;
 }
 .incubation_project:hover h1{
     color: #fff;

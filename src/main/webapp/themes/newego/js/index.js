@@ -791,7 +791,7 @@ $(document).ready(function () {
 		dataType: "json",
 		success: function (data) {
 			$('.goLogin').show().next('button').hide();
-			
+			$('.goLogin').show().next('a').hide();
 			if (data.userId > 0) {
 				loginUser = data;
 			} else {
@@ -799,7 +799,7 @@ $(document).ready(function () {
 			}
 			if (loginUser != null && loginUser.userName) {
 				$('.goLogin').hide().next('button').show();
-				
+				$('.goLogin').hide().next('a').show();
 				$('#kjenter').html("<li>快速入口</li><li><a data-toggle=\"modal\" data-target=\"#spaceRent\" data-whatever=\"@mdo\" style=\"color:#aaa;\">空间租赁申请</a></li>\
 					<li> <a data-toggle=\"modal\" data-target=\"#onlineIncubation\" data-whatever=\"@mdo\" style=\"color:#aaa;\">线上孵化申请</a></li >\
 					<li><a data-toggle=\"modal\" data-target=\"#createSpace\" data-whatever=\"@mdo\" style=\"color:#aaa;\">共享办公申请</a></li>\
