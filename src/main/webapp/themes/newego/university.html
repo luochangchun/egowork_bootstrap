@@ -13,11 +13,12 @@
 <div class="bg-img2"></div>
     <div class="container">
         <!-- 精彩活动 -->
-        <div class="activity">
-            <h1 class="commonTitle clearfix">
-                <span class="l">精彩活动</span>
+        <div class="activity" style="margin-bottom: 50px">
+            <h1 class="commonTitle tc">精彩活动</h1>
+            <!-- <h1 class="commonTitle clearfix">
+                <span class="t"></span>
                 <a class="commonMore r" href="/activityList.html">MORE+</a>
-            </h1>
+            </h1> -->
             <div class="row commonList clearfix">
                 <!-- {activity:list table=(activity) cid=(128) limit=(4) status=(1) order=(top desc,time desc)} -->
                 <a href="${activity.url!}" class="col-lg-3 col-md-3 col-sm-6 col-sm-12 item">
@@ -48,16 +49,21 @@
                 </a>
                 <!-- {/list} -->
             </div>
+            <a href="/activityList.html" class="view_more db tc">
+                查看更多
+                <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+            </a>
         </div>
 
     </div>
     <!-- 培训集锦 -->
-    <div class="train">
+    <div class="train" style="padding-bottom: 50px">
         <div class="container train_wrap">
-            <h1 class="commonTitle clearfix">
+            <h1 class="commonTitle tc">培训集锦</h1>
+            <!-- <h1 class="commonTitle clearfix">
                 <span class="l">培训集锦</span>
                 <a class="commonMore r" href="/trainList.html">MORE+</a>
-            </h1>
+            </h1> -->
             <div class="row commonList clearfix">
                 <!-- {activity:list table=(activity) cid=(129) limit=(4) status=(1) order=(top desc,time desc)} -->
                 <a href="${activity.url!}" class="col-lg-3 col-md-3 col-sm-6 col-sm-12 item">
@@ -87,6 +93,10 @@
                 </a>
                 <!-- {/list} -->
             </div>
+            <a href="/trainList.html" class="view_more db tc">
+                查看更多
+                <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+            </a>
         </div>
     </div>
 
