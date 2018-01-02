@@ -14,10 +14,10 @@ function initCourse() {
             if (data['success'] == true) {
                 var entity = data['entity']['courseList'];
                 var htmlStr = "";
-				var domain = "http://vedio.whwomen.org.cn";
+                var domain = "http://vedio.whwomen.org.cn";
                 var turl = "http://vedio.whwomen.org.cn/free/play/";
                 for (var i = 0; i < entity.length; i++) {
-                    if(i < 4) {
+                    if (i < 4) {
                         htmlStr += '<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 item db" style="margin-bottom: 20px">\
                                     <div class="onlineWrap rel ovh">\
                                         <img src=' + domain + entity[i]['logo'] + ' class="abs">\
@@ -42,8 +42,6 @@ function initCourse() {
                 }
                 $('#onlineList').html(htmlStr);
             }
-
-
         },
         complete: function () {
             //请求完成的处理
@@ -54,3 +52,13 @@ function initCourse() {
     });
 };
 initCourse()
+
+$(window).bind("scroll", function () {
+    var top = $(window).scrollTop();
+    if ($('#numList').offset().top - top < $(window).height()) {
+        $('#numList .num01').addClass('z01');
+        $('#numList .num02').addClass('z02');
+        $('#numList .num03').addClass('z03');
+        $('#numList .num04').addClass('z04');
+    };
+});  
