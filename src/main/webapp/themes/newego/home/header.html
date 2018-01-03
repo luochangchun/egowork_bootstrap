@@ -233,9 +233,9 @@
                             <!-- <li>
                                 <a href="">云创金融</a>
                             </li>-->
-                            <!--<li>-->
-                                <!--<a href="/news.html">资讯中心</a>-->
-                            <!--</li>-->
+                            <li>
+                                <a href="/news.html">资讯中心</a>
+                            </li>
                             <!-- <li><a href="http://192.168.11.216/index.html" target="_blank">新三板</a></li> -->
                         </ul>
                     </div>
@@ -280,23 +280,38 @@
 
     <!--客服-->
     <div class="call">
-        <div ng-include="'template/goyun/home/channel.html'" class="ng-scope"><div id="telnumber" class="text-center ng-scope" ng-class="{'telCtrl':telCtrl}">
-            <a href="tel:027-59103557" style="color:unset;">
-                <i class="icon fa fa-phone animate_opatoshow animate_start"></i>
-            </a>
-            <span class="text-xs block ng-binding">
-			<i class="fa fa-phone"></i> 027-59103580<br>
-		</span>
-            <!--<p class="animate_opatoshow animate_start">联系<br>电话</p>-->
-        </div>
+        <div ng-include="'template/goyun/home/channel.html'" class="ng-scope">
+            <!--电话-->
+            <div id="telnumber" class="text-center ng-scope" ng-class="{'telCtrl':telCtrl}">
+                <a href="tel:027-59103557" style="color:unset;">
+                    <i class="icon fa fa-phone animate_opatoshow animate_start"></i>
+                </a>
+                <span class="text-xs block ng-binding">
+                <i class="fa fa-phone"></i> 027-59103580<br>
+                </span>
+                <!--<p class="animate_opatoshow animate_start">联系<br>电话</p>-->
+            </div>
+            <!--QQ-->
             <div id="qq" class="text-center ng-scope" ng-class="{'telCtrl':telCtrl}">
                 <i class="icon fa fa-qq animate_opatoshow animate_start"></i>
                 <span class="text-xs block">
-			<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=3453276422&amp;site=qq&amp;menu=yes" target="_blank" class="pull-left text-2x padder-xs tras-03 b-r b-r-dashed"><i class="fa fa-qq"></i></a>
-			<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=3425454889&amp;site=qq&amp;menu=yes" target="_blank" class="pull-left text-2x padder-xs tras-03 b-r b-r-dashed"><i class="fa fa-qq"></i></a>
+                    <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=3453276422&amp;site=qq&amp;menu=yes" target="_blank" class="pull-left text-2x padder-xs tras-03 b-r b-r-dashed">
+                        <i class="fa fa-qq"></i>
+                    </a>
+                    <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=3425454889&amp;site=qq&amp;menu=yes" target="_blank" class="pull-left text-2x padder-xs tras-03 b-r b-r-dashed">
+                        <i class="fa fa-qq"></i>
+                    </a>
                     <!--<a href="//shang.qq.com/wpa/qunwpa?idkey=280b9b5d6ad28759c7b821c6857173dd9ab97cf6fe8c94d39eb1b268c94fe442" target="_blank" class="pull-left text-xs padder-xs tras-03">群聊</a>-->
-		</span>
+                </span>
                 <!--<p class="animate_opatoshow animate_start">联系<br>QQ</p>-->
+            </div>
+            <!--微信-->
+            <div id="code" class="text-center tras-03 ng-scope" ng-if="!telCtrl">
+                <i class="icon fa fa-wechat animate_opatoshow animate_start"></i>
+                <span class="text-xs" style="line-height:10px;box-shadow:0 0 10px 5px #ddd;">
+                    <img src="http://www.egowork.com/themes/egowork/img/egowork.jpg" style="width:120px; height:120px;">
+                </span>
+                <!--<p class="animate_opatoshow animate_start">扫码<br>关注</p>-->
             </div>
         </div>
     </div>

@@ -699,15 +699,15 @@ body {
     /*background-color:#e5ebe9;*/
 /*}*/
 .index_service img{
-    width:50px;
-    height:50px;
+    width:70px;
+    height:70px;
     margin-top: 25px;
 }
 .index_service p{
     margin-top:0;
     line-height:30px;
     height:30px;
-    font-size:16px;
+    font-size:20px;
     text-align: center;
 }
 
@@ -1826,6 +1826,71 @@ body {
 #qq:not(.telCtrl):hover span {
     display: block;
 }
+#code {
+    background: rgba(8, 191, 183, 0.8);
+    color: rgba(255, 255, 255, 0.7);
+}
+#code {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    font-size: 24px;
+    z-index: 999;
+    cursor: pointer;
+}
+.tras-03 {
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+.text-center {
+    text-align: center;
+}
+#code span {
+    display: none;
+    position: absolute;
+    right: 60px;
+    top: 0;
+    padding: 2px;
+    /* padding-right: 10px; */
+    background: rgba(255, 255, 255, 1);
+    border-radius: 4px;
+}
+.text-xs {
+    font-size: 12px;
+}
+#code span::after {
+    border-left-color: rgba(8, 191, 183, 0.8);
+    content: "";
+    display: block;
+    position: absolute;
+    right: -26px;
+    top: 0;
+    width: 0;
+    height: 0;
+    border: 20px solid transparent;
+    z-index: 1111;
+}
+
+#code:not(.telCtrl):hover span {
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
 /*客服*/
 
 
@@ -1835,13 +1900,19 @@ body {
     padding-bottom: 20px;
 }
 .news_header_img{
-    background: url(../img/01.png);
+    /*background: url(../img/daxuesheng.png);*/
     background-repeat:no-repeat;
     background-size:cover;
     background-position:center center;
     display: block;
     height: 200px;
     margin-bottom: 20px;
+}
+.news_header_img1{
+    background: url(../img/daxuesheng.png);
+}
+.news_header_img2{
+    background: url(../img/skjt.png);
 }
 .news-leftlist{
     margin-bottom: 30px;
