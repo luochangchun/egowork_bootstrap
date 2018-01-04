@@ -2,12 +2,14 @@ package org.marker.mushroom.beans;
 
 import org.marker.mushroom.dao.annotation.Entity;
 
+import java.io.Serializable;
+
 /**
  * Created by 30 on 2018/1/3 0003.
  * 融资项目模块
  */
 @Entity("invest_project")
-public class InvestProject {
+public class InvestProject implements Serializable {
 
 	/**id*/
 	private Integer id;
