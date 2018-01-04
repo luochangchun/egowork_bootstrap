@@ -3,6 +3,7 @@ package org.marker.mushroom.beans;
 import org.marker.mushroom.dao.annotation.Entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by 30 on 2018/1/3 0003.
@@ -35,6 +36,8 @@ public class InvestProject implements Serializable {
 	private String email;
 	/**公司简介*/
 	private String intro;
+	/** 申请时间 */
+	private Date time;
 
 	public Integer getId() {
 		return id;
@@ -130,5 +133,13 @@ public class InvestProject implements Serializable {
 
 	public void setIntro(String intro) {
 		this.intro = intro;
+	}
+
+	public Date getTime() {
+		return time;
+	}
+
+	public void setTime(Date time) {
+		this.time = time;
 	}
 }
