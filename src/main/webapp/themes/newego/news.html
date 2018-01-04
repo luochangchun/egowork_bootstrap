@@ -12,17 +12,18 @@
 <div class="news">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-8">
-				<a href="/article/867.html" class="col-md-6 col-lg-6 col-sm-6 col-xs-12" style="padding-left:0;">
-					<span class="news_header_img news_header_img1">
-						<!--<p>湖北出台优惠政策鼓励大学生基层就业创业</p>-->
-					</span>
-				</a>
-				<a href="/article/861.html" class="col-md-6 col-lg-6 col-sm-6 col-xs-12" style="padding-left:0;">
-					<span class="news_header_img news_header_img2">
-						<!--<p>湖北出台优惠政策鼓励大学生基层就业创业</p>-->
-					</span>
-				</a>
+			<div class="col-md-9">
+				<div>
+					<!-- {article:list table=(article) cid=(127) status=(1) limit=(2) order=(top desc)} -->
+						<a href="${article.url}" class="col-md-6 col-lg-6 col-sm-6 col-xs-12" style="padding-left:0;">
+							<span class="news_header_img">
+								<img src="${article.icon!}" alt="">
+								<p class="text-ellipsis">${article.title!}</p>
+							</span>
+						</a>
+					<!-- {/list} -->
+				</div>
+
 				<div class="news-leftlist">
 					<@page model="article" size="7" cid="127" status="1" order="top desc,time desc">
 					<#list page.data as article>
@@ -39,6 +40,7 @@
 								<p class="text-ellipsis-muti text-ellipsis-4"> ${article.description!}</p>
 								<div class="pos-abt" style="bottom:0px;">
 									<p class="text-muted pull-left m-r"><i class="fa fa-clock-o m-r-xs"></i><span>时间：${article.time?string("yyyy-MM-dd")}</span></p>
+									<p class="text-muted pull-left m-r"><i class="glyphicon glyphicon-eye-open"></i> <span>浏览次数:${article.views}</span></p>
 									<p class="text-muted pull-left"><i class="fa fa-edit m-r-xs"></i><span>云创空间</span></p>
 								</div>
 							</div>
@@ -47,39 +49,30 @@
 				</@page>
 				<!--#include file="../common/page.html"-->
 				<@paginate currentPage=page.currentPageNo totalPage=page.totalPages actionUrl=""  />
-
+				</div>
 			</div>
-		</div>
-<!--右边部分:精彩活动-->
-		<div class="col-md-4 news-rightlist">
-			<p class="news-rightlist-p">精彩活动</p><hr class="m-n b-b">
+		<!--右边部分:热门资讯-->
+			<div class="col-md-3 news-rightlist" style="background-color:#f1f1f1;">
+			<p class="news-rightlist-p" style="margin-top:10px;">热门资讯 : </p>
+			<!--<hr class="m-n b-b">-->
 			<div class="news-rightlist row">
-				<!-- {activity:list table=(activity) cid=(128) limit=(4) status=(1) order=(top desc,time desc)} -->
-				<div class="m-t col-md-12 col-sm-6">
+				<!-- {article:list table=(article) status=(1) limit=(16) order=(views desc,time desc)} -->
+				<div class="m-t col-md-12 col-sm-6" style="margin: 10px 5px 20px 5px;">
 					<div>
-						<a href="${activity.url}">
-							<span class="block pos-rlt">
-								<img src="${activity.icon!}" class="center-block w-full pos-rlt" style="min-height:280px;">
-								 <span class="pos-abt text-xl block text-green text-ellipsis-2 padder-md" style="top:30%;">${activity.title!}</span>
-								 <#if ( activity.activeTime?date gt .now?date ) >
-								 <span class="pos-abt inline padder-xs padder-v-xxs bg-green text-white" style="bottom:0; right:0;">
-											 报名中
-								 </span>
-								 <#else>
-									<span class="pos-abt inline padder-xs padder-v-xxs bg-grey text-white" style="bottom:0; right:0;">
-												已结束
-									</span>
-								 </#if>
-								 <span class="black-box block"></span>
-							</span>
+						<a href="${article.url}">
+							<p style="margin-bottom: 5px;clear:both;"> ${article.title!}</p>
+							<div style="margin-bottom:20px;">
+								<p class="text-muted pull-left m-r"><i class="fa fa-clock-o m-r-xs"></i><span>时间：${article.time?string("yyyy-MM-dd")}</span></p>
+								<p class="text-muted pull-left"><i class="glyphicon glyphicon-eye-open"></i> <span>浏览:${article.views}次</span></p>
+							</div>
 						</a>
 					</div>
 				</div>
 				<!--{/list}-->
 			</div>
 		</div>
+		</div>
 	</div>
-</div>
 </div>
 
 

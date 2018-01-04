@@ -9,21 +9,26 @@
 
 <!--#include file="home/header.html" -->
 
-<div class="padder-v-xxl" style="background-color:#f1f1f1;">
+<div class="padder-v-xxl article" style="background-color:#f1f1f1;">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-8" style="background-color:#fff;padding-top:15px;">
-				<div class="text-center">
-					<p class="text-xxxl">${article.title}</p>
-					<p>时间：${article.time?string("yyyy-MM-dd")}</p>
+			<div class="col-md-8 m_article" style="background-color:#fff;padding-top:15px;">
+				<div class="text-center article-header">
+					<p class="text-xxxl article_title">${article.title}</p>
+					<div>
+						<p style="margin-right:20px;">时间：${article.time?string("yyyy-MM-dd")}</p>
+						<p>浏览次数：${article.views}</p>
+					</div>
+
 				</div>
+				<hr style="color:#333;">
 				<div class="wrapper-lg">
 					<p>${article.content}</p>
 					<img src="img/incubator-1.jpg" class="img-responsive">
 				</div>
 			</div>
 			<!--右边部分:热门资讯-->
-			<div class="col-md-3 col-md-offset-1 news-rightlist" style="background-color:#fff;">
+			<div class="col-md-4 news-rightlist" style="background-color:#fff;">
 				<p class="news-rightlist-p" style="margin-top:10px;">热门资讯 : </p>
 				<!--<hr class="m-n b-b">-->
 				<div class="news-rightlist row">
@@ -31,10 +36,10 @@
 					<div class="m-t col-md-12 col-sm-6" style="margin: 10px 5px 20px 5px;">
 						<div>
 							<a href="${article.url}">
-								<p> ${article.title!}</p>
+								<p style="margin-bottom: 5px;clear:both"> ${article.title!}</p>
 								<div style="margin-bottom:20px;">
 									<p class="text-muted pull-left m-r"><i class="fa fa-clock-o m-r-xs"></i><span>时间：${article.time?string("yyyy-MM-dd")}</span></p>
-									<p class="text-muted pull-left"><i class="fa fa-edit m-r-xs"></i><span>云创空间</span></p>
+									<p class="text-muted pull-left"><i class="glyphicon glyphicon-eye-open"></i> <span>浏览次数:${article.views}</span></p>
 								</div>
 							</a>
 						</div>

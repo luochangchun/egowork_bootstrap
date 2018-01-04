@@ -26,13 +26,12 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <ol class="breadcrumb">
                         <li>
-                            <a href="#">云创服务</a>
+                            <a href="/service.html">云创服务</a>
                         </li>
                         <li class="active">${category.name}</li>
                     </ol>
                 </div>
 
-                <!--<div class="row">-->
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                     <div class="panel">
                         <div class="service_detail_header_title">
@@ -50,19 +49,25 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12" style="border:1px solid #ddd;">
+                <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 category-bg">
                     <div class="service_detail_title">
-                        <div class="service_body col-lg-8 col-md-8 col-sm-8 col-xs-8 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2">
+                        <div class="service_body col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
                             <#list products as p>
                                 <div id="text${p.id}" class="info dn">
-                                    <p class="tc f16" style="color:#18b494;">${p.title}</p>
-                                    ${p.content}
+                                    <p class="f20 category-b" style="color:#18b494;display: inline-block; margin-bottom:30px;">${p.title}</p>
+                                    <!--QQ-->
+                                    <a id="category-qq" class="text-center ng-scope" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3453276422&amp;site=qq&amp;menu=yes" target="_blank">
+                                        <!--<i class="icon fa fa-qq animate_opatoshow animate_start"> 在线咨询</i>-->
+                                        <img src="img/btn_zxzx.png" alt="">
+                                    </a>
+                                    <div style="border-top:1px dashed #ddd;padding-top:20px;">
+                                        ${p.content}
+                                    </div>
                                 </div>
                             </#list>
                         </div>
                     </div>
                 </div>
-                <!--</div>-->
 
 
 

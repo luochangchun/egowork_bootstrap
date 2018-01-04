@@ -1381,6 +1381,12 @@ body {
     border: 1px solid #18b494;
     border-bottom-color: transparent;
 }
+.nav-tabs > li.active > a {
+    color: #18b494;
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover {
+    color: #18b494;
+}
 .service_index_li{
     height:137px;
     border-bottom:1px solid #ddd;
@@ -1388,13 +1394,13 @@ body {
     padding:10px;
 }
 .service_index_li h1{
-    color:#666;
+    color:#000;
     font-size:16px;
     line-height:40px;
 }
 .service_index_li p{
-    color:#999;
-    font-size:14px;
+    color:#18b494;
+    font-size:13px;
     line-height:20px;
 }
 .tab-content .col-xs-3, .tab-content .col-sm-3, .tab-content .col-md-3, .tab-content .col-lg-3{
@@ -1408,6 +1414,33 @@ body {
 .service_detail_list>.nav > li > a{
     padding: 10px 0;
 }
+.category-bg{
+    background:url(../img/category-bg.png);
+    min-height:700px;
+}
+.category-b{
+    font-weight:bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*服务*/
 
@@ -1575,14 +1608,6 @@ body {
 .activ{
     border:1px solid #18b494!important;
 }
-
-
-
-
-
-
-
-
 .service_detail_title h1{
     font-size:24px;
     color:#fff;
@@ -1593,10 +1618,9 @@ body {
     font-weight: 200;
 }
 .service_detail_title p{
-    margin-top:20px;
-    margin-bottom:30px;
+    /*margin-top:20px;*/
     line-height:25px;
-    text-align: center;
+    text-align: left;
     color:#666;
 }
 .service_detail_title h2{
@@ -1621,7 +1645,21 @@ body {
     width:25%;
     text-align: center;
 }
-
+#category-qq{
+    /*background: -ms-linear-gradient(top,#a6fbe7,  #18b494);*/
+    /*background:-moz-linear-gradient(top,#fff,  #18b494);*/
+    /*background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#a6fbe7), to(#24ba9b));*/
+    /*background: -o-linear-gradient(top, #fff, #18b494);*/
+    /*color:#fff;*/
+    /*height: 30px;*/
+    /*width: 120px;*/
+    /*line-height: 30px;*/
+    /*font-size: 14px;*/
+    /*z-index: 999;*/
+    cursor: pointer;
+    /*border-radius:16px;*/
+    float:right;
+}
 
 
 /*云创服务列表页*/
@@ -1898,21 +1936,33 @@ body {
 .news{
     padding-top: 20px;
     padding-bottom: 20px;
+    box-shadow:0 0 10px #ddd;
 }
 .news_header_img{
-    /*background: url(../img/daxuesheng.png);*/
-    background-repeat:no-repeat;
-    background-size:cover;
-    background-position:center center;
-    display: block;
+     display: block;
+     height: 200px;
+     margin-bottom: 20px;
+     width:100%;
+     position:relative;
+ }
+.news_header_img img{
     height: 200px;
-    margin-bottom: 20px;
+    width:100%;
 }
-.news_header_img1{
-    background: url(../img/daxuesheng.png);
+.news_header_img p{
+    display: block;
+    position: absolute;
+    text-align: center;
+    color: #fff;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    height: 30px;
+    line-height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
-.news_header_img2{
-    background: url(../img/skjt.png);
+a:hover, a:focus {
+    color: #18b494;
 }
 .news-leftlist{
     margin-bottom: 30px;
@@ -2029,15 +2079,6 @@ body {
 .text-ellipsis-5{
     -webkit-line-clamp: 5;
 }
-.news_header_img p{
-    text-align: center;
-    color:#666;
-    width:680px;
-    height:200px;
-    border:4px solid transparent;
-    display:table-cell;
-    vertical-align:bottom;
-}
 .padder-v-xxl {
     padding-top: 50px;
     padding-bottom: 50px;
@@ -2045,8 +2086,25 @@ body {
 .text-center-xs {
     text-align: center;
 }
-
-
+.article_title{
+    font-size: 16px;
+    color: #000;
+    margin-bottom: 10px;
+}
+.article-header div p{
+    display: inline-block;
+}
+@media (max-width: 767px){
+    .m_article{
+        width:100%;
+    }
+}
+@media (min-width: 992px){
+    .col-md-8{
+        width:64.6%;
+        margin-right:2%
+    }
+}
 
 
 /*资讯中心*/
