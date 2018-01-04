@@ -87,6 +87,56 @@
                             <input type="checkbox" name="phase" value="2"/>早期
                             <input type="checkbox" name="phase" value="3"/>中期
                             <input type="checkbox" name="phase" value="4" checked="checked"/>成熟期
+                            <#elseif investor.phase == "1,2">
+                            <input type="checkbox" name="phase" value="1" checked="checked"/>天使轮
+                            <input type="checkbox" name="phase" value="2" checked="checked"/>早期
+                            <input type="checkbox" name="phase" value="3"/>中期
+                            <input type="checkbox" name="phase" value="4"/>成熟期
+                            <#elseif investor.phase == "1,3">
+                            <input type="checkbox" name="phase" value="1" checked="checked"/>天使轮
+                            <input type="checkbox" name="phase" value="2"/>早期
+                            <input type="checkbox" name="phase" value="3" checked="checked"/>中期
+                            <input type="checkbox" name="phase" value="4"/>成熟期
+                            <#elseif investor.phase == "1,4">
+                            <input type="checkbox" name="phase" value="1" checked="checked"/>天使轮
+                            <input type="checkbox" name="phase" value="2"/>早期
+                            <input type="checkbox" name="phase" value="3"/>中期
+                            <input type="checkbox" name="phase" value="4" checked="checked"/>成熟期
+                            <#elseif investor.phase == "2,3">
+                            <input type="checkbox" name="phase" value="1"/>天使轮
+                            <input type="checkbox" name="phase" value="2" checked="checked"/>早期
+                            <input type="checkbox" name="phase" value="3" checked="checked"/>中期
+                            <input type="checkbox" name="phase" value="4"/>成熟期
+                            <#elseif investor.phase == "2,4">
+                            <input type="checkbox" name="phase" value="1"/>天使轮
+                            <input type="checkbox" name="phase" value="2" checked="checked"/>早期
+                            <input type="checkbox" name="phase" value="3"/>中期
+                            <input type="checkbox" name="phase" value="4" checked="checked"/>成熟期
+                            <#elseif investor.phase == "3,4">
+                            <input type="checkbox" name="phase" value="1"/>天使轮
+                            <input type="checkbox" name="phase" value="2"/>早期
+                            <input type="checkbox" name="phase" value="3" checked="checked"/>中期
+                            <input type="checkbox" name="phase" value="4" checked="checked"/>成熟期
+                            <#elseif investor.phase == "1,2,3">
+                            <input type="checkbox" name="phase" value="1" checked="checked"/>天使轮
+                            <input type="checkbox" name="phase" value="2" checked="checked"/>早期
+                            <input type="checkbox" name="phase" value="3" checked="checked"/>中期
+                            <input type="checkbox" name="phase" value="4"/>成熟期
+                            <#elseif investor.phase == "1,3,4">
+                            <input type="checkbox" name="phase" value="1" checked="checked"/>天使轮
+                            <input type="checkbox" name="phase" value="2"/>早期
+                            <input type="checkbox" name="phase" value="3" checked="checked"/>中期
+                            <input type="checkbox" name="phase" value="4" checked="checked"/>成熟期
+                            <#elseif investor.phase == "2,3,4">
+                            <input type="checkbox" name="phase" value="1"/>天使轮
+                            <input type="checkbox" name="phase" value="2" checked="checked"/>早期
+                            <input type="checkbox" name="phase" value="3" checked="checked"/>中期
+                            <input type="checkbox" name="phase" value="4" checked="checked"/>成熟期
+                            <#elseif investor.phase == "1,2,3,4">
+                            <input type="checkbox" name="phase" value="1" checked="checked"/>天使轮
+                            <input type="checkbox" name="phase" value="2" checked="checked"/>早期
+                            <input type="checkbox" name="phase" value="3" checked="checked"/>中期
+                            <input type="checkbox" name="phase" value="4" checked="checked"/>成熟期
                             </#if>
                         </td>
                     </tr>
@@ -94,10 +144,10 @@
 						<th>企业简介与优势：</th>
 						<td><textarea name="eprofile" class="input_for_add m-l-len" >${investor.eprofile!}</textarea></td>
 					</tr>
-					<tr>
-						<th>投资领域：</th>
-						<td><textarea name="serviceField" class="input_for_add m-l-len" >${investor.serviceField!}</textarea></td>
-					</tr>
+                    <tr>
+                        <th>投资领域：</th>
+                        <td><textarea name="serviceField" class="input_for_add m-l-len" >${investor.serviceField!}</textarea></td>
+                    </tr>
 					<tr class="rowBgColor">
 						<th>备注：</th>
 						<td><textarea name="remarks" class="input_for_add m-l-len" >${investor.remarks!}</textarea></td>
