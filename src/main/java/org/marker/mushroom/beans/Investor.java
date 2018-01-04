@@ -30,7 +30,7 @@ public class Investor implements Serializable {
 	private String website;
 	/** 关键字 */
 	private String keywords;
-	/** 企业名称 */
+	/** 投资机构名称 */
 	private String ename;
 	/** 联系人 */
 	private String contacts;
@@ -38,9 +38,9 @@ public class Investor implements Serializable {
 	private String phone;
 	/** 地址 */
 	private String address;
-	/** 企业简介 */
+	/** 企业简介与优势 */
 	private String eprofile;
-	/** 服务领域 */
+	/** 投资领域 */
 	private String serviceField;
 	/** 备注 */
 	private String remarks;
@@ -50,7 +50,7 @@ public class Investor implements Serializable {
 	private Date time;
 	/** 浏览量 */
 	private int views;
-	/** 发布状态：0草稿 1发布 */
+	/** 审核状态*/
 	private int status;
 	/** 内容类型 */
 	private int type;
@@ -58,8 +58,28 @@ public class Investor implements Serializable {
 	private String orginal;
 	/** 创建时间 **/
 	private Date createTime;
+	/** 投资案例*/
+	private String cas;
+	/** 投资阶段*/
+	private String phase;
 
 	private String userId;
+
+	public String getCas() {
+		return cas;
+	}
+
+	public void setCas(String cas) {
+		this.cas = cas;
+	}
+
+	public String getPhase() {
+		return phase;
+	}
+
+	public void setPhase(String phase) {
+		this.phase = phase;
+	}
 
 	public Integer getId() {
 		return id;
