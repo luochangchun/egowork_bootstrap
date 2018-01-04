@@ -6,9 +6,10 @@
 	     </select>
 	     &nbsp; 
 	     <select id="status" class="select_for_add" style="width:80px;border-left-width:1px; ">
-	        <option value="0,1">全部状态</option>
-	     	<option value="1">已 发 布</option>
-	     	<option value="0">草 稿 箱</option>
+	        <option value="0,1,2">全部状态</option>
+	     	<option value="1">已 审 核</option>
+	     	<option value="0">待 审 核</option>
+             <option value="2">驳 回</option>
 		 </select>
 	     &nbsp;
 		 <input id="keyword" class="input_for_add" style="width:180px;border-left-width:1px; "/>
@@ -103,6 +104,7 @@ $(function(){
 	};
 	// 注册插件
 	Handlebars.registerHelper('dateformat', function() {
+	    if(!this.time) return '';
 	  return new Date(this.time).format("yyyy-MM-dd hh:mm:ss");
 	});
 
@@ -269,11 +271,14 @@ function batchDelete(){
     <td>{{dateformat time}}</td>
     <td class="tac">
 		{{#compare status 1}}
-			<b style="color:green;"><i class="fa fa-check-circle"></i></b> 已发布
+			<b style="color:green;"><i class="fa fa-check-circle"></i></b> 已审核
 		{{/compare}}
 		{{#compare status 0}}
-			<b style="color:#999;"><i class="fa fa-info-circle"></i></b> 待发布
+			<b style="color:#999;"><i class="fa fa-info-circle"></i></b> 待审核
 		{{/compare}}
+        {{#compare status 2}}
+        <b style="color:#999;"><i class="fa fa-info-circle"></i></b> 驳回
+        {{/compare}}
     </td>
     <td class="tac" style="font-size:20px;color:blue;">
 		<a href="#" action="investor/edit.do?id={{id}}" param="" onclick="refreshContentByElement(this);">

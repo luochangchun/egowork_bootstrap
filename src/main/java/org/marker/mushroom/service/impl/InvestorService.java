@@ -32,7 +32,7 @@ public class InvestorService extends BaseService {
 		}
 
 		final String sql =
-			"select a.*, concat('/cms?type=',c.model,'&id=',CAST(a.id as char),'&time=',DATE_FORMAT(a.time,'%Y%m%d'))  url, c"
+			"select a.*, concat('/cms?type=',c.model,'&id=',CAST(a.id as char))  url, c"
 				+ ".name  as cname ,c.model from "
 				+ config.getPrefix() + "investor as a " + "left join " + config.getPrefix() + "category c on c.id = a.cid "
 				+ "where a.status in (" + status + ") and a.cid in (" + cid

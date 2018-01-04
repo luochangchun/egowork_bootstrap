@@ -1,5 +1,7 @@
 package org.marker.mushroom.controller;
 
+import org.marker.mushroom.beans.InvestProject;
+import org.marker.mushroom.beans.Investor;
 import org.marker.mushroom.beans.NeedsApply;
 import org.marker.mushroom.beans.OnlineApply;
 import org.marker.mushroom.beans.ResultMessage;
@@ -130,4 +132,34 @@ public class ApplyController extends SupportController {
 			return new ResultMessage(false, "申请失败！");
 		}
 	}
+
+	/**
+	 * 融资项目模块的申请
+	 */
+	@RequestMapping("/inster/invest")
+	@ResponseBody
+	public ResultMessage investinster(final InvestProject investProject) {
+		investProject.setStatus(0);
+		if (commonDao.save(investProject)) {
+			return new ResultMessage(true, "申请成功！");
+		} else {
+			return new ResultMessage(false, "申请失败！");
+		}
+	}
+
+	/**
+	 * 投资机构申请
+	 */
+	@RequestMapping("/inster/ment")
+	@ResponseBody
+	public ResultMessage mentinster(final Investor investor){
+		investor.setStatus(0);
+		investor.setCreateTime(new Date());
+		if(commonDao.save(investor)){
+			return new ResultMessage(true,"申请成功!");
+		}else{
+			return new ResultMessage(false,"申请失败!");
+		}
+	}
+
 }

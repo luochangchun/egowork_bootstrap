@@ -4,7 +4,6 @@
 			<li class="tab_index" onclick="setTabContent(this);">新建投资人信息</li>
 		</ul>
 			<button onclick="submit(this)" class="btn_tabbar submit_it" return="investor/list.do?currentPageNo=1">提交</button>
-			<button onclick="save(this)" class="btn_tabbar submit_it" return="investor/list.do?currentPageNo=1">保存草稿</button>
 	</div>
 	<form id="myForm" action="investor/save.do" method="post" onsubmit="return false;">
 	<input id="status" name="status" value="0" type="hidden" />
@@ -40,7 +39,7 @@
 							</div>
 						</td>
 					</tr>
-					<tr class="rowBgColor">
+					<tr>
 						<th>标签：</th>
 						<td>
 							<#list labels as x>
@@ -48,36 +47,49 @@
 							</#list>
 						</td>
 					</tr>
-					<tr>
+					<tr class="rowBgColor">
 						<th>联系人：</th>
 						<td>
 							<i class="fa fa-asterisk text-red"></i>
 							<input class="m-l-xxs" type="text" name="contacts" />
 						</td>
 					</tr>
-					<tr class="rowBgColor">
+					<tr>
 						<th>联系电话：</th>
 						<td>
 							<i class="fa fa-asterisk text-red"></i>
 							<input class="m-l-xxs" type="text" name="phone" />
 						</td>
 					</tr>
-					<tr>
+					<tr class="rowBgColor">
 						<th>地址：</th>
 						<td><input class="m-l-len" type="text" name="address" /></td>
 					</tr>
+                    <tr>
+                        <th>投资阶段：</th>
+                        <td>
+                            <input type="checkbox" name="phase" value="1"/>天使轮
+                            <input type="checkbox" name="phase" value="2"/>早期
+                            <input type="checkbox" name="phase" value="3"/>中期
+                            <input type="checkbox" name="phase" value="4"/>成熟期
+                        </td>
+                    </tr>
 					<tr class="rowBgColor">
 						<th>企业简介与优势：</th>
 						<td><textarea name="eprofile" class="input_for_add m-l-len" ></textarea></td>
 					</tr>
 					<tr>
-						<th>服务领域：</th>
+						<th>投资领域：</th>
 						<td><textarea name="serviceField" class="input_for_add m-l-len" ></textarea></td>
 					</tr>
 					<tr class="rowBgColor">
 						<th>备注：</th>
 						<td><textarea name="remarks" class="input_for_add m-l-len" ></textarea></td>
 					</tr>
+                    <tr>
+                        <th>投资案例：</th>
+                        <td><textarea name="cas" class="input_for_add m-l-len" ></textarea></td>
+                    </tr>
 				</tbody>
 			</table>
 		</div>
@@ -167,7 +179,7 @@ $(function(){
 });*/
 
 function submit(obj){
-	$("#status").val("1");
+	$("#status").val("0");
 //    window.editor.sync();//手动提交需要手动同步编辑器数据
 	var isDone = true;
 	$("input[aria-required='true']").each(function(){

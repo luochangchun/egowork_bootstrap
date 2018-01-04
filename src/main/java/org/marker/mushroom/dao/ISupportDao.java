@@ -58,11 +58,11 @@ public interface ISupportDao {
 	Map<String, Object> findById(Class<?> clzz, Serializable id);
 
 	public Page findByPage(int currentPageNo, int pageSize, String sql, Object... args);
-	
 
-	
+
+
 	/*
-	 * Map<String, Object> 
+	 * Map<String, Object>
 	 */
 
 	/**

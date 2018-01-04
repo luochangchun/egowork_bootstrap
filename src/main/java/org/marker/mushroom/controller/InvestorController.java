@@ -81,21 +81,13 @@ public class InvestorController extends SupportController {
 	@ResponseBody
 	@RequestMapping("/save")
 	public Object save(@ModelAttribute("investor") final Investor investor, @RequestParam("cid") final int cid) {
-		investor.setTime(new Date());
 		investor.setCreateTime(new Date());
 		investor.setCid(cid);// 这里是因为不能注入bean里
 
-		String msg;
-		if (investor.getStatus() == 1) {
-			msg = "发布";
-		} else {
-			msg = "保存草稿";
-		}
-
 		if (commonDao.save(investor)) {
-			return new ResultMessage(true, msg + "成功!");
+			return new ResultMessage(true,  "提交成功!");
 		} else {
-			return new ResultMessage(false, msg + "失败!");
+			return new ResultMessage(false,  "提交失败!");
 		}
 	}
 
@@ -103,7 +95,9 @@ public class InvestorController extends SupportController {
 	@ResponseBody
 	@RequestMapping("/update")
 	public Object update(@ModelAttribute("investor") final Investor investor) {
-		investor.setTime(new Date());
+		if(investor.getStatus()==1){
+			investor.setTime(new Date());
+		}
 
 		if (commonDao.update(investor)) {
 			return new ResultMessage(true, "更新成功!");

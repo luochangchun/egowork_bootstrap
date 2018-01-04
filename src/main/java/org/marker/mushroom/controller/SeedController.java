@@ -38,7 +38,7 @@ public class SeedController extends SupportController{
 	//删除
 	@ResponseBody
 	@RequestMapping("/delete")
-	public Object delete(@RequestParam("rid") String rid){
+	public ResultMessage delete(@RequestParam("rid") String rid){
 		Boolean struts = commonDao.deleteByIds(Seed.class, rid);
 		if(struts){
 			return new ResultMessage(true,"删除成功！");
@@ -57,7 +57,7 @@ public class SeedController extends SupportController{
 	//保存操作
 	@ResponseBody
 	@RequestMapping("/save")
-	public Object save(@Validated(ChipValidator.class) Seed seed) {
+	public ResultMessage save(@Validated(ChipValidator.class) Seed seed) {
 		seed.setTime(new Date());
 		if (commonDao.save(seed)) {
 			return new ResultMessage(true, "添加成功!");
@@ -77,7 +77,7 @@ public class SeedController extends SupportController{
 	/** 修改操作 */
 	@ResponseBody
 	@RequestMapping("/update")
-	public Object update(Seed seed){
+	public ResultMessage update(Seed seed){
 		seed.setTime(new Date());
 		if (commonDao.update(seed)) {
 			return new ResultMessage(true, "更新成功!");

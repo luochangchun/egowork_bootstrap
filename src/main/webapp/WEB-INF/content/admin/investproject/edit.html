@@ -1,0 +1,134 @@
+<div class="content">
+	<div class="tab_bar">
+		<ul>
+			<li class="tab_index" onclick="setTabContent(this);">修改状态</li>
+		</ul>
+		<button class="btn_tabbar submit_it" onclick="submit(this);" return="investproject/list.do">保 存</button>
+	</div>
+
+	<form id="myForm" action="investproject/update.do" method="post">
+		<input name="id" type="hidden" value="${investproject.id?c}" />
+		<div class="tab_content">
+			<div class="tab_item tab_show">
+				<table class="table_for_add">
+					<tbody>
+						<tr>
+							<th width="140">审核状态：</th>
+							<td>
+								<select class="select_for_add" name="status" value="${investproject.status!}">
+									<#switch investproject.status>
+									<#case 0>
+									<option value="0" selected>审核中</option>
+									<option value="1">通过</option>
+                                    <option value="2">驳回</option>
+									<#break>
+									<#case 1>
+									<option value="0">审核中</option>
+									<option value="1" selected>通过</option>
+                                    <option value="2">驳回</option>
+									<#break>
+                                    <#case 2>
+                                    <option value="0">审核中</option>
+                                    <option value="1">通过</option>
+                                    <option value="2" selected>驳回</option>
+                                    <#break>
+									<#default>
+									<option value="0" selected>审核中</option>
+									<option value="1">通过</option>
+                                    <option value="2">驳回</option>
+									</#switch>
+								</select>
+							</td>
+						</tr>
+                        <tr class="rowBgColor">
+                            <th width="140">融资进度：</th>
+                            <td>
+                                <#if investproject.progress = "融资中">
+                                <input type="radio" value="融资中" name="progress" checked="checked"/>融资中
+                                <input type="radio" value="融资完成" name="progress" />融资完成
+                                <#else>
+                                <input type="radio" value="融资中" name="progress"/>融资中
+                                <input type="radio" value="融资完成" name="progress" checked="checked"/>融资完成
+                                </#if>
+                            </td>
+                        </tr>
+						<tr>
+							<th width="140">项目名称：</th>
+							<td>
+								<input class="input_for_add" name="name" type="text" value="${investproject.name!}" required="true" readonly="readonly">
+							</td>
+						</tr>
+						<tr class="rowBgColor">
+							<th width="140">公司名称：</th>
+							<td>
+								<input class="input_for_add" name="enterpirse" type="text" value="${investproject.enterpirse!}" readonly="readonly">
+							</td>
+						</tr>
+						<tr>
+							<th width="140">融资金额：</th>
+							<td>
+								<input class="input_for_add" name="capital" type="text" value="${investproject.capital!}" readonly="readonly">
+							</td>
+						</tr>
+                        <tr class="rowBgColor">
+                            <th width="140">项目优势：</th>
+                            <td>
+                                <textarea name="advantage" readonly="readonly" style="resize:none;" required="true" maxlength="200" onchange="this.value=this.value.substring(0, 200)" onkeydown="this.value=this.value.substring(0, 200)" onkeyup="this.value=this.value.substring(0, 200)">${(investproject.advantage)!}</textarea>
+                                <p style="margin:0;">(*最多可输入200字)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th width="140">行业领域：</th>
+                            <td>
+                                <input class="input_for_add" name="field" type="text" value="${investproject.field!}" readonly="readonly">
+                            </td>
+                        </tr>
+                        <tr class="rowBgColor">
+                            <th width="140">联系人：</th>
+                            <td>
+                                <input class="input_for_add" name="contact" type="text" value="${investproject.contact!}" readonly="readonly">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th width="140">联系电话：</th>
+                            <td>
+                                <input class="input_for_add" name="phone" type="text" value="${investproject.phone!}" readonly="readonly">
+                            </td>
+                        </tr>
+                        <tr class="rowBgColor">
+                            <th width="140">邮箱：</th>
+                            <td>
+                                <input class="input_for_add" name="email" type="text" value="${investproject.email!}" readonly="readonly">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th width="140">公司简介：</th>
+                            <td>
+                                <textarea name="intro" readonly="readonly" style="resize:none;" required="true" maxlength="200" onchange="this.value=this.value.substring(0, 200)" onkeydown="this.value=this.value.substring(0, 200)" onkeyup="this.value=this.value.substring(0, 200)">${(investproject.intro)!}</textarea>
+                                <p style="margin:0;">(*最多可输入200字)</p>
+                            </td>
+                        </tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</form>
+
+<script type="text/javascript">
+	function submit(obj) {
+		var isDone = true;
+		$("input[required='true']").each(function () {
+			if ($(this).val() == '') {
+				alert('请完善表单！');
+				isDone = false;
+				return false;
+			}
+		});
+		if (!isDone) return;
+		submitActionForm(obj);
+	}
+
+   function back(){
+
+   }
+</script>
