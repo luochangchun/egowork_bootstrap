@@ -139,6 +139,7 @@ public class ApplyController extends SupportController {
 	@RequestMapping("/inster/invest")
 	@ResponseBody
 	public ResultMessage investinster(final InvestProject investProject) {
+		investProject.setTime(new Date());
 		investProject.setStatus(0);
 		if (commonDao.save(investProject)) {
 			return new ResultMessage(true, "申请成功！");
