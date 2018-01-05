@@ -14,7 +14,7 @@ function initCourse() {
                 var turl ="http://vedio.whwomen.org.cn/free/play/";
                 for (var i = 0; i < entity.length; i++) {
                     if (i == 2) {
-                        htmlStr += '<a target="__blank" href=' + turl + entity[i]['courseId'] + ' class="col-lg-4 col-md-4 col-sm-6 col-sm-12 item rel">\
+                        htmlStr += '<div class="col-lg-4 col-md-4 col-sm-6 col-sm-12 item rel">\
                         <h2 class="text-ellipsis">'+ entity[i]['courseName'] + '</h2>\
                         <p class="text-ellipsis-muti text-ellipsis-2">'+ entity[i]['context'] + '</p>\
                         <p>\
@@ -22,13 +22,16 @@ function initCourse() {
                             <i class="fa fa-eye" aria-hidden="true"></i>\
                             <span>'+ entity[i]['pageViewcount'] + '</span>\
                         </p>\
-                        <img src=' + domain + entity[i]['logo'] + ' alt="">\
-                            <div class="line line_b abs"></div>\
-                        </a>';
+                        <div class="rel ovh" style="height:186px;">\
+                            <img src = ' + domain + entity[i]['logo'] + ' alt = "" >\
+                            <div class="abs onlineMask courseMask"><a target="__blank" href=' + turl + entity[i]['courseId'] +' class="tc white db">开始学习</a></div>\
+                        </div>\
+                        <div class="line line_b abs"></div>\
+                        </div>';
                         continue;
                     }
                     if (i == 3 || i == 4) {
-                        htmlStr += '<a target="__blank" href=' + turl + entity[i]['courseId'] + ' class="col-lg-4 col-md-4 col-sm-6 col-sm-12 item rel">\
+                        htmlStr += '<div class="col-lg-4 col-md-4 col-sm-6 col-sm-12 item rel">\
                         <h2 class="text-ellipsis">'+ entity[i]['courseName'] + '</h2>\
                         <p class="text-ellipsis-muti text-ellipsis-2">'+ entity[i]['context'] + '</p>\
                         <p>\
@@ -36,13 +39,16 @@ function initCourse() {
                             <i class="fa fa-eye" aria-hidden="true"></i>\
                             <span>'+ entity[i]['pageViewcount'] + '</span>\
                         </p>\
-                        <img src=' + domain + entity[i]['logo'] + ' alt="">\
+                        <div class="rel ovh" style="height:186px;">\
+                            <img src = ' + domain + entity[i]['logo'] + ' alt = "" >\
+                            <div class="abs onlineMask courseMask"><a target="__blank" href=' + turl + entity[i]['courseId'] +' class="tc white db">开始学习</a></div>\
+                        </div>\
                         <div class="line line_r abs"></div>\
-                        </a>';
+                        </div>';
                         continue;
                     }
                     if (i == 5) {
-                        htmlStr += '<a target="__blank" href=' + turl + entity[i]['courseId'] + ' class="col-lg-4 col-md-4 col-sm-6 col-sm-12 item rel">\
+                        htmlStr += '<div class="col-lg-4 col-md-4 col-sm-6 col-sm-12 item rel">\
                         <h2 class="text-ellipsis">'+ entity[i]['courseName'] + '</h2>\
                         <p class="text-ellipsis-muti text-ellipsis-2">'+ entity[i]['context'] + '</p>\
                         <p>\
@@ -50,11 +56,14 @@ function initCourse() {
                             <i class="fa fa-eye" aria-hidden="true"></i>\
                             <span>'+ entity[i]['pageViewcount'] + '</span>\
                         </p>\
-                        <img src=' + domain + entity[i]['logo'] + ' alt="">\
-                        </a>';
+                        <div class="rel ovh" style="height:186px;">\
+                            <img src = ' + domain + entity[i]['logo'] + ' alt = "" >\
+                            <div class="abs onlineMask courseMask"><a target="__blank" href=' + turl + entity[i]['courseId'] +' class="tc white db">开始学习</a></div>\
+                        </div>\
+                        </div>';
                         continue;
                     }
-                    htmlStr += '<a target="__blank" href=' + turl + entity[i]['courseId'] + ' class="col-lg-4 col-md-4 col-sm-6 col-sm-12 item rel">\
+                    htmlStr += '<div class="col-lg-4 col-md-4 col-sm-6 col-sm-12 item rel">\
                     <h2 class="text-ellipsis">'+ entity[i]['courseName'] + '</h2>\
                     <p class="text-ellipsis-muti text-ellipsis-2">'+ entity[i]['context'] +'</p>\
                     <p>\
@@ -62,10 +71,13 @@ function initCourse() {
                         <i class="fa fa-eye" aria-hidden="true"></i>\
                         <span>'+ entity[i]['pageViewcount'] +'</span>\
                     </p>\
-                    <img src=' + domain + entity[i]['logo'] + ' alt="">\
+                    <div class="rel ovh" style="height:186px;">\
+                            <img src = ' + domain + entity[i]['logo'] + ' alt = "" >\
+                            <div class="abs onlineMask courseMask"><a target="__blank" href=' + turl + entity[i]['courseId'] +' class="tc white db">开始学习</a></div>\
+                        </div>\
                         <div class="line line_r abs"></div>\
                         <div class="line line_b abs"></div>\
-                    </a>';
+                    </div>';
                 }
                 $('#courseList').html(htmlStr);
             }
