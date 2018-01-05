@@ -1,7 +1,7 @@
 a {
     text-decoration: none;
 }
-.navbar-nav a.cur {
+.navbar-nav a.cur, .theme_color {
     color: #18b494;
 }
 a.goLogin:hover {
@@ -1368,6 +1368,9 @@ a.goLogin:hover {
     top: 0;
     right: 0;
 }
+.financial_common h1 a:hover {
+    color: #18b494;
+}
 .financial_banner {
     width: 100%;
     height: 500px;
@@ -1583,6 +1586,132 @@ a.goLogin:hover {
     color: #fff;
 }
 
+/* 融资项目详情 */
+.breadcrumbList {
+    margin:20px 0;
+}
+.breadcrumbWrap a{
+    font-size: 14px;
+    font-weight: bold;
+    color: #999;
+}
+.breadcrumbWrap a:hover {
+    color: #18b494;
+}
+.project_detail .detail_top {
+    border: 1px solid #eaeaea;
+    margin-bottom: 40px;
+}
+.project_detail .detail_top .rel {
+    height: 180px;
+}
+.project_detail .detail_top .img_wrap {
+    width: 215px;
+    height: 180px;
+    line-height: 180px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    overflow: hidden;
+    top: 50%;
+    left: 50%;
+    margin-left: -107px;
+    margin-top: -90px;
+}
+.project_detail .detail_top .img_wrap img {
+    width: 150px;
+    height: 150px;
+    vertical-align: middle;
+}
+.project_detail .detail_top .info {
+    padding: 30px;
+    height: 180px;
+    border-left: 1px dashed #e6e6e6;
+    background-color: #f1f1f1;
+}
+.project_detail .detail_top .info h1 {
+    font-size: 26px;
+    line-height: 30px;
+    margin-bottom: 20px;
+    color: #333;
+}
+.project_detail .detail_top .info h1 span {
+    background-color: #18b494;
+    color: #fff;
+    font-size: 14px;
+    padding: 2px 8px;
+    vertical-align: bottom;
+    border-radius: 10px;
+}
+.project_detail .detail_top .info p {
+    color: #999;
+    margin-bottom: 15px;
+}
+.project_detail .detail_top .info ul li {
+    display: inline-block;
+    color: #999;
+    background-color: #ffe9cc;
+    padding: 3px;
+    font-size: 12px;
+}
+.detail_body_info h1,
+.detail_body_recommend h1 {
+    line-height: 38px;
+    border: 1px solid #eaeaea;
+    background-color: #f9f9f9;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+.detail_body_info h1 i{
+    margin-right: 5px;
+    color:#18b494;
+    font-size: 16px;
+}
+.detail_body_info p {
+    border-left: 1px solid #e6e6e6;
+    border-right: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;
+    padding: 15px 20px;
+    line-height: 22px;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+.detail_body_recommend h1{
+    font-size: 14px;
+}
+.detail_body_recommend li {
+    margin-bottom: 20px;
+    display: table;
+    text-align: center;
+}
+.detail_body_recommend a {
+    width: 60px;
+    height: 60px;
+    display: table-cell;
+    float: left;
+    border: 1px solid #e6e6e6;
+    margin-right: 20px;
+    text-align: center;
+    padding: 5px;
+    overflow: hidden;
+}
+.detail_body_recommend a img {
+    width: 100%;
+    height: 100%;
+}
+.detail_body_recommend ul {
+    border-left: 1px solid #e6e6e6;
+    border-right: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;
+    padding: 20px;
+}
+.detail_body_recommend li p {
+    vertical-align: middle;
+    padding-right: 10px;
+    display: table-cell;
+    width: auto;
+}
 @media (max-width: 768px) {
     .financial_top_icon .item .iconl,
     .financial_top_icon .item .iconr {float: none}
