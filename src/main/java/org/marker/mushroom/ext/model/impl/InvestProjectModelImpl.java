@@ -36,7 +36,7 @@ public class InvestProjectModelImpl extends ContentModel {
 		final HttpServletRequest request = ActionContext.getReq();
 
 		final String sql =
-			"select  M.*,C.name cname, concat('/cms?','type=investProject','&id=',CAST(M.id as char),'&time=',DATE_FORMAT(M.time,"
+			"select  M.*, concat('/cms?','type=investProject','&id=',CAST(M.id as char),'&time=',DATE_FORMAT(M.time,"
 				+ "'%Y%m%d')) url from " + prefix + "invest_project M where M.id=?";
 		final Object investProject = commonDao.queryForMap(sql, id);
 

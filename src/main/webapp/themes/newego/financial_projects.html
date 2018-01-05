@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>
+<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+
+<!--#include file="home/header.html" -->
+
+<body>
+	<div class="financial_index">
+		<div style="background-color:#fff;margin-bottom:20px">
+			<div class="container">
+				<ul class="list_tab_3">
+					<a href="/investor.html" class="black2">云创金融</a>&nbsp;/
+					<a class="black2">融资项目列表</a>
+				</ul>
+			</div>
+		</div>
+		<div class="financial_common financial_projects" style="padding:0">
+			<div class="container">
+				<div class="row clearfix">
+					<@page model="investProject" size="8">
+					<#list page.data as invest_project>
+					<div class="col-lg-3 col-md-3 col-xs-6 col-xs-12">
+						<a class="db item" href="/cms?type=investProject&id=${invest_project.id}">
+							<div class="rel">
+								<div class="abs mask"></div>
+								<img src="img/mr.jpg" alt="">
+								<!-- <p class="abs tc text-ellipsis">${invest_project.enterpirse!}</p> -->
+								<span class="abs white">已完成</span>
+							</div>
+							<div class="para">
+								<h2 class="tc text-ellipsis">${invest_project.name!}</h2>
+								<p class="tc money text-ellipsis">${invest_project.enterpirse!}</p>
+								<p class="tc money">融资金额：
+									<span>${invest_project.capital!}</span>万元
+								</p>
+								<p class="advantage text-ellipsis-muti text-ellipsis-2">${invest_project.advantage!}</p>
+							</div>
+						</a>
+					</div>
+					</#list>
+					</@page>
+					<!--#include file="../common/page.html"-->
+					<@paginate currentPage=page.currentPageNo totalPage=page.totalPages actionUrl="" />
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	
+
+</body>
+<!--#include file="home/footer.html" -->
+
+</html>

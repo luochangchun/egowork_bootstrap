@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>
+<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+
+<!--#include file="home/header.html" -->
+
+<body>
+	<div class="financial_index">
+		<div class="breadcrumbList">
+			<div class="container">
+				<ul class="breadcrumbWrap">
+					<a href="/investor.html">云创金融</a>&nbsp;/
+					<a href="/financial_agency.html">投资机构列表</a>&nbsp;/
+					<a>${investor.title!}</a>
+				</ul>
+			</div>
+		</div>
+		<div class="project_detail">
+			<div class="container">
+				<div class="detail_top clearfix">
+					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 rel db">
+						<div class="img_wrap abs">
+							<img src="${investor.icon!}" alt="">
+						</div>
+					</div>
+					<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 info">
+						<h1>${investor.title!}</h1>
+						<p class="b">${investor.explain!}</p>
+						<ul>
+							<li>${investor.label!}</li>
+						</ul>
+					</div>
+				</div>
+				<div class="detail_body row clearfix">
+					<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 detail_body_info">
+						<h1>
+							<i class="fa fa-file-text-o" aria-hidden="true"></i>公司简介</h1>
+							<p>${investor.eprofile!}</p>
+						<h1>
+							<i class="fa fa-file-word-o" aria-hidden="true"></i>投资领域</h1>
+							<p>${investor.serviceField!}</p>
+						<h1>
+							<i class="fa fa-file-powerpoint-o" aria-hidden="true"></i>备注</h1>
+							<p>${investor.remarks!}</p>
+					</div>
+					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 detail_body_recommend">
+						<h1>更多机构</h1>
+						<ul>
+							<!-- {investor:list table=(investor) status=(1) limit=(4) order=(time desc)} -->
+							<li>
+								<a href="" class="">
+									<img src="${investor.icon!}">
+								</a>
+								<p>${investor.title!}</p>
+							</li>
+							<!-- {/list} -->
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<!--#include file="home/footer.html" -->
+
+</html>

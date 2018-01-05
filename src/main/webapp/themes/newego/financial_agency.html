@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>
+<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+
+<!--#include file="home/header.html" -->
+
+<body>
+	<div class="financial_index">
+		<div style="background-color:#fff;margin-bottom:20px">
+			<div class="container">
+				<ul class="list_tab_3">
+					<a href="/investor.html" class="black2">云创金融</a>&nbsp;/
+					<a class="black2">投资机构列表</a>
+				</ul>
+			</div>
+		</div>
+		<div class="financial_common financial_agency" style="padding:0;background-color: #fff;">
+			<div class="container">
+				<div class="row clearfix">
+					<@page model="investor" size="8">
+						<#list page.data as investor>
+					<div class="col-lg-3 col-md-3 col-xs-6 col-xs-12">
+						<a class="db item" href="/cms?type=investor&id=${investor.id}" style="background-color: #f1f1f1;"">
+							<img src="${investor.icon!}" alt="">
+							<h2 class="tc text-ellipsis">${investor.title!}</h2>
+							<div class="h2_bott"></div>
+							<p class="text-ellipsis-muti text-ellipsis-2">${investor.explain!}</p>
+							<div class="tc tag">${investor.label!}</div>
+						</a>
+					</div>
+					</#list>
+					</@page>
+					<!--#include file="../common/page.html"-->
+					<@paginate currentPage=page.currentPageNo totalPage=page.totalPages actionUrl="" />
+				</div>
+				
+			</div>
+		</div>
+
+	</div>
+
+
+</body>
+<!--#include file="home/footer.html" -->
+
+</html>

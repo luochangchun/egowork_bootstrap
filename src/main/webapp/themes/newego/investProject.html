@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>
+<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+
+<!--#include file="home/header.html" -->
+
+<body>
+	<div class="financial_index">
+		<div class="breadcrumbList">
+			<div class="container">
+				<ul class="breadcrumbWrap">
+					<a href="/investor.html">云创金融</a>&nbsp;/
+					<a href="/financial_projects.html">融资项目列表</a>&nbsp;/
+					<a>${investProject.name!}</a>
+				</ul>
+			</div>
+		</div>
+		<div class="project_detail">
+			<div class="container">
+				<div class="detail_top clearfix">
+					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 rel db">
+						<div class="img_wrap abs">
+							<img src="img/mr.jpg" alt="">
+						</div>
+					</div>
+					<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 info">
+						<h1>${investProject.name!} <span>${investProject.progress!}</span></h1>
+						<p class="b">${investProject.enterpirse!}</p>
+						<ul>
+							<li>${investProject.field!}</li>
+							<!-- <li>电子商务</li> -->
+						</ul>
+					</div>
+				</div>
+				<div class="detail_body row clearfix">
+					<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 detail_body_info">
+						<h1><i class="fa fa-file-text-o" aria-hidden="true"></i>公司简介</h1>
+						<p>${investProject.intro!}</p>
+						<h1><i class="fa fa-file-word-o" aria-hidden="true"></i>项目优势</h1>
+						<p>${investProject.advantage!}</p>
+						<h1><i class="fa fa-file-powerpoint-o" aria-hidden="true"></i>融资计划</h1>
+						<p>${investProject.capital!}万元</p>
+					</div>
+					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 detail_body_recommend">
+						<h1>更多项目</h1>
+						<ul>
+							<!-- {invest_project:list table=(investProject) status=(1) limit=(4) order=(time desc)} -->
+								<li>
+									<a href="/cms?type=investProject&id=${invest_project.id}">
+										<img src="img/1.png">
+									</a>
+									<p>${invest_project.name!}</p>
+								</li>
+							<!-- {/list} -->
+							
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<!--#include file="home/footer.html" -->
+
+</html>
