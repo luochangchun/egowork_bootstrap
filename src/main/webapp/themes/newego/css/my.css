@@ -1368,9 +1368,9 @@ a.goLogin:hover {
     top: 0;
     right: 0;
 }
-.financial_common h1 a:hover {
+/* .financial_common h1 a:hover {
     color: #18b494;
-}
+} */
 .financial_banner {
     width: 100%;
     height: 500px;
@@ -1442,6 +1442,15 @@ a.goLogin:hover {
     padding: 20px;
     box-sizing: border-box;
     margin-bottom: 20px;
+    -webkit-transition: all .2s linear;
+    transition: all .2s linear;
+}
+.financial_areas .item:hover {
+    z-index: 2;
+    -webkit-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    -webkit-transform: translate3d(0, -2px, 0);
+    transform: translate3d(0, -2px, 0);
 }
 
 .financial_areas h1{
@@ -1525,7 +1534,7 @@ a.goLogin:hover {
     font-size: 22px;
     top: 60px;
     left: 0;
-    color: #fff;
+    color: #333;
 }
 
 .financial_projects .para {
@@ -1653,6 +1662,9 @@ a.goLogin:hover {
     background-color: #ffe9cc;
     padding: 3px;
     font-size: 12px;
+}
+.detail_body {
+    margin-bottom: 50px;
 }
 .detail_body_info h1,
 .detail_body_recommend h1 {

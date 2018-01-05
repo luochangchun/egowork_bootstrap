@@ -24,13 +24,12 @@
 				<div class="row clearfix">
 					<@page model="investor" size="8">
 						<#list page.data as investor>
-					
 					<div class="col-lg-3 col-md-3 col-xs-6 col-xs-12">
-						<a class="db item" href="${investor.url!}" style="background-color: #f1f1f1;"">
+						<a class="db item" href="/cms?type=investor&id=${investor.id}" style="background-color: #f1f1f1;"">
 							<img src="${investor.icon!}" alt="">
-							<h2 class="tc">${investor.title!}</h2>
+							<h2 class="tc text-ellipsis">${investor.title!}</h2>
 							<div class="h2_bott"></div>
-							<p>${investor.explain!}</p>
+							<p class="text-ellipsis-muti text-ellipsis-2">${investor.explain!}</p>
 							<div class="tc tag">${investor.label!}</div>
 						</a>
 					</div>

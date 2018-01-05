@@ -25,19 +25,20 @@
 					<@page model="investProject" size="8">
 					<#list page.data as invest_project>
 					<div class="col-lg-3 col-md-3 col-xs-6 col-xs-12">
-						<a class="db item" href="${invest_project.url!}">
+						<a class="db item" href="/cms?type=investProject&id=${invest_project.id}">
 							<div class="rel">
 								<div class="abs mask"></div>
-								<img src="img/banner_1.png" alt="">
-								<p class="abs tc text-ellipsis">${invest_project.enterpirse!}</p>
+								<img src="img/mr.jpg" alt="">
+								<!-- <p class="abs tc text-ellipsis">${invest_project.enterpirse!}</p> -->
 								<span class="abs white">已完成</span>
 							</div>
 							<div class="para">
-								<h2 class="tc">${invest_project.name!}</h2>
+								<h2 class="tc text-ellipsis">${invest_project.name!}</h2>
+								<p class="tc money text-ellipsis">${invest_project.enterpirse!}</p>
 								<p class="tc money">融资金额：
 									<span>${invest_project.capital!}</span>万元
 								</p>
-								<p class="advantage">${invest_project.advantage!}</p>
+								<p class="advantage text-ellipsis-muti text-ellipsis-2">${invest_project.advantage!}</p>
 							</div>
 						</a>
 					</div>
