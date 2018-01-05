@@ -1422,7 +1422,12 @@ body {
     font-weight:bold;
 }
 
-
+.service-left-img-p{
+    position:absolute;
+    top: 30px;
+    left: 10px;
+    color: #fff;
+}
 
 
 
