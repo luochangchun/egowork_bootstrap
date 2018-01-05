@@ -65,15 +65,15 @@
 						<th>地址：</th>
 						<td><input class="m-l-len" type="text" name="address" /></td>
 					</tr>
-                    <tr>
-                        <th>投资阶段：</th>
-                        <td>
-                            <input type="checkbox" name="phase" value="1"/>天使轮
-                            <input type="checkbox" name="phase" value="2"/>早期
-                            <input type="checkbox" name="phase" value="3"/>中期
-                            <input type="checkbox" name="phase" value="4"/>成熟期
-                        </td>
-                    </tr>
+					<tr>
+						<th>投资阶段：</th>
+						<td>
+							<input type="checkbox" name="phase" value="1"/>天使轮
+							<input type="checkbox" name="phase" value="2"/>早期
+							<input type="checkbox" name="phase" value="3"/>中期
+							<input type="checkbox" name="phase" value="4"/>成熟期
+						</td>
+					</tr>
 					<tr class="rowBgColor">
 						<th>企业简介与优势：</th>
 						<td><textarea name="eprofile" class="input_for_add m-l-len" ></textarea></td>
@@ -86,10 +86,10 @@
 						<th>备注：</th>
 						<td><textarea name="remarks" class="input_for_add m-l-len" ></textarea></td>
 					</tr>
-                    <tr>
-                        <th>投资案例：</th>
-                        <td><textarea name="cas" class="input_for_add m-l-len" ></textarea></td>
-                    </tr>
+					<tr>
+						<th>投资案例：</th>
+						<td><textarea name="cas" class="input_for_add m-l-len" ></textarea></td>
+					</tr>
 				</tbody>
 			</table>
 		</div>
@@ -106,14 +106,14 @@
 			<div class="frame_content" style="height:464px;">
 				<div class="frame_margin markdown">
 					<form id="uploadForm" action="img/upload.do" method="post" enctype="multipart/form-data" onsubmit="return false;" style="margin-bottom:15px;">
-						<input type="file" onChange="inputImageChange(this)" name="file" style="position:absolute;width:70px;opacity:0;"/>
-						<button type="buttom" class="submit_it" style="float: inherit;">选择图片</button>
+						<input type="file" onChange="inputImageLoaded(this)" name="file" style="position:absolute;width:70px;opacity:0;"/>
+						<button type="button" class="submit_it" style="float: inherit;">选择图片</button>
 						<input id="imgSrc" name="imgSrc" type="text" style="display:none;"/>
 						<button type="submit" onclick="upload(this)" class=" submit_it" style="float: inherit;">上传</button>
 					</form>
-					<div class="img-container" style="max-width:400px;max-height:300px;float:left;margin-right:15px;">
-			          <img id="image">
-			        </div>
+					<div class="img-container" style="max-width:600px;max-height:300px;float:left;margin-right:15px;">
+					  <img id="image" style="max-width:600px;max-height:300px;">
+					</div>
 					<div id="view" style="display:none;border: 1px solid #C8C8C8;width:300px;float:left;"></div>
 				</div>
 			</div>
@@ -121,62 +121,7 @@
 	</div>
 </div>
 <script type="text/javascript">
-    //上传图片
-    function upload(obj)
-    {
-//		window.editor.sync();//手动提交需要手动同步编辑器数据
-        uploadForm(obj);
-    }
 imgChange();
-$("#image").on({
-  ready: function (e) {
-  	getCroppedCanvas();
-  },
-  cropmove: function (e) {
-  	getCroppedCanvas();
-  },
-  crop: function (e) {
-  	getCroppedCanvas();
-  },
-  zoom: function (e) {
-  	getCroppedCanvas();
-  }
-}).cropper();
-
-/*//初始化UE编辑器
-$(function(){
-	$("input[name='type']").click(function(){
-		editor.execCommand( 'source');
-		if($(this).val() == 1){
-			editor.setDisabled();
-		}else{
-			editor.setEnabled();
-		}
-		editor.setContent('');
-	});
-
-
-
-	if(window.editor != null){
-		window.editor.destroy();
-	}
-
-	//实例化编辑器
-	//建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
-	window.editor = UE.getEditor('mushroomeditor');
-
-	window.editor.ready(function(){
-		$("#title").focus();
-
-		var status = editor.queryCommandState( 'source' );
-		if(status != 1){
-
-		}
-
-
-	});
-
-});*/
 
 function submit(obj){
 	$("#status").val("0");
@@ -235,7 +180,7 @@ $('#myForm').validator({
  * */
 function keyword(){
 	var title = $("#title").val();
-    var content = window.editor.getContent();
+	var content = window.editor.getContent();
 	$.ajax({
 		url:"../keywords.do",
 		type:"POST",
