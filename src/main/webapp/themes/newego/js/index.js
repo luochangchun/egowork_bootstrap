@@ -127,6 +127,22 @@ $(document).ready(function () {
 			$("#rentPhone").parent().parent('.form-group').removeClass("has-error");
 		}
 	})
+	$("#financial_phone").blur(function () {
+		var financial_phone = $("#financial_phone").val();
+		if (financial_phone === "" || !tel_reg.test(financial_phone) || financial_phone.length < 7) {
+			$("#financial_phone").parent().parent('.form-group').addClass("has-error");
+		} else {
+			$("#financial_phone").parent().parent('.form-group').removeClass("has-error");
+		}
+	})
+	$("#agency_phone").blur(function () {
+		var agency_phone = $("#agency_phone").val();
+		if (agency_phone === "" || !tel_reg.test(agency_phone) || agency_phone.length < 7) {
+			$("#agency_phone").parent().parent('.form-group').addClass("has-error");
+		} else {
+			$("#agency_phone").parent().parent('.form-group').removeClass("has-error");
+		}
+	})
 	// 预约参观提交
 	function bookVisit(e) {
 		var visitName = $("#visitName").val();
@@ -752,6 +768,170 @@ $(document).ready(function () {
 	}
 	$("#trainBtn").click(function () {
 		trainService();
+	})
+
+	// 发布融资项目
+	function financialForm() {
+		var financial_enterpirse = $("#financial_enterpirse").val();//公司名称
+		var financial_field = $("#financial_field").val();//行业领域
+		var financial_name = $("#financial_name").val();//项目名称
+		var financial_advantage = $("#financial_advantage").val();//项目优势
+		var financial_capital = $("#financial_capital").val();//融资金额
+		var financial_progress = $("#financial_progress option:selected").text();//融资进度
+		var financial_contact = $("#financial_contact").val();//联系人
+		var financial_phone = $("#financial_phone").val();//联系电话
+		var financial_email = $("#financial_email").val();//邮箱
+		var financial_intro = $("#financial_intro").val();//公司简介
+
+		if (financial_enterpirse == "") {
+			alert("请输入公司名称");
+			return false;
+		}
+		if (financial_field == "") {
+			alert("请输入行业领域");
+			return false;
+		}
+		if (financial_name == "") {
+			alert("项目名称");
+			return false;
+		}
+		if (financial_advantage == "") {
+			alert("请输入项目优势");
+			return false;
+		}
+		if (financial_capital == "") {
+			alert("请输入融资金额");
+			return false;
+		}
+		if (financial_contact == "") {
+			alert("请输入联系人姓名");
+			return false;
+		}
+		if (financial_phone == "") {
+			alert("请输入联系电话");
+			return false;
+		}
+
+		var params = {
+			"enterpirse": financial_enterpirse,
+			"field": financial_field,
+			"name": financial_name,
+			"advantage": financial_advantage,
+			"capital": financial_capital,
+			"progress": financial_progress,
+			"contact": financial_contact,
+			"phone": financial_phone,
+			"email": financial_email,
+			"intro": financial_intro,
+			
+		};
+		var settings = {
+			"async": true,
+			"crossDomain": true,
+			"url": "/front/Apply/inster/invest.do",
+			"method": "POST",
+			"headers": {
+				"content-type": "application/x-www-form-urlencoded",
+				"cache-control": "no-cache",
+				"postman-token": "ae2414ac-3bc5-34fe-6d2c-d969aa34ff91"
+			},
+			"data": params
+		}
+		$.ajax(settings).done(function (data) {
+			console.log(data);
+			if (data.status == true) {
+				alert(data.message);
+				$('#financialForm input').val(" ");
+				$('#financialForm').modal('hide');
+			} else {
+				alert("提交失败，请稍后再试");
+			}
+		});
+
+	}
+	$("#financialBtn").click(function () {
+		financialForm();
+	})
+
+	// 机构入驻申请
+	function agencyForm() {
+		var agency_title = $("#agency_title").val();//投资机构名称
+		var agency_eprofile = $("#agency_eprofile").val();//简介与优势
+		var agency_serviceField = $("#agency_serviceField").val();//投资领域
+		var agency_cas = $("#agency_cas").val();//投资案例
+		var agency_phase = "";//投资阶段
+		var agency_contacts = $("#agency_contacts").val();//联系人
+		var agency_phone = $("#agency_phone").val();//联系电话
+
+		if (agency_title == "") {
+			alert("请输入投资机构名称");
+			return false;
+		}
+		if (agency_eprofile == "") {
+			alert("请输入简介与优势");
+			return false;
+		}
+		if (agency_serviceField == "") {
+			alert("请输入投资领域");
+			return false;
+		}
+	
+		$.each($('#agency_phase input:checkbox'), function () {
+			if (this.checked) {
+				agency_phase += "," + $(this).attr('data-id');
+			}
+		});
+
+		if (agency_phase == '') {
+			alert("请选择投资阶段");
+			return false;
+		}
+
+		if (agency_contacts == "") {
+			alert("请输入联系人姓名");
+			return false;
+		}
+		if (agency_phone == "") {
+			alert("请输入联系电话");
+			return false;
+		}
+
+		var params = {
+			"title": agency_title,
+			"eprofile": agency_eprofile,
+			"serviceField": agency_serviceField,
+			"cas": agency_cas,
+			"phase": agency_phase,
+			"contacts": agency_contacts,
+			"phone": agency_phone,
+			
+		};
+		var settings = {
+			"async": true,
+			"crossDomain": true,
+			"url": "/front/Apply/inster/ment.do",
+			"method": "POST",
+			"headers": {
+				"content-type": "application/x-www-form-urlencoded",
+				"cache-control": "no-cache",
+				"postman-token": "ae2414ac-3bc5-34fe-6d2c-d969aa34ff91"
+			},
+			"data": params
+		}
+		$.ajax(settings).done(function (data) {
+			console.log(data);
+			if (data.status == true) {
+				alert(data.message);
+				$('#agencyForm input').val(" ");
+				$('#agencyForm').modal('hide');
+			} else {
+				alert("提交失败，请稍后再试");
+			}
+		});
+
+	}
+	$("#agencyBtn").click(function () {
+		agencyForm();
 	})
 
 	//[h-ctrl]
